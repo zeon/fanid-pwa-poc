@@ -20,8 +20,8 @@ const CyberpunkCheckbox = ({
 }: CyberpunkCheckboxProps) => {
   return (
     <div className="space-y-2">
-      <div className="flex items-start space-x-3">
-        <div className="relative mt-1">
+      <div className="flex items-center space-x-3">
+        <div className="relative flex-shrink-0">
           <Checkbox
             checked={checked}
             onCheckedChange={onCheckedChange}
