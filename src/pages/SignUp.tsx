@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import AuthLayout from '@/components/auth/AuthLayout';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
-import { Separator } from '@/components/ui/separator';
-import { Fingerprint, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -116,18 +115,6 @@ const SignUp = () => {
 
         <CyberpunkButton type="submit" variant="primary">
           Create Account
-        </CyberpunkButton>
-
-        <div className="relative">
-          <Separator className="bg-gray-600" />
-          <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-800 px-3 text-gray-400 text-sm">
-            OR
-          </span>
-        </div>
-
-        <CyberpunkButton variant="secondary">
-          <Fingerprint className="mr-2" size={20} />
-          Setup Biometric Login
         </CyberpunkButton>
 
         <div className="text-center pt-4">
