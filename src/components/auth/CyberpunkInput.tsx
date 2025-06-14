@@ -12,6 +12,7 @@ interface CyberpunkInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
   className?: string;
+  maxLength?: number;
 }
 
 const CyberpunkInput = ({ 
@@ -21,7 +22,8 @@ const CyberpunkInput = ({
   value, 
   onChange, 
   error,
-  className 
+  className,
+  maxLength
 }: CyberpunkInputProps) => {
   return (
     <div className="space-y-2">
@@ -34,6 +36,7 @@ const CyberpunkInput = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          maxLength={maxLength}
           className={cn(
             "bg-gray-900/50 border-gray-600 text-white placeholder-gray-500",
             "focus:border-cyan-400 focus:ring-cyan-400/20 focus:ring-2",

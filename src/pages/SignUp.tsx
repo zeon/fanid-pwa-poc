@@ -9,11 +9,12 @@ import { Fingerprint, Eye, EyeOff } from 'lucide-react';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
+    username: '',
     email: '',
+    mobilePhone: '',
+    idLastFiveDigits: '',
     password: '',
-    confirmPassword: '',
-    firstName: '',
-    lastName: ''
+    confirmPassword: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -29,8 +30,17 @@ const SignUp = () => {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
+    if (!formData.username) newErrors.username = 'Username is required';
+    else if (formData.username.length < 3) newErrors.username = 'Username must be at least 3 characters';
+    
     if (!formData.email) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email format';
+    
+    if (!formData.mobilePhone) newErrors.mobilePhone = 'Mobile phone is required';
+    else if (!/^\+?[\d\s\-\(\)]{10,}$/.test(formData.mobilePhone)) newErrors.mobilePhone = 'Invalid phone number format';
+    
+    if (!formData.idLastFiveDigits) newErrors.idLastFiveDigits = 'ID last 5 digits is required';
+    else if (!/^\d{5}$/.test(formData.idLastFiveDigits)) newErrors.idLastFiveDigits = 'Must be exactly 5 digits';
     
     if (!formData.password) newErrors.password = 'Password is required';
     else if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
@@ -38,9 +48,6 @@ const SignUp = () => {
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
-    
-    if (!formData.firstName) newErrors.firstName = 'First name is required';
-    if (!formData.lastName) newErrors.lastName = 'Last name is required';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -60,22 +67,13 @@ const SignUp = () => {
       subtitle="Join the future of concert experiences"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-2 gap-4">
-          <CyberpunkInput
-            label="First Name"
-            placeholder="John"
-            value={formData.firstName}
-            onChange={handleInputChange('firstName')}
-            error={errors.firstName}
-          />
-          <CyberpunkInput
-            label="Last Name"
-            placeholder="Doe"
-            value={formData.lastName}
-            onChange={handleInputChange('lastName')}
-            error={errors.lastName}
-          />
-        </div>
+        <CyberpunkInput
+          label="Username"
+          placeholder="johndoe"
+          value={formData.username}
+          onChange={handleInputChange('username')}
+          error={errors.username}
+        />
 
         <CyberpunkInput
           label="Email"
@@ -84,6 +82,24 @@ const SignUp = () => {
           value={formData.email}
           onChange={handleInputChange('email')}
           error={errors.email}
+        />
+
+        <CyberpunkInput
+          label="Mobile Phone"
+          type="tel"
+          placeholder="+1 (555) 123-4567"
+          value={formData.mobilePhone}
+          onChange={handleInputChange('mobilePhone')}
+          error={errors.mobilePhone}
+        />
+
+        <CyberpunkInput
+          label="ID Last 5 Digits"
+          placeholder="12345"
+          maxLength={5}
+          value={formData.idLastFiveDigits}
+          onChange={handleInputChange('idLastFiveDigits')}
+          error={errors.idLastFiveDigits}
         />
 
         <div className="relative">
