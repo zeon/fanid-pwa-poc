@@ -43,7 +43,7 @@ const CyberpunkButton = ({
         className
       )}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 flex items-center justify-center gap-2">{children}</span>
       {variant === 'primary' && (
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-md blur animate-pulse"></div>
       )}
