@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Copyright } from 'lucide-react';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -33,12 +32,9 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="mb-4">
-              <div className="flex items-center justify-center gap-1">
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                  FanID
-                </h1>
-                <Copyright className="text-cyan-400 mb-2" size={16} />
-              </div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                FanID
+              </h1>
               <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">{title}</h2>
