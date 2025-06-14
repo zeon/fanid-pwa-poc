@@ -26,7 +26,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              GATE
+              FANID
             </h1>
             <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
           </div>
