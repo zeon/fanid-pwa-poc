@@ -41,9 +41,19 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
             {subtitle && <p className="text-gray-400 text-sm">{subtitle}</p>}
           </div>
 
-          {/* Auth Form Container */}
-          <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl">
-            {children}
+          {/* Auth Form Container with Glowing Shadow */}
+          <div className="relative">
+            {/* Outer glow effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl animate-pulse"></div>
+            
+            {/* Inner glow rings */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-lg blur-md"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/20 to-purple-300/20 rounded-lg blur-sm"></div>
+            
+            {/* Form container */}
+            <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl shadow-cyan-500/25">
+              {children}
+            </div>
           </div>
         </div>
       </div>
