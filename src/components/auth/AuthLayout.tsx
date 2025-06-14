@@ -33,7 +33,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
           <div className="text-center mb-8">
             <div className="mb-4">
               <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                GATE
+                FanID
               </h1>
               <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
             </div>
