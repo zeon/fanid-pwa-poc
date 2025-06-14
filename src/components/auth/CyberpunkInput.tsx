@@ -13,6 +13,7 @@ interface CyberpunkInputProps {
   error?: string;
   className?: string;
   maxLength?: number;
+  rightIcon?: React.ReactNode;
 }
 
 const CyberpunkInput = ({ 
@@ -23,7 +24,8 @@ const CyberpunkInput = ({
   onChange, 
   error,
   className,
-  maxLength
+  maxLength,
+  rightIcon
 }: CyberpunkInputProps) => {
   return (
     <div className="space-y-2">
@@ -42,10 +44,16 @@ const CyberpunkInput = ({
             "focus:border-cyan-400 focus:ring-cyan-400/20 focus:ring-2",
             "transition-all duration-300",
             "hover:border-gray-500",
+            rightIcon && "pr-12",
             error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
             className
           )}
         />
+        {rightIcon && (
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+            {rightIcon}
+          </div>
+        )}
         {/* Cyberpunk corner accents */}
         <div className="absolute top-0 left-0 w-2 h-2 border-l-2 border-t-2 border-cyan-400 opacity-50"></div>
         <div className="absolute top-0 right-0 w-2 h-2 border-r-2 border-t-2 border-cyan-400 opacity-50"></div>

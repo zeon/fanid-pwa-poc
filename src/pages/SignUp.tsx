@@ -13,12 +13,10 @@ const SignUp = () => {
     email: '',
     mobilePhone: '',
     idLastFiveDigits: '',
-    password: '',
-    confirmPassword: ''
+    password: ''
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -44,10 +42,6 @@ const SignUp = () => {
     
     if (!formData.password) newErrors.password = 'Password is required';
     else if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
-    
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -102,41 +96,23 @@ const SignUp = () => {
           error={errors.idLastFiveDigits}
         />
 
-        <div className="relative">
-          <CyberpunkInput
-            label="Password"
-            type={showPassword ? 'text' : 'password'}
-            placeholder="••••••••"
-            value={formData.password}
-            onChange={handleInputChange('password')}
-            error={errors.password}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
-          >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        </div>
-
-        <div className="relative">
-          <CyberpunkInput
-            label="Confirm Password"
-            type={showConfirmPassword ? 'text' : 'password'}
-            placeholder="••••••••"
-            value={formData.confirmPassword}
-            onChange={handleInputChange('confirmPassword')}
-            error={errors.confirmPassword}
-          />
-          <button
-            type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
-          >
-            {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        </div>
+        <CyberpunkInput
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          placeholder="••••••••"
+          value={formData.password}
+          onChange={handleInputChange('password')}
+          error={errors.password}
+          rightIcon={
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          }
+        />
 
         <CyberpunkButton type="submit" variant="primary">
           Create Account

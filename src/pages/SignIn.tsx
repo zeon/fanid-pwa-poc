@@ -57,23 +57,23 @@ const SignIn = () => {
           error={errors.email}
         />
 
-        <div className="relative">
-          <CyberpunkInput
-            label="Password"
-            type={showPassword ? 'text' : 'password'}
-            placeholder="••••••••"
-            value={formData.password}
-            onChange={handleInputChange('password')}
-            error={errors.password}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
-          >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        </div>
+        <CyberpunkInput
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          placeholder="••••••••"
+          value={formData.password}
+          onChange={handleInputChange('password')}
+          error={errors.password}
+          rightIcon={
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-gray-400 hover:text-cyan-400 transition-colors"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          }
+        />
 
         <div className="flex justify-end">
           <Link 
