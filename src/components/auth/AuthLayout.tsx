@@ -11,11 +11,11 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
       {/* Cyberpunk grid background */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px'
         }}></div>
