@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import AuthLayout from '@/components/auth/AuthLayout';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
-import { Eye, EyeOff } from 'lucide-react';
+import CyberpunkCheckbox from '@/components/auth/CyberpunkCheckbox';
+import { Eye, EyeOff, User, Mail, Phone, Shield } from 'lucide-react';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const SignUp = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -41,6 +43,8 @@ const SignUp = () => {
     
     if (!formData.password) newErrors.password = 'Password is required';
     else if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
+
+    if (!privacyAccepted) newErrors.privacy = 'You must accept the privacy policy';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -66,6 +70,7 @@ const SignUp = () => {
           value={formData.username}
           onChange={handleInputChange('username')}
           error={errors.username}
+          icon={<User size={16} />}
         />
 
         <CyberpunkInput
@@ -75,6 +80,7 @@ const SignUp = () => {
           value={formData.email}
           onChange={handleInputChange('email')}
           error={errors.email}
+          icon={<Mail size={16} />}
         />
 
         <CyberpunkInput
@@ -84,6 +90,7 @@ const SignUp = () => {
           value={formData.mobilePhone}
           onChange={handleInputChange('mobilePhone')}
           error={errors.mobilePhone}
+          icon={<Phone size={16} />}
         />
 
         <CyberpunkInput
@@ -93,6 +100,7 @@ const SignUp = () => {
           value={formData.idLastFiveDigits}
           onChange={handleInputChange('idLastFiveDigits')}
           error={errors.idLastFiveDigits}
+          icon={<Shield size={16} />}
         />
 
         <CyberpunkInput
@@ -102,6 +110,7 @@ const SignUp = () => {
           value={formData.password}
           onChange={handleInputChange('password')}
           error={errors.password}
+          icon={<Shield size={16} />}
           rightIcon={
             <button
               type="button"
@@ -111,6 +120,13 @@ const SignUp = () => {
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           }
+        />
+
+        <CyberpunkCheckbox
+          checked={privacyAccepted}
+          onCheckedChange={setPrivacyAccepted}
+          error={errors.privacy}
+          label="I agree to the Privacy Policy and Terms of Service"
         />
 
         <CyberpunkButton type="submit" variant="primary">

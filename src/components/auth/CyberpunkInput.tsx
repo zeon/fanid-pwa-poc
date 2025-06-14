@@ -14,6 +14,7 @@ interface CyberpunkInputProps {
   className?: string;
   maxLength?: number;
   rightIcon?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 const CyberpunkInput = ({ 
@@ -25,11 +26,13 @@ const CyberpunkInput = ({
   error,
   className,
   maxLength,
-  rightIcon
+  rightIcon,
+  icon
 }: CyberpunkInputProps) => {
   return (
     <div className="space-y-2">
-      <Label className="text-cyan-400 text-sm font-medium uppercase tracking-wide">
+      <Label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
+        {icon && <span className="text-cyan-400">{icon}</span>}
         {label}
       </Label>
       <div className="relative">
