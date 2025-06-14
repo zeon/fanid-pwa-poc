@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthLayout from '@/components/auth/AuthLayout';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
@@ -8,6 +7,7 @@ import CyberpunkCheckbox from '@/components/auth/CyberpunkCheckbox';
 import { Eye, EyeOff, User, Mail, Phone, Shield, Key } from 'lucide-react';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -55,6 +55,13 @@ const SignUp = () => {
     if (validateForm()) {
       console.log('Sign up data:', formData);
       // TODO: Implement actual sign up logic
+      // Navigate to OTP page with user data
+      navigate('/otp', { 
+        state: { 
+          email: formData.email,
+          fromSignUp: true
+        } 
+      });
     }
   };
 
