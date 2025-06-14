@@ -43,8 +43,8 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
 
           {/* Auth Form Container with Glowing Shadow */}
           <div className="relative">
-            {/* Outer glow effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl animate-pulse"></div>
+            {/* Outer glow effect with slower animation */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl animate-pulse" style={{ animationDuration: '3s' }}></div>
             
             {/* Inner glow rings */}
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-lg blur-md"></div>
