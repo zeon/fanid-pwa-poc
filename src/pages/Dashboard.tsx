@@ -1,0 +1,107 @@
+
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Ticket, Calendar, Fingerprint, Zap } from 'lucide-react';
+
+const Dashboard = () => {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <div className="bg-gray-800 border-b border-gray-700 p-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              GATE
+            </h1>
+            <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="w-8 h-8 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto p-6">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold mb-2">Welcome to the Future</h2>
+          <p className="text-gray-400">Your cyberpunk concert experience awaits</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">Active Tickets</CardTitle>
+              <Ticket className="h-4 w-4 text-cyan-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-white">3</div>
+              <p className="text-xs text-gray-400">Upcoming events</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">Next Event</CardTitle>
+              <Calendar className="h-4 w-4 text-purple-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-white">7</div>
+              <p className="text-xs text-gray-400">Days away</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">Biometric Status</CardTitle>
+              <Fingerprint className="h-4 w-4 text-green-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-green-400">Active</div>
+              <p className="text-xs text-gray-400">Secure access enabled</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">Energy Level</CardTitle>
+              <Zap className="h-4 w-4 text-yellow-400" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-yellow-400">100%</div>
+              <p className="text-xs text-gray-400">Ready to rock</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8">
+          <Card className="bg-gray-800 border-gray-700">
+            <CardHeader>
+              <CardTitle className="text-xl text-white">Upcoming Events</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-white">Neon Nights Festival</h3>
+                    <p className="text-sm text-gray-400">December 15, 2024 • 8:00 PM</p>
+                  </div>
+                  <div className="text-cyan-400 font-bold">VIP</div>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                  <div>
+                    <h3 className="font-semibold text-white">Cyberpunk Arena</h3>
+                    <p className="text-sm text-gray-400">December 22, 2024 • 9:00 PM</p>
+                  </div>
+                  <div className="text-purple-400 font-bold">GA</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
