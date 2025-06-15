@@ -8,6 +8,7 @@ interface CyberpunkButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit';
   variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'default' | 'lg';
   disabled?: boolean;
   className?: string;
 }
@@ -17,6 +18,7 @@ const CyberpunkButton = ({
   onClick, 
   type = 'button', 
   variant = 'primary',
+  size = 'default',
   disabled = false,
   className 
 }: CyberpunkButtonProps) => {
@@ -25,10 +27,14 @@ const CyberpunkButton = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
+      size={size}
       className={cn(
-        "relative w-full h-12 font-bold uppercase tracking-wide text-sm",
+        "relative w-full font-bold uppercase tracking-wide text-sm",
         "transition-all duration-300 transform",
         "hover:scale-105 active:scale-95",
+        size === 'sm' && "h-10",
+        size === 'default' && "h-12",
+        size === 'lg' && "h-14",
         variant === 'primary' && [
           "bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400",
           "text-white shadow-lg shadow-cyan-500/25",
