@@ -21,16 +21,6 @@ const FaceDuplicateDetected = () => {
     });
   };
 
-  const handleSkip = () => {
-    navigate('/dashboard', { 
-      state: { 
-        ...userData,
-        faceScanned: false,
-        message: 'Account created successfully! You can set up face scanning later in settings.'
-      }
-    });
-  };
-
   return (
     <AuthLayout 
       title="DUPLICATE DETECTED" 
@@ -72,8 +62,8 @@ const FaceDuplicateDetected = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="space-y-3 pt-4">
+        {/* Action Button */}
+        <div className="pt-4">
           <CyberpunkButton 
             onClick={handleRescan}
             variant="primary"
@@ -82,14 +72,6 @@ const FaceDuplicateDetected = () => {
           >
             <RotateCcw size={20} />
             Re-scan Face
-          </CyberpunkButton>
-          
-          <CyberpunkButton 
-            onClick={handleSkip}
-            variant="secondary"
-            className="w-full"
-          >
-            Skip for Now
           </CyberpunkButton>
         </div>
 

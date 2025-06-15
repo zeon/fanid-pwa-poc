@@ -15,13 +15,12 @@ const ScanControls = ({
   isScanning, 
   scanComplete, 
   stream, 
-  onStartScan, 
-  onSkip 
+  onStartScan
 }: ScanControlsProps) => {
   if (isScanning || scanComplete || !stream) return null;
 
   return (
-    <div className="space-y-3">
+    <div>
       <CyberpunkButton 
         onClick={onStartScan}
         variant="primary"
@@ -29,14 +28,6 @@ const ScanControls = ({
       >
         <Camera size={20} />
         Start Face Scan
-      </CyberpunkButton>
-      
-      <CyberpunkButton 
-        onClick={onSkip}
-        variant="secondary"
-        className="w-full"
-      >
-        Skip for Now
       </CyberpunkButton>
     </div>
   );

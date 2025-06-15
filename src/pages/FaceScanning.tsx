@@ -49,16 +49,6 @@ const FaceScanning = () => {
     );
   };
 
-  const handleSkip = () => {
-    navigate('/dashboard', { 
-      state: { 
-        ...userData,
-        faceScanned: false,
-        message: 'Account created successfully! You can set up face scanning later in settings.'
-      }
-    });
-  };
-
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -118,7 +108,7 @@ const FaceScanning = () => {
           scanComplete={scanComplete}
           stream={stream}
           onStartScan={handleStartScan}
-          onSkip={handleSkip}
+          onSkip={() => {}} // Empty function since Skip is removed
         />
 
         {/* Completion Indicator */}
