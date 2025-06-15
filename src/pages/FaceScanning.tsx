@@ -16,6 +16,7 @@ const FaceScanning = () => {
   
   // Get user data from navigation state
   const userData = location.state || {};
+  const isRescan = userData.isRescan || false;
 
   const {
     videoRef,
@@ -31,12 +32,21 @@ const FaceScanning = () => {
   } = useFaceScanning();
 
   const handleStartScan = () => {
-    startFaceScan(() => {
-      // Navigate to completion screen instead of dashboard
-      navigate('/face-scan-complete', { 
-        state: userData
-      });
-    });
+    startFaceScan(
+      // On successful completion
+      () => {
+        navigate('/face-scan-complete', { 
+          state: userData
+        });
+      },
+      // On duplicate detection
+      () => {
+        navigate('/face-duplicate-detected', { 
+          state: userData
+        });
+      },
+      isRescan
+    );
   };
 
   const handleSkip = () => {
@@ -55,8 +65,8 @@ const FaceScanning = () => {
 
   return (
     <AuthLayout 
-      title="BIOMETRIC SETUP" 
-      subtitle="Secure your account with face recognition"
+      title={isRescan ? "RE-SCAN BIOMETRIC" : "BIOMETRIC SETUP"} 
+      subtitle={isRescan ? "Please scan your face again for verification" : "Secure your account with face recognition"}
     >
       <div className="space-y-6">
         {/* Back Button */}
@@ -68,6 +78,15 @@ const FaceScanning = () => {
           <ArrowLeft size={16} />
           Back
         </button>
+
+        {/* Re-scan Notice */}
+        {isRescan && (
+          <div className="bg-orange-900/20 border border-orange-500/30 rounded-lg p-3">
+            <p className="text-orange-400 text-sm text-center">
+              Re-scanning to ensure accurate biometric capture
+            </p>
+          </div>
+        )}
 
         {/* Camera Section */}
         <CameraSection

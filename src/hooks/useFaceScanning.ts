@@ -61,7 +61,7 @@ export const useFaceScanning = () => {
     }
   };
 
-  const startFaceScan = (onComplete: () => void) => {
+  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false) => {
     if (!stream) {
       setCameraError('Camera not available. Please refresh and try again.');
       return;
@@ -76,7 +76,6 @@ export const useFaceScanning = () => {
     setSteps(scanSteps.map(step => ({ ...step, completed: false })));
 
     // Simulate face scanning process
-    const totalDuration = 8000; // 8 seconds total
     let progress = 0;
     let stepIndex = 0;
 
@@ -100,9 +99,18 @@ export const useFaceScanning = () => {
         setScanComplete(true);
         setIsScanning(false);
         
-        // Call completion callback after 1 second delay
+        // Simulate duplicate detection on first scan (50% chance)
+        // On re-scan, always succeed
+        const shouldDetectDuplicate = !isRescan && Math.random() > 0.5;
+        
         setTimeout(() => {
-          onComplete();
+          if (shouldDetectDuplicate) {
+            console.log('Duplicate face data detected, redirecting to duplicate detection page');
+            onDuplicateDetected();
+          } else {
+            console.log('Face scan completed successfully');
+            onComplete();
+          }
         }, 1000);
       }
     }, 100);
