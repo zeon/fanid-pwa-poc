@@ -5,13 +5,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
-import { ArrowLeft, User, Mail, Lock, Edit } from 'lucide-react';
+import { ArrowLeft, User, Mail, Lock } from 'lucide-react';
 
 const UserProfile = () => {
   const navigate = useNavigate();
   
   // Mock user data - in a real app this would come from auth context
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo] = useState({
     name: 'Alex Chen',
     email: 'alex.chen@example.com',
     initials: 'AC'
@@ -24,17 +24,9 @@ const UserProfile = () => {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   const handleGoBack = () => {
     navigate('/dashboard');
-  };
-
-  const handleProfileInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInfo(prev => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
   };
 
   const handlePasswordInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,12 +47,6 @@ const UserProfile = () => {
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSaveProfile = () => {
-    console.log('Saving profile:', userInfo);
-    setIsEditingProfile(false);
-    // TODO: Implement actual profile update logic
   };
 
   const handleChangePassword = (e: React.FormEvent) => {
@@ -95,19 +81,11 @@ const UserProfile = () => {
       <div className="max-w-4xl mx-auto p-6 space-y-6">
         {/* Profile Information Card */}
         <Card className="bg-gray-800 border-gray-700">
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader>
             <CardTitle className="text-xl text-white flex items-center gap-2">
               <User className="h-5 w-5 text-cyan-400" />
               Profile Information
             </CardTitle>
-            <CyberpunkButton 
-              size="sm" 
-              variant="secondary"
-              onClick={() => setIsEditingProfile(!isEditingProfile)}
-            >
-              <Edit size={16} />
-              {isEditingProfile ? 'Cancel' : 'Edit'}
-            </CyberpunkButton>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="flex items-center space-x-6">
@@ -123,53 +101,22 @@ const UserProfile = () => {
               </div>
             </div>
 
-            {isEditingProfile ? (
-              <div className="space-y-4">
-                <CyberpunkInput
-                  label="Full Name"
-                  icon={<User size={16} />}
-                  value={userInfo.name}
-                  onChange={handleProfileInputChange('name')}
-                  error={errors.name}
-                />
-                <CyberpunkInput
-                  label="Email"
-                  type="email"
-                  icon={<Mail size={16} />}
-                  value={userInfo.email}
-                  onChange={handleProfileInputChange('email')}
-                  error={errors.email}
-                />
-                <div className="flex space-x-4">
-                  <CyberpunkButton onClick={handleSaveProfile}>
-                    Save Changes
-                  </CyberpunkButton>
-                  <CyberpunkButton 
-                    variant="secondary" 
-                    onClick={() => setIsEditingProfile(false)}
-                  >
-                    Cancel
-                  </CyberpunkButton>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
+                  <User size={16} />
+                  Full Name
+                </label>
+                <p className="text-white mt-1">{userInfo.name}</p>
               </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
-                    <User size={16} />
-                    Full Name
-                  </label>
-                  <p className="text-white mt-1">{userInfo.name}</p>
-                </div>
-                <div>
-                  <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
-                    <Mail size={16} />
-                    Email
-                  </label>
-                  <p className="text-white mt-1">{userInfo.email}</p>
-                </div>
+              <div>
+                <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
+                  <Mail size={16} />
+                  Email
+                </label>
+                <p className="text-white mt-1">{userInfo.email}</p>
               </div>
-            )}
+            </div>
           </CardContent>
         </Card>
 
