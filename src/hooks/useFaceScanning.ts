@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 
 interface ScanStep {
@@ -99,17 +98,14 @@ export const useFaceScanning = () => {
         setScanComplete(true);
         setIsScanning(false);
         
-        // Simulate duplicate detection on first scan (50% chance)
-        // On re-scan, always succeed
-        const shouldDetectDuplicate = !isRescan && Math.random() > 0.5;
-        
+        // Deterministic behavior: first scan always fails, re-scan always succeeds
         setTimeout(() => {
-          if (shouldDetectDuplicate) {
-            console.log('Duplicate face data detected, redirecting to duplicate detection page');
-            onDuplicateDetected();
-          } else {
-            console.log('Face scan completed successfully');
+          if (isRescan) {
+            console.log('Re-scan completed successfully');
             onComplete();
+          } else {
+            console.log('First scan always detects duplicate, redirecting to duplicate detection page');
+            onDuplicateDetected();
           }
         }, 1000);
       }
