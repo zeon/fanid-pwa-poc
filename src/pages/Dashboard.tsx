@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -36,7 +37,6 @@ const Dashboard = () => {
             <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-gray-300 text-sm">Welcome back, {user.name}</span>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-full">
