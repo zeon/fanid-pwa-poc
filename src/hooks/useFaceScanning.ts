@@ -100,10 +100,10 @@ export const useFaceScanning = () => {
         setScanComplete(true);
         setIsScanning(false);
         
-        // Auto-proceed to dashboard after 2 seconds
+        // Call completion callback after 1 second delay
         setTimeout(() => {
           onComplete();
-        }, 2000);
+        }, 1000);
       }
     }, 100);
   };

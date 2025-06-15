@@ -11,9 +11,9 @@ const ScanCompletion = ({ scanComplete }: ScanCompletionProps) => {
   return (
     <div className="text-center">
       <p className="text-green-400 text-sm mb-4">
-        Redirecting to dashboard...
+        Scan completed successfully!
       </p>
-      <div className="w-6 h-6 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <div className="w-6 h-6 border-2 border-green-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
     </div>
   );
 };

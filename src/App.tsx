@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import OTP from "./pages/OTP";
 import FaceScanning from "./pages/FaceScanning";
+import FaceScanComplete from "./pages/FaceScanComplete";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/signin" element={<SignIn />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/face-scanning" element={<FaceScanning />} />
+          <Route path="/face-scan-complete" element={<FaceScanComplete />} />
           <Route path="/dashboard" element={<Dashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

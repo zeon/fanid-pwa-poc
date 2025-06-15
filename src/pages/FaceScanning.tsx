@@ -32,12 +32,9 @@ const FaceScanning = () => {
 
   const handleStartScan = () => {
     startFaceScan(() => {
-      navigate('/dashboard', { 
-        state: { 
-          ...userData,
-          faceScanned: true,
-          message: 'Account created successfully! Face scan completed.'
-        }
+      // Navigate to completion screen instead of dashboard
+      navigate('/face-scan-complete', { 
+        state: userData
       });
     });
   };
