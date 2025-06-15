@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthLayout from '@/components/auth/AuthLayout';
@@ -26,9 +25,20 @@ const OTP = () => {
     setTimeout(() => {
       console.log('OTP verification:', { otpValue, email, fromSignUp });
       setIsVerifying(false);
-      // TODO: Implement actual OTP verification logic
-      // On success, navigate to dashboard
-      navigate('/dashboard');
+      
+      // Navigate based on whether this is from sign up or sign in
+      if (fromSignUp) {
+        // New users go to face scanning
+        navigate('/face-scanning', { 
+          state: { 
+            email,
+            fromSignUp: true
+          } 
+        });
+      } else {
+        // Existing users go directly to dashboard
+        navigate('/dashboard');
+      }
     }, 2000);
   };
 
