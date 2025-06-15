@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 
 interface ScanStep {
@@ -25,12 +26,38 @@ export const useFaceScanning = () => {
 
   const [steps, setSteps] = useState(scanSteps);
 
+  const stopCamera = () => {
+    if (stream) {
+      stream.getTracks().forEach(track => {
+        track.stop();
+        console.log('Camera track stopped');
+      });
+      setStream(null);
+      if (videoRef.current) {
+        videoRef.current.srcObject = null;
+      }
+    }
+  };
+
   useEffect(() => {
     startCamera();
+    
+    // Cleanup function to stop camera when component unmounts
     return () => {
+      console.log('Cleaning up camera on component unmount');
       stopCamera();
     };
   }, []);
+
+  // Additional cleanup when stream changes
+  useEffect(() => {
+    return () => {
+      if (stream) {
+        console.log('Cleaning up previous stream');
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [stream]);
 
   const startCamera = async () => {
     try {
@@ -47,16 +74,10 @@ export const useFaceScanning = () => {
         videoRef.current.srcObject = mediaStream;
       }
       setCameraError('');
+      console.log('Camera started successfully');
     } catch (error) {
       console.error('Camera access denied:', error);
       setCameraError('Camera access is required for face scanning. Please allow camera access and try again.');
-    }
-  };
-
-  const stopCamera = () => {
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop());
-      setStream(null);
     }
   };
 
@@ -127,6 +148,7 @@ export const useFaceScanning = () => {
     scanComplete,
     steps,
     startFaceScan,
-    handleRetry
+    handleRetry,
+    stopCamera // Export stopCamera for manual cleanup if needed
   };
 };
