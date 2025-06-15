@@ -24,7 +24,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto p-6">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Welcome to the Future</h2>
+          <h2 className="text-3xl font-bold mb-2">Welcome to the Future for Concert Ticketing</h2>
           <p className="text-gray-400">Your cyberpunk concert experience awaits</p>
         </div>
 
