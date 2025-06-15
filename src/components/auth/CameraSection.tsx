@@ -45,15 +45,13 @@ const CameraSection = ({
             {/* Face Detection Overlay */}
             {stream && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`relative w-48 h-60 border-2 transition-colors duration-300 ${
+                <div className={`relative w-48 h-48 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
                     ? 'border-green-400 shadow-lg shadow-green-400/50' 
                     : isScanning 
                       ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' 
                       : 'border-gray-400'
-                }`} style={{
-                  borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%'
-                }}>
+                }`}>
                   {/* Corner indicators */}
                   <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-cyan-400"></div>
                   <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-cyan-400"></div>
