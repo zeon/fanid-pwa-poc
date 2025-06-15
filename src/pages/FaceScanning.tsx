@@ -17,6 +17,7 @@ const FaceScanning = () => {
   // Get user data from navigation state
   const userData = location.state || {};
   const isRescan = userData.isRescan || false;
+  const isBiometricLogin = userData.isBiometricLogin || false;
 
   const {
     videoRef,
@@ -35,9 +36,14 @@ const FaceScanning = () => {
     startFaceScan(
       // On successful completion
       () => {
-        navigate('/face-scan-complete', { 
-          state: userData
-        });
+        if (isBiometricLogin) {
+          console.log('Biometric login successful, navigating to dashboard');
+          navigate('/dashboard');
+        } else {
+          navigate('/face-scan-complete', { 
+            state: userData
+          });
+        }
       },
       // On duplicate detection
       () => {
@@ -45,7 +51,8 @@ const FaceScanning = () => {
           state: userData
         });
       },
-      isRescan
+      isRescan,
+      isBiometricLogin
     );
   };
 
@@ -53,10 +60,22 @@ const FaceScanning = () => {
     navigate(-1);
   };
 
+  const getTitle = () => {
+    if (isBiometricLogin) return "BIOMETRIC LOGIN";
+    if (isRescan) return "RE-SCAN BIOMETRIC";
+    return "BIOMETRIC SETUP";
+  };
+
+  const getSubtitle = () => {
+    if (isBiometricLogin) return "Scan your face to access your account";
+    if (isRescan) return "Please scan your face again for verification";
+    return "Secure your account with face recognition";
+  };
+
   return (
     <AuthLayout 
-      title={isRescan ? "RE-SCAN BIOMETRIC" : "BIOMETRIC SETUP"} 
-      subtitle={isRescan ? "Please scan your face again for verification" : "Secure your account with face recognition"}
+      title={getTitle()} 
+      subtitle={getSubtitle()}
     >
       <div className="space-y-6">
         {/* Back Button */}
@@ -68,6 +87,15 @@ const FaceScanning = () => {
           <ArrowLeft size={16} />
           Back
         </button>
+
+        {/* Biometric Login Notice */}
+        {isBiometricLogin && (
+          <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-lg p-3">
+            <p className="text-cyan-400 text-sm text-center">
+              Position your face within the frame for secure login
+            </p>
+          </div>
+        )}
 
         {/* Re-scan Notice */}
         {isRescan && (

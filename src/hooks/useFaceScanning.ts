@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 
 interface ScanStep {
@@ -81,7 +80,7 @@ export const useFaceScanning = () => {
     }
   };
 
-  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false) => {
+  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false, isBiometricLogin = false) => {
     if (!stream) {
       setCameraError('Camera not available. Please refresh and try again.');
       return;
@@ -119,12 +118,17 @@ export const useFaceScanning = () => {
         setScanComplete(true);
         setIsScanning(false);
         
-        // Deterministic behavior: first scan always fails, re-scan always succeeds
         setTimeout(() => {
-          if (isRescan) {
+          if (isBiometricLogin) {
+            // Biometric login always succeeds
+            console.log('Biometric login scan completed successfully');
+            onComplete();
+          } else if (isRescan) {
+            // Re-scan always succeeds
             console.log('Re-scan completed successfully');
             onComplete();
           } else {
+            // First-time setup scan always detects duplicate
             console.log('First scan always detects duplicate, redirecting to duplicate detection page');
             onDuplicateDetected();
           }

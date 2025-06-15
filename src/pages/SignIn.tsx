@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthLayout from '@/components/auth/AuthLayout';
@@ -47,6 +48,16 @@ const SignIn = () => {
         } 
       });
     }
+  };
+
+  const handleBiometricLogin = () => {
+    console.log('Starting biometric login flow');
+    navigate('/face-scanning', {
+      state: {
+        isBiometricLogin: true,
+        email: 'biometric-user@example.com' // In real app, this would come from stored biometric data
+      }
+    });
   };
 
   return (
@@ -102,7 +113,7 @@ const SignIn = () => {
           </span>
         </div>
 
-        <CyberpunkButton variant="secondary">
+        <CyberpunkButton variant="secondary" onClick={handleBiometricLogin}>
           <Fingerprint className="mr-2" size={20} />
           Biometric Login
         </CyberpunkButton>
