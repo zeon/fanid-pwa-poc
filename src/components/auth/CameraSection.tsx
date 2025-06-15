@@ -22,11 +22,11 @@ const CameraSection = ({
 }: CameraSectionProps) => {
   return (
     <div className="relative">
-      <div className="relative bg-gray-900 rounded-lg overflow-hidden aspect-video">
+      <div className="relative bg-gray-900 rounded-full overflow-hidden w-80 h-96 mx-auto">
         {cameraError ? (
           <div className="flex flex-col items-center justify-center h-full p-6 text-center">
             <AlertCircle className="text-red-400 mb-4" size={48} />
-            <p className="text-gray-300 mb-4">{cameraError}</p>
+            <p className="text-gray-300 mb-4 text-sm">{cameraError}</p>
             <CyberpunkButton onClick={onRetry} variant="secondary" size="sm">
               <RefreshCw size={16} className="mr-2" />
               Retry
