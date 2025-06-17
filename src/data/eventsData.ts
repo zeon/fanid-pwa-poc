@@ -76,12 +76,12 @@ export const upcomingEvents: Event[] = [
 export const pastEvents: Event[] = [
   {
     id: '7',
-    name: 'Taylor Swift',
-    date: 'November 15, 2024',
+    name: 'aMEI ASMR Maxxx @ Taipei Dome 世界巡迴演唱會',
+    date: 'December 21, 2024',
     time: '8:00 PM',
-    venue: 'Vintage Venue',
+    venue: '台北大巨蛋',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
+    image: 'https://img.news.ebc.net.tw/EbcNews/news/2024/09/26/1727355118_74057.jpg?w=1',
     status: 'past'
   },
   {
