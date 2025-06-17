@@ -13,27 +13,27 @@ export interface Event {
 export const upcomingEvents: Event[] = [
   {
     id: '1',
-    name: 'Neon Nights Festival',
+    name: 'Stellar Nights',
     date: 'December 15, 2024',
     time: '8:00 PM',
     venue: 'Cyber Arena',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=600&fit=crop',
     status: 'upcoming'
   },
   {
     id: '2',
-    name: 'Cyberpunk Arena',
+    name: 'Cosmic Pulse',
     date: 'December 22, 2024',
     time: '9:00 PM',
     venue: 'Neo Tokyo Hall',
     ticketType: 'GA',
-    image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'upcoming'
   },
   {
     id: '3',
-    name: 'Electric Dreams Concert',
+    name: 'Nebula Dreams',
     date: 'January 10, 2025',
     time: '7:30 PM',
     venue: 'Digital Dome',
@@ -43,32 +43,32 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '4',
-    name: 'Synthwave Spectacular',
+    name: 'Galaxy Waves',
     date: 'January 25, 2025',
     time: '8:30 PM',
     venue: 'Neon Coliseum',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'upcoming'
   },
   {
     id: '5',
-    name: 'Future Bass Revolution',
+    name: 'Astral Bass',
     date: 'February 8, 2025',
     time: '9:30 PM',
     venue: 'Holographic Theater',
     ticketType: 'GA',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=600&fit=crop',
     status: 'upcoming'
   },
   {
     id: '6',
-    name: 'Quantum Beats Festival',
+    name: 'Starlight Beats',
     date: 'February 20, 2025',
     time: '6:00 PM',
     venue: 'Matrix Amphitheater',
     ticketType: 'Premium',
-    image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'upcoming'
   }
 ];
@@ -76,7 +76,7 @@ export const upcomingEvents: Event[] = [
 export const pastEvents: Event[] = [
   {
     id: '7',
-    name: 'Retro Wave Nights',
+    name: 'Constellation Nights',
     date: 'November 15, 2024',
     time: '8:00 PM',
     venue: 'Vintage Venue',
@@ -86,37 +86,37 @@ export const pastEvents: Event[] = [
   },
   {
     id: '8',
-    name: 'Digital Dystopia',
+    name: 'Orion Digital',
     date: 'November 3, 2024',
     time: '9:00 PM',
     venue: 'Underground Club',
     ticketType: 'GA',
-    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'past'
   },
   {
     id: '9',
-    name: 'Chrome City Concert',
+    name: 'Stellar Chrome',
     date: 'October 28, 2024',
     time: '7:00 PM',
     venue: 'Steel Stadium',
     ticketType: 'Premium',
-    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=800&h=600&fit=crop',
     status: 'past'
   },
   {
     id: '10',
-    name: 'Neon Pulse Party',
+    name: 'Aurora Pulse',
     date: 'October 12, 2024',
     time: '10:00 PM',
     venue: 'Glow Garden',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'past'
   },
   {
     id: '11',
-    name: 'Cyber Symphony',
+    name: 'Cosmic Symphony',
     date: 'September 25, 2024',
     time: '8:30 PM',
     venue: 'Digital Concert Hall',
@@ -126,12 +126,12 @@ export const pastEvents: Event[] = [
   },
   {
     id: '12',
-    name: 'Binary Beats Bash',
+    name: 'Stardust Bash',
     date: 'September 10, 2024',
     time: '9:15 PM',
     venue: 'Code Lounge',
     ticketType: 'Premium',
-    image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?w=800&h=600&fit=crop',
     status: 'past'
   }
 ];
