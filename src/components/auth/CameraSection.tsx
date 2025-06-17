@@ -24,7 +24,7 @@ const CameraSection = ({
 }: CameraSectionProps) => {
   return (
     <div className="relative">
-      <div className="relative bg-gray-900 rounded-2xl overflow-hidden w-full max-w-sm mx-auto aspect-[4/5] sm:max-w-md md:max-w-lg">
+      <div className="relative bg-gray-900 rounded-full overflow-hidden w-full max-w-sm mx-auto aspect-square sm:max-w-md md:max-w-lg">
         {cameraError ? (
           <div className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center">
             <AlertCircle className="text-red-400 mb-4" size={48} />
@@ -47,7 +47,7 @@ const CameraSection = ({
             {/* Biometric Login Image Overlay */}
             {isBiometricLogin && stream && (
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
-                <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
                     src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
                     alt="Biometric Login" 
@@ -60,7 +60,7 @@ const CameraSection = ({
             {/* Face Detection Overlay */}
             {stream && !isBiometricLogin && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${
+                <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
                     ? 'border-green-400 shadow-lg shadow-green-400/50' 
                     : isScanning 
@@ -68,15 +68,15 @@ const CameraSection = ({
                     : 'border-gray-400'
                 }`}>
                   {/* Corner indicators */}
-                  <div className="absolute -top-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-t-2 border-cyan-400"></div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-t-2 border-cyan-400"></div>
-                  <div className="absolute -bottom-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-b-2 border-cyan-400"></div>
-                  <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-b-2 border-cyan-400"></div>
+                  <div className="absolute -top-1 -left-1 w-4 h-4 sm:w-5 sm:h-5 border-l-2 border-t-2 border-cyan-400"></div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 border-r-2 border-t-2 border-cyan-400"></div>
+                  <div className="absolute -bottom-1 -left-1 w-4 h-4 sm:w-5 sm:h-5 border-l-2 border-b-2 border-cyan-400"></div>
+                  <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 border-r-2 border-b-2 border-cyan-400"></div>
                   
                   {/* Center indicator */}
                   {scanComplete && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Check className="text-green-400" size={24} />
+                      <Check className="text-green-400" size={32} />
                     </div>
                   )}
                 </div>
@@ -86,7 +86,7 @@ const CameraSection = ({
             {/* Face Detection Overlay for Biometric Login (simplified) */}
             {stream && isBiometricLogin && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${
+                <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
                     ? 'border-green-400 shadow-lg shadow-green-400/50' 
                     : isScanning 
@@ -96,7 +96,7 @@ const CameraSection = ({
                   {/* Center indicator */}
                   {scanComplete && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Check className="text-green-400" size={24} />
+                      <Check className="text-green-400" size={32} />
                     </div>
                   )}
                 </div>
