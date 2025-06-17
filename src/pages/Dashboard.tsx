@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Ticket, Calendar, Fingerprint, Zap, User, LogOut } from 'lucide-react';
+import EventCard from '@/components/dashboard/EventCard';
+import { upcomingEvents, pastEvents } from '@/data/eventsData';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -26,9 +29,31 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }}></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '120px 120px'
+        }}></div>
+      </div>
+      
+      <div className="absolute top-10 left-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
       {/* Header */}
-      <div className="bg-gray-800 border-b border-gray-700 p-4">
+      <div className="bg-gray-800/80 backdrop-blur-sm border-b border-gray-700 p-4 relative z-10">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
@@ -79,7 +104,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto p-6 relative z-10">
         
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-2">Welcome to the Future for Concert Ticketing</h2>
@@ -87,7 +112,7 @@ const Dashboard = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Active Tickets</CardTitle>
               <Ticket className="h-4 w-4 text-cyan-400" />
@@ -98,7 +123,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Next Event</CardTitle>
               <Calendar className="h-4 w-4 text-purple-400" />
@@ -109,7 +134,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Biometric Status</CardTitle>
               <Fingerprint className="h-4 w-4 text-green-400" />
@@ -120,7 +145,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Energy Level</CardTitle>
               <Zap className="h-4 w-4 text-yellow-400" />
@@ -133,27 +158,41 @@ const Dashboard = () => {
         </div>
 
         <div className="mt-8">
-          <Card className="bg-gray-800 border-gray-700">
+          <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader>
-              <CardTitle className="text-xl text-white">Upcoming Events</CardTitle>
+              <CardTitle className="text-xl text-white">Events</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
-                  <div>
-                    <h3 className="font-semibold text-white">Neon Nights Festival</h3>
-                    <p className="text-sm text-gray-400">December 15, 2024 • 8:00 PM</p>
+              <Tabs defaultValue="upcoming" className="w-full">
+                <TabsList className="grid w-full grid-cols-2 bg-gray-700 border-gray-600">
+                  <TabsTrigger 
+                    value="upcoming" 
+                    className="text-gray-400 data-[state=active]:text-white data-[state=active]:bg-gray-600"
+                  >
+                    Upcoming Events
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="past" 
+                    className="text-gray-400 data-[state=active]:text-white data-[state=active]:bg-gray-600"
+                  >
+                    Past Events
+                  </TabsTrigger>
+                </TabsList>
+                <TabsContent value="upcoming" className="mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {upcomingEvents.map((event) => (
+                      <EventCard key={event.id} event={event} />
+                    ))}
                   </div>
-                  <div className="text-cyan-400 font-bold">VIP</div>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
-                  <div>
-                    <h3 className="font-semibold text-white">Cyberpunk Arena</h3>
-                    <p className="text-sm text-gray-400">December 22, 2024 • 9:00 PM</p>
+                </TabsContent>
+                <TabsContent value="past" className="mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {pastEvents.map((event) => (
+                      <EventCard key={event.id} event={event} />
+                    ))}
                   </div>
-                  <div className="text-purple-400 font-bold">GA</div>
-                </div>
-              </div>
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         </div>

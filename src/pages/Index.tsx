@@ -7,19 +7,28 @@ import { Fingerprint, Zap, Shield, Music } from 'lucide-react';
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0 opacity-25">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px'
+          backgroundSize: '50px 50px'
+        }}></div>
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '100px 100px'
         }}></div>
       </div>
       
       <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-pink-500/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      <div className="absolute bottom-1/3 left-1/4 w-36 h-36 bg-cyan-500/15 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '3s' }}></div>
 
       {/* Header */}
       <header className="relative z-10 p-6">
@@ -78,19 +87,19 @@ const Index = () => {
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center">
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-cyan-400/50 transition-all duration-300 hover:scale-105">
               <Fingerprint className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Biometric Security</h3>
               <p className="text-gray-400">Advanced face recognition for seamless, secure access to your events.</p>
             </div>
             
-            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center">
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-purple-400/50 transition-all duration-300 hover:scale-105">
               <Zap className="w-12 h-12 text-purple-400 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Instant Access</h3>
               <p className="text-gray-400">Skip the lines with lightning-fast digital ticket verification.</p>
             </div>
             
-            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center">
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-pink-400/50 transition-all duration-300 hover:scale-105">
               <Music className="w-12 h-12 text-pink-400 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Immersive Experience</h3>
               <p className="text-gray-400">Enhanced concert experiences with cutting-edge technology integration.</p>
