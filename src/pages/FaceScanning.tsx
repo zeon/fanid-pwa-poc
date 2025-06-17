@@ -113,6 +113,7 @@ const FaceScanning = () => {
           cameraError={cameraError}
           isScanning={isScanning}
           scanComplete={scanComplete}
+          isBiometricLogin={isBiometricLogin}
           onRetry={handleRetry}
         />
 

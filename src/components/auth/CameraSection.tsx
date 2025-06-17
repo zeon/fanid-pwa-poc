@@ -9,6 +9,7 @@ interface CameraSectionProps {
   cameraError: string;
   isScanning: boolean;
   scanComplete: boolean;
+  isBiometricLogin?: boolean;
   onRetry: () => void;
 }
 
@@ -17,7 +18,8 @@ const CameraSection = ({
   stream, 
   cameraError, 
   isScanning, 
-  scanComplete, 
+  scanComplete,
+  isBiometricLogin = false,
   onRetry 
 }: CameraSectionProps) => {
   return (
@@ -42,8 +44,21 @@ const CameraSection = ({
               className="w-full h-full object-cover"
             />
             
+            {/* Biometric Login Image Overlay */}
+            {isBiometricLogin && stream && (
+              <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
+                <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
+                  <img 
+                    src="/placeholder.svg" 
+                    alt="Biometric Login"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            )}
+            
             {/* Face Detection Overlay */}
-            {stream && (
+            {stream && !isBiometricLogin && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className={`relative w-48 h-48 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
@@ -58,6 +73,26 @@ const CameraSection = ({
                   <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-cyan-400"></div>
                   <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-cyan-400"></div>
                   
+                  {/* Center indicator */}
+                  {scanComplete && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Check className="text-green-400" size={32} />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Face Detection Overlay for Biometric Login (simplified) */}
+            {stream && isBiometricLogin && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className={`relative w-48 h-48 border-2 rounded-full transition-colors duration-300 ${
+                  scanComplete 
+                    ? 'border-green-400 shadow-lg shadow-green-400/50' 
+                    : isScanning 
+                      ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' 
+                      : 'border-gray-400'
+                }`}>
                   {/* Center indicator */}
                   {scanComplete && (
                     <div className="absolute inset-0 flex items-center justify-center">
