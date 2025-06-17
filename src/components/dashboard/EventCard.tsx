@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin } from 'lucide-react';
 
@@ -19,6 +20,8 @@ interface EventCardProps {
 }
 
 const EventCard = ({ event }: EventCardProps) => {
+  const { t } = useTranslation();
+
   const getTicketTypeBadgeColor = (ticketType: string) => {
     switch (ticketType.toLowerCase()) {
       case 'vip':
@@ -30,6 +33,11 @@ const EventCard = ({ event }: EventCardProps) => {
       default:
         return 'bg-gray-600 text-gray-200';
     }
+  };
+
+  const getTranslatedTicketType = (ticketType: string) => {
+    const translationKey = `eventCard.ticketTypes.${ticketType.toLowerCase()}`;
+    return t(translationKey, { defaultValue: ticketType });
   };
 
   return (
@@ -45,7 +53,7 @@ const EventCard = ({ event }: EventCardProps) => {
       
       <div className="absolute top-3 right-3">
         <Badge className={`${getTicketTypeBadgeColor(event.ticketType)} font-bold text-xs px-2 py-1`}>
-          {event.ticketType}
+          {getTranslatedTicketType(event.ticketType)}
         </Badge>
       </div>
 

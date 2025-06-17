@@ -1,16 +1,19 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Ticket, Calendar, Fingerprint, Zap, User, LogOut } from 'lucide-react';
 import EventCard from '@/components/dashboard/EventCard';
+import LanguageSwitcher from '@/components/navigation/LanguageSwitcher';
 import { upcomingEvents, pastEvents } from '@/data/eventsData';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   // Mock user data - in a real app this would come from auth context
   const user = {
@@ -62,6 +65,7 @@ const Dashboard = () => {
             <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
           </div>
           <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-full">
@@ -87,7 +91,7 @@ const Dashboard = () => {
                   className="cursor-pointer text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-700 focus:text-white"
                 >
                   <User className="mr-2 h-4 w-4" />
-                  Profile
+                  {t('navigation.profile')}
                 </DropdownMenuItem>
                 <DropdownMenuSeparator className="bg-gray-700" />
                 <DropdownMenuItem 
@@ -95,7 +99,7 @@ const Dashboard = () => {
                   className="cursor-pointer text-red-400 hover:text-red-300 hover:bg-gray-700 focus:bg-gray-700 focus:text-red-300"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
-                  Logout
+                  {t('navigation.logout')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -107,52 +111,52 @@ const Dashboard = () => {
       <div className="max-w-6xl mx-auto p-6 relative z-10">
         
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Welcome to the Future for Concert Ticketing</h2>
-          <p className="text-gray-400">Your cyberpunk concert experience awaits</p>
+          <h2 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h2>
+          <p className="text-gray-400">{t('dashboard.subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Active Tickets</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.stats.activeTickets')}</CardTitle>
               <Ticket className="h-4 w-4 text-cyan-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">3</div>
-              <p className="text-xs text-gray-400">Upcoming events</p>
+              <div className="text-2xl font-bold text-white">{t('dashboard.stats.activeTicketsValue')}</div>
+              <p className="text-xs text-gray-400">{t('dashboard.stats.activeTicketsDesc')}</p>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Next Event</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.stats.nextEvent')}</CardTitle>
               <Calendar className="h-4 w-4 text-purple-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">7</div>
-              <p className="text-xs text-gray-400">Days away</p>
+              <div className="text-2xl font-bold text-white">{t('dashboard.stats.nextEventValue')}</div>
+              <p className="text-xs text-gray-400">{t('dashboard.stats.nextEventDesc')}</p>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Biometric Status</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.stats.biometricStatus')}</CardTitle>
               <Fingerprint className="h-4 w-4 text-green-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-400">Active</div>
-              <p className="text-xs text-gray-400">Secure access enabled</p>
+              <div className="text-2xl font-bold text-green-400">{t('dashboard.stats.biometricStatusValue')}</div>
+              <p className="text-xs text-gray-400">{t('dashboard.stats.biometricStatusDesc')}</p>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Energy Level</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.stats.energyLevel')}</CardTitle>
               <Zap className="h-4 w-4 text-yellow-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-yellow-400">100%</div>
-              <p className="text-xs text-gray-400">Ready to rock</p>
+              <div className="text-2xl font-bold text-yellow-400">{t('dashboard.stats.energyLevelValue')}</div>
+              <p className="text-xs text-gray-400">{t('dashboard.stats.energyLevelDesc')}</p>
             </CardContent>
           </Card>
         </div>
@@ -160,7 +164,7 @@ const Dashboard = () => {
         <div className="mt-8">
           <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
             <CardHeader>
-              <CardTitle className="text-xl text-white">Events</CardTitle>
+              <CardTitle className="text-xl text-white">{t('dashboard.events.title')}</CardTitle>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="upcoming" className="w-full">
@@ -169,13 +173,13 @@ const Dashboard = () => {
                     value="upcoming" 
                     className="text-gray-400 data-[state=active]:text-white data-[state=active]:bg-gray-600"
                   >
-                    Upcoming Events
+                    {t('dashboard.events.upcoming')}
                   </TabsTrigger>
                   <TabsTrigger 
                     value="past" 
                     className="text-gray-400 data-[state=active]:text-white data-[state=active]:bg-gray-600"
                   >
-                    Past Events
+                    {t('dashboard.events.past')}
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="upcoming" className="mt-6">
