@@ -33,19 +33,19 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Enhanced Background Effects with reduced grid opacity */}
+      <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px)
+            linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px'
         }}></div>
         <div className="absolute inset-0" style={{
           backgroundImage: `
-            linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(147, 51, 234, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(147, 51, 234, 0.05) 1px, transparent 1px)
           `,
           backgroundSize: '120px 120px'
         }}></div>
