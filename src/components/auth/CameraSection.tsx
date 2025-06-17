@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { AlertCircle, RefreshCw, Check } from 'lucide-react';
 import CyberpunkButton from './CyberpunkButton';
+
 interface CameraSectionProps {
   videoRef: React.RefObject<HTMLVideoElement>;
   stream: MediaStream | null;
@@ -10,6 +12,7 @@ interface CameraSectionProps {
   isBiometricLogin?: boolean;
   onRetry: () => void;
 }
+
 const CameraSection = ({
   videoRef,
   stream,
@@ -19,28 +22,51 @@ const CameraSection = ({
   isBiometricLogin = false,
   onRetry
 }: CameraSectionProps) => {
-  return <div className="relative">
+  return (
+    <div className="relative">
       <div className="relative bg-gray-900 rounded-2xl overflow-hidden w-full max-w-sm mx-auto aspect-[4/5] sm:max-w-md md:max-w-lg">
-        {cameraError ? <div className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center">
+        {cameraError ? (
+          <div className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center">
             <AlertCircle className="text-red-400 mb-4" size={48} />
             <p className="text-gray-300 mb-4 text-sm">{cameraError}</p>
             <CyberpunkButton onClick={onRetry} variant="secondary" size="sm">
               <RefreshCw size={16} className="mr-2" />
               Retry
             </CyberpunkButton>
-          </div> : <>
-            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover" />
+          </div>
+        ) : (
+          <>
+            <video 
+              ref={videoRef} 
+              autoPlay 
+              playsInline 
+              muted 
+              className="w-full h-full object-cover" 
+            />
             
             {/* Biometric Login Image Overlay */}
-            {isBiometricLogin && stream && <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
-                <div className="w-64 h-64 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
-                  <img src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" alt="Biometric Login" className="w-full h-full object-cover" />
+            {isBiometricLogin && stream && (
+              <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
+                  <img 
+                    src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
+                    alt="Biometric Login" 
+                    className="w-full h-full object-cover" 
+                  />
                 </div>
-              </div>}
+              </div>
+            )}
             
             {/* Face Detection Overlay */}
-            {stream && !isBiometricLogin && <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${scanComplete ? 'border-green-400 shadow-lg shadow-green-400/50' : isScanning ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' : 'border-gray-400'}`}>
+            {stream && !isBiometricLogin && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${
+                  scanComplete 
+                    ? 'border-green-400 shadow-lg shadow-green-400/50' 
+                    : isScanning 
+                    ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' 
+                    : 'border-gray-400'
+                }`}>
                   {/* Corner indicators */}
                   <div className="absolute -top-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-t-2 border-cyan-400"></div>
                   <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-t-2 border-cyan-400"></div>
@@ -48,23 +74,39 @@ const CameraSection = ({
                   <div className="absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-b-2 border-cyan-400"></div>
                   
                   {/* Center indicator */}
-                  {scanComplete && <div className="absolute inset-0 flex items-center justify-center">
+                  {scanComplete && (
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <Check className="text-green-400" size={24} />
-                    </div>}
+                    </div>
+                  )}
                 </div>
-              </div>}
+              </div>
+            )}
 
             {/* Face Detection Overlay for Biometric Login (simplified) */}
-            {stream && isBiometricLogin && <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${scanComplete ? 'border-green-400 shadow-lg shadow-green-400/50' : isScanning ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' : 'border-gray-400'}`}>
+            {stream && isBiometricLogin && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className={`relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 rounded-full transition-colors duration-300 ${
+                  scanComplete 
+                    ? 'border-green-400 shadow-lg shadow-green-400/50' 
+                    : isScanning 
+                    ? 'border-cyan-400 shadow-lg shadow-cyan-400/50 animate-pulse' 
+                    : 'border-gray-400'
+                }`}>
                   {/* Center indicator */}
-                  {scanComplete && <div className="absolute inset-0 flex items-center justify-center">
+                  {scanComplete && (
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <Check className="text-green-400" size={24} />
-                    </div>}
+                    </div>
+                  )}
                 </div>
-              </div>}
-          </>}
+              </div>
+            )}
+          </>
+        )}
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default CameraSection;
