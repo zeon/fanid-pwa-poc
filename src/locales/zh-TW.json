@@ -38,5 +38,89 @@
     "switchTo": "切換至{{language}}",
     "english": "English",
     "traditionalChinese": "繁體中文"
+  },
+  "landing": {
+    "header": {
+      "signIn": "登入",
+      "getStarted": "開始使用"
+    },
+    "hero": {
+      "title": "演唱會的未來",
+      "subtitle": "透過生物識別認證、無縫售票和賽博朋克美學，體驗下一代現場音樂。",
+      "createAccount": "創建帳戶",
+      "accessPortal": "進入入口"
+    },
+    "features": {
+      "biometric": {
+        "title": "生物識別安全",
+        "description": "先進的人臉識別技術，為您的活動提供無縫且安全的存取。"
+      },
+      "instant": {
+        "title": "即時存取",
+        "description": "透過閃電般快速的數位票券驗證，跳過排隊。"
+      },
+      "immersive": {
+        "title": "沉浸式體驗",
+        "description": "透過尖端技術整合，增強演唱會體驗。"
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "歡迎回來",
+      "subtitle": "進入您的演唱會宇宙",
+      "email": "電子郵件",
+      "password": "密碼",
+      "forgotPassword": "忘記密碼？",
+      "signInButton": "登入",
+      "biometricLogin": "生物識別登入",
+      "noAccount": "沒有帳戶？",
+      "createAccount": "創建帳戶"
+    },
+    "signUp": {
+      "title": "創建帳戶",
+      "subtitle": "加入演唱會體驗的未來",
+      "username": "使用者名稱",
+      "email": "電子郵件",
+      "mobilePhone": "行動電話",
+      "idLastFiveDigits": "身份證後五碼",
+      "password": "密碼",
+      "privacyPolicy": "我同意隱私政策和服務條款",
+      "createAccountButton": "創建帳戶",
+      "haveAccount": "已經有帳戶？",
+      "signIn": "登入"
+    },
+    "otp": {
+      "title": "驗證代碼",
+      "subtitle": "輸入發送至 {{email}} 的6位數代碼",
+      "back": "返回",
+      "instructions": "請輸入發送至您{{type}}電子郵件地址的驗證代碼",
+      "verifyButton": "驗證代碼",
+      "verifying": "驗證中...",
+      "didntReceive": "沒有收到代碼？",
+      "resendCode": "重新發送代碼"
+    },
+    "faceScanning": {
+      "biometricLogin": "生物識別登入",
+      "biometricSetup": "生物識別設定",
+      "reScanBiometric": "重新掃描生物識別",
+      "loginSubtitle": "掃描您的臉部以存取您的帳戶",
+      "setupSubtitle": "使用人臉識別保護您的帳戶",
+      "rescanSubtitle": "請重新掃描您的臉部進行驗證",
+      "back": "返回",
+      "loginNotice": "將您的臉部置於框架內進行安全登入",
+      "rescanNotice": "重新掃描以確保準確的生物識別捕獲"
+    },
+    "faceDuplicate": {
+      "title": "檢測到重複",
+      "subtitle": "在我們的系統中發現類似的人臉數據",
+      "duplicateDetected": "檢測到重複的人臉數據",
+      "description": "我們的系統檢測到數據庫中已存在類似的生物識別數據。",
+      "tryAgain": "這可能是由於光線條件或定位造成的。請再次嘗試掃描。",
+      "securityVerification": "需要安全驗證",
+      "rescanRecommended": "建議重新掃描以確保準確性",
+      "rescanButton": "重新掃描臉部",
+      "helpText": "為了獲得最佳效果，請確保良好的光線並直視相機"
+    }
   }
 }

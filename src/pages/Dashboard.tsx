@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Ticket, Calendar, Fingerprint, Zap, User, LogOut } from 'lucide-react';
 import EventCard from '@/components/dashboard/EventCard';
-import LanguageSwitcher from '@/components/navigation/LanguageSwitcher';
+import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { upcomingEvents, pastEvents } from '@/data/eventsData';
 
 const Dashboard = () => {
@@ -65,7 +65,7 @@ const Dashboard = () => {
             <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
           </div>
           <div className="flex items-center space-x-4">
-            <LanguageSwitcher />
+            <TextLanguageSwitcher />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded-full">

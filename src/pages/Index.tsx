@@ -1,10 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Fingerprint, Zap, Shield, Music } from 'lucide-react';
+import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 
 const Index = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
       {/* Enhanced Background Effects with reduced grid opacity */}
@@ -39,15 +43,16 @@ const Index = () => {
             </h1>
             <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex items-center space-x-4">
+            <TextLanguageSwitcher />
             <Link to="/signin">
               <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black">
-                Sign In
+                {t('landing.header.signIn')}
               </Button>
             </Link>
             <Link to="/signup">
               <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400">
-                Get Started
+                {t('landing.header.getStarted')}
               </Button>
             </Link>
           </div>
@@ -58,10 +63,10 @@ const Index = () => {
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            FUTURE OF CONCERTS
+            {t('landing.hero.title')}
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Experience the next generation of live music with biometric authentication, seamless ticketing, and cyberpunk aesthetics.
+            {t('landing.hero.subtitle')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -71,7 +76,7 @@ const Index = () => {
                 className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white font-bold px-8 py-4 text-lg"
               >
                 <Fingerprint className="mr-2" size={24} />
-                Create Account
+                {t('landing.hero.createAccount')}
               </Button>
             </Link>
             <Link to="/signin">
@@ -80,7 +85,7 @@ const Index = () => {
                 size="lg" 
                 className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold px-8 py-4 text-lg"
               >
-                Access Portal
+                {t('landing.hero.accessPortal')}
               </Button>
             </Link>
           </div>
@@ -89,20 +94,20 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-cyan-400/50 transition-all duration-300 hover:scale-105">
               <Fingerprint className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Biometric Security</h3>
-              <p className="text-gray-400">Advanced face recognition for seamless, secure access to your events.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('landing.features.biometric.title')}</h3>
+              <p className="text-gray-400">{t('landing.features.biometric.description')}</p>
             </div>
             
             <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-purple-400/50 transition-all duration-300 hover:scale-105">
               <Zap className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Instant Access</h3>
-              <p className="text-gray-400">Skip the lines with lightning-fast digital ticket verification.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('landing.features.instant.title')}</h3>
+              <p className="text-gray-400">{t('landing.features.instant.description')}</p>
             </div>
             
             <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 text-center hover:border-pink-400/50 transition-all duration-300 hover:scale-105">
               <Music className="w-12 h-12 text-pink-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Immersive Experience</h3>
-              <p className="text-gray-400">Enhanced concert experiences with cutting-edge technology integration.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('landing.features.immersive.title')}</h3>
+              <p className="text-gray-400">{t('landing.features.immersive.description')}</p>
             </div>
           </div>
         </div>

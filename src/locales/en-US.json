@@ -38,5 +38,89 @@
     "switchTo": "Switch to {{language}}",
     "english": "English",
     "traditionalChinese": "繁體中文"
+  },
+  "landing": {
+    "header": {
+      "signIn": "Sign In",
+      "getStarted": "Get Started"
+    },
+    "hero": {
+      "title": "FUTURE OF CONCERTS",
+      "subtitle": "Experience the next generation of live music with biometric authentication, seamless ticketing, and cyberpunk aesthetics.",
+      "createAccount": "Create Account",
+      "accessPortal": "Access Portal"
+    },
+    "features": {
+      "biometric": {
+        "title": "Biometric Security",
+        "description": "Advanced face recognition for seamless, secure access to your events."
+      },
+      "instant": {
+        "title": "Instant Access",
+        "description": "Skip the lines with lightning-fast digital ticket verification."
+      },
+      "immersive": {
+        "title": "Immersive Experience",
+        "description": "Enhanced concert experiences with cutting-edge technology integration."
+      }
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "WELCOME BACK",
+      "subtitle": "Access your concert universe",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signInButton": "Sign In",
+      "biometricLogin": "Biometric Login",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create Account"
+    },
+    "signUp": {
+      "title": "CREATE ACCOUNT",
+      "subtitle": "Join the future of concert experiences",
+      "username": "Username",
+      "email": "Email",
+      "mobilePhone": "Mobile Phone",
+      "idLastFiveDigits": "ID Last 5 Digits",
+      "password": "Password",
+      "privacyPolicy": "I agree to the Privacy Policy and Terms of Service",
+      "createAccountButton": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign In"
+    },
+    "otp": {
+      "title": "VERIFY CODE",
+      "subtitle": "Enter the 6-digit code sent to {{email}}",
+      "back": "Back",
+      "instructions": "Please enter the verification code sent to your {{type}} email address",
+      "verifyButton": "Verify Code",
+      "verifying": "Verifying...",
+      "didntReceive": "Didn't receive the code?",
+      "resendCode": "Resend Code"
+    },
+    "faceScanning": {
+      "biometricLogin": "BIOMETRIC LOGIN",
+      "biometricSetup": "BIOMETRIC SETUP",
+      "reScanBiometric": "RE-SCAN BIOMETRIC",
+      "loginSubtitle": "Scan your face to access your account",
+      "setupSubtitle": "Secure your account with face recognition",
+      "rescanSubtitle": "Please scan your face again for verification",
+      "back": "Back",
+      "loginNotice": "Position your face within the frame for secure login",
+      "rescanNotice": "Re-scanning to ensure accurate biometric capture"
+    },
+    "faceDuplicate": {
+      "title": "DUPLICATE DETECTED",
+      "subtitle": "Similar face data found in our system",
+      "duplicateDetected": "Duplicate Face Data Detected",
+      "description": "Our system has detected similar biometric data already exists in our database.",
+      "tryAgain": "This could be due to lighting conditions or positioning. Please try scanning again.",
+      "securityVerification": "Security verification required",
+      "rescanRecommended": "Re-scan recommended for accuracy",
+      "rescanButton": "Re-scan Face",
+      "helpText": "For best results, ensure good lighting and look directly at the camera"
+    }
   }
 }
