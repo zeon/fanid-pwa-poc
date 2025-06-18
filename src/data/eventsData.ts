@@ -58,7 +58,7 @@ export const upcomingEvents: Event[] = [
     time: '9:30 PM',
     venue: 'Holographic Theater',
     ticketType: 'GA',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
+    image: 'https://cdn.prgloo.com/media/a20bad0aa6ce454582961777ccbb6354.jpg?width=968&height=1452',
     status: 'upcoming'
   },
   {
@@ -68,7 +68,7 @@ export const upcomingEvents: Event[] = [
     time: '6:00 PM',
     venue: 'Matrix Amphitheater',
     ticketType: 'Premium',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+    image: 'https://blog.myvideo.net.tw/wp-content/uploads/2024/06/24_brunomars_70fcd73cd1520c17b09.webp',
     status: 'upcoming'
   }
 ];
