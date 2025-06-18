@@ -13,7 +13,7 @@ export interface Event {
 export const upcomingEvents: Event[] = [
   {
     id: '1',
-    name: 'aMEIASMR世界巡演',
+    name: 'aMEI ASMR 世界巡演',
     date: 'December 15, 2024',
     time: '8:00 PM',
     venue: '台北大巨蛋',
