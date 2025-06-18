@@ -119,9 +119,9 @@
       "progress": {
         "scanningProgress": "掃描進度",
         "steps": {
-          "faceDetection": "偵測臉部中...",
-          "faceAlignment": "分析面部特徵中...",
-          "biometricCapture": "捕獲生物識別資料中...",
+          "face-detection": "偵測臉部中...",
+          "face-alignment": "分析面部特徵中...",
+          "biometric-capture": "捕獲生物識別資料中...",
           "verification": "驗證身份中...",
           "complete": "臉部掃描完成！"
         }
