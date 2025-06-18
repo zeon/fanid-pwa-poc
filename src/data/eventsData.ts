@@ -23,12 +23,12 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '2',
-    name: 'Blackpink',
+    name: 'BLACKPINK WORLD TOUR＜DEADLINE＞IN KAOHSIUNG',
     date: 'December 22, 2024',
     time: '9:00 PM',
-    venue: 'Neo Tokyo Hall',
+    venue: 'Kaohsiung National Stadium',
     ticketType: 'GA',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
+    image: 'https://static.tixcraft.com/images/activity/25_blackpink_8a9d32f4f90351e8152527c74c8104aa.jpg',
     status: 'upcoming'
   },
   {
