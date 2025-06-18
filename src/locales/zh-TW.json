@@ -152,5 +152,24 @@
       },
       "continueButton": "繼續前往控制台"
     }
+  },
+  "profile": {
+    "title": "使用者資料",
+    "backToDashboard": "返回控制台",
+    "profileInformation": "個人資料",
+    "fullName": "全名",
+    "email": "電子郵件",
+    "changePassword": "變更密碼",
+    "currentPassword": "目前密碼",
+    "newPassword": "新密碼",
+    "confirmNewPassword": "確認新密碼",
+    "updatePassword": "更新密碼",
+    "validation": {
+      "currentPasswordRequired": "必須輸入目前密碼",
+      "newPasswordRequired": "必須輸入新密碼",
+      "passwordTooShort": "密碼必須至少8個字元",
+      "confirmPasswordRequired": "請確認您的密碼",
+      "passwordMismatch": "密碼不相符"
+    }
   }
 }

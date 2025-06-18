@@ -1,14 +1,17 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
+import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { ArrowLeft, User, Mail, Lock } from 'lucide-react';
 
 const UserProfile = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   // Mock user data - in a real app this would come from auth context
   const [userInfo] = useState({
@@ -39,11 +42,11 @@ const UserProfile = () => {
   const validatePasswordForm = () => {
     const newErrors: Record<string, string> = {};
     
-    if (!passwordData.currentPassword) newErrors.currentPassword = 'Current password is required';
-    if (!passwordData.newPassword) newErrors.newPassword = 'New password is required';
-    else if (passwordData.newPassword.length < 8) newErrors.newPassword = 'Password must be at least 8 characters';
-    if (!passwordData.confirmPassword) newErrors.confirmPassword = 'Please confirm your password';
-    else if (passwordData.newPassword !== passwordData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
+    if (!passwordData.currentPassword) newErrors.currentPassword = t('profile.validation.currentPasswordRequired');
+    if (!passwordData.newPassword) newErrors.newPassword = t('profile.validation.newPasswordRequired');
+    else if (passwordData.newPassword.length < 8) newErrors.newPassword = t('profile.validation.passwordTooShort');
+    if (!passwordData.confirmPassword) newErrors.confirmPassword = t('profile.validation.confirmPasswordRequired');
+    else if (passwordData.newPassword !== passwordData.confirmPassword) newErrors.confirmPassword = t('profile.validation.passwordMismatch');
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -68,12 +71,12 @@ const UserProfile = () => {
             className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
           >
             <ArrowLeft size={20} />
-            Back to Dashboard
+            {t('profile.backToDashboard')}
           </button>
           <h1 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            User Profile
+            {t('profile.title')}
           </h1>
-          <div></div>
+          <TextLanguageSwitcher />
         </div>
       </div>
 
@@ -84,7 +87,7 @@ const UserProfile = () => {
           <CardHeader>
             <CardTitle className="text-xl text-white flex items-center gap-2">
               <User className="h-5 w-5 text-cyan-400" />
-              Profile Information
+              {t('profile.profileInformation')}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -105,14 +108,14 @@ const UserProfile = () => {
               <div>
                 <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
                   <User size={16} />
-                  Full Name
+                  {t('profile.fullName')}
                 </label>
                 <p className="text-white mt-1">{userInfo.name}</p>
               </div>
               <div>
                 <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
                   <Mail size={16} />
-                  Email
+                  {t('profile.email')}
                 </label>
                 <p className="text-white mt-1">{userInfo.email}</p>
               </div>
@@ -125,13 +128,13 @@ const UserProfile = () => {
           <CardHeader>
             <CardTitle className="text-xl text-white flex items-center gap-2">
               <Lock className="h-5 w-5 text-cyan-400" />
-              Change Password
+              {t('profile.changePassword')}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleChangePassword} className="space-y-4">
               <CyberpunkInput
-                label="Current Password"
+                label={t('profile.currentPassword')}
                 type="password"
                 placeholder="••••••••"
                 value={passwordData.currentPassword}
@@ -139,7 +142,7 @@ const UserProfile = () => {
                 error={errors.currentPassword}
               />
               <CyberpunkInput
-                label="New Password"
+                label={t('profile.newPassword')}
                 type="password"
                 placeholder="••••••••"
                 value={passwordData.newPassword}
@@ -147,7 +150,7 @@ const UserProfile = () => {
                 error={errors.newPassword}
               />
               <CyberpunkInput
-                label="Confirm New Password"
+                label={t('profile.confirmNewPassword')}
                 type="password"
                 placeholder="••••••••"
                 value={passwordData.confirmPassword}
@@ -155,7 +158,7 @@ const UserProfile = () => {
                 error={errors.confirmPassword}
               />
               <CyberpunkButton type="submit">
-                Update Password
+                {t('profile.updatePassword')}
               </CyberpunkButton>
             </form>
           </CardContent>
