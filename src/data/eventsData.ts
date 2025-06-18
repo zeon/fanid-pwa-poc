@@ -23,7 +23,7 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '2',
-    name: 'BLACKPINK WORLD TOUR＜DEADLINE＞IN KAOHSIUNG',
+    name: 'BLACKPINK WORLD TOUR＜DEADLINE＞',
     date: 'December 22, 2024',
     time: '9:00 PM',
     venue: 'Kaohsiung National Stadium',
@@ -33,7 +33,7 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '3',
-    name: 'ONEREPUBLIC 2025 LIVE IN KAOHSIUNG',
+    name: 'ONEREPUBLIC 2025 LIVE',
     date: 'January 10, 2025',
     time: '7:30 PM',
     venue: 'K-Arena',
@@ -43,7 +43,7 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '4',
-    name: 'Energy ALL IN全面進擊 演唱會',
+    name: 'Energy ALL IN 全面進擊',
     date: 'January 25, 2025',
     time: '8:30 PM',
     venue: '高雄巨蛋',
