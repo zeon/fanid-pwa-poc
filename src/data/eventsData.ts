@@ -43,12 +43,12 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '4',
-    name: 'Billie Eilish',
+    name: 'Energy ALL IN全面進擊 演唱會',
     date: 'January 25, 2025',
     time: '8:30 PM',
-    venue: 'Neon Coliseum',
+    venue: '高雄巨蛋',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
+    image: 'https://static.tixcraft.com/images/activity/25_energykh_f2b38c3efea6cdbf75ff0b04f71221b0.jpg',
     status: 'upcoming'
   },
   {
