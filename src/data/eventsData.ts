@@ -23,7 +23,7 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '2',
-    name: 'BLACKPINK WORLD TOUR＜DEADLINE＞',
+    name: 'BLACKPINK WORLD TOUR ＜DEADLINE＞',
     date: 'December 22, 2024',
     time: '9:00 PM',
     venue: 'Kaohsiung National Stadium',
