@@ -33,12 +33,12 @@ export const upcomingEvents: Event[] = [
   },
   {
     id: '3',
-    name: 'The Weeknd',
+    name: 'ONEREPUBLIC 2025 LIVE IN KAOHSIUNG',
     date: 'January 10, 2025',
     time: '7:30 PM',
-    venue: 'Digital Dome',
+    venue: 'K-Arena',
     ticketType: 'Premium',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop',
+    image: 'https://static.tixcraft.com/images/activity/25_1rkhh_9ad765114964bcecbef2c6708102c619.jpg',
     status: 'upcoming'
   },
   {
