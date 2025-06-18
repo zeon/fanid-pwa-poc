@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Progress } from '@/components/ui/progress';
 import { Check, RefreshCw } from 'lucide-react';
 
@@ -17,13 +18,21 @@ interface ScanProgressProps {
 }
 
 const ScanProgress = ({ isScanning, scanProgress, currentStep, steps }: ScanProgressProps) => {
+  const { t } = useTranslation();
+
   if (!isScanning) return null;
+
+  // Translate step labels
+  const translatedSteps = steps.map(step => ({
+    ...step,
+    label: t(`auth.faceScanning.progress.steps.${step.id}`)
+  }));
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
         <div className="flex justify-between text-sm">
-          <span className="text-gray-400">Scanning Progress</span>
+          <span className="text-gray-400">{t('auth.faceScanning.progress.scanningProgress')}</span>
           <span className="text-cyan-400">{Math.round(scanProgress)}%</span>
         </div>
         <Progress 
@@ -34,7 +43,7 @@ const ScanProgress = ({ isScanning, scanProgress, currentStep, steps }: ScanProg
       
       {/* Current Step */}
       <div className="space-y-2">
-        {steps.map((step, index) => (
+        {translatedSteps.map((step, index) => (
           <div 
             key={step.id}
             className={`flex items-center gap-3 text-sm transition-colors ${

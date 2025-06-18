@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ScanInstructionsProps {
   scanComplete: boolean;
@@ -7,19 +8,21 @@ interface ScanInstructionsProps {
 }
 
 const ScanInstructions = ({ scanComplete, isScanning }: ScanInstructionsProps) => {
+  const { t } = useTranslation();
+
   return (
     <div className="text-center space-y-2">
       <p className="text-gray-300">
         {scanComplete 
-          ? 'Face scan completed successfully!'
+          ? t('auth.faceScanning.instructions.completed')
           : isScanning 
-            ? 'Hold still while we scan your face...'
-            : 'Position your face within the circle and click "Start Scan"'
+            ? t('auth.faceScanning.instructions.scanning')
+            : t('auth.faceScanning.instructions.initial')
         }
       </p>
       {!scanComplete && !isScanning && (
         <p className="text-gray-400 text-sm">
-          This helps secure your account and enables biometric login
+          {t('auth.faceScanning.instructions.helpText')}
         </p>
       )}
     </div>

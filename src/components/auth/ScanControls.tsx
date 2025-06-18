@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Camera } from 'lucide-react';
 import CyberpunkButton from './CyberpunkButton';
 
@@ -17,6 +18,8 @@ const ScanControls = ({
   stream, 
   onStartScan
 }: ScanControlsProps) => {
+  const { t } = useTranslation();
+
   if (isScanning || scanComplete || !stream) return null;
 
   return (
@@ -27,7 +30,7 @@ const ScanControls = ({
         className="w-full flex items-center justify-center gap-2"
       >
         <Camera size={20} />
-        Start Face Scan
+        {t('auth.faceScanning.startScanButton')}
       </CyberpunkButton>
     </div>
   );

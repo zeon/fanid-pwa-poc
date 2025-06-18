@@ -109,7 +109,24 @@
       "rescanSubtitle": "Please scan your face again for verification",
       "back": "Back",
       "loginNotice": "Position your face within the frame for secure login",
-      "rescanNotice": "Re-scanning to ensure accurate biometric capture"
+      "rescanNotice": "Re-scanning to ensure accurate biometric capture",
+      "instructions": {
+        "initial": "Position your face within the circle and click \"Start Scan\"",
+        "scanning": "Hold still while we scan your face...",
+        "completed": "Face scan completed successfully!",
+        "helpText": "This helps secure your account and enables biometric login"
+      },
+      "progress": {
+        "scanningProgress": "Scanning Progress",
+        "steps": {
+          "faceDetection": "Detecting face...",
+          "faceAlignment": "Analyzing facial features...",
+          "biometricCapture": "Capturing biometric data...",
+          "verification": "Verifying identity...",
+          "complete": "Face scan complete!"
+        }
+      },
+      "startScanButton": "Start Face Scan"
     },
     "faceDuplicate": {
       "title": "DUPLICATE DETECTED",
@@ -121,6 +138,19 @@
       "rescanRecommended": "Re-scan recommended for accuracy",
       "rescanButton": "Re-scan Face",
       "helpText": "For best results, ensure good lighting and look directly at the camera"
+    },
+    "faceScanComplete": {
+      "title": "SCAN COMPLETE",
+      "subtitle": "Your biometric profile has been successfully created",
+      "successTitle": "Biometric Setup Complete!",
+      "successMessage": "Your face has been successfully scanned and your biometric profile is now active.",
+      "helpText": "You can now use face recognition to securely access your account.",
+      "features": {
+        "biometricEnabled": "Biometric authentication enabled",
+        "securityEnhanced": "Account security enhanced",
+        "fastLoginActivated": "Fast login experience activated"
+      },
+      "continueButton": "Continue to Dashboard"
     }
   }
 }
