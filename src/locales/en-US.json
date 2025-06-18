@@ -119,9 +119,9 @@
       "progress": {
         "scanningProgress": "Scanning Progress",
         "steps": {
-          "faceDetection": "Detecting face...",
-          "faceAlignment": "Analyzing facial features...",
-          "biometricCapture": "Capturing biometric data...",
+          "face-detection": "Detecting face...",
+          "face-alignment": "Analyzing facial features...",
+          "biometric-capture": "Capturing biometric data...",
           "verification": "Verifying identity...",
           "complete": "Face scan complete!"
         }
