@@ -13,12 +13,12 @@ export interface Event {
 export const upcomingEvents: Event[] = [
   {
     id: '1',
-    name: 'Lady Gaga',
+    name: 'aMEIASMR世界巡演',
     date: 'December 15, 2024',
     time: '8:00 PM',
-    venue: 'Cyber Arena',
+    venue: '台北大巨蛋',
     ticketType: 'VIP',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
+    image: 'https://res.klook.com/image/upload/v1670819982/zcuus1washxpnahgwsxz.jpg',
     status: 'upcoming'
   },
   {
