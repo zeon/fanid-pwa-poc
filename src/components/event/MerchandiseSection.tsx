@@ -48,7 +48,7 @@ const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
                 variant="primary"
                 size="sm"
                 onClick={() => handlePurchase(item)}
-                className="h-8 px-2 text-xs min-w-[80px]"
+                className="h-8 px-3 text-xs w-auto"
               >
                 <ShoppingCart className="w-3 h-3" />
                 {t('eventDetail.merchandise.buyNow')}

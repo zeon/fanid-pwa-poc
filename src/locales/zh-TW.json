@@ -34,6 +34,38 @@
       "premium": "精選"
     }
   },
+  "eventDetail": {
+    "notFound": {
+      "title": "找不到活動",
+      "description": "您尋找的活動不存在。"
+    },
+    "banner": {
+      "back": "返回"
+    },
+    "tickets": {
+      "title": "購買門票",
+      "ticket": "門票",
+      "buyNow": "立即購票",
+      "secureCheckout": "安全結帳 • 即時確認"
+    },
+    "info": {
+      "title": "活動資訊",
+      "date": "日期",
+      "timeAndDuration": "時間與時長",
+      "venue": "場地",
+      "ticketInfo": "門票資訊",
+      "aboutEvent": "關於活動",
+      "artistInfo": "藝術家資訊"
+    },
+    "gallery": {
+      "title": "宣傳相片",
+      "photoAlt": "宣傳"
+    },
+    "merchandise": {
+      "title": "官方商品",
+      "buyNow": "立即購買"
+    }
+  },
   "language": {
     "switchTo": "切換至{{language}}",
     "english": "English",
