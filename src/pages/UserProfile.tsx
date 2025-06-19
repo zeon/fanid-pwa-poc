@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
@@ -122,13 +123,36 @@ const UserProfile = () => {
                 </p>
                 <p className="text-white text-lg font-mono">{userInfo.fanId}</p>
               </div>
-              <div className="bg-white p-4 rounded-lg">
-                <img 
-                  src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
-                  alt="Fan ID QR Code"
-                  className="w-24 h-24 object-contain"
-                />
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="bg-white p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                    <img 
+                      src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
+                      alt="Fan ID QR Code"
+                      className="w-24 h-24 object-contain"
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                  <DialogHeader>
+                    <DialogTitle className="text-white text-center">
+                      {t('profile.fanId')} - {userInfo.fanId}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="flex justify-center">
+                    <div className="bg-white p-6 rounded-lg">
+                      <img 
+                        src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
+                        alt="Fan ID QR Code"
+                        className="w-64 h-64 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm text-center">
+                    {t('profile.qrCodeDescription')}
+                  </p>
+                </DialogContent>
+              </Dialog>
             </div>
             <p className="text-gray-400 text-sm">
               {t('profile.qrCodeDescription')}
