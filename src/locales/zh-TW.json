@@ -191,6 +191,7 @@
     "profileInformation": "個人資料",
     "fullName": "全名",
     "email": "電子郵件",
+    "fanId": "粉絲編號",
     "changePassword": "變更密碼",
     "currentPassword": "目前密碼",
     "newPassword": "新密碼",

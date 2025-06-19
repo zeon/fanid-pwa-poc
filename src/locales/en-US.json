@@ -191,6 +191,7 @@
     "profileInformation": "Profile Information",
     "fullName": "Full Name",
     "email": "Email",
+    "fanId": "Fan ID",
     "changePassword": "Change Password",
     "currentPassword": "Current Password",
     "newPassword": "New Password",

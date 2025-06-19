@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
-import { ArrowLeft, User, Mail, Lock } from 'lucide-react';
+import { ArrowLeft, User, Lock, QrCode } from 'lucide-react';
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -17,7 +17,8 @@ const UserProfile = () => {
   const [userInfo] = useState({
     name: 'Alex Chen',
     email: 'alex.chen@example.com',
-    initials: 'AC'
+    initials: 'AC',
+    fanId: 'FC2024AC001'
   });
 
   const [passwordData, setPasswordData] = useState({
@@ -103,23 +104,36 @@ const UserProfile = () => {
                 <p className="text-gray-400">{userInfo.email}</p>
               </div>
             </div>
+          </CardContent>
+        </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Fan ID Card */}
+        <Card className="bg-gray-800 border-gray-700">
+          <CardHeader>
+            <CardTitle className="text-xl text-white flex items-center gap-2">
+              <QrCode className="h-5 w-5 text-cyan-400" />
+              {t('profile.fanId')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center justify-between">
               <div>
-                <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
-                  <User size={16} />
-                  {t('profile.fullName')}
-                </label>
-                <p className="text-white mt-1">{userInfo.name}</p>
+                <p className="text-cyan-400 text-sm font-medium uppercase tracking-wide">
+                  {t('profile.fanId')}
+                </p>
+                <p className="text-white text-lg font-mono">{userInfo.fanId}</p>
               </div>
-              <div>
-                <label className="text-cyan-400 text-sm font-medium uppercase tracking-wide flex items-center gap-2">
-                  <Mail size={16} />
-                  {t('profile.email')}
-                </label>
-                <p className="text-white mt-1">{userInfo.email}</p>
+              <div className="bg-white p-2 rounded-lg">
+                <img 
+                  src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
+                  alt="Fan ID QR Code"
+                  className="w-24 h-24 object-contain"
+                />
               </div>
             </div>
+            <p className="text-gray-400 text-sm">
+              Use this QR code for quick entry at events and venues.
+            </p>
           </CardContent>
         </Card>
 
