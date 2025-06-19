@@ -192,6 +192,7 @@
     "fullName": "全名",
     "email": "電子郵件",
     "fanId": "粉絲編號",
+    "qrCodeDescription": "使用此QR碼可快速進入活動和場館。",
     "changePassword": "變更密碼",
     "currentPassword": "目前密碼",
     "newPassword": "新密碼",

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -123,16 +122,16 @@ const UserProfile = () => {
                 </p>
                 <p className="text-white text-lg font-mono">{userInfo.fanId}</p>
               </div>
-              <div className="bg-white p-2 rounded-lg">
+              <div className="bg-white p-4 rounded-lg">
                 <img 
-                  src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
+                  src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
                   alt="Fan ID QR Code"
                   className="w-24 h-24 object-contain"
                 />
               </div>
             </div>
             <p className="text-gray-400 text-sm">
-              Use this QR code for quick entry at events and venues.
+              {t('profile.qrCodeDescription')}
             </p>
           </CardContent>
         </Card>

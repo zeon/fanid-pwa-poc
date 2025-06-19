@@ -192,6 +192,7 @@
     "fullName": "Full Name",
     "email": "Email",
     "fanId": "Fan ID",
+    "qrCodeDescription": "Use this QR code for quick entry at events and venues.",
     "changePassword": "Change Password",
     "currentPassword": "Current Password",
     "newPassword": "New Password",
