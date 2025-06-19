@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -127,7 +128,7 @@ const UserProfile = () => {
                 <DialogTrigger asChild>
                   <div className="bg-white p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
                     <img 
-                      src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
+                      src="/lovable-uploads/246d4fa3-f3c0-4a99-87f2-59e45c844aaf.png" 
                       alt="Fan ID QR Code"
                       className="w-24 h-24 object-contain"
                     />
@@ -142,7 +143,7 @@ const UserProfile = () => {
                   <div className="flex justify-center">
                     <div className="bg-white p-6 rounded-lg">
                       <img 
-                        src="/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png" 
+                        src="/lovable-uploads/246d4fa3-f3c0-4a99-87f2-59e45c844aaf.png" 
                         alt="Fan ID QR Code"
                         className="w-64 h-64 object-contain"
                       />
