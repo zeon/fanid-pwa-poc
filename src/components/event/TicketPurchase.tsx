@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Ticket, Calendar, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 
 interface TicketPurchaseProps {
@@ -12,6 +13,8 @@ interface TicketPurchaseProps {
 }
 
 const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPurchaseProps) => {
+  const { t } = useTranslation();
+
   const handlePurchase = () => {
     console.log('Purchasing ticket for:', eventName);
     // Here you would implement the ticket purchase logic
@@ -21,7 +24,7 @@ const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPur
     <div className="bg-gradient-to-r from-gray-800/90 to-gray-700/90 backdrop-blur-sm border border-gray-600 rounded-lg p-6">
       <div className="flex items-center space-x-3 mb-4">
         <Ticket className="w-6 h-6 text-cyan-400" />
-        <h2 className="text-2xl font-bold text-white">Get Your Tickets</h2>
+        <h2 className="text-2xl font-bold text-white">{t('eventDetail.tickets.title')}</h2>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
@@ -35,7 +38,9 @@ const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPur
             <span className="text-sm">{venue}</span>
           </div>
           <div className="pt-2">
-            <span className="text-xs text-gray-400 uppercase tracking-wide">{ticketType} TICKET</span>
+            <span className="text-xs text-gray-400 uppercase tracking-wide">
+              {t(`eventCard.ticketTypes.${ticketType.toLowerCase()}`)} {t('eventDetail.tickets.ticket')}
+            </span>
             <div className="text-3xl font-bold text-cyan-400">${price}</div>
           </div>
         </div>
@@ -48,10 +53,10 @@ const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPur
             className="w-full"
           >
             <Ticket className="w-5 h-5" />
-            Buy Tickets Now
+            {t('eventDetail.tickets.buyNow')}
           </CyberpunkButton>
           <p className="text-xs text-gray-400 text-center">
-            Secure checkout • Instant confirmation
+            {t('eventDetail.tickets.secureCheckout')}
           </p>
         </div>
       </div>

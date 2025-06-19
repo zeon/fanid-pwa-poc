@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface EventDetailBannerProps {
   image: string;
@@ -10,9 +11,10 @@ interface EventDetailBannerProps {
 
 const EventDetailBanner = ({ image, title }: EventDetailBannerProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
-    <div className="relative h-96 overflow-hidden">
+    <div className="relative h-80 overflow-hidden">
       <img 
         src={image} 
         alt={title}
@@ -21,11 +23,11 @@ const EventDetailBanner = ({ image, title }: EventDetailBannerProps) => {
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent"></div>
       
       <button
-        onClick={() => navigate('/dashboard')}
-        className="absolute top-6 left-6 flex items-center space-x-2 bg-gray-800/80 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-white hover:bg-gray-700/80 transition-colors"
+        onClick={() => navigate(-1)}
+        className="absolute top-6 left-6 flex items-center space-x-2 bg-gray-800/80 backdrop-blur-sm border border-gray-600 rounded-lg px-3 py-2 text-white hover:bg-gray-700/80 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span className="text-sm font-medium">Back to Dashboard</span>
+        <span className="text-sm font-medium">{t('eventDetail.banner.back')}</span>
       </button>
 
       <div className="absolute bottom-8 left-8 right-8">

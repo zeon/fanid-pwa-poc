@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { upcomingEvents, pastEvents } from '@/data/eventsData';
+import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import EventDetailBanner from '@/components/event/EventDetailBanner';
 import EventInfo from '@/components/event/EventInfo';
 import PromoGallery from '@/components/event/PromoGallery';
@@ -9,7 +11,15 @@ import MerchandiseSection from '@/components/event/MerchandiseSection';
 import TicketPurchase from '@/components/event/TicketPurchase';
 
 const EventDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
+  
+  // Mock user data - in a real app this would come from auth context
+  const user = {
+    name: 'Alex Chen',
+    email: 'alex.chen@example.com',
+    initials: 'AC'
+  };
   
   // Find the event in both upcoming and past events
   const event = [...upcomingEvents, ...pastEvents].find(e => e.id === id);
@@ -18,8 +28,8 @@ const EventDetail = () => {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Event Not Found</h1>
-          <p className="text-gray-400">The event you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold mb-4">{t('eventDetail.notFound.title')}</h1>
+          <p className="text-gray-400">{t('eventDetail.notFound.description')}</p>
         </div>
       </div>
     );
@@ -40,6 +50,9 @@ const EventDetail = () => {
       
       <div className="absolute top-10 left-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+      {/* Header */}
+      <DashboardHeader user={user} />
 
       {/* Event Banner */}
       <EventDetailBanner image={event.image} title={event.name} />

@@ -34,6 +34,38 @@
       "premium": "Premium"
     }
   },
+  "eventDetail": {
+    "notFound": {
+      "title": "Event Not Found",
+      "description": "The event you're looking for doesn't exist."
+    },
+    "banner": {
+      "back": "Back"
+    },
+    "tickets": {
+      "title": "Get Your Tickets",
+      "ticket": "TICKET",
+      "buyNow": "Buy Tickets Now",
+      "secureCheckout": "Secure checkout • Instant confirmation"
+    },
+    "info": {
+      "title": "Event Information",
+      "date": "Date",
+      "timeAndDuration": "Time & Duration",
+      "venue": "Venue",
+      "ticketInfo": "Ticket Info",
+      "aboutEvent": "About the Event",
+      "artistInfo": "Artist Information"
+    },
+    "gallery": {
+      "title": "Promo Gallery",
+      "photoAlt": "promo"
+    },
+    "merchandise": {
+      "title": "Official Merchandise",
+      "buyNow": "Buy Now"
+    }
+  },
   "language": {
     "switchTo": "Switch to {{language}}",
     "english": "English",

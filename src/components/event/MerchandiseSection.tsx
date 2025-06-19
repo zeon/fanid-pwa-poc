@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { MerchandiseItem } from '@/data/eventsData';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 
@@ -9,6 +10,8 @@ interface MerchandiseSectionProps {
 }
 
 const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
+  const { t } = useTranslation();
+
   if (!merchandise || merchandise.length === 0) {
     return null;
   }
@@ -20,7 +23,7 @@ const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
 
   return (
     <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
-      <h2 className="text-2xl font-bold text-white mb-6">Official Merchandise</h2>
+      <h2 className="text-2xl font-bold text-white mb-6">{t('eventDetail.merchandise.title')}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {merchandise.map((item) => (
@@ -45,10 +48,10 @@ const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
                 variant="primary"
                 size="sm"
                 onClick={() => handlePurchase(item)}
-                className="h-8 px-3 text-xs"
+                className="h-8 px-2 text-xs min-w-[80px]"
               >
                 <ShoppingCart className="w-3 h-3" />
-                Buy Now
+                {t('eventDetail.merchandise.buyNow')}
               </CyberpunkButton>
             </div>
           </div>
