@@ -15,6 +15,7 @@ import FaceScanComplete from "./pages/FaceScanComplete";
 import FaceDuplicateDetected from "./pages/FaceDuplicateDetected";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
+import EventDetail from "./pages/EventDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/face-duplicate-detected" element={<FaceDuplicateDetected />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<UserProfile />} />
+            <Route path="/event/:id" element={<EventDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

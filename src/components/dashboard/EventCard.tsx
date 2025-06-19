@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Calendar, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Event {
   id: string;
@@ -18,8 +19,17 @@ interface EventCardProps {
 }
 
 const EventCard = ({ event }: EventCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/event/${event.id}`);
+  };
+
   return (
-    <div className="group relative overflow-hidden rounded-lg bg-gray-700/50 backdrop-blur-sm border border-gray-600 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20">
+    <div 
+      onClick={handleClick}
+      className="group relative overflow-hidden rounded-lg bg-gray-700/50 backdrop-blur-sm border border-gray-600 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 cursor-pointer"
+    >
       <div className="aspect-video overflow-hidden">
         <img 
           src={event.image} 
