@@ -77,6 +77,28 @@
       "completePayment": "Complete Payment - NT$ {{amount}}",
       "processingPayment": "Processing Payment...",
       "securityNotice": "🔒 Your payment is secured with 256-bit SSL encryption"
+    },
+    "paymentConfirmed": {
+      "title": "Payment Successful!",
+      "description": "Your tickets have been purchased successfully and redeemed",
+      "transactionDetails": "Transaction Details",
+      "transactionId": "Transaction ID",
+      "purchaseDate": "Purchase Date",
+      "paymentMethod": "Payment Method",
+      "event": "Event",
+      "quantity": "Quantity",
+      "tickets": "ticket(s)",
+      "totalAmount": "Total Amount",
+      "selectedSeats": "Selected Seats",
+      "backToFanVerse": "Back to Fan Verse to view the ticket info",
+      "whatsNext": "What's Next?",
+      "emailNotification": "Your tickets will be sent to your email within 24 hours",
+      "saveEventDate": "Save the event date in your calendar",
+      "checkVenueDetails": "Check venue details and arrival instructions",
+      "supportContact": "Having issues? Contact our support team at",
+      "noTransactionData": "No Transaction Data",
+      "noTransactionDescription": "Unable to find transaction information.",
+      "goToDashboard": "Go to Dashboard"
     }
   }
 }

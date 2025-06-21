@@ -77,6 +77,28 @@
       "completePayment": "完成付款 - NT$ {{amount}}",
       "processingPayment": "處理付款中...",
       "securityNotice": "🔒 您的付款受256位元SSL加密保護"
+    },
+    "paymentConfirmed": {
+      "title": "付款成功！",
+      "description": "您的票券已成功購買並兌換",
+      "transactionDetails": "交易詳情",
+      "transactionId": "交易編號",
+      "purchaseDate": "購買日期",
+      "paymentMethod": "付款方式",
+      "event": "活動",
+      "quantity": "數量",
+      "tickets": "張票",
+      "totalAmount": "總金額",
+      "selectedSeats": "已選座位",
+      "backToFanVerse": "返回Fan Verse查看票券資訊",
+      "whatsNext": "接下來做什麼？",
+      "emailNotification": "您的票券將在24小時內發送至您的電子郵箱",
+      "saveEventDate": "將活動日期保存到您的日曆中",
+      "checkVenueDetails": "查看場地詳情和到達指引",
+      "supportContact": "遇到問題？請聯繫我們的客服團隊：",
+      "noTransactionData": "沒有交易資料",
+      "noTransactionDescription": "無法找到交易資訊。",
+      "goToDashboard": "前往控制台"
     }
   }
 }
