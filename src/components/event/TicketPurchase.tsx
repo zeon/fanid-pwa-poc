@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { Ticket, Calendar, MapPin } from 'lucide-react';
+import { Ticket, Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 
 interface TicketPurchaseProps {
+  eventId: string;
   eventName: string;
   date: string;
   venue: string;
@@ -12,7 +14,7 @@ interface TicketPurchaseProps {
   ticketType: string;
 }
 
-const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPurchaseProps) => {
+const TicketPurchase = ({ eventId, eventName, date, venue, price, ticketType }: TicketPurchaseProps) => {
   const { t } = useTranslation();
 
   const handlePurchase = () => {
@@ -55,6 +57,16 @@ const TicketPurchase = ({ eventName, date, venue, price, ticketType }: TicketPur
             <Ticket className="w-5 h-5" />
             {t('eventDetail.tickets.buyNow')}
           </CyberpunkButton>
+          
+          {/* External Tixcraft Link */}
+          <Link 
+            to={`/tixcraft/${eventId}`}
+            className="w-full bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors border border-gray-300"
+          >
+            <ExternalLink className="w-5 h-5" />
+            <span>{t('eventDetail.tickets.buyOnTixcraft')}</span>
+          </Link>
+          
           <p className="text-xs text-gray-400 text-center">
             {t('eventDetail.tickets.secureCheckout')}
           </p>

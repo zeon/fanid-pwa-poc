@@ -63,6 +63,7 @@ const EventDetail = () => {
         {/* Ticket Purchase Section - Only for upcoming events */}
         {event.status === 'upcoming' && (
           <TicketPurchase
+            eventId={event.id}
             eventName={event.name}
             date={event.date}
             venue={event.venue}

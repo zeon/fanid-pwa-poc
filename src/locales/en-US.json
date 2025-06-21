@@ -1,4 +1,3 @@
-
 {
   "navigation": {
     "profile": "Profile",
@@ -46,7 +45,8 @@
       "title": "Get Your Tickets",
       "ticket": "TICKET",
       "buyNow": "Buy Tickets Now",
-      "secureCheckout": "Secure checkout • Instant confirmation"
+      "secureCheckout": "Secure checkout • Instant confirmation",
+      "buyOnTixcraft": "Buy on Tixcraft"
     },
     "info": {
       "title": "Event Information",
@@ -205,5 +205,40 @@
       "confirmPasswordRequired": "Please confirm your password",
       "passwordMismatch": "Passwords do not match"
     }
+  },
+  "tixcraft": {
+    "eventNotFound": {
+      "title": "Event Not Found",
+      "description": "The event you're looking for doesn't exist."
+    },
+    "backToDashboard": "Back to Dashboard",
+    "cart": {
+      "title": "Cart"
+    },
+    "ticketPrice": "Ticket Price",
+    "selectQuantity": "Select Quantity",
+    "selectSeats": "Select Seats",
+    "orderSummary": "Order Summary",
+    "selectedSeats": "Selected Seats",
+    "ticketQuantity": "Ticket Quantity",
+    "unitPrice": "Unit Price",
+    "totalAmount": "Total Amount",
+    "maxTicketsPerOrder": "Maximum {{max}} tickets per order",
+    "seatLegend": {
+      "available": "Available",
+      "selected": "Selected",
+      "unavailable": "Unavailable"
+    },
+    "section": "Section",
+    "stage": "STAGE",
+    "seatUnavailable": "Seat unavailable",
+    "seatsSelected": "{{selected}}/{{max}} seats selected",
+    "purchaseNow": "Purchase Now",
+    "selectSeatsMessage": "Please select the required number of seats",
+    "paymentMethods": "Payment Methods",
+    "creditCard": "Credit Card",
+    "bankTransfer": "Bank Transfer",
+    "convenientStore": "Convenient Store",
+    "purchaseTerms": "By purchasing, you agree to the terms and conditions"
   }
 }
