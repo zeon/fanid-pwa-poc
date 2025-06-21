@@ -21,6 +21,8 @@ const FaceScanning = () => {
   const userData = location.state || {};
   const isRescan = userData.isRescan || false;
   const isBiometricLogin = userData.isBiometricLogin || false;
+  const isTicketPurchase = userData.isTicketPurchase || false;
+  const purchaseData = userData.purchaseData;
 
   const {
     videoRef,
@@ -42,6 +44,11 @@ const FaceScanning = () => {
         if (isBiometricLogin) {
           console.log('Biometric login successful, navigating to dashboard');
           navigate('/dashboard');
+        } else if (isTicketPurchase) {
+          console.log('Face verification for ticket purchase successful, navigating to payment confirmation');
+          navigate('/payment-confirmation', { 
+            state: { purchaseData }
+          });
         } else {
           navigate('/face-scan-complete', { 
             state: userData
@@ -64,12 +71,14 @@ const FaceScanning = () => {
   };
 
   const getTitle = () => {
+    if (isTicketPurchase) return t('auth.faceScanning.ticketPurchaseVerification');
     if (isBiometricLogin) return t('auth.faceScanning.biometricLogin');
     if (isRescan) return t('auth.faceScanning.reScanBiometric');
     return t('auth.faceScanning.biometricSetup');
   };
 
   const getSubtitle = () => {
+    if (isTicketPurchase) return t('auth.faceScanning.ticketPurchaseSubtitle');
     if (isBiometricLogin) return t('auth.faceScanning.loginSubtitle');
     if (isRescan) return t('auth.faceScanning.rescanSubtitle');
     return t('auth.faceScanning.setupSubtitle');
@@ -134,6 +143,19 @@ const FaceScanning = () => {
                   <ArrowLeft size={16} />
                   {t('auth.faceScanning.back')}
                 </button>
+
+                {/* Ticket Purchase Notice */}
+                {isTicketPurchase && purchaseData && (
+                  <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-lg p-3">
+                    <p className="text-cyan-400 text-sm text-center mb-2">
+                      {t('auth.faceScanning.ticketPurchaseNotice')}
+                    </p>
+                    <div className="text-xs text-gray-300 text-center">
+                      <p>{purchaseData.eventName}</p>
+                      <p>{purchaseData.quantity} tickets - ${purchaseData.totalPrice}</p>
+                    </div>
+                  </div>
+                )}
 
                 {/* Biometric Login Notice */}
                 {isBiometricLogin && (
