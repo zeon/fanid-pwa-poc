@@ -6,6 +6,7 @@
       "description": "The event you're looking for doesn't exist."
     },
     "backToDashboard": "Back to Dashboard",
+    "backToEvent": "Back to Event",
     "cart": {
       "title": "Cart"
     },
@@ -31,10 +32,47 @@
     "purchaseWithVerification": "Purchase with Face Verification",
     "faceVerificationRequired": "Face verification required for secure ticket purchase",
     "selectSeatsMessage": "Please select the required number of seats",
-    "paymentMethods": "Payment Methods",
-    "creditCard": "Credit Card",
-    "bankTransfer": "Bank Transfer",
-    "convenientStore": "Convenient Store",
-    "purchaseTerms": "By purchasing, you agree to the terms and conditions"
+    "payment": {
+      "title": "Payment",
+      "verifiedBanner": {
+        "title": "Face verification successful",
+        "description": "You can now proceed with your payment"
+      },
+      "orderSummary": "Order Summary",
+      "event": "Event",
+      "date": "Date",
+      "venue": "Venue",
+      "quantity": "Quantity",
+      "selectedSeats": "Selected Seats",
+      "totalAmount": "Total Amount",
+      "paymentMethod": "Payment Method",
+      "creditCard": "Credit Card",
+      "bankTransfer": "Bank Transfer",
+      "creditCardForm": {
+        "cardNumber": "Card Number",
+        "cardholderName": "Cardholder Name",
+        "expiryDate": "MM/YY",
+        "cvv": "CVV",
+        "cardNumberPlaceholder": "1234 5678 9012 3456",
+        "cardholderPlaceholder": "John Doe",
+        "expiryPlaceholder": "12/25",
+        "cvvPlaceholder": "123"
+      },
+      "bankTransferInfo": {
+        "title": "Bank Transfer Information",
+        "bankName": "Bank Name",
+        "accountNumber": "Account Number",
+        "accountName": "Account Name",
+        "amount": "Transfer Amount",
+        "referenceNumber": "Reference Number",
+        "instructions": "Please complete the transfer within 3 days and keep the receipt for verification.",
+        "bankNameValue": "First Commercial Bank",
+        "accountNumberValue": "123-456-789012",
+        "accountNameValue": "TIXCRAFT Co., Ltd."
+      },
+      "completePayment": "Complete Payment - NT$ {{amount}}",
+      "processingPayment": "Processing Payment...",
+      "securityNotice": "🔒 Your payment is secured with 256-bit SSL encryption"
+    }
   }
 }

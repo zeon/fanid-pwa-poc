@@ -6,6 +6,7 @@
       "description": "您尋找的活動不存在。"
     },
     "backToDashboard": "返回控制台",
+    "backToEvent": "返回活動",
     "cart": {
       "title": "購物車"
     },
@@ -31,10 +32,47 @@
     "purchaseWithVerification": "人臉驗證購買",
     "faceVerificationRequired": "安全購票需要人臉驗證",
     "selectSeatsMessage": "請選擇所需數量的座位",
-    "paymentMethods": "付款方式",
-    "creditCard": "信用卡",
-    "bankTransfer": "銀行轉帳",
-    "convenientStore": "超商付款",
-    "purchaseTerms": "購買即表示同意條款與條件"
+    "payment": {
+      "title": "付款",
+      "verifiedBanner": {
+        "title": "人臉驗證成功",
+        "description": "您現在可以繼續付款"
+      },
+      "orderSummary": "訂單摘要",
+      "event": "活動",
+      "date": "日期",
+      "venue": "場地",
+      "quantity": "數量",
+      "selectedSeats": "已選座位",
+      "totalAmount": "總金額",
+      "paymentMethod": "付款方式",
+      "creditCard": "信用卡",
+      "bankTransfer": "銀行轉帳",
+      "creditCardForm": {
+        "cardNumber": "卡號",
+        "cardholderName": "持卡人姓名",
+        "expiryDate": "有效期限",
+        "cvv": "安全碼",
+        "cardNumberPlaceholder": "1234 5678 9012 3456",
+        "cardholderPlaceholder": "王小明",
+        "expiryPlaceholder": "12/25",
+        "cvvPlaceholder": "123"
+      },
+      "bankTransferInfo": {
+        "title": "銀行轉帳資訊",
+        "bankName": "銀行名稱",
+        "accountNumber": "帳號",
+        "accountName": "戶名",
+        "amount": "轉帳金額",
+        "referenceNumber": "參考號碼",
+        "instructions": "請於3天內完成轉帳並保留收據以供查驗。",
+        "bankNameValue": "第一商業銀行",
+        "accountNumberValue": "123-456-789012",
+        "accountNameValue": "拓元售票股份有限公司"
+      },
+      "completePayment": "完成付款 - NT$ {{amount}}",
+      "processingPayment": "處理付款中...",
+      "securityNotice": "🔒 您的付款受256位元SSL加密保護"
+    }
   }
 }
