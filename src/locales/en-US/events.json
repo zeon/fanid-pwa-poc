@@ -1,0 +1,43 @@
+
+{
+  "eventCard": {
+    "ticketTypes": {
+      "vip": "VIP",
+      "ga": "GA",
+      "premium": "Premium"
+    }
+  },
+  "eventDetail": {
+    "notFound": {
+      "title": "Event Not Found",
+      "description": "The event you're looking for doesn't exist."
+    },
+    "banner": {
+      "back": "Back"
+    },
+    "tickets": {
+      "title": "Get Your Tickets",
+      "ticket": "TICKET",
+      "buyNow": "Buy Tickets Now",
+      "secureCheckout": "Secure checkout • Instant confirmation",
+      "buyOnTixcraft": "Buy on Tixcraft"
+    },
+    "info": {
+      "title": "Event Information",
+      "date": "Date",
+      "timeAndDuration": "Time & Duration",
+      "venue": "Venue",
+      "ticketInfo": "Ticket Info",
+      "aboutEvent": "About the Event",
+      "artistInfo": "Artist Information"
+    },
+    "gallery": {
+      "title": "Promo Gallery",
+      "photoAlt": "promo"
+    },
+    "merchandise": {
+      "title": "Official Merchandise",
+      "buyNow": "Buy Now"
+    }
+  }
+}

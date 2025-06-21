@@ -1,0 +1,24 @@
+
+{
+  "profile": {
+    "title": "User Profile",
+    "backToDashboard": "Back to Dashboard",
+    "profileInformation": "Profile Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "fanId": "Fan ID",
+    "qrCodeDescription": "Use this QR code for quick entry at events and venues.",
+    "changePassword": "Change Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "updatePassword": "Update Password",
+    "validation": {
+      "currentPasswordRequired": "Current password is required",
+      "newPasswordRequired": "New password is required",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordMismatch": "Passwords do not match"
+    }
+  }
+}

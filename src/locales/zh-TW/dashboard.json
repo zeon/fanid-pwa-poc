@@ -1,0 +1,26 @@
+
+{
+  "dashboard": {
+    "title": "歡迎來到演唱會售票的未來",
+    "subtitle": "您的賽博朋克演唱會體驗等待著您",
+    "stats": {
+      "activeTickets": "有效票券",
+      "activeTicketsValue": "3",
+      "activeTicketsDesc": "即將到來的活動",
+      "nextEvent": "下一場活動",
+      "nextEventValue": "7",
+      "nextEventDesc": "天後",
+      "biometricStatus": "生物識別狀態",
+      "biometricStatusValue": "啟用",
+      "biometricStatusDesc": "安全存取已啟用",
+      "energyLevel": "能量等級",
+      "energyLevelValue": "100%",
+      "energyLevelDesc": "準備搖滾"
+    },
+    "events": {
+      "title": "活動",
+      "upcoming": "即將到來的活動",
+      "past": "過往活動"
+    }
+  }
+}

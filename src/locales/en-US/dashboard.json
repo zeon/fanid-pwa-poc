@@ -1,0 +1,26 @@
+
+{
+  "dashboard": {
+    "title": "Welcome to the Future for Concert Ticketing",
+    "subtitle": "Your cyberpunk concert experience awaits",
+    "stats": {
+      "activeTickets": "Active Tickets",
+      "activeTicketsValue": "3",
+      "activeTicketsDesc": "Upcoming events",
+      "nextEvent": "Next Event",
+      "nextEventValue": "7",
+      "nextEventDesc": "Days away",
+      "biometricStatus": "Biometric Status",
+      "biometricStatusValue": "Active",
+      "biometricStatusDesc": "Secure access enabled",
+      "energyLevel": "Energy Level",
+      "energyLevelValue": "100%",
+      "energyLevelDesc": "Ready to rock"
+    },
+    "events": {
+      "title": "Events",
+      "upcoming": "Upcoming Events",
+      "past": "Past Events"
+    }
+  }
+}

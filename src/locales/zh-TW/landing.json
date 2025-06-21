@@ -1,0 +1,29 @@
+
+{
+  "landing": {
+    "header": {
+      "signIn": "登入",
+      "getStarted": "開始使用"
+    },
+    "hero": {
+      "title": "演唱會的未來",
+      "subtitle": "透過生物識別認證、無縫售票和賽博朋克美學，體驗下一代現場音樂。",
+      "createAccount": "創建帳戶",
+      "accessPortal": "進入入口"
+    },
+    "features": {
+      "biometric": {
+        "title": "生物識別安全",
+        "description": "先進的人臉識別技術，為您的活動提供無縫且安全的存取。"
+      },
+      "instant": {
+        "title": "即時存取",
+        "description": "透過閃電般快速的數位票券驗證，跳過排隊。"
+      },
+      "immersive": {
+        "title": "沉浸式體驗",
+        "description": "透過尖端技術整合，增強演唱會體驗。"
+      }
+    }
+  }
+}

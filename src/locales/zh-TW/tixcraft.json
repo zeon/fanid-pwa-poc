@@ -1,0 +1,38 @@
+
+{
+  "tixcraft": {
+    "eventNotFound": {
+      "title": "找不到活動",
+      "description": "您尋找的活動不存在。"
+    },
+    "backToDashboard": "返回控制台",
+    "cart": {
+      "title": "購物車"
+    },
+    "ticketPrice": "票價",
+    "selectQuantity": "選擇數量",
+    "selectSeats": "選擇座位",
+    "orderSummary": "訂單摘要",
+    "selectedSeats": "已選座位",
+    "ticketQuantity": "票券數量",
+    "unitPrice": "單價",
+    "totalAmount": "總金額",
+    "maxTicketsPerOrder": "每筆訂單最多{{max}}張票",
+    "seatLegend": {
+      "available": "可選",
+      "selected": "已選",
+      "unavailable": "不可選"
+    },
+    "section": "區域",
+    "stage": "舞台",
+    "seatUnavailable": "座位不可選",
+    "seatsSelected": "已選{{selected}}/{{max}}個座位",
+    "purchaseNow": "立即購買",
+    "selectSeatsMessage": "請選擇所需數量的座位",
+    "paymentMethods": "付款方式",
+    "creditCard": "信用卡",
+    "bankTransfer": "銀行轉帳",
+    "convenientStore": "超商付款",
+    "purchaseTerms": "購買即表示同意條款與條件"
+  }
+}

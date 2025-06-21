@@ -1,0 +1,12 @@
+
+{
+  "navigation": {
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "language": {
+    "switchTo": "Switch to {{language}}",
+    "english": "English",
+    "traditionalChinese": "繁體中文"
+  }
+}
