@@ -108,17 +108,29 @@ const TixcraftPayment = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 shadow-lg">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <Link to={`/tixcraft/${eventid}`} className="flex items-center space-x-2 hover:text-blue-200">
-            <ArrowLeft className="w-5 h-5" />
-            <span>{t('tixcraft.backToEvent')}</span>
-          </Link>
-          <h1 className="text-2xl font-bold">TIXCRAFT - {t('tixcraft.payment.title')}</h1>
-          <div className="flex items-center space-x-4">
-            <TextLanguageSwitcher />
-            <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-green-400" />
-              <span className="text-sm">Verified</span>
+        <div className="max-w-4xl mx-auto">
+          {/* Mobile-first responsive header layout */}
+          <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+            {/* Top row: Back button and Language/Verified status */}
+            <div className="flex items-center justify-between">
+              <Link to={`/tixcraft/${eventid}`} className="flex items-center space-x-2 hover:text-blue-200">
+                <ArrowLeft className="w-5 h-5" />
+                <span className="hidden sm:inline">{t('tixcraft.backToEvent')}</span>
+              </Link>
+              <div className="flex items-center space-x-4">
+                <TextLanguageSwitcher />
+                <div className="flex items-center space-x-2">
+                  <Shield className="w-4 h-4 text-green-400" />
+                  <span className="text-xs sm:text-sm">Verified</span>
+                </div>
+              </div>
+            </div>
+            {/* Bottom row: Title (centered on mobile, left-aligned on desktop) */}
+            <div className="text-center sm:text-left">
+              <h1 className="text-lg sm:text-2xl font-bold">
+                <span className="hidden sm:inline">TIXCRAFT - </span>
+                {t('tixcraft.payment.title')}
+              </h1>
             </div>
           </div>
         </div>

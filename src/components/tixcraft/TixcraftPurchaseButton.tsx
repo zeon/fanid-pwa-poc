@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShoppingCart, CreditCard, Shield } from 'lucide-react';
+import { ShoppingCart, CreditCard, Shield, Banknote } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
@@ -75,7 +75,10 @@ const TixcraftPurchaseButton = ({
             <span>{t('tixcraft.payment.creditCard')}</span>
           </div>
           <span>•</span>
-          <span>{t('tixcraft.payment.bankTransfer')}</span>
+          <div className="flex items-center space-x-1">
+            <Banknote className="w-4 h-4" />
+            <span>{t('tixcraft.payment.bankTransfer')}</span>
+          </div>
         </div>
       </div>
 
