@@ -10,6 +10,7 @@ interface CameraSectionProps {
   isScanning: boolean;
   scanComplete: boolean;
   isBiometricLogin?: boolean;
+  isPurchaseVerification?: boolean;
   onRetry: () => void;
 }
 
@@ -20,6 +21,7 @@ const CameraSection = ({
   isScanning,
   scanComplete,
   isBiometricLogin = false,
+  isPurchaseVerification = false,
   onRetry
 }: CameraSectionProps) => {
   return (
@@ -44,21 +46,21 @@ const CameraSection = ({
               className="w-full h-full object-cover" 
             />
             
-            {/* Biometric Login Image Overlay */}
-            {isBiometricLogin && stream && (
+            {/* Avatar Image Overlay for Biometric Login and Purchase Verification */}
+            {(isBiometricLogin || isPurchaseVerification) && stream && (
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
                 <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
                     src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
-                    alt="Biometric Login" 
+                    alt={isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
                     className="w-full h-full object-cover" 
                   />
                 </div>
               </div>
             )}
             
-            {/* Face Detection Overlay */}
-            {stream && !isBiometricLogin && (
+            {/* Face Detection Overlay for Regular Setup */}
+            {stream && !isBiometricLogin && !isPurchaseVerification && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
@@ -83,8 +85,8 @@ const CameraSection = ({
               </div>
             )}
 
-            {/* Face Detection Overlay for Biometric Login (simplified) */}
-            {stream && isBiometricLogin && (
+            {/* Face Detection Overlay for Biometric Login and Purchase Verification (simplified) */}
+            {stream && (isBiometricLogin || isPurchaseVerification) && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 

@@ -64,7 +64,8 @@ const FaceScanning = () => {
         });
       },
       isRescan,
-      isBiometricLogin
+      isBiometricLogin,
+      isPurchaseVerification
     );
   };
 
@@ -185,6 +186,7 @@ const FaceScanning = () => {
                   isScanning={isScanning}
                   scanComplete={scanComplete}
                   isBiometricLogin={isBiometricLogin}
+                  isPurchaseVerification={isPurchaseVerification}
                   onRetry={handleRetry}
                 />
 

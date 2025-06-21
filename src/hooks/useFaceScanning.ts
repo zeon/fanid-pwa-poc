@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 
 interface ScanStep {
@@ -80,7 +81,7 @@ export const useFaceScanning = () => {
     }
   };
 
-  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false, isBiometricLogin = false) => {
+  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false, isBiometricLogin = false, isPurchaseVerification = false) => {
     if (!stream) {
       setCameraError('Camera not available. Please refresh and try again.');
       return;
@@ -119,9 +120,9 @@ export const useFaceScanning = () => {
         setIsScanning(false);
         
         setTimeout(() => {
-          if (isBiometricLogin) {
-            // Biometric login always succeeds
-            console.log('Biometric login scan completed successfully');
+          if (isBiometricLogin || isPurchaseVerification) {
+            // Biometric login and purchase verification always succeed
+            console.log(isPurchaseVerification ? 'Purchase verification scan completed successfully' : 'Biometric login scan completed successfully');
             onComplete();
           } else if (isRescan) {
             // Re-scan always succeeds
