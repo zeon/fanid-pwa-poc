@@ -36,25 +36,45 @@ const Index = () => {
 
       {/* Header */}
       <header className="relative z-10 p-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              FANID
-            </h1>
-            <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
+        <div className="max-w-6xl mx-auto">
+          {/* Main header row */}
+          <div className="flex items-center justify-between mb-4 md:mb-0">
+            <div className="flex items-center space-x-4">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                FANID
+              </h1>
+              <div className="w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <TextLanguageSwitcher />
+              <Link to="/signin">
+                <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black">
+                  {t('landing.header.signIn')}
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400">
+                  {t('landing.header.getStarted')}
+                </Button>
+              </Link>
+            </div>
+            <div className="flex md:hidden items-center space-x-2">
+              <Link to="/signin">
+                <Button variant="outline" size="sm" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black">
+                  {t('landing.header.signIn')}
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400">
+                  {t('landing.header.getStarted')}
+                </Button>
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center space-x-4">
+          
+          {/* Mobile language switcher row */}
+          <div className="flex md:hidden justify-center">
             <TextLanguageSwitcher />
-            <Link to="/signin">
-              <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black">
-                {t('landing.header.signIn')}
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400">
-                {t('landing.header.getStarted')}
-              </Button>
-            </Link>
           </div>
         </div>
       </header>
