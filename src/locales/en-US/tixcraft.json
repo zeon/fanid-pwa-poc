@@ -45,7 +45,7 @@
       "quantity": "Quantity",
       "selectedSeats": "Selected Seats",
       "totalAmount": "Total Amount",
-      "paymentMethods": "Payment Method",
+      "paymentMethod": "Payment Method",
       "creditCard": "Credit Card",
       "bankTransfer": "Bank Transfer",
       "creditCardForm": {
