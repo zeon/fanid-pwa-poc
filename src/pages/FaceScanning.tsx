@@ -1,19 +1,21 @@
 
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft } from 'lucide-react';
-import AuthLayout from '@/components/auth/AuthLayout';
 import CameraSection from '@/components/auth/CameraSection';
 import ScanProgress from '@/components/auth/ScanProgress';
 import ScanControls from '@/components/auth/ScanControls';
 import ScanInstructions from '@/components/auth/ScanInstructions';
 import ScanCompletion from '@/components/auth/ScanCompletion';
+import FaceScanningHeader from '@/components/auth/FaceScanningHeader';
+import FaceScanningNotices from '@/components/auth/FaceScanningNotices';
+import FaceScanningBackground from '@/components/auth/FaceScanningBackground';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { useFaceScanning } from '@/hooks/useFaceScanning';
+import { useFaceScanningNavigation } from '@/hooks/useFaceScanningNavigation';
 
 const FaceScanning = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
   
@@ -37,58 +39,28 @@ const FaceScanning = () => {
     handleRetry
   } = useFaceScanning();
 
+  const { handleGoBack, handleScanComplete, handleDuplicateDetected } = useFaceScanningNavigation();
+
   const handleStartScan = () => {
     startFaceScan(
       // On successful completion
       () => {
-        if (isBiometricLogin) {
-          console.log('Biometric login successful, navigating to dashboard');
-          navigate('/dashboard');
-        } else if (isPurchaseVerification) {
-          console.log('Purchase verification successful, navigating to payment page');
-          navigate(`/tixcraft/${purchaseData.eventId}/payment`, {
-            state: {
-              verifiedPurchaseData: purchaseData
-            }
-          });
-        } else {
-          navigate('/face-scan-complete', { 
-            state: userData
-          });
-        }
+        handleScanComplete({
+          isBiometricLogin,
+          isPurchaseVerification,
+          purchaseData,
+          userData,
+          isRescan
+        });
       },
       // On duplicate detection
       () => {
-        navigate('/face-duplicate-detected', { 
-          state: userData
-        });
+        handleDuplicateDetected(userData);
       },
       isRescan,
       isBiometricLogin,
       isPurchaseVerification
     );
-  };
-
-  const handleGoBack = () => {
-    if (isPurchaseVerification && purchaseData) {
-      navigate(`/tixcraft/${purchaseData.eventId}`);
-    } else {
-      navigate(-1);
-    }
-  };
-
-  const getTitle = () => {
-    if (isPurchaseVerification) return t('auth.faceScanning.purchaseVerification');
-    if (isBiometricLogin) return t('auth.faceScanning.biometricLogin');
-    if (isRescan) return t('auth.faceScanning.reScanBiometric');
-    return t('auth.faceScanning.biometricSetup');
-  };
-
-  const getSubtitle = () => {
-    if (isPurchaseVerification) return t('auth.faceScanning.purchaseSubtitle');
-    if (isBiometricLogin) return t('auth.faceScanning.loginSubtitle');
-    if (isRescan) return t('auth.faceScanning.rescanSubtitle');
-    return t('auth.faceScanning.setupSubtitle');
   };
 
   return (
@@ -98,36 +70,15 @@ const FaceScanning = () => {
         <TextLanguageSwitcher />
       </div>
 
-      {/* Cyberpunk grid background with reduced opacity */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
-      
-      {/* Neon glow effects */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      </div>
+      <FaceScanningBackground />
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8">
         <div className="w-full max-w-md">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="mb-4">
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                Fan Verse
-              </h1>
-              <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"></div>
-            </div>
-            <h2 className="text-2xl font-bold text-white mb-2">{getTitle()}</h2>
-            <p className="text-gray-400 text-sm">{getSubtitle()}</p>
-          </div>
+          <FaceScanningHeader 
+            isRescan={isRescan}
+            isBiometricLogin={isBiometricLogin}
+            isPurchaseVerification={isPurchaseVerification}
+          />
 
           {/* Auth Form Container with Glowing Shadow */}
           <div className="relative">
@@ -144,39 +95,18 @@ const FaceScanning = () => {
                 {/* Back Button */}
                 <button
                   type="button"
-                  onClick={handleGoBack}
+                  onClick={() => handleGoBack(isPurchaseVerification, purchaseData)}
                   className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors text-sm"
                 >
                   <ArrowLeft size={16} />
                   {t('auth.faceScanning.back')}
                 </button>
 
-                {/* Purchase Verification Notice */}
-                {isPurchaseVerification && (
-                  <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
-                    <p className="text-green-400 text-sm text-center">
-                      {t('auth.faceScanning.purchaseNotice')}
-                    </p>
-                  </div>
-                )}
-
-                {/* Biometric Login Notice */}
-                {isBiometricLogin && (
-                  <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-lg p-3">
-                    <p className="text-cyan-400 text-sm text-center">
-                      {t('auth.faceScanning.loginNotice')}
-                    </p>
-                  </div>
-                )}
-
-                {/* Re-scan Notice */}
-                {isRescan && (
-                  <div className="bg-orange-900/20 border border-orange-500/30 rounded-lg p-3">
-                    <p className="text-orange-400 text-sm text-center">
-                      {t('auth.faceScanning.rescanNotice')}
-                    </p>
-                  </div>
-                )}
+                <FaceScanningNotices 
+                  isRescan={isRescan}
+                  isBiometricLogin={isBiometricLogin}
+                  isPurchaseVerification={isPurchaseVerification}
+                />
 
                 {/* Camera Section */}
                 <CameraSection
