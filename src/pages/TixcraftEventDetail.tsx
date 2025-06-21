@@ -24,7 +24,7 @@ const TixcraftEventDetail = () => {
           <h1 className="text-4xl font-bold mb-4 text-gray-800">{t('tixcraft.eventNotFound.title')}</h1>
           <p className="text-gray-600">{t('tixcraft.eventNotFound.description')}</p>
           <Link to="/dashboard" className="mt-4 inline-block text-blue-600 hover:text-blue-800">
-            {t('tixcraft.backToDashboard')}
+            Back to Fan Verse
           </Link>
         </div>
       </div>
@@ -48,7 +48,7 @@ const TixcraftEventDetail = () => {
           <div className="flex items-center space-x-4">
             <Link to="/dashboard" className="flex items-center space-x-2 hover:text-blue-200">
               <ArrowLeft className="w-5 h-5" />
-              <span>{t('tixcraft.backToDashboard')}</span>
+              <span>Back to Fan Verse</span>
             </Link>
           </div>
           <h1 className="text-2xl font-bold">TIXCRAFT</h1>
