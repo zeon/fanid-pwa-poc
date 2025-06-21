@@ -32,6 +32,9 @@
     "purchaseWithVerification": "Purchase with Face Verification",
     "faceVerificationRequired": "Face verification required for secure ticket purchase",
     "selectSeatsMessage": "Please select the required number of seats",
+    "paymentMethods": "Payment Methods",
+    "convenientStore": "Convenient Store",
+    "purchaseTerms": "By purchasing, you agree to our terms and conditions",
     "payment": {
       "title": "Payment",
       "verifiedBanner": {

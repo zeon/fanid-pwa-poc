@@ -72,12 +72,10 @@ const TixcraftPurchaseButton = ({
         <div className="flex items-center space-x-4 text-sm text-gray-600">
           <div className="flex items-center space-x-1">
             <CreditCard className="w-4 h-4" />
-            <span>{t('tixcraft.creditCard')}</span>
+            <span>{t('tixcraft.payment.creditCard')}</span>
           </div>
           <span>•</span>
-          <span>{t('tixcraft.bankTransfer')}</span>
-          <span>•</span>
-          <span>{t('tixcraft.convenientStore')}</span>
+          <span>{t('tixcraft.payment.bankTransfer')}</span>
         </div>
       </div>
 

@@ -32,6 +32,9 @@
     "purchaseWithVerification": "人臉驗證購買",
     "faceVerificationRequired": "安全購票需要人臉驗證",
     "selectSeatsMessage": "請選擇所需數量的座位",
+    "paymentMethods": "付款方式",
+    "convenientStore": "便利商店",
+    "purchaseTerms": "購買即表示同意我們的條款與細則",
     "payment": {
       "title": "付款",
       "verifiedBanner": {
