@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, ShoppingCart, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import { upcomingEvents, pastEvents } from '@/data/eventsData';
@@ -11,7 +11,6 @@ import TixcraftPurchaseButton from '@/components/tixcraft/TixcraftPurchaseButton
 const TixcraftEventDetail = () => {
   const { t } = useTranslation();
   const { eventid } = useParams<{ eventid: string }>();
-  const navigate = useNavigate();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
   
@@ -39,21 +38,8 @@ const TixcraftEventDetail = () => {
       seats: selectedSeats,
       totalPrice: event.ticketPrice * selectedQuantity
     });
-    
-    // Navigate to face scanning with purchase data
-    navigate('/face-scanning', {
-      state: {
-        isTicketPurchase: true,
-        purchaseData: {
-          eventId: event.id,
-          eventName: event.name,
-          quantity: selectedQuantity,
-          seats: selectedSeats,
-          totalPrice: event.ticketPrice * selectedQuantity,
-          unitPrice: event.ticketPrice
-        }
-      }
-    });
+    // Here you would implement the actual purchase logic
+    alert(`購買 ${selectedQuantity} 張票券，總金額：$${event.ticketPrice * selectedQuantity}`);
   };
 
   return (
@@ -64,7 +50,7 @@ const TixcraftEventDetail = () => {
           <div className="flex items-center space-x-4">
             <Link to="/dashboard" className="flex items-center space-x-2 hover:text-blue-200">
               <ArrowLeft className="w-5 h-5" />
-              <span>{t('tixcraft.backToFanVerse')}</span>
+              <span>{t('tixcraft.backToDashboard')}</span>
             </Link>
           </div>
           <h1 className="text-2xl font-bold">TIXCRAFT</h1>

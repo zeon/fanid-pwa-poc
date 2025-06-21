@@ -6,7 +6,6 @@
       "description": "您尋找的活動不存在。"
     },
     "backToDashboard": "返回控制台",
-    "backToFanVerse": "返回 Fan Verse",
     "cart": {
       "title": "購物車"
     },
@@ -35,31 +34,5 @@
     "bankTransfer": "銀行轉帳",
     "convenientStore": "超商付款",
     "purchaseTerms": "購買即表示同意條款與條件"
-  },
-  "payment": {
-    "confirmation": {
-      "success": {
-        "title": "付款成功！",
-        "subtitle": "您的門票已成功購買"
-      },
-      "notFound": {
-        "title": "找不到訂單",
-        "description": "無法找到訂單詳細資料。"
-      },
-      "ticketDetails": "門票詳情",
-      "orderNumber": "訂單號碼",
-      "purchaseSummary": "購買摘要",
-      "quantity": "數量",
-      "unitPrice": "單價",
-      "seats": "座位",
-      "totalPaid": "已付總額",
-      "nextSteps": {
-        "title": "接下來怎麼辦？",
-        "email": "檢查您的電子郵件以獲取門票和確認函",
-        "mobile": "下載 Fan Verse 手機應用程式以便於存取",
-        "venue": "在活動開始前 30 分鐘到達會場"
-      },
-      "backToDashboard": "返回控制台"
-    }
   }
 }

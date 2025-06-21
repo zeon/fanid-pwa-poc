@@ -6,7 +6,6 @@
       "description": "The event you're looking for doesn't exist."
     },
     "backToDashboard": "Back to Dashboard",
-    "backToFanVerse": "Back to Fan Verse",
     "cart": {
       "title": "Cart"
     },
@@ -35,31 +34,5 @@
     "bankTransfer": "Bank Transfer",
     "convenientStore": "Convenient Store",
     "purchaseTerms": "By purchasing, you agree to the terms and conditions"
-  },
-  "payment": {
-    "confirmation": {
-      "success": {
-        "title": "Payment Successful!",
-        "subtitle": "Your tickets have been purchased successfully"
-      },
-      "notFound": {
-        "title": "Order Not Found",
-        "description": "The order details could not be found."
-      },
-      "ticketDetails": "Ticket Details",
-      "orderNumber": "Order Number",
-      "purchaseSummary": "Purchase Summary",
-      "quantity": "Quantity",
-      "unitPrice": "Unit Price",
-      "seats": "Seats",
-      "totalPaid": "Total Paid",
-      "nextSteps": {
-        "title": "What's Next?",
-        "email": "Check your email for tickets and confirmation",
-        "mobile": "Download the Fan Verse mobile app for easy access",
-        "venue": "Arrive at the venue 30 minutes before the event"
-      },
-      "backToDashboard": "Back to Dashboard"
-    }
   }
 }
