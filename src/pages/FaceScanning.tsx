@@ -21,6 +21,8 @@ const FaceScanning = () => {
   const userData = location.state || {};
   const isRescan = userData.isRescan || false;
   const isBiometricLogin = userData.isBiometricLogin || false;
+  const isPurchaseVerification = userData.isPurchaseVerification || false;
+  const purchaseData = userData.purchaseData || null;
 
   const {
     videoRef,
@@ -42,6 +44,13 @@ const FaceScanning = () => {
         if (isBiometricLogin) {
           console.log('Biometric login successful, navigating to dashboard');
           navigate('/dashboard');
+        } else if (isPurchaseVerification) {
+          console.log('Purchase verification successful, navigating to payment page');
+          navigate(`/tixcraft/${purchaseData.eventId}/payment`, {
+            state: {
+              verifiedPurchaseData: purchaseData
+            }
+          });
         } else {
           navigate('/face-scan-complete', { 
             state: userData
@@ -60,16 +69,22 @@ const FaceScanning = () => {
   };
 
   const handleGoBack = () => {
-    navigate(-1);
+    if (isPurchaseVerification && purchaseData) {
+      navigate(`/tixcraft/${purchaseData.eventId}`);
+    } else {
+      navigate(-1);
+    }
   };
 
   const getTitle = () => {
+    if (isPurchaseVerification) return t('auth.faceScanning.purchaseVerification');
     if (isBiometricLogin) return t('auth.faceScanning.biometricLogin');
     if (isRescan) return t('auth.faceScanning.reScanBiometric');
     return t('auth.faceScanning.biometricSetup');
   };
 
   const getSubtitle = () => {
+    if (isPurchaseVerification) return t('auth.faceScanning.purchaseSubtitle');
     if (isBiometricLogin) return t('auth.faceScanning.loginSubtitle');
     if (isRescan) return t('auth.faceScanning.rescanSubtitle');
     return t('auth.faceScanning.setupSubtitle');
@@ -134,6 +149,15 @@ const FaceScanning = () => {
                   <ArrowLeft size={16} />
                   {t('auth.faceScanning.back')}
                 </button>
+
+                {/* Purchase Verification Notice */}
+                {isPurchaseVerification && (
+                  <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
+                    <p className="text-green-400 text-sm text-center">
+                      {t('auth.faceScanning.purchaseNotice')}
+                    </p>
+                  </div>
+                )}
 
                 {/* Biometric Login Notice */}
                 {isBiometricLogin && (

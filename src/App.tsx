@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +19,8 @@ import UserProfile from "./pages/UserProfile";
 import EventDetail from "./pages/EventDetail";
 import NotFound from "./pages/NotFound";
 import TixcraftEventDetail from "./pages/TixcraftEventDetail";
+import TixcraftPayment from "./pages/TixcraftPayment";
+import TixcraftPaymentConfirmed from "./pages/TixcraftPaymentConfirmed";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +44,8 @@ const App = () => (
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/event/:id" element={<EventDetail />} />
             <Route path="/tixcraft/:eventid" element={<TixcraftEventDetail />} />
+            <Route path="/tixcraft/:eventid/payment" element={<TixcraftPayment />} />
+            <Route path="/tixcraft/payment-confirmed" element={<TixcraftPaymentConfirmed />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -28,6 +28,8 @@
     "seatUnavailable": "Seat unavailable",
     "seatsSelected": "{{selected}}/{{max}} seats selected",
     "purchaseNow": "Purchase Now",
+    "purchaseWithVerification": "Purchase with Face Verification",
+    "faceVerificationRequired": "Face verification required for secure ticket purchase",
     "selectSeatsMessage": "Please select the required number of seats",
     "paymentMethods": "Payment Methods",
     "creditCard": "Credit Card",

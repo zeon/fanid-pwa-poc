@@ -28,6 +28,8 @@
     "seatUnavailable": "座位不可選",
     "seatsSelected": "已選{{selected}}/{{max}}個座位",
     "purchaseNow": "立即購買",
+    "purchaseWithVerification": "人臉驗證購買",
+    "faceVerificationRequired": "安全購票需要人臉驗證",
     "selectSeatsMessage": "請選擇所需數量的座位",
     "paymentMethods": "付款方式",
     "creditCard": "信用卡",

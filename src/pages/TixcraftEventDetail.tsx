@@ -38,8 +38,6 @@ const TixcraftEventDetail = () => {
       seats: selectedSeats,
       totalPrice: event.ticketPrice * selectedQuantity
     });
-    // Here you would implement the actual purchase logic
-    alert(`購買 ${selectedQuantity} 張票券，總金額：$${event.ticketPrice * selectedQuantity}`);
   };
 
   return (
@@ -173,6 +171,9 @@ const TixcraftEventDetail = () => {
               onPurchase={handlePurchase}
               isDisabled={selectedSeats.length !== selectedQuantity}
               totalAmount={event.ticketPrice * selectedQuantity}
+              eventId={event.id}
+              selectedSeats={selectedSeats}
+              selectedQuantity={selectedQuantity}
             />
           </div>
         </div>
