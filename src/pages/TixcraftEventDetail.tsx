@@ -24,7 +24,7 @@ const TixcraftEventDetail = () => {
           <h1 className="text-4xl font-bold mb-4 text-gray-800">{t('tixcraft.eventNotFound.title')}</h1>
           <p className="text-gray-600">{t('tixcraft.eventNotFound.description')}</p>
           <Link to="/dashboard" className="mt-4 inline-block text-blue-600 hover:text-blue-800">
-            Back to Fan Verse
+            Back to FanVerse
           </Link>
         </div>
       </div>
