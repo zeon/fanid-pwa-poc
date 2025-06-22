@@ -21,6 +21,13 @@
       "title": "活動",
       "upcoming": "即將到來的活動",
       "past": "過往活動"
+    },
+    "ticketPurchaseSuccess": {
+      "title": "票券購買成功！",
+      "eventPurchased": "您已成功購買以下活動的票券：",
+      "transactionId": "交易編號",
+      "instructions": "請在場地入口處出示此QR碼以快速入場。您的數位票券現已在您的個人檔案中可用。",
+      "gotIt": "知道了！"
     }
   }
 }

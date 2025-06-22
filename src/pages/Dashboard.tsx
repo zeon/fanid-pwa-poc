@@ -1,18 +1,40 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import DashboardEvents from '@/components/dashboard/DashboardEvents';
+import TicketPurchaseSuccessDialog from '@/components/dashboard/TicketPurchaseSuccessDialog';
 
 const Dashboard = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [purchaseData, setPurchaseData] = useState<any>(null);
   
   // Mock user data - in a real app this would come from auth context
   const user = {
     name: 'Alex Chen',
     email: 'alex.chen@example.com',
     initials: 'AC'
+  };
+
+  useEffect(() => {
+    // Check if we're coming from a successful purchase
+    if (location.state?.fromPurchase && location.state?.transactionData) {
+      setPurchaseData(location.state.transactionData);
+      setShowSuccessDialog(true);
+      
+      // Clear the location state to prevent showing dialog on refresh
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location, navigate]);
+
+  const handleCloseSuccessDialog = () => {
+    setShowSuccessDialog(false);
+    setPurchaseData(null);
   };
 
   return (
@@ -56,6 +78,16 @@ const Dashboard = () => {
           <DashboardEvents />
         </div>
       </div>
+
+      {/* Success Dialog */}
+      {showSuccessDialog && purchaseData && (
+        <TicketPurchaseSuccessDialog
+          isOpen={showSuccessDialog}
+          onClose={handleCloseSuccessDialog}
+          eventName={purchaseData.eventName}
+          transactionId={purchaseData.transactionId}
+        />
+      )}
     </div>
   );
 };

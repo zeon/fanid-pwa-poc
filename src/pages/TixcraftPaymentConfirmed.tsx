@@ -29,7 +29,12 @@ const TixcraftPaymentConfirmed = () => {
   }
 
   const handleBackToDashboard = () => {
-    navigate('/dashboard');
+    navigate('/dashboard', {
+      state: {
+        fromPurchase: true,
+        transactionData: transactionData
+      }
+    });
   };
 
   return (
