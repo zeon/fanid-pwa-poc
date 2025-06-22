@@ -140,7 +140,7 @@ const Index = () => {
                 className="border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-black font-bold px-8 py-4 text-lg"
               >
                 <QrCode className="mr-2" size={24} />
-                Entry Staff Access
+                {t('landing.entryStaffAccess')}
               </Button>
             </Link>
           </div>
