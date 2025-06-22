@@ -56,16 +56,6 @@ const PasswordDialog = ({ isOpen, onAccessGranted }: PasswordDialogProps) => {
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6 py-4">
-          <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-4">
-            <div className="flex items-center justify-center space-x-2 text-purple-400 mb-3">
-              <Lock className="w-5 h-5" />
-              <span className="font-semibold">Secured Access</span>
-            </div>
-            <p className="text-sm text-gray-400 text-center">
-              Enter the password to unlock full site access for 24 hours.
-            </p>
-          </div>
-
           <CyberpunkInput
             label="Access Password"
             type="password"
