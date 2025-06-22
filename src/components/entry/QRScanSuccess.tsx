@@ -84,19 +84,12 @@ const QRScanSuccess = ({ scanResult, onConfirm, onReset }: QRScanSuccessProps) =
         </CardContent>
       </Card>
 
-      <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <div className="flex justify-center max-w-md mx-auto">
         <Button 
           onClick={onConfirm}
-          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold"
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-bold"
         >
           {t('scanSuccess.confirmEntry')}
-        </Button>
-        <Button 
-          onClick={onReset}
-          variant="outline"
-          className="flex-1 border-gray-600 text-gray-400 hover:bg-gray-700"
-        >
-          {t('scanSuccess.scanNext')}
         </Button>
       </div>
     </div>

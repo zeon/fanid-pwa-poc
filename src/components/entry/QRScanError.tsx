@@ -37,17 +37,11 @@ const QRScanError = ({ onTryAgain, onReset }: QRScanErrorProps) => {
         </CardContent>
       </Card>
 
-      <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-        <Button 
-          onClick={onTryAgain}
-          className="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold"
-        >
-          {t('scanError.tryAgain')}
-        </Button>
+      <div className="flex justify-center max-w-md mx-auto">
         <Button 
           onClick={onReset}
           variant="outline"
-          className="flex-1 border-gray-600 text-gray-400 hover:bg-gray-700"
+          className="w-full border-gray-600 text-gray-400 hover:bg-gray-700"
         >
           {t('scanError.scanNext')}
         </Button>
