@@ -54,7 +54,7 @@ const CameraView = ({ isScanning, onCameraReady }: CameraViewProps) => {
             className="w-full h-full object-cover"
           />
           
-          {/* Scanning overlay */}
+          {/* Scanning overlay - only show the border, remove text */}
           {isScanning && (
             <div className="absolute inset-4 border-2 border-cyan-400 rounded-lg">
               <div className="absolute inset-0 border border-cyan-400/30 rounded-lg animate-pulse"></div>
@@ -68,17 +68,6 @@ const CameraView = ({ isScanning, onCameraReady }: CameraViewProps) => {
               <div className="text-center">
                 <Camera className="w-12 h-12 mx-auto mb-2 animate-pulse" />
                 <p>Initializing camera...</p>
-              </div>
-            </div>
-          )}
-          
-          {/* Scanning indicator */}
-          {isScanning && (
-            <div className="absolute bottom-4 left-4 right-4 text-center">
-              <div className="bg-black/60 backdrop-blur-sm rounded-lg px-4 py-2">
-                <p className="text-cyan-400 text-sm font-medium">
-                  Scanning for QR code...
-                </p>
               </div>
             </div>
           )}

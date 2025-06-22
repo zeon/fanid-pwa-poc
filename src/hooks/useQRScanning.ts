@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 interface ScanResult {
   success: boolean;
@@ -18,6 +18,7 @@ interface ScanResult {
 export const useQRScanning = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
+  const scanCountRef = useRef(0);
 
   // Demo ticket data for simulation
   const demoTickets = [
@@ -64,8 +65,9 @@ export const useQRScanning = () => {
     
     // Simulate scanning delay (3 seconds)
     setTimeout(() => {
-      // 50% chance of success vs failure
-      const isSuccess = Math.random() > 0.5;
+      // Alternating success/failure: odd counts succeed, even counts fail
+      scanCountRef.current += 1;
+      const isSuccess = scanCountRef.current % 2 === 1;
       
       if (isSuccess) {
         const randomTicket = demoTickets[Math.floor(Math.random() * demoTickets.length)];
