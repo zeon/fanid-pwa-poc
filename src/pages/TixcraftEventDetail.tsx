@@ -44,17 +44,14 @@ const TixcraftEventDetail = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 shadow-lg">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between md:justify-start">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-4">
             <Link to="/dashboard" className="flex items-center space-x-2 hover:text-blue-200">
               <ArrowLeft className="w-5 h-5" />
               <span>Back to FanVerse</span>
             </Link>
-            <h1 className="text-2xl font-bold md:absolute md:left-1/2 md:transform md:-translate-x-1/2">TIXCRAFT</h1>
           </div>
-          <div className="md:hidden mt-2 text-center">
-            <h1 className="text-2xl font-bold">TIXCRAFT</h1>
-          </div>
+          <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">TIXCRAFT</h1>          
         </div>
       </header>
 
