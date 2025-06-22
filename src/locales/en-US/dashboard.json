@@ -26,7 +26,7 @@
       "title": "Ticket Purchase Successful!",
       "eventPurchased": "You've successfully purchased tickets for:",
       "transactionId": "Transaction ID",
-      "instructions": "Show this QR code at the venue entrance for quick access. Your digital tickets are now available in your profile.",
+      "instructions": "Show this QR code at the venue entrance for quick access. Your digital tickets are now available under 'Active Tickets'.",
       "gotIt": "Got it!"
     }
   }
