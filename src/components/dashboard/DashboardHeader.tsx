@@ -33,7 +33,7 @@ const DashboardHeader = ({ user }: DashboardHeaderProps) => {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Fan Verse
+            FanVerse
           </h1>
           <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
         </div>
