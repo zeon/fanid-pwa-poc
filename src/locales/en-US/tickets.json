@@ -9,7 +9,25 @@
     "date": "Date",
     "qrCodeTitle": "Entry QR Code",
     "qrCodeDescription": "Show this QR code at the venue entrance for quick access",
+    "autoRedirect": "Redirecting to face verification in {{seconds}} seconds...",
+    "redirecting": "Redirecting to face verification...",
     "noActiveTickets": "No Active Tickets",
     "noActiveTicketsDesc": "You don't have any active tickets at the moment."
+  },
+  "entryVerification": {
+    "success": {
+      "title": "Verification Complete!",
+      "subtitle": "Your identity has been verified successfully",
+      "readyMessage": "Your ticket is now redeemed and you are ready to enter the concert",
+      "backToTickets": "Back to Active Tickets",
+      "backToDashboard": "Back to Dashboard"
+    }
+  },
+  "auth": {
+    "faceScanning": {
+      "entryVerification": "Entry Verification",
+      "entrySubtitle": "Verify your identity to redeem your ticket and enter the venue",
+      "entryNotice": "Scanning your face to verify your ticket for venue entry"
+    }
   }
 }

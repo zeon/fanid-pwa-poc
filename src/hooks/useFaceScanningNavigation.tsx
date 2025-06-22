@@ -5,16 +5,20 @@ interface NavigationData {
   isRescan: boolean;
   isBiometricLogin: boolean;
   isPurchaseVerification: boolean;
+  isEntryVerification: boolean;
   purchaseData: any;
   userData: any;
+  eventName?: string;
 }
 
 export const useFaceScanningNavigation = () => {
   const navigate = useNavigate();
 
-  const handleGoBack = (isPurchaseVerification: boolean, purchaseData: any) => {
+  const handleGoBack = (isPurchaseVerification: boolean, isEntryVerification: boolean, purchaseData: any) => {
     if (isPurchaseVerification && purchaseData) {
       navigate(`/tixcraft/${purchaseData.eventId}`);
+    } else if (isEntryVerification) {
+      navigate('/active-tickets');
     } else {
       navigate(-1);
     }
@@ -23,8 +27,10 @@ export const useFaceScanningNavigation = () => {
   const handleScanComplete = ({ 
     isBiometricLogin, 
     isPurchaseVerification, 
+    isEntryVerification,
     purchaseData, 
-    userData 
+    userData,
+    eventName
   }: NavigationData) => {
     if (isBiometricLogin) {
       console.log('Biometric login successful, navigating to dashboard');
@@ -34,6 +40,13 @@ export const useFaceScanningNavigation = () => {
       navigate(`/tixcraft/${purchaseData.eventId}/payment`, {
         state: {
           verifiedPurchaseData: purchaseData
+        }
+      });
+    } else if (isEntryVerification) {
+      console.log('Entry verification successful, navigating to completion page');
+      navigate('/entry-verification-complete', {
+        state: {
+          eventName: eventName
         }
       });
     } else {

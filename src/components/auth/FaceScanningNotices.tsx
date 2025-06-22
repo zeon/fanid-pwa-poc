@@ -6,17 +6,28 @@ interface FaceScanningNoticesProps {
   isRescan: boolean;
   isBiometricLogin: boolean;
   isPurchaseVerification: boolean;
+  isEntryVerification?: boolean;
 }
 
 const FaceScanningNotices = ({ 
   isRescan, 
   isBiometricLogin, 
-  isPurchaseVerification 
+  isPurchaseVerification,
+  isEntryVerification = false
 }: FaceScanningNoticesProps) => {
   const { t } = useTranslation();
 
   return (
     <>
+      {/* Entry Verification Notice */}
+      {isEntryVerification && (
+        <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3">
+          <p className="text-green-400 text-sm text-center">
+            {t('auth.faceScanning.entryNotice')}
+          </p>
+        </div>
+      )}
+
       {/* Purchase Verification Notice */}
       {isPurchaseVerification && (
         <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-3">

@@ -24,7 +24,9 @@ const FaceScanning = () => {
   const isRescan = userData.isRescan || false;
   const isBiometricLogin = userData.isBiometricLogin || false;
   const isPurchaseVerification = userData.isPurchaseVerification || false;
+  const isEntryVerification = userData.isEntryVerification || false;
   const purchaseData = userData.purchaseData || null;
+  const eventName = userData.eventName || '';
 
   const {
     videoRef,
@@ -48,8 +50,10 @@ const FaceScanning = () => {
         handleScanComplete({
           isBiometricLogin,
           isPurchaseVerification,
+          isEntryVerification,
           purchaseData,
           userData,
+          eventName,
           isRescan
         });
       },
@@ -59,7 +63,7 @@ const FaceScanning = () => {
       },
       isRescan,
       isBiometricLogin,
-      isPurchaseVerification
+      isPurchaseVerification || isEntryVerification
     );
   };
 
@@ -78,6 +82,7 @@ const FaceScanning = () => {
             isRescan={isRescan}
             isBiometricLogin={isBiometricLogin}
             isPurchaseVerification={isPurchaseVerification}
+            isEntryVerification={isEntryVerification}
           />
 
           {/* Auth Form Container with Glowing Shadow */}
@@ -95,7 +100,7 @@ const FaceScanning = () => {
                 {/* Back Button */}
                 <button
                   type="button"
-                  onClick={() => handleGoBack(isPurchaseVerification, purchaseData)}
+                  onClick={() => handleGoBack(isPurchaseVerification, isEntryVerification, purchaseData)}
                   className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors text-sm"
                 >
                   <ArrowLeft size={16} />
@@ -106,6 +111,7 @@ const FaceScanning = () => {
                   isRescan={isRescan}
                   isBiometricLogin={isBiometricLogin}
                   isPurchaseVerification={isPurchaseVerification}
+                  isEntryVerification={isEntryVerification}
                 />
 
                 {/* Camera Section */}
@@ -117,6 +123,7 @@ const FaceScanning = () => {
                   scanComplete={scanComplete}
                   isBiometricLogin={isBiometricLogin}
                   isPurchaseVerification={isPurchaseVerification}
+                  isEntryVerification={isEntryVerification}
                   onRetry={handleRetry}
                 />
 

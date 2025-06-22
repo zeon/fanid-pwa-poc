@@ -6,16 +6,19 @@ interface FaceScanningHeaderProps {
   isRescan: boolean;
   isBiometricLogin: boolean;
   isPurchaseVerification: boolean;
+  isEntryVerification?: boolean;
 }
 
 const FaceScanningHeader = ({ 
   isRescan, 
   isBiometricLogin, 
-  isPurchaseVerification 
+  isPurchaseVerification,
+  isEntryVerification = false
 }: FaceScanningHeaderProps) => {
   const { t } = useTranslation();
 
   const getTitle = () => {
+    if (isEntryVerification) return t('auth.faceScanning.entryVerification');
     if (isPurchaseVerification) return t('auth.faceScanning.purchaseVerification');
     if (isBiometricLogin) return t('auth.faceScanning.biometricLogin');
     if (isRescan) return t('auth.faceScanning.reScanBiometric');
@@ -23,6 +26,7 @@ const FaceScanningHeader = ({
   };
 
   const getSubtitle = () => {
+    if (isEntryVerification) return t('auth.faceScanning.entrySubtitle');
     if (isPurchaseVerification) return t('auth.faceScanning.purchaseSubtitle');
     if (isBiometricLogin) return t('auth.faceScanning.loginSubtitle');
     if (isRescan) return t('auth.faceScanning.rescanSubtitle');

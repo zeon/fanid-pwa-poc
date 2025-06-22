@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 import EventDetail from "./pages/EventDetail";
 import ActiveTickets from "./pages/ActiveTickets";
+import EntryVerificationComplete from "./pages/EntryVerificationComplete";
 import NotFound from "./pages/NotFound";
 import TixcraftEventDetail from "./pages/TixcraftEventDetail";
 import TixcraftPayment from "./pages/TixcraftPayment";
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/event/:id" element={<EventDetail />} />
             <Route path="/active-tickets" element={<ActiveTickets />} />
+            <Route path="/entry-verification-complete" element={<EntryVerificationComplete />} />
             <Route path="/entry-staff" element={<EntryStaff />} />
             <Route path="/tixcraft/:eventid" element={<TixcraftEventDetail />} />
             <Route path="/tixcraft/:eventid/payment" element={<TixcraftPayment />} />

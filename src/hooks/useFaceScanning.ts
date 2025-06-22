@@ -81,7 +81,7 @@ export const useFaceScanning = () => {
     }
   };
 
-  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false, isBiometricLogin = false, isPurchaseVerification = false) => {
+  const startFaceScan = (onComplete: () => void, onDuplicateDetected: () => void, isRescan = false, isBiometricLogin = false, isSpecialVerification = false) => {
     if (!stream) {
       setCameraError('Camera not available. Please refresh and try again.');
       return;
@@ -120,9 +120,9 @@ export const useFaceScanning = () => {
         setIsScanning(false);
         
         setTimeout(() => {
-          if (isBiometricLogin || isPurchaseVerification) {
-            // Biometric login and purchase verification always succeed
-            console.log(isPurchaseVerification ? 'Purchase verification scan completed successfully' : 'Biometric login scan completed successfully');
+          if (isBiometricLogin || isSpecialVerification) {
+            // Biometric login, purchase verification, and entry verification always succeed
+            console.log(isSpecialVerification ? 'Special verification scan completed successfully' : 'Biometric login scan completed successfully');
             onComplete();
           } else if (isRescan) {
             // Re-scan always succeeds

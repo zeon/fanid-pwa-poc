@@ -9,7 +9,25 @@
     "date": "日期",
     "qrCodeTitle": "入場QR碼",
     "qrCodeDescription": "請在場地入口處出示此QR碼以快速入場",
+    "autoRedirect": "{{seconds}} 秒後將自動跳轉到人臉驗證...",
+    "redirecting": "正在跳轉到人臉驗證...",
     "noActiveTickets": "沒有有效票券",
     "noActiveTicketsDesc": "您目前沒有任何有效票券。"
+  },
+  "entryVerification": {
+    "success": {
+      "title": "驗證完成！",
+      "subtitle": "您的身份已成功驗證",
+      "readyMessage": "您的票券已兌換完成，現在可以進入演唱會會場",
+      "backToTickets": "返回有效票券",
+      "backToDashboard": "返回控制台"
+    }
+  },
+  "auth": {
+    "faceScanning": {
+      "entryVerification": "入場驗證",
+      "entrySubtitle": "驗證您的身份以兌換票券並進入會場",
+      "entryNotice": "正在掃描您的人臉以驗證入場票券"
+    }
   }
 }
