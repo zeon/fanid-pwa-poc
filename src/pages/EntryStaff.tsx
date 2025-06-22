@@ -9,10 +9,12 @@ import QRScanSuccess from '@/components/entry/QRScanSuccess';
 import QRScanError from '@/components/entry/QRScanError';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { useQRScanning } from '@/hooks/useQRScanning';
+import { useCameraAccess } from '@/hooks/useCameraAccess';
 
 const EntryStaff = () => {
   const { t } = useTranslation();
   const { isScanning, scanResult, startScanning, confirmEntry, resetScanner } = useQRScanning();
+  const { stopCamera } = useCameraAccess();
 
   // Auto-start scanning when page loads
   useEffect(() => {
@@ -20,6 +22,13 @@ const EntryStaff = () => {
       startScanning();
     }
   }, [scanResult, isScanning, startScanning]);
+
+  // Cleanup camera when component unmounts (user leaves page)
+  useEffect(() => {
+    return () => {
+      stopCamera();
+    };
+  }, [stopCamera]);
 
   const handleTryAgain = () => {
     resetScanner();
