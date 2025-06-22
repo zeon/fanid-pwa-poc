@@ -1,28 +1,29 @@
 
 {
-  "header": {
-    "signIn": "登入",
-    "getStarted": "開始使用"
-  },
-  "hero": {
-    "title": "您的數位身份，安全保障",
-    "subtitle": "透過生物識別認證和無縫數位票券，體驗活動入場的未來。",
-    "createAccount": "建立帳戶",
-    "accessPortal": "進入入口"
-  },
-  "features": {
-    "biometric": {
-      "title": "生物識別安全",
-      "description": "先進的臉部識別技術確保只有您能夠存取您的票券。"
+  "landing": {
+    "header": {
+      "signIn": "登入",
+      "getStarted": "開始使用"
     },
-    "instant": {
-      "title": "即時存取",
-      "description": "透過閃電般快速的數位驗證，在任何場地都能跳過排隊。"
+    "hero": {
+      "title": "演唱會的未來",
+      "subtitle": "透過生物識別認證和無縫售票，體驗下一代現場音樂。",
+      "createAccount": "創建帳戶",
+      "accessPortal": "進入入口"
     },
-    "immersive": {
-      "title": "沉浸式體驗",
-      "description": "透過我們整合的社交平台與藝術家和粉絲連結。"
+    "features": {
+      "biometric": {
+        "title": "生物識別安全",
+        "description": "先進的人臉識別技術，為您的活動提供無縫且安全的存取。"
+      },
+      "instant": {
+        "title": "即時存取",
+        "description": "透過閃電般快速的數位票券驗證，跳過排隊。"
+      },
+      "immersive": {
+        "title": "沉浸式體驗",
+        "description": "透過尖端技術整合，增強演唱會體驗。"
+      }
     }
-  },
-  "entryStaffAccess": "入場工作人員入口"
+  }
 }
