@@ -24,6 +24,9 @@
         "title": "沉浸式體驗",
         "description": "透過尖端技術整合，增強演唱會體驗。"
       }
+    },
+    "button":{
+      "entryStuff": "入場工作人員入口"
     }
   }
 }
