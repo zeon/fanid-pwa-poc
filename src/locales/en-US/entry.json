@@ -1,0 +1,37 @@
+
+{
+  "title": "Entry Staff Portal",
+  "backToHome": "Back to Home",
+  "qrScanner": {
+    "title": "QR Code Scanner",
+    "subtitle": "Scan visitor tickets for entry verification",
+    "cameraTitle": "Camera Scanner",
+    "cameraReady": "Camera Ready",
+    "tapToStart": "Tap to start scanning",
+    "scanning": "Scanning for QR code...",
+    "startScanning": "Start Scanning",
+    "instructions": {
+      "position": "Position the QR code within the scanning area",
+      "auto": "The system will automatically detect and verify the ticket"
+    }
+  },
+  "scanSuccess": {
+    "title": "Scan Successful!",
+    "subtitle": "Ticket verified and ready for entry",
+    "ticketInfo": "Ticket Information",
+    "ticketHolder": "Ticket Holder",
+    "event": "Event",
+    "venue": "Venue & Ticket Type",
+    "entryAuthorized": "✓ ENTRY AUTHORIZED",
+    "entriesAllowed": "Entries Allowed",
+    "confirmEntry": "Confirm Entry",
+    "scanNext": "Scan Next"
+  },
+  "scanError": {
+    "title": "Invalid QR Code",
+    "subtitle": "The scanned code is not a valid ticket",
+    "errorMessage": "This QR code does not contain valid ticket information or may be expired.",
+    "tryAgain": "Try Again",
+    "scanNext": "Scan Next Ticket"
+  }
+}

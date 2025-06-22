@@ -1,0 +1,37 @@
+
+{
+  "title": "入場工作人員系統",
+  "backToHome": "返回首頁",
+  "qrScanner": {
+    "title": "QR碼掃描器",
+    "subtitle": "掃描訪客票券進行入場驗證",
+    "cameraTitle": "相機掃描器",
+    "cameraReady": "相機準備就緒",
+    "tapToStart": "點擊開始掃描",
+    "scanning": "正在掃描QR碼...",
+    "startScanning": "開始掃描",
+    "instructions": {
+      "position": "將QR碼置於掃描區域內",
+      "auto": "系統將自動檢測並驗證票券"
+    }
+  },
+  "scanSuccess": {
+    "title": "掃描成功！",
+    "subtitle": "票券已驗證並可入場",
+    "ticketInfo": "票券資訊",
+    "ticketHolder": "票券持有人",
+    "event": "活動",
+    "venue": "場地及票券類型",
+    "entryAuthorized": "✓ 入場許可",
+    "entriesAllowed": "允許入場次數",
+    "confirmEntry": "確認入場",
+    "scanNext": "掃描下一張"
+  },
+  "scanError": {
+    "title": "無效的QR碼",
+    "subtitle": "掃描的代碼不是有效的票券",
+    "errorMessage": "此QR碼不包含有效的票券資訊或可能已過期。",
+    "tryAgain": "重試",
+    "scanNext": "掃描下一張票券"
+  }
+}

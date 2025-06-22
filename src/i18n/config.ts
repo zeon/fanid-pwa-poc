@@ -11,6 +11,7 @@ import enEvents from '../locales/en-US/events.json';
 import enProfile from '../locales/en-US/profile.json';
 import enTixcraft from '../locales/en-US/tixcraft.json';
 import enTickets from '../locales/en-US/tickets.json';
+import enEntry from '../locales/en-US/entry.json';
 
 // Import Traditional Chinese locale modules
 import zhCommon from '../locales/zh-TW/common.json';
@@ -21,6 +22,7 @@ import zhEvents from '../locales/zh-TW/events.json';
 import zhProfile from '../locales/zh-TW/profile.json';
 import zhTixcraft from '../locales/zh-TW/tixcraft.json';
 import zhTickets from '../locales/zh-TW/tickets.json';
+import zhEntry from '../locales/zh-TW/entry.json';
 
 // Merge all English translations
 const enUS = {
@@ -32,6 +34,7 @@ const enUS = {
   ...enProfile,
   ...enTixcraft,
   ...enTickets,
+  ...enEntry,
 };
 
 // Merge all Traditional Chinese translations
@@ -44,6 +47,7 @@ const zhTW = {
   ...zhProfile,
   ...zhTixcraft,
   ...zhTickets,
+  ...zhEntry,
 };
 
 const resources = {
