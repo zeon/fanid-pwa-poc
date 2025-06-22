@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Fingerprint, Zap, Shield, Music } from 'lucide-react';
+import { Fingerprint, Zap, Shield, Music, QrCode } from 'lucide-react';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 
 const Index = () => {
@@ -129,6 +129,20 @@ const Index = () => {
               <h3 className="text-xl font-bold text-white mb-2">{t('landing.features.immersive.title')}</h3>
               <p className="text-gray-400">{t('landing.features.immersive.description')}</p>
             </div>
+          </div>
+
+          {/* Entry Staff Access Button */}
+          <div className="mt-16 pt-8 border-t border-gray-700">
+            <Link to="/entry-staff">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-black font-bold px-8 py-4 text-lg"
+              >
+                <QrCode className="mr-2" size={24} />
+                Entry Staff Access
+              </Button>
+            </Link>
           </div>
         </div>
       </main>
