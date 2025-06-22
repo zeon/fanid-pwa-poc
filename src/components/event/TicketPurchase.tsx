@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Ticket, Calendar, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
+import TixcraftLoginDialog from '@/components/tixcraft/TixcraftLoginDialog';
+import TixcraftPermissionGranted from '@/components/tixcraft/TixcraftPermissionGranted';
 
 interface TicketPurchaseProps {
   eventId: string;
@@ -16,12 +17,27 @@ interface TicketPurchaseProps {
 
 const TicketPurchase = ({ eventId, eventName, date, venue, price, ticketType }: TicketPurchaseProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [showPermissionGranted, setShowPermissionGranted] = useState(false);
 
-  const handlePurchase = () => {
-    console.log('Navigating to Tixcraft for:', eventName);
-    navigate(`/tixcraft/${eventId}`);
+  const handlePurchaseClick = () => {
+    console.log('Opening Tixcraft login dialog for:', eventName);
+    setShowLoginDialog(true);
   };
+
+  const handleGrantPermission = () => {
+    console.log('Permission granted, redirecting to Tixcraft...');
+    setShowLoginDialog(false);
+    setShowPermissionGranted(true);
+  };
+
+  const handleCloseDialog = () => {
+    setShowLoginDialog(false);
+  };
+
+  if (showPermissionGranted) {
+    return <TixcraftPermissionGranted eventId={eventId} />;
+  }
 
   return (
     <div className="bg-gradient-to-r from-gray-800/90 to-gray-700/90 backdrop-blur-sm border border-gray-600 rounded-lg p-6">
@@ -52,7 +68,7 @@ const TicketPurchase = ({ eventId, eventName, date, venue, price, ticketType }: 
           <CyberpunkButton
             variant="primary"
             size="lg"
-            onClick={handlePurchase}
+            onClick={handlePurchaseClick}
             className="w-full"
           >
             <Ticket className="w-5 h-5" />
@@ -64,6 +80,13 @@ const TicketPurchase = ({ eventId, eventName, date, venue, price, ticketType }: 
           </p>
         </div>
       </div>
+
+      <TixcraftLoginDialog
+        isOpen={showLoginDialog}
+        onClose={handleCloseDialog}
+        onGrantPermission={handleGrantPermission}
+        eventName={eventName}
+      />
     </div>
   );
 };

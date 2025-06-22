@@ -1,6 +1,18 @@
-
 {
   "tixcraft": {
+    "loginDialog": {
+      "title": "Login to Tixcraft",
+      "description": "You will be redirected to Tixcraft to purchase tickets for {{eventName}}",
+      "securityNotice": "Secure Connection",
+      "securityDescription": "Your login credentials will be handled securely by Tixcraft's official platform.",
+      "grantPermission": "Grant Permission & Continue",
+      "cancel": "Cancel"
+    },
+    "permissionGranted": {
+      "title": "Permission Granted",
+      "description": "Successfully authorized. Redirecting to Tixcraft...",
+      "redirecting": "Redirecting in {{seconds}} seconds..."
+    },
     "eventNotFound": {
       "title": "Event Not Found",
       "description": "The event you're looking for doesn't exist."

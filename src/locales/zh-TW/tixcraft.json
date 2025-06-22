@@ -1,6 +1,18 @@
-
 {
   "tixcraft": {
+    "loginDialog": {
+      "title": "登入 Tixcraft",
+      "description": "您將被重定向到 Tixcraft 購買 {{eventName}} 的門票",
+      "securityNotice": "安全連線",
+      "securityDescription": "您的登入憑證將由 Tixcraft 官方平台安全處理。",
+      "grantPermission": "授權並繼續",
+      "cancel": "取消"
+    },
+    "permissionGranted": {
+      "title": "授權成功",
+      "description": "成功授權。正在重定向至 Tixcraft...",
+      "redirecting": "{{seconds}} 秒後重定向..."
+    },
     "eventNotFound": {
       "title": "找不到活動",
       "description": "您尋找的活動不存在。"
