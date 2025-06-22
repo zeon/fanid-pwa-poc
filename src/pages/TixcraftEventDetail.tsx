@@ -51,7 +51,7 @@ const TixcraftEventDetail = () => {
               <span>Back to FanVerse</span>
             </Link>
           </div>
-          <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">TIXCRAFT</h1>          
+          <h1 className="text-2xl font-bold md:absolute md:left-1/2 md:transform md:-translate-x-1/2">TIXCRAFT</h1>          
         </div>
       </header>
 
