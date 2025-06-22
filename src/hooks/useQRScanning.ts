@@ -23,13 +23,13 @@ export const useQRScanning = () => {
   // Demo ticket data for simulation
   const demoTickets = [
     {
-      eventName: "Taylor Swift | The Eras Tour",
+      eventName: "aMEI ASMR 世界巡演",
       holderName: "Alex Chen",
       ticketType: "VIP Front Row",
-      venue: "Madison Square Garden",
+      venue: "台北大巨蛋",
       date: "2024-07-15",
       time: "19:30",
-      entriesAllowed: 1
+      entriesAllowed: 4
     },
     {
       eventName: "Ed Sheeran Live",
