@@ -62,15 +62,7 @@ const CameraView = ({ isScanning, onCameraReady }: CameraViewProps) => {
             </div>
           )}
           
-          {/* Camera loading state */}
-          {!isStreaming && !error && hasPermission !== false && (
-            <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-              <div className="text-center">
-                <Camera className="w-12 h-12 mx-auto mb-2 animate-pulse" />
-                <p>Initializing camera...</p>
-              </div>
-            </div>
-          )}
+          
         </div>
       </CardContent>
     </Card>
