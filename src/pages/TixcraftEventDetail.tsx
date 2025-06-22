@@ -51,11 +51,7 @@ const TixcraftEventDetail = () => {
               <span>Back to FanVerse</span>
             </Link>
           </div>
-          <h1 className="text-2xl font-bold">TIXCRAFT</h1>
-          <div className="flex items-center space-x-2">
-            <ShoppingCart className="w-5 h-5" />
-            <span>{t('tixcraft.cart.title')}</span>
-          </div>
+          <h1 className="text-2xl font-bold">TIXCRAFT</h1>          
         </div>
       </header>
 
