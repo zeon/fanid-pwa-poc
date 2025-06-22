@@ -24,7 +24,7 @@ export const useQRScanning = () => {
   const demoTickets = [
     {
       eventName: "Taylor Swift | The Eras Tour",
-      holderName: "Alex Johnson",
+      holderName: "Alex Chen",
       ticketType: "VIP Front Row",
       venue: "Madison Square Garden",
       date: "2024-07-15",
@@ -33,7 +33,7 @@ export const useQRScanning = () => {
     },
     {
       eventName: "Ed Sheeran Live",
-      holderName: "Sarah Chen",
+      holderName: "Alex Chen",
       ticketType: "General Admission",
       venue: "Wembley Stadium",
       date: "2024-08-20",
@@ -42,7 +42,7 @@ export const useQRScanning = () => {
     },
     {
       eventName: "Coldplay World Tour",
-      holderName: "Mike Rodriguez",
+      holderName: "Alex Chen",
       ticketType: "Premium Seating",
       venue: "O2 Arena",
       date: "2024-09-10",
@@ -51,7 +51,7 @@ export const useQRScanning = () => {
     },
     {
       eventName: "BLACKPINK WORLD TOUR",
-      holderName: "Emma Wilson",
+      holderName: "Alex Chen",
       ticketType: "VIP Package",
       venue: "Kaohsiung National Stadium",
       date: "2024-12-22",
