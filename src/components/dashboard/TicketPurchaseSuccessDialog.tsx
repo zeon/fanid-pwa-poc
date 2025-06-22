@@ -28,7 +28,7 @@ const TicketPurchaseSuccessDialog = ({
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
           </div>
-          <DialogTitle className="text-2xl font-bold text-green-400">
+          <DialogTitle className="text-2xl font-bold text-green-400 text-center">
             {t('dashboard.ticketPurchaseSuccess.title')}
           </DialogTitle>
         </DialogHeader>
