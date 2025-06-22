@@ -24,6 +24,9 @@
         "title": "Immersive Experience",
         "description": "Enhanced concert experiences with cutting-edge technology integration."
       }
+    },
+    "button":{
+      "entryStuff": "Entry Staff Access"
     }
   }
 }
