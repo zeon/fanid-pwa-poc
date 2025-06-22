@@ -24,31 +24,56 @@ import zhTixcraft from '../locales/zh-TW/tixcraft.json';
 import zhTickets from '../locales/zh-TW/tickets.json';
 import zhEntry from '../locales/zh-TW/entry.json';
 
-// Merge all English translations
-const enUS = {
-  ...enCommon,
-  ...enLanding,
-  ...enAuth,
-  ...enDashboard,
-  ...enEvents,
-  ...enProfile,
-  ...enTixcraft,
-  ...enTickets,
-  ...enEntry,
+// Helper function to deep merge objects
+const deepMerge = (target: any, ...sources: any[]): any => {
+  if (!sources.length) return target;
+  const source = sources.shift();
+
+  if (isObject(target) && isObject(source)) {
+    for (const key in source) {
+      if (isObject(source[key])) {
+        if (!target[key]) Object.assign(target, { [key]: {} });
+        deepMerge(target[key], source[key]);
+      } else {
+        Object.assign(target, { [key]: source[key] });
+      }
+    }
+  }
+
+  return deepMerge(target, ...sources);
 };
 
-// Merge all Traditional Chinese translations
-const zhTW = {
-  ...zhCommon,
-  ...zhLanding,
-  ...zhAuth,
-  ...zhDashboard,
-  ...zhEvents,
-  ...zhProfile,
-  ...zhTixcraft,
-  ...zhTickets,
-  ...zhEntry,
+const isObject = (item: any): boolean => {
+  return item && typeof item === 'object' && !Array.isArray(item);
 };
+
+// Properly merge all English translations while preserving nested structure
+const enUS = deepMerge(
+  {},
+  enCommon,
+  enLanding,
+  enAuth,
+  enDashboard,
+  enEvents,
+  enProfile,
+  enTixcraft,
+  enTickets,
+  enEntry
+);
+
+// Properly merge all Traditional Chinese translations while preserving nested structure
+const zhTW = deepMerge(
+  {},
+  zhCommon,
+  zhLanding,
+  zhAuth,
+  zhDashboard,
+  zhEvents,
+  zhProfile,
+  zhTixcraft,
+  zhTickets,
+  zhEntry
+);
 
 const resources = {
   'en-US': {
