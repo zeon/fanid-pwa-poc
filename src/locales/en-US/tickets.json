@@ -1,0 +1,15 @@
+
+{
+  "tickets": {
+    "activeTickets": "Active Tickets",
+    "backToDashboard": "Back to Dashboard",
+    "showQRCode": "Show QR Code",
+    "ticketFor": "Ticket for",
+    "venue": "Venue",
+    "date": "Date",
+    "qrCodeTitle": "Entry QR Code",
+    "qrCodeDescription": "Show this QR code at the venue entrance for quick access",
+    "noActiveTickets": "No Active Tickets",
+    "noActiveTicketsDesc": "You don't have any active tickets at the moment."
+  }
+}

@@ -17,6 +17,7 @@ import FaceDuplicateDetected from "./pages/FaceDuplicateDetected";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 import EventDetail from "./pages/EventDetail";
+import ActiveTickets from "./pages/ActiveTickets";
 import NotFound from "./pages/NotFound";
 import TixcraftEventDetail from "./pages/TixcraftEventDetail";
 import TixcraftPayment from "./pages/TixcraftPayment";
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/event/:id" element={<EventDetail />} />
+            <Route path="/active-tickets" element={<ActiveTickets />} />
             <Route path="/tixcraft/:eventid" element={<TixcraftEventDetail />} />
             <Route path="/tixcraft/:eventid/payment" element={<TixcraftPayment />} />
             <Route path="/tixcraft/payment-confirmed" element={<TixcraftPaymentConfirmed />} />

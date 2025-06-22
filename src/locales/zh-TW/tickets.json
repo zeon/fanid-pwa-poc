@@ -1,0 +1,15 @@
+
+{
+  "tickets": {
+    "activeTickets": "有效票券",
+    "backToDashboard": "返回控制台",
+    "showQRCode": "顯示QR碼",
+    "ticketFor": "票券",
+    "venue": "場地",
+    "date": "日期",
+    "qrCodeTitle": "入場QR碼",
+    "qrCodeDescription": "請在場地入口處出示此QR碼以快速入場",
+    "noActiveTickets": "沒有有效票券",
+    "noActiveTicketsDesc": "您目前沒有任何有效票券。"
+  }
+}
