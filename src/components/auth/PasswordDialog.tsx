@@ -85,10 +85,6 @@ const PasswordDialog = ({ isOpen, onAccessGranted }: PasswordDialogProps) => {
             )}
           </CyberpunkButton>
         </form>
-
-        <div className="text-xs text-gray-500 text-center">
-          Access will be remembered for 24 hours on this device.
-        </div>
       </DialogContent>
     </Dialog>
   );
