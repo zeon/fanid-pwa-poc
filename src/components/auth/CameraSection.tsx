@@ -51,7 +51,7 @@ const CameraSection = ({
             {/* Avatar Image Overlay for Biometric Login, Purchase Verification, and Entry Verification */}
             {(isBiometricLogin || isPurchaseVerification || isEntryVerification) && stream && (
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
+                <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
                     src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
                     alt={isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
@@ -64,7 +64,7 @@ const CameraSection = ({
             {/* Face Detection Overlay for Regular Setup */}
             {stream && !isBiometricLogin && !isPurchaseVerification && !isEntryVerification && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
+                <div className={`relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
                     ? 'border-green-400 shadow-lg shadow-green-400/50' 
                     : isScanning 
@@ -90,7 +90,7 @@ const CameraSection = ({
             {/* Face Detection Overlay for Biometric Login, Purchase Verification, and Entry Verification (simplified) */}
             {stream && (isBiometricLogin || isPurchaseVerification || isEntryVerification) && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className={`relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 border-2 rounded-full transition-colors duration-300 ${
+                <div className={`relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
                     ? 'border-green-400 shadow-lg shadow-green-400/50' 
                     : isScanning 
