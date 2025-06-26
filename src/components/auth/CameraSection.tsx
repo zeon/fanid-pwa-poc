@@ -12,6 +12,7 @@ interface CameraSectionProps {
   isBiometricLogin?: boolean;
   isPurchaseVerification?: boolean;
   isEntryVerification?: boolean;
+  isSignUpFlow?: boolean;
   onRetry: () => void;
 }
 
@@ -24,6 +25,7 @@ const CameraSection = ({
   isBiometricLogin = false,
   isPurchaseVerification = false,
   isEntryVerification = false,
+  isSignUpFlow = false,
   onRetry
 }: CameraSectionProps) => {
   return (
@@ -48,13 +50,13 @@ const CameraSection = ({
               className="w-full h-full object-cover" 
             />
             
-            {/* Avatar Image Overlay for Biometric Login, Purchase Verification, and Entry Verification */}
-            {(isBiometricLogin || isPurchaseVerification || isEntryVerification) && stream && (
+            {/* Avatar Image Overlay for Biometric Login, Purchase Verification, Entry Verification, and Sign Up */}
+            {(isBiometricLogin || isPurchaseVerification || isEntryVerification || isSignUpFlow) && stream && (
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
                 <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
-                    src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png" 
-                    alt={isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
+                    src={isSignUpFlow ? "/lovable-uploads/ba436208-d24b-4c6a-bf28-464f1e48b313.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
+                    alt={isSignUpFlow ? "Sign Up Flow" : isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
                     className="w-full h-full object-cover" 
                   />
                 </div>
@@ -62,7 +64,7 @@ const CameraSection = ({
             )}
             
             {/* Face Detection Overlay for Regular Setup */}
-            {stream && !isBiometricLogin && !isPurchaseVerification && !isEntryVerification && (
+            {stream && !isBiometricLogin && !isPurchaseVerification && !isEntryVerification && !isSignUpFlow && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className={`relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 
@@ -87,8 +89,8 @@ const CameraSection = ({
               </div>
             )}
 
-            {/* Face Detection Overlay for Biometric Login, Purchase Verification, and Entry Verification (simplified) */}
-            {stream && (isBiometricLogin || isPurchaseVerification || isEntryVerification) && (
+            {/* Face Detection Overlay for Biometric Login, Purchase Verification, Entry Verification, and Sign Up (simplified) */}
+            {stream && (isBiometricLogin || isPurchaseVerification || isEntryVerification || isSignUpFlow) && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className={`relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 border-2 rounded-full transition-colors duration-300 ${
                   scanComplete 

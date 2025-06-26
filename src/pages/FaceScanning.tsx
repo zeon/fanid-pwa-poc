@@ -25,6 +25,7 @@ const FaceScanning = () => {
   const isBiometricLogin = userData.isBiometricLogin || false;
   const isPurchaseVerification = userData.isPurchaseVerification || false;
   const isEntryVerification = userData.isEntryVerification || false;
+  const isSignUpFlow = userData.fromSignUp || false;
   const purchaseData = userData.purchaseData || null;
   const eventName = userData.eventName || '';
 
@@ -124,6 +125,7 @@ const FaceScanning = () => {
                   isBiometricLogin={isBiometricLogin}
                   isPurchaseVerification={isPurchaseVerification}
                   isEntryVerification={isEntryVerification}
+                  isSignUpFlow={isSignUpFlow}
                   onRetry={handleRetry}
                 />
 
