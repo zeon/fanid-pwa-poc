@@ -67,7 +67,7 @@
         "title": "Priority Ticket Queue",
         "subtitle": "Skip the line and get first access to concert tickets",
         "queueStatus": "Queue Status",
-        "positionInQueue": "#{{position}} in the queue",
+        "positionInQueue": "254 people are already in queue",
         "nextLotteryStarts": "Next Lottery Starts",
         "timeLeft": "{{hours}}h {{minutes}}m",
         "joinQueue": "Join Queue",
@@ -86,7 +86,12 @@
         "memberPrice": "Member Price",
         "shopNow": "Shop Now",
         "limitedEdition": "Limited Edition",
-        "exclusiveDesign": "Exclusive Design"
+        "exclusiveDesign": "Exclusive Design",
+        "items": {
+          "limitedTshirt": "Limited Edition T-shirt",
+          "exclusivePhoto": "Exclusive Signed Photo",
+          "supportLight": "Support Light Stick"
+        }
       },
       "monthlyGift": {
         "title": "Monthly VIP Gifts",
@@ -99,7 +104,7 @@
         "available": "Available"
       },
       "remainingBenefits": {
-        "title": "Additional VIP Benefits",
+        "title": "Exclusive Content",
         "exclusiveContent": "Exclusive Content & Behind-the-Scenes"
       },
       "exclusiveContent": {

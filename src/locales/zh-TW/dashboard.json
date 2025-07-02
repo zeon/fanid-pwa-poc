@@ -67,7 +67,7 @@
         "title": "優先購票通道",
         "subtitle": "跳過排隊，搶先獲得演唱會門票",
         "queueStatus": "排隊狀態",
-        "positionInQueue": "排隊第{{position}}位",
+        "positionInQueue": "已有254人排隊中",
         "nextLotteryStarts": "下次抽籤開始",
         "timeLeft": "{{hours}}小時{{minutes}}分",
         "joinQueue": "加入排隊",
@@ -86,7 +86,12 @@
         "memberPrice": "會員價",
         "shopNow": "立即購買",
         "limitedEdition": "限量版",
-        "exclusiveDesign": "獨家設計"
+        "exclusiveDesign": "獨家設計",
+        "items": {
+          "limitedTshirt": "限量T-shirt",
+          "exclusivePhoto": "獨家簽名照",
+          "supportLight": "應援手燈"
+        }
       },
       "monthlyGift": {
         "title": "每月VIP禮品",
@@ -99,7 +104,7 @@
         "available": "可領取"
       },
       "remainingBenefits": {
-        "title": "其他VIP福利",
+        "title": "獨家內容",
         "exclusiveContent": "獨家內容與幕後花絮"
       },
       "exclusiveContent": {

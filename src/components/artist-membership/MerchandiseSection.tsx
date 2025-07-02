@@ -12,7 +12,7 @@ const MerchandiseSection = () => {
   const merchandiseItems = [
     {
       id: 1,
-      name: 'VIP Concert Tee',
+      name: t('dashboard.artistMembership.merchandise.items.limitedTshirt'),
       image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=300&h=300',
       originalPrice: 890,
       memberPrice: 623,
@@ -20,7 +20,7 @@ const MerchandiseSection = () => {
     },
     {
       id: 2,
-      name: 'Limited Edition Vinyl',
+      name: t('dashboard.artistMembership.merchandise.items.exclusivePhoto'),
       image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=300&h=300',
       originalPrice: 1200,
       memberPrice: 840,
@@ -28,7 +28,7 @@ const MerchandiseSection = () => {
     },
     {
       id: 3,
-      name: 'Exclusive Photo Book',
+      name: t('dashboard.artistMembership.merchandise.items.supportLight'),
       image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=300&h=300',
       originalPrice: 650,
       memberPrice: 455,

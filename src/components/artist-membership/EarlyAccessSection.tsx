@@ -84,7 +84,7 @@ const EarlyAccessSection = () => {
             <div className="bg-gray-700/50 border border-cyan-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-cyan-500/5"></div>
               <div className="relative text-cyan-400 text-2xl font-bold mb-2">
-                {t('dashboard.artistMembership.earlyAccess.positionInQueue', { position: queuePosition })}
+                {t('dashboard.artistMembership.earlyAccess.positionInQueue')}
               </div>
               <p className="relative text-gray-300 text-sm mb-4">{t('dashboard.artistMembership.earlyAccess.queueStatus')}</p>
               
@@ -109,7 +109,7 @@ const EarlyAccessSection = () => {
             
             <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5"></div>
-              <div className="relative text-purple-400 text-lg font-bold mb-2 font-mono leading-relaxed">
+              <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono leading-relaxed">
                 {formatCountdown(timeLeftSeconds)}
               </div>
               <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLotteryStarts')}</p>
