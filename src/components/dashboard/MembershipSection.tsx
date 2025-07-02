@@ -26,7 +26,7 @@ const MembershipSection = () => {
     {
       id: 3,
       name: '五月天',
-      image: 'https://www.bin-music.com.tw/album/album/671625b9869aa+w700.jpg',
+      image: 'https://cdn.hk01.com/di/media/images/dw/20201109/402509627490570240781906.jpeg/PDt8V7e5E1VDwKOXk3JDpfcz18CsAgo-6XFDbelxQ20?v=w1600r16_9',
       isMember: false,
       isUserMember: false
     }
