@@ -64,7 +64,7 @@ const EarlyAccessSection = () => {
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     
-    return `${days.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.days')} : ${hours.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.hours')} : ${minutes.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.minutes')} : ${secs.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.seconds')}`;
+    return `${days.toString().padStart(2, '0')}${t('dashboard.artistMembership.earlyAccess.days')}:${hours.toString().padStart(2, '0')}${t('dashboard.artistMembership.earlyAccess.hours')}:${minutes.toString().padStart(2, '0')}${t('dashboard.artistMembership.earlyAccess.minutes')}:${secs.toString().padStart(2, '0')}${t('dashboard.artistMembership.earlyAccess.seconds')}`;
   };
 
   return (
@@ -109,7 +109,7 @@ const EarlyAccessSection = () => {
             
             <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5"></div>
-              <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono leading-relaxed">
+              <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono tracking-tight leading-tight">
                 {formatCountdown(timeLeftSeconds)}
               </div>
               <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLotteryStarts')}</p>

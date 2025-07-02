@@ -101,20 +101,35 @@
         "nextGift": "下月禮品",
         "giftHistory": "禮品記錄",
         "claimed": "已領取",
-        "available": "可領取"
+        "available": "可領取",
+        "items": {
+          "exclusiveBracelet": "獨家手環",
+          "limitedCards": "限量小卡"
+        }
       },
       "remainingBenefits": {
         "title": "獨家內容",
         "exclusiveContent": "獨家內容與幕後花絮"
       },
       "exclusiveContent": {
-        "viewAll": "查看所有獨家內容"
+        "viewAll": "查看所有獨家內容",
+        "items": {
+          "behindTheScenes": "幕後花絮：錄音室現場",
+          "acousticPerformance": "獨家不插電演出",
+          "voiceMessages": "藝人語音訊息"
+        }
       },
       "badges": {
         "vipMember": "VIP會員"
       },
       "community": {
         "exclusiveMemberCommunity": "專屬會員社群"
+      },
+      "lottery": {
+        "congratulations": "恭喜！",
+        "complete": "抽籤已完成！您現在擁有優先購票權限。",
+        "purchaseTickets": "購買票券",
+        "close": "關閉"
       }
     }
   }

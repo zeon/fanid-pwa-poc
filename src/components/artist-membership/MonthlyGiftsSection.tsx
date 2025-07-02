@@ -12,13 +12,13 @@ const MonthlyGiftsSection = () => {
   const monthlyGifts = [
     {
       month: 'December 2024',
-      name: 'Exclusive Badge Set',
+      name: t('dashboard.artistMembership.monthlyGift.items.exclusiveBracelet'),
       image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=200&h=200',
       status: 'available'
     },
     {
       month: 'January 2025',
-      name: 'Special Photo Cards',
+      name: t('dashboard.artistMembership.monthlyGift.items.limitedCards'),
       image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=200&h=200',
       status: 'upcoming'
     }

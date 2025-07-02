@@ -30,10 +30,10 @@ const LotteryCompleteDialog = ({ isOpen, onClose, onPurchase }: LotteryCompleteD
             </div>
           </div>
           <DialogTitle className="text-2xl text-yellow-400 mb-4 text-center">
-            Congratulations!
+            {t('dashboard.artistMembership.lottery.congratulations')}
           </DialogTitle>
           <p className="text-gray-300 text-sm mb-6 text-center">
-            The lottery is complete! You now have priority access to purchase tickets.
+            {t('dashboard.artistMembership.lottery.complete')}
           </p>
           <div className="flex flex-col gap-3">
             <CyberpunkButton 
@@ -42,14 +42,14 @@ const LotteryCompleteDialog = ({ isOpen, onClose, onPurchase }: LotteryCompleteD
               onClick={onPurchase}
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
-              Purchase Tickets
+              {t('dashboard.artistMembership.lottery.purchaseTickets')}
             </CyberpunkButton>
             <CyberpunkButton 
               variant="secondary" 
               className="w-full"
               onClick={onClose}
             >
-              Close
+              {t('dashboard.artistMembership.lottery.close')}
             </CyberpunkButton>
           </div>
         </DialogHeader>

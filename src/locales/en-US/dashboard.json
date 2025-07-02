@@ -101,20 +101,35 @@
         "nextGift": "Next Gift",
         "giftHistory": "Gift History",
         "claimed": "Claimed",
-        "available": "Available"
+        "available": "Available",
+        "items": {
+          "exclusiveBracelet": "Exclusive Bracelet",
+          "limitedCards": "Limited Photo Cards"
+        }
       },
       "remainingBenefits": {
         "title": "Exclusive Content",
         "exclusiveContent": "Exclusive Content & Behind-the-Scenes"
       },
       "exclusiveContent": {
-        "viewAll": "View All Exclusive Content"
+        "viewAll": "View All Exclusive Content",
+        "items": {
+          "behindTheScenes": "Behind the Scenes: Studio Sessions",
+          "acousticPerformance": "Exclusive Acoustic Performance",
+          "voiceMessages": "Voice Messages from Artist"
+        }
       },
       "badges": {
         "vipMember": "VIP MEMBER"
       },
       "community": {
         "exclusiveMemberCommunity": "Exclusive Member Community"
+      },
+      "lottery": {
+        "congratulations": "Congratulations!",
+        "complete": "The lottery is complete! You now have priority access to purchase tickets.",
+        "purchaseTickets": "Purchase Tickets",
+        "close": "Close"
       }
     }
   }
