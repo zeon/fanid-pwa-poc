@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import DashboardEvents from '@/components/dashboard/DashboardEvents';
+import MembershipSection from '@/components/dashboard/MembershipSection';
 import TicketPurchaseSuccessDialog from '@/components/dashboard/TicketPurchaseSuccessDialog';
 
 const Dashboard = () => {
@@ -73,6 +74,10 @@ const Dashboard = () => {
         </div>
 
         <DashboardStats />
+
+        <div className="mt-8">
+          <MembershipSection />
+        </div>
 
         <div className="mt-8">
           <DashboardEvents />
