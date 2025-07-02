@@ -21,12 +21,12 @@ const ArtistCard = ({ artist }: ArtistCardProps) => {
   const { t } = useTranslation();
 
   const handleJoinClick = () => {
-    console.log(`Joining ${artist.name} membership`);
+    
     // TODO: Implement payment flow
   };
 
   const handleViewClick = () => {
-    console.log(`Viewing ${artist.name} membership details`);
+    
     // TODO: Navigate to artist membership page
   };
 
