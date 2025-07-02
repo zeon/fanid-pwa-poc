@@ -46,9 +46,9 @@ const MembershipCreditCardForm = ({ form }: MembershipCreditCardFormProps) => {
   return (
     <div className="space-y-4">
       <CyberpunkInput
-        label={t('tixcraft.payment.cardNumber')}
+        label={t('tixcraft.payment.creditCardForm.cardNumber')}
         type="text"
-        placeholder="1234 5678 9012 3456"
+        placeholder={t('tixcraft.payment.creditCardForm.cardNumberPlaceholder')}
         value={watch('cardNumber') || ''}
         onChange={(e) => {
           const formatted = formatCardNumber(e.target.value);
@@ -60,9 +60,9 @@ const MembershipCreditCardForm = ({ form }: MembershipCreditCardFormProps) => {
       />
 
       <CyberpunkInput
-        label={t('tixcraft.payment.cardholderName')}
+        label={t('tixcraft.payment.creditCardForm.cardholderName')}
         type="text"
-        placeholder={t('tixcraft.payment.cardholderNamePlaceholder')}
+        placeholder={t('tixcraft.payment.creditCardForm.cardholderPlaceholder')}
         value={watch('cardholderName') || ''}
         onChange={(e) => form.setValue('cardholderName', e.target.value)}
         icon={<User className="w-4 h-4" />}
@@ -71,9 +71,9 @@ const MembershipCreditCardForm = ({ form }: MembershipCreditCardFormProps) => {
 
       <div className="grid grid-cols-2 gap-4">
         <CyberpunkInput
-          label={t('tixcraft.payment.expiryDate')}
+          label={t('tixcraft.payment.creditCardForm.expiryDate')}
           type="text"
-          placeholder="MM/YY"
+          placeholder={t('tixcraft.payment.creditCardForm.expiryPlaceholder')}
           value={watch('expiryDate') || ''}
           onChange={(e) => {
             const formatted = formatExpiryDate(e.target.value);
@@ -85,9 +85,9 @@ const MembershipCreditCardForm = ({ form }: MembershipCreditCardFormProps) => {
         />
 
         <CyberpunkInput
-          label={t('tixcraft.payment.cvv')}
+          label={t('tixcraft.payment.creditCardForm.cvv')}
           type="text"
-          placeholder="123"
+          placeholder={t('tixcraft.payment.creditCardForm.cvvPlaceholder')}
           value={watch('cvv') || ''}
           onChange={(e) => {
             const value = e.target.value.replace(/\D/g, '');
