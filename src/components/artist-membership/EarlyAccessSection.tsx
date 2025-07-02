@@ -6,52 +6,43 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import QueueSuccessToast from './QueueSuccessToast';
+import LotteryCompleteDialog from './LotteryCompleteDialog';
 
 const EarlyAccessSection = () => {
   const { t } = useTranslation();
   const [isInQueue, setIsInQueue] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
+  const [showCompleteDialog, setShowCompleteDialog] = useState(false);
   const [queuePosition, setQueuePosition] = useState(254);
   
-  // Initialize with a specific target time for the next lottery (2 hours and 15 minutes from now)
-  const [targetTime] = useState(() => {
-    const now = new Date();
-    now.setHours(now.getHours() + 2);
-    now.setMinutes(now.getMinutes() + 15);
-    return now;
-  });
-  
-  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  // Initialize with 3 days in seconds (3 * 24 * 60 * 60 = 259200 seconds)
+  const [timeLeftSeconds, setTimeLeftSeconds] = useState(259200);
+  const [isCountdownActive, setIsCountdownActive] = useState(false);
 
-  // Live countdown timer effect
+  // Accelerated countdown timer effect (12 hours per second = 43200 seconds per second)
   useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const target = targetTime.getTime();
-      const difference = target - now;
+    if (!isCountdownActive) return;
 
-      if (difference > 0) {
-        const hours = Math.floor(difference / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    const timer = setInterval(() => {
+      setTimeLeftSeconds(prev => {
+        const newTime = prev - 43200; // Decrement by 12 hours (43200 seconds)
         
-        setTimeLeft({ hours, minutes, seconds });
-      } else {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    // Update immediately
-    updateCountdown();
-    
-    // Update every second for live countdown
-    const timer = setInterval(updateCountdown, 1000);
+        if (newTime <= 0) {
+          setIsCountdownActive(false);
+          setShowCompleteDialog(true);
+          return 0;
+        }
+        
+        return newTime;
+      });
+    }, 1000); // Update every second
 
     return () => clearInterval(timer);
-  }, [targetTime]);
+  }, [isCountdownActive]);
 
   const handleJoinQueue = () => {
     setIsInQueue(true);
+    setIsCountdownActive(true);
     setQueuePosition(prev => prev + 1);
     setShowSuccessToast(true);
     
@@ -61,15 +52,19 @@ const EarlyAccessSection = () => {
     }, 3000);
   };
 
-  const formatTimeLeft = () => {
-    if (timeLeft.hours > 0) {
-      return t('dashboard.artistMembership.earlyAccess.timeLeft', { 
-        hours: timeLeft.hours, 
-        minutes: timeLeft.minutes 
-      });
-    } else {
-      return `${timeLeft.minutes}m ${timeLeft.seconds}s`;
-    }
+  const handlePurchase = () => {
+    setShowCompleteDialog(false);
+    // Here you would typically navigate to the purchase page
+    console.log('Navigate to purchase page');
+  };
+
+  const formatCountdown = (seconds: number) => {
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    
+    return `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -115,9 +110,10 @@ const EarlyAccessSection = () => {
             <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5"></div>
               <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono">
-                {formatTimeLeft()}
+                {formatCountdown(timeLeftSeconds)}
               </div>
               <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLottery')}</p>
+              <p className="relative text-gray-400 text-xs mt-1">DD:HH:MM:SS</p>
             </div>
           </div>
         </CardContent>
@@ -126,6 +122,12 @@ const EarlyAccessSection = () => {
       <QueueSuccessToast 
         isOpen={showSuccessToast}
         onClose={() => setShowSuccessToast(false)}
+      />
+
+      <LotteryCompleteDialog
+        isOpen={showCompleteDialog}
+        onClose={() => setShowCompleteDialog(false)}
+        onPurchase={handlePurchase}
       />
     </>
   );
