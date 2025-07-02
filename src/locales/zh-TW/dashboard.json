@@ -26,7 +26,7 @@
       "title": "藝人會員",
       "subtitle": "加入專屬藝人社群，獲得高級存取權限",
       "join": "加入",
-      "view": "查看",
+      "enter": "進入",
       "member": "會員"
     },
     "membershipPayment": {
@@ -48,6 +48,7 @@
       "title": "歡迎加入社群！",
       "membershipActive": "會員資格已啟用",
       "message": "您現在是{{artistName}}專屬社群的會員！盡情享受您的高級福利和獲得獨家內容。",
+      "activationMessage": "您的會員資格已成功啟用",
       "continue": "繼續"
     },
     "ticketPurchaseSuccess": {

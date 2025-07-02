@@ -26,7 +26,7 @@
       "title": "Artist Memberships",
       "subtitle": "Join exclusive artist communities and get premium access",
       "join": "Join",
-      "view": "View",
+      "enter": "Enter",
       "member": "MEMBER"
     },
     "membershipPayment": {
@@ -48,6 +48,7 @@
       "title": "Welcome to the Community!",
       "membershipActive": "Membership Active",
       "message": "You're now a member of {{artistName}}'s exclusive community! Enjoy your premium benefits and exclusive content.",
+      "activationMessage": "Your membership has been successfully activated",
       "continue": "Continue"
     },
     "ticketPurchaseSuccess": {

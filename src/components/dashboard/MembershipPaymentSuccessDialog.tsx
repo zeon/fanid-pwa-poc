@@ -36,7 +36,7 @@ const MembershipPaymentSuccessDialog = ({ isOpen, onClose, artist }: MembershipP
               {t('dashboard.membershipSuccess.title')}
             </DialogTitle>
             <DialogDescription className="text-gray-400">
-              Your membership has been successfully activated
+              {t('dashboard.membershipSuccess.activationMessage')}
             </DialogDescription>
           </div>
         </DialogHeader>

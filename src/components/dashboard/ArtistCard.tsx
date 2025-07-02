@@ -16,17 +16,20 @@ interface Artist {
 interface ArtistCardProps {
   artist: Artist;
   onJoinClick: (artist: Artist) => void;
+  onEnterClick?: (artist: Artist) => void;
 }
 
-const ArtistCard = ({ artist, onJoinClick }: ArtistCardProps) => {
+const ArtistCard = ({ artist, onJoinClick, onEnterClick }: ArtistCardProps) => {
   const { t } = useTranslation();
 
   const handleJoinClick = () => {
     onJoinClick(artist);
   };
 
-  const handleViewClick = () => {
-    // TODO: Navigate to artist membership page
+  const handleEnterClick = () => {
+    if (onEnterClick) {
+      onEnterClick(artist);
+    }
   };
 
   return (
@@ -63,13 +66,13 @@ const ArtistCard = ({ artist, onJoinClick }: ArtistCardProps) => {
 
           {/* Action Button */}
           <CyberpunkButton
-            onClick={artist.isUserMember ? handleViewClick : handleJoinClick}
+            onClick={artist.isUserMember ? handleEnterClick : handleJoinClick}
             variant={artist.isUserMember ? "secondary" : "primary"}
             size="sm"
             className="w-full"
           >
             {artist.isUserMember
-              ? t('dashboard.membership.view')
+              ? t('dashboard.membership.enter')
               : t('dashboard.membership.join')
             }
           </CyberpunkButton>

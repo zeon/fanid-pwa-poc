@@ -25,6 +25,7 @@ import TixcraftEventDetail from "./pages/TixcraftEventDetail";
 import TixcraftPayment from "./pages/TixcraftPayment";
 import TixcraftPaymentConfirmed from "./pages/TixcraftPaymentConfirmed";
 import EntryStaff from "./pages/EntryStaff";
+import ArtistMembership from "./pages/ArtistMembership";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/active-tickets" element={<ActiveTickets />} />
               <Route path="/entry-verification-complete" element={<EntryVerificationComplete />} />
               <Route path="/entry-staff" element={<EntryStaff />} />
+              <Route path="/artist-membership/:artistId" element={<ArtistMembership />} />
               <Route path="/tixcraft/:eventid" element={<TixcraftEventDetail />} />
               <Route path="/tixcraft/:eventid/payment" element={<TixcraftPayment />} />
               <Route path="/tixcraft/payment-confirmed" element={<TixcraftPaymentConfirmed />} />

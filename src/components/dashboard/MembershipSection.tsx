@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ArtistCard from '@/components/dashboard/ArtistCard';
 import MembershipPaymentDialog from '@/components/dashboard/MembershipPaymentDialog';
@@ -16,6 +17,7 @@ interface Artist {
 
 const MembershipSection = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [artists, setArtists] = useState<Artist[]>([
     {
       id: 1,
@@ -47,6 +49,10 @@ const MembershipSection = () => {
   const handleJoinClick = (artist: Artist) => {
     setSelectedArtist(artist);
     setShowPaymentDialog(true);
+  };
+
+  const handleEnterClick = (artist: Artist) => {
+    navigate(`/artist-membership/${artist.id}`);
   };
 
   const handlePaymentSuccess = (artistId: number) => {
@@ -86,6 +92,7 @@ const MembershipSection = () => {
                 key={artist.id} 
                 artist={artist} 
                 onJoinClick={handleJoinClick}
+                onEnterClick={handleEnterClick}
               />
             ))}
           </div>
