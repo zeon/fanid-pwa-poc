@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Crown, Gift, ShoppingBag, Clock, Star, Music } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 
 const ArtistMembership = () => {
@@ -19,34 +20,47 @@ const ArtistMembership = () => {
     coverImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&h=400',
   };
 
-  const benefits = [
+  // Mock merchandise data
+  const merchandiseItems = [
     {
-      icon: Clock,
-      title: 'Early Access Queue',
-      description: 'Get priority access to ticket sales - jump ahead of the line!',
-      titleZh: '優先購票通道',
-      descriptionZh: '享有票券優先購買權 - 跳過排隊！'
+      id: 1,
+      name: 'VIP Concert Tee',
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=300&h=300',
+      originalPrice: 890,
+      memberPrice: 623,
+      discount: 30
     },
     {
-      icon: ShoppingBag,
-      title: 'Limited Edition Merchandise',
-      description: 'Exclusive merchandise only available to VIP members',
-      titleZh: '限量版周邊商品',
-      descriptionZh: '僅限VIP會員專享的獨家周邊商品'
+      id: 2,
+      name: 'Limited Edition Vinyl',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=300&h=300',
+      originalPrice: 1200,
+      memberPrice: 840,
+      discount: 30
     },
     {
-      icon: Gift,
-      title: 'Free Monthly Gift',
-      description: 'Receive surprise gifts and collectibles each month',
-      titleZh: '每月免費禮品',
-      descriptionZh: '每月收到驚喜禮品和收藏品'
+      id: 3,
+      name: 'Exclusive Photo Book',
+      image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=300&h=300',
+      originalPrice: 650,
+      memberPrice: 455,
+      discount: 30
+    }
+  ];
+
+  // Mock monthly gifts data
+  const monthlyGifts = [
+    {
+      month: 'December 2024',
+      name: 'Exclusive Badge Set',
+      image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=200&h=200',
+      status: 'available'
     },
     {
-      icon: Star,
-      title: 'Exclusive Content',
-      description: 'Behind-the-scenes videos and exclusive performances',
-      titleZh: '獨家內容',
-      descriptionZh: '幕後花絮影片和獨家演出'
+      month: 'January 2025',
+      name: 'Special Photo Cards',
+      image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=200&h=200',
+      status: 'upcoming'
     }
   ];
 
@@ -123,26 +137,76 @@ const ArtistMembership = () => {
           </CardContent>
         </Card>
 
-        {/* Member Benefits */}
-        <Card className="bg-gray-800/50 border-gray-700 mb-8">
+        {/* Early Access Queue Section */}
+        <Card className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 border-cyan-500/30 mb-8">
           <CardHeader>
             <CardTitle className="text-2xl text-white flex items-center">
-              <Crown className="w-6 h-6 text-yellow-400 mr-3" />
-              Your VIP Benefits
+              <Clock className="w-6 h-6 text-cyan-400 mr-3" />
+              {t('dashboard.artistMembership.earlyAccess.title')}
             </CardTitle>
+            <p className="text-gray-300">{t('dashboard.artistMembership.earlyAccess.subtitle')}</p>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="bg-gray-700/50 rounded-lg p-6 hover:bg-gray-700/70 transition-colors">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-cyan-500/20 p-3 rounded-lg">
-                      <benefit.icon className="w-6 h-6 text-cyan-400" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gray-800/50 rounded-lg p-6 text-center">
+                <div className="text-cyan-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.position')}</div>
+                <p className="text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.queueStatus')}</p>
+                <Badge className="mt-2 bg-green-500/20 text-green-400 border-green-500/30">
+                  {t('dashboard.artistMembership.earlyAccess.queueActive')}
+                </Badge>
+              </div>
+              <div className="bg-gray-800/50 rounded-lg p-6 text-center">
+                <div className="text-yellow-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.timeLeft')}</div>
+                <p className="text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextSale')}</p>
+              </div>
+              <div className="bg-gray-800/50 rounded-lg p-6 flex items-center justify-center">
+                <CyberpunkButton variant="primary" size="sm" className="w-full">
+                  <Clock className="w-4 h-4 mr-2" />
+                  {t('dashboard.artistMembership.earlyAccess.joinQueue')}
+                </CyberpunkButton>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Exclusive Merchandise Section */}
+        <Card className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/30 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-white flex items-center">
+              <ShoppingBag className="w-6 h-6 text-purple-400 mr-3" />
+              {t('dashboard.artistMembership.merchandise.title')}
+            </CardTitle>
+            <p className="text-gray-300">{t('dashboard.artistMembership.merchandise.subtitle')}</p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {merchandiseItems.map((item) => (
+                <div key={item.id} className="bg-gray-800/50 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                  <div className="relative">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <Badge className="absolute top-3 right-3 bg-red-500/90 text-white">
+                      {t('dashboard.artistMembership.merchandise.discount')}
+                    </Badge>
+                    <Badge className="absolute top-3 left-3 bg-yellow-500/90 text-black">
+                      {t('dashboard.artistMembership.merchandise.limitedEdition')}
+                    </Badge>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-white font-semibold mb-2">{item.name}</h4>
+                    <div className="flex items-center justify-between mb-3">
+                      <div>
+                        <span className="text-gray-400 line-through text-sm">${item.originalPrice}</span>
+                        <span className="text-cyan-400 font-bold ml-2">${item.memberPrice}</span>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-                      <p className="text-gray-300 text-sm">{benefit.description}</p>
-                    </div>
+                    <CyberpunkButton variant="secondary" size="sm" className="w-full">
+                      <ShoppingBag className="w-4 h-4 mr-2" />
+                      {t('dashboard.artistMembership.merchandise.shopNow')}
+                    </CyberpunkButton>
                   </div>
                 </div>
               ))}
@@ -150,12 +214,54 @@ const ArtistMembership = () => {
           </CardContent>
         </Card>
 
-        {/* Exclusive Content */}
+        {/* Monthly VIP Gifts Section */}
+        <Card className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border-green-500/30 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-white flex items-center">
+              <Gift className="w-6 h-6 text-green-400 mr-3" />
+              {t('dashboard.artistMembership.monthlyGift.title')}
+            </CardTitle>
+            <p className="text-gray-300">{t('dashboard.artistMembership.monthlyGift.subtitle')}</p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {monthlyGifts.map((gift, index) => (
+                <div key={index} className="bg-gray-800/50 rounded-lg p-6">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <img
+                      src={gift.image}
+                      alt={gift.name}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    />
+                    <div>
+                      <h4 className="text-white font-semibold">{gift.name}</h4>
+                      <p className="text-gray-400 text-sm">{gift.month}</p>
+                      <Badge className={gift.status === 'available' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'}>
+                        {gift.status === 'available' ? t('dashboard.artistMembership.monthlyGift.available') : t('dashboard.artistMembership.monthlyGift.nextGift')}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CyberpunkButton 
+                    variant={gift.status === 'available' ? 'primary' : 'secondary'} 
+                    size="sm" 
+                    className="w-full"
+                    disabled={gift.status !== 'available'}
+                  >
+                    <Gift className="w-4 h-4 mr-2" />
+                    {gift.status === 'available' ? t('dashboard.artistMembership.monthlyGift.claimGift') : t('dashboard.artistMembership.monthlyGift.nextGift')}
+                  </CyberpunkButton>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Remaining Benefits - Exclusive Content */}
         <Card className="bg-gray-800/50 border-gray-700">
           <CardHeader>
             <CardTitle className="text-2xl text-white flex items-center">
               <Star className="w-6 h-6 text-purple-400 mr-3" />
-              Exclusive Content
+              {t('dashboard.artistMembership.remainingBenefits.title')}
             </CardTitle>
           </CardHeader>
           <CardContent>

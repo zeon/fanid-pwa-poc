@@ -57,6 +57,41 @@
       "transactionId": "交易編號",
       "instructions": "請在場地入口處出示此QR碼以快速入場。您的數位票券現已在您的有效票券中供查看。",
       "gotIt": "知道了！"
+    },
+    "artistMembership": {
+      "earlyAccess": {
+        "title": "優先購票通道",
+        "subtitle": "跳過排隊，搶先獲得演唱會門票",
+        "queueStatus": "排隊狀態",
+        "position": "第1位",
+        "nextSale": "下次開賣",
+        "timeLeft": "2小時15分",
+        "joinQueue": "加入排隊",
+        "queueActive": "排隊中"
+      },
+      "merchandise": {
+        "title": "獨家周邊商品",
+        "subtitle": "僅限VIP會員的限量版商品",
+        "discount": "30% 折扣",
+        "memberPrice": "會員價",
+        "shopNow": "立即購買",
+        "limitedEdition": "限量版",
+        "exclusiveDesign": "獨家設計"
+      },
+      "monthlyGift": {
+        "title": "每月VIP禮品",
+        "subtitle": "每月驚喜收藏品配送",
+        "thisMonth": "本月禮品",
+        "claimGift": "領取禮品",
+        "nextGift": "下月禮品",
+        "giftHistory": "禮品記錄",
+        "claimed": "已領取",
+        "available": "可領取"
+      },
+      "remainingBenefits": {
+        "title": "其他VIP福利",
+        "exclusiveContent": "獨家內容與幕後花絮"
+      }
     }
   }
 }

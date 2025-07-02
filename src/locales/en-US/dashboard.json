@@ -57,6 +57,41 @@
       "transactionId": "Transaction ID",
       "instructions": "Show this QR code at the venue entrance for quick access. Your digital tickets are now available under 'Active Tickets'.",
       "gotIt": "Got it!"
+    },
+    "artistMembership": {
+      "earlyAccess": {
+        "title": "Priority Ticket Queue",
+        "subtitle": "Skip the line and get first access to concert tickets",
+        "queueStatus": "Queue Status",
+        "position": "Position #1",
+        "nextSale": "Next Sale",
+        "timeLeft": "2h 15m",
+        "joinQueue": "Join Queue",
+        "queueActive": "Queue Active"
+      },
+      "merchandise": {
+        "title": "Exclusive Merchandise",
+        "subtitle": "Limited edition items only for VIP members",
+        "discount": "30% OFF",
+        "memberPrice": "Member Price",
+        "shopNow": "Shop Now",
+        "limitedEdition": "Limited Edition",
+        "exclusiveDesign": "Exclusive Design"
+      },
+      "monthlyGift": {
+        "title": "Monthly VIP Gifts",
+        "subtitle": "Surprise collectibles delivered every month",
+        "thisMonth": "This Month's Gift",
+        "claimGift": "Claim Gift",
+        "nextGift": "Next Gift",
+        "giftHistory": "Gift History",
+        "claimed": "Claimed",
+        "available": "Available"
+      },
+      "remainingBenefits": {
+        "title": "Additional VIP Benefits",
+        "exclusiveContent": "Exclusive Content & Behind-the-Scenes"
+      }
     }
   }
 }
