@@ -8,5 +8,8 @@
     "switchTo": "Switch to {{language}}",
     "english": "English",
     "traditionalChinese": "繁體中文"
+  },
+  "common": {
+    "cancel": "Cancel"
   }
 }
