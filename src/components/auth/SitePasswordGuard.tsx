@@ -51,8 +51,6 @@ const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
             alt="FanVerse concert background"
             className="w-full h-full object-cover"
           />
-          {/* Dark overlay for better readability */}
-          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Password Dialog */}
