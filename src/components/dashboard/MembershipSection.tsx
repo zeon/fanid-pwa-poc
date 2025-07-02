@@ -11,22 +11,22 @@ const MembershipSection = () => {
   const artists = [
     {
       id: 1,
-      name: 'Taylor Swift',
-      image: '/lovable-uploads/246d4fa3-f3c0-4a99-87f2-59e45c844aaf.png',
+      name: '阿妹',
+      image: 'https://img.ltn.com.tw/Upload/ent/page/800/2024/09/18/phpOqkt14.jpg',
       isMember: true,
       isUserMember: true
     },
     {
       id: 2,
-      name: 'Ed Sheeran',
-      image: '/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png',
+      name: '周杰倫',
+      image: 'https://media.nownews.com/nn_media/thumbnail/2024/10/1729659811782-0b8ca40ae6954936a5185c7ea55f4d98-800x526.webp?unShow=false',
       isMember: false,
       isUserMember: false
     },
     {
       id: 3,
-      name: 'Ariana Grande',
-      image: '/lovable-uploads/2bc911c8-cdb2-4ffc-a233-b6188f01db67.png',
+      name: '五月天',
+      image: 'https://www.bin-music.com.tw/album/album/671625b9869aa+w700.jpg',
       isMember: false,
       isUserMember: false
     }
