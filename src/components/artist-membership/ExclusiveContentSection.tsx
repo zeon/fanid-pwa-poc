@@ -71,7 +71,7 @@ const ExclusiveContentSection = () => {
         
         <div className="mt-6 text-center">
           <CyberpunkButton variant="primary" size="sm">
-            View All Exclusive Content
+            {t('dashboard.artistMembership.exclusiveContent.viewAll')}
           </CyberpunkButton>
         </div>
       </CardContent>

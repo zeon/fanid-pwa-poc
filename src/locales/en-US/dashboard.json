@@ -59,6 +59,10 @@
       "gotIt": "Got it!"
     },
     "artistMembership": {
+      "welcome": {
+        "title": "Welcome to the VIP Experience!",
+        "message": "As a VIP member of {artistName}'s exclusive community, you now have access to premium benefits, exclusive content, and special privileges that make your fan experience truly extraordinary."
+      },
       "earlyAccess": {
         "title": "Priority Ticket Queue",
         "subtitle": "Skip the line and get first access to concert tickets",
@@ -91,6 +95,9 @@
       "remainingBenefits": {
         "title": "Additional VIP Benefits",
         "exclusiveContent": "Exclusive Content & Behind-the-Scenes"
+      },
+      "exclusiveContent": {
+        "viewAll": "View All Exclusive Content"
       }
     }
   }
