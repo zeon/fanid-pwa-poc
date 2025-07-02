@@ -29,6 +29,26 @@
       "view": "查看",
       "member": "會員"
     },
+    "membershipPayment": {
+      "title": "加入藝人會員",
+      "membershipType": "VIP會員",
+      "benefits": {
+        "title": "會員福利",
+        "exclusiveContent": "獨家內容與幕後花絮",
+        "earlyAccess": "演唱會門票優先購買",
+        "specialDiscounts": "周邊商品特別優惠"
+      },
+      "price": "$9.99",
+      "perMonth": "每月",
+      "processing": "處理中...",
+      "joinNow": "立即加入"
+    },
+    "membershipSuccess": {
+      "title": "歡迎加入社群！",
+      "membershipActive": "會員資格已啟用",
+      "message": "您現在是{{artistName}}專屬社群的會員！盡情享受您的高級福利和獲得獨家內容。",
+      "continue": "繼續"
+    },
     "ticketPurchaseSuccess": {
       "title": "票券購買成功！",
       "eventPurchased": "您已成功購買以下活動的票券：",

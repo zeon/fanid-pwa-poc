@@ -15,18 +15,17 @@ interface Artist {
 
 interface ArtistCardProps {
   artist: Artist;
+  onJoinClick: (artist: Artist) => void;
 }
 
-const ArtistCard = ({ artist }: ArtistCardProps) => {
+const ArtistCard = ({ artist, onJoinClick }: ArtistCardProps) => {
   const { t } = useTranslation();
 
   const handleJoinClick = () => {
-    
-    // TODO: Implement payment flow
+    onJoinClick(artist);
   };
 
   const handleViewClick = () => {
-    
     // TODO: Navigate to artist membership page
   };
 
