@@ -47,8 +47,8 @@ const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
           onClick={handleBackgroundClick}
         >
           <img 
-            src="/lovable-uploads/d233424f-9060-494d-8a38-b851116b5180.png"
-            alt="Concert crowd background"
+            src="/lovable-uploads/fe98752e-cbad-4ca8-b01b-b5443c11f022.png"
+            alt="FanVerse concert background"
             className="w-full h-full object-cover"
           />
           {/* Dark overlay for better readability */}

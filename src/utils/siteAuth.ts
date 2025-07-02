@@ -1,6 +1,6 @@
 
 const SITE_ACCESS_KEY = 'siteAccessGranted';
-const SITE_PASSWORD = '88fanid88';
+const SITE_PASSWORD = '88fanid88fv';
 
 export const checkSiteAccess = (): boolean => {
   const stored = localStorage.getItem(SITE_ACCESS_KEY);
