@@ -14,18 +14,15 @@ const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
   useEffect(() => {
     const access = checkSiteAccess();
     setHasAccess(access);
-    
-    if (!access) {
-      // Small delay to prevent flash of content
-      setTimeout(() => {
-        setShowPasswordDialog(true);
-      }, 100);
-    }
   }, []);
 
   const handleAccessGranted = () => {
     setHasAccess(true);
     setShowPasswordDialog(false);
+  };
+
+  const handleBackgroundClick = () => {
+    setShowPasswordDialog(true);
   };
 
   // Show loading state while checking access
@@ -40,13 +37,29 @@ const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
     );
   }
 
-  // Show password dialog if access is not granted
+  // Show password screen if access is not granted
   if (!hasAccess) {
     return (
-      <div className="min-h-screen bg-gray-900">
+      <div className="min-h-screen relative">
+        {/* Full-screen background image */}
+        <div 
+          className="absolute inset-0 cursor-pointer"
+          onClick={handleBackgroundClick}
+        >
+          <img 
+            src="/lovable-uploads/d233424f-9060-494d-8a38-b851116b5180.png"
+            alt="Concert crowd background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for better readability */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* Password Dialog */}
         <PasswordDialog
           isOpen={showPasswordDialog}
           onAccessGranted={handleAccessGranted}
+          onClose={() => setShowPasswordDialog(false)}
         />
       </div>
     );

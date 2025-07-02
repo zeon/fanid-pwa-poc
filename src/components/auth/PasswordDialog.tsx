@@ -9,9 +9,10 @@ import { validateSitePassword, grantSiteAccess } from '@/utils/siteAuth';
 interface PasswordDialogProps {
   isOpen: boolean;
   onAccessGranted: () => void;
+  onClose?: () => void;
 }
 
-const PasswordDialog = ({ isOpen, onAccessGranted }: PasswordDialogProps) => {
+const PasswordDialog = ({ isOpen, onAccessGranted, onClose }: PasswordDialogProps) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,8 +40,14 @@ const PasswordDialog = ({ isOpen, onAccessGranted }: PasswordDialogProps) => {
     if (error) setError(''); // Clear error when user starts typing
   };
 
+  const handleOpenChange = (open: boolean) => {
+    if (!open && onClose) {
+      onClose();
+    }
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}} modal>
+    <Dialog open={isOpen} onOpenChange={handleOpenChange} modal>
       <DialogContent 
         className="bg-gray-900 border-gray-700 text-white max-w-md"
         hideCloseButton
@@ -50,9 +57,6 @@ const PasswordDialog = ({ isOpen, onAccessGranted }: PasswordDialogProps) => {
             <Shield className="w-6 h-6" />
             <span>Site Access Required</span>
           </DialogTitle>
-          <DialogDescription className="text-gray-300 text-center">
-            This site is password protected. Please enter the access code to continue.
-          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6 py-4">
