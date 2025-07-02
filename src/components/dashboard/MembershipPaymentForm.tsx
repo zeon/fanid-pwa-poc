@@ -25,7 +25,7 @@ const MembershipPaymentForm = ({ form, onSubmit, onCancel, isProcessing }: Membe
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
       <div className="bg-gray-700/30 border border-gray-600 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Payment Information</h3>
+        <h3 className="text-lg font-semibold text-white mb-4">{t('dashboard.membershipPayment.paymentInformation')}</h3>
         <MembershipCreditCardForm form={form} />
       </div>
 

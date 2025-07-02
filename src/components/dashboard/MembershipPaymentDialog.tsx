@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import MembershipPaymentSummary from '@/components/dashboard/MembershipPaymentSummary';
 import MembershipPaymentMobileSummary from '@/components/dashboard/MembershipPaymentMobileSummary';
@@ -71,9 +71,6 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
           <DialogTitle className="text-xl font-bold text-center">
             {t('dashboard.membershipPayment.title')}
           </DialogTitle>
-          <DialogDescription className="text-center text-gray-400">
-            Join {artist.name}'s exclusive membership community
-          </DialogDescription>
         </DialogHeader>
 
         {/* Desktop Layout: Two Columns */}
