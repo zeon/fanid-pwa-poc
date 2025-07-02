@@ -61,17 +61,18 @@
     "artistMembership": {
       "welcome": {
         "title": "Welcome to the VIP Experience!",
-        "message": "As a VIP member of {artistName}'s exclusive community, you now have access to premium benefits, exclusive content, and special privileges that make your fan experience truly extraordinary."
+        "message": "As a VIP member of {{artistName}}'s exclusive community, you now have access to premium benefits, exclusive content, and special privileges that make your fan experience truly extraordinary."
       },
       "earlyAccess": {
         "title": "Priority Ticket Queue",
         "subtitle": "Skip the line and get first access to concert tickets",
         "queueStatus": "Queue Status",
         "position": "Position #254",
-        "nextSale": "Next Sale",
+        "nextLottery": "Next Lottery",
         "timeLeft": "2h 15m",
         "joinQueue": "Join Queue",
-        "queueActive": "Queue Active"
+        "queueActive": "Queue Active",
+        "queueCongratulations": "Congratulations! You are now in the VIP queue"
       },
       "merchandise": {
         "title": "Exclusive Merchandise",

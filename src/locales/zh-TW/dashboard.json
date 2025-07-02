@@ -61,17 +61,18 @@
     "artistMembership": {
       "welcome": {
         "title": "歡迎體驗VIP尊榮！",
-        "message": "作為 {artistName} 專屬社群的VIP會員，您現在可以享受頂級福利、獨家內容以及讓您的粉絲體驗更加非凡的特殊待遇。"
+        "message": "作為 {{artistName}} 專屬社群的VIP會員，您現在可以享受頂級福利、獨家內容以及讓您的粉絲體驗更加非凡的特殊待遇。"
       },
       "earlyAccess": {
         "title": "優先購票通道",
         "subtitle": "跳過排隊，搶先獲得演唱會門票",
         "queueStatus": "排隊狀態",
         "position": "第254位",
-        "nextSale": "下次開賣",
+        "nextLottery": "下次抽籤",
         "timeLeft": "2小時15分",
         "joinQueue": "加入排隊",
-        "queueActive": "排隊中"
+        "queueActive": "排隊中",
+        "queueCongratulations": "恭喜！您現在已進入VIP排隊行列"
       },
       "merchandise": {
         "title": "獨家周邊商品",
