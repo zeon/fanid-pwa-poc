@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -109,12 +108,12 @@ const ArtistMembership = () => {
           <img
             src={artist.image}
             alt={artist.name}
-            className="w-32 h-32 rounded-full object-cover border-4 border-yellow-400"
+            className="w-32 h-32 rounded-full object-cover border-4 border-cyan-400"
           />
           <div>
             <div className="flex items-center space-x-3 mb-2">
-              <Crown className="w-8 h-8 text-yellow-400" />
-              <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-4 py-1 rounded-full text-sm font-bold">
+              <Crown className="w-8 h-8 text-cyan-400" />
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-400 text-black px-4 py-1 rounded-full text-sm font-bold">
                 VIP MEMBER
               </span>
             </div>
@@ -126,10 +125,12 @@ const ArtistMembership = () => {
 
       <div className="max-w-6xl mx-auto p-6">
         {/* Welcome Message */}
-        <Card className="bg-gradient-to-r from-purple-900/50 to-cyan-900/50 border-purple-500/30 mb-8">
-          <CardContent className="p-8 text-center">
+        <Card className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="absolute inset-0 border border-cyan-500/20 rounded-lg"></div>
+          <CardContent className="relative p-8 text-center">
             <Music className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Welcome to the VIP Experience!</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">Welcome to the VIP Experience!</h2>
             <p className="text-gray-300 max-w-2xl mx-auto">
               As a VIP member of {artist.name}'s exclusive community, you now have access to premium benefits, 
               exclusive content, and special privileges that make your fan experience truly extraordinary.
@@ -138,29 +139,34 @@ const ArtistMembership = () => {
         </Card>
 
         {/* Early Access Queue Section */}
-        <Card className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 border-cyan-500/30 mb-8">
-          <CardHeader>
+        <Card className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="absolute inset-0 border border-cyan-500/20 rounded-lg"></div>
+          <CardHeader className="relative">
             <CardTitle className="text-2xl text-white flex items-center">
               <Clock className="w-6 h-6 text-cyan-400 mr-3" />
               {t('dashboard.artistMembership.earlyAccess.title')}
             </CardTitle>
             <p className="text-gray-300">{t('dashboard.artistMembership.earlyAccess.subtitle')}</p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-800/50 rounded-lg p-6 text-center">
-                <div className="text-cyan-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.position')}</div>
-                <p className="text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.queueStatus')}</p>
-                <Badge className="mt-2 bg-green-500/20 text-green-400 border-green-500/30">
+              <div className="bg-gray-700/50 border border-cyan-500/30 rounded-lg p-6 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-cyan-500/5"></div>
+                <div className="relative text-cyan-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.position')}</div>
+                <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.queueStatus')}</p>
+                <Badge className="relative mt-2 bg-cyan-500/20 text-cyan-400 border-cyan-500/50">
                   {t('dashboard.artistMembership.earlyAccess.queueActive')}
                 </Badge>
               </div>
-              <div className="bg-gray-800/50 rounded-lg p-6 text-center">
-                <div className="text-yellow-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.timeLeft')}</div>
-                <p className="text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextSale')}</p>
+              <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-purple-500/5"></div>
+                <div className="relative text-purple-400 text-2xl font-bold mb-2">{t('dashboard.artistMembership.earlyAccess.timeLeft')}</div>
+                <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextSale')}</p>
               </div>
-              <div className="bg-gray-800/50 rounded-lg p-6 flex items-center justify-center">
-                <CyberpunkButton variant="primary" size="sm" className="w-full">
+              <div className="bg-gray-700/50 border border-gray-600/50 rounded-lg p-6 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-purple-500/5"></div>
+                <CyberpunkButton variant="primary" size="sm" className="relative w-full">
                   <Clock className="w-4 h-4 mr-2" />
                   {t('dashboard.artistMembership.earlyAccess.joinQueue')}
                 </CyberpunkButton>
@@ -170,32 +176,35 @@ const ArtistMembership = () => {
         </Card>
 
         {/* Exclusive Merchandise Section */}
-        <Card className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 border-purple-500/30 mb-8">
-          <CardHeader>
+        <Card className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="absolute inset-0 border border-purple-500/20 rounded-lg"></div>
+          <CardHeader className="relative">
             <CardTitle className="text-2xl text-white flex items-center">
               <ShoppingBag className="w-6 h-6 text-purple-400 mr-3" />
               {t('dashboard.artistMembership.merchandise.title')}
             </CardTitle>
             <p className="text-gray-300">{t('dashboard.artistMembership.merchandise.subtitle')}</p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {merchandiseItems.map((item) => (
-                <div key={item.id} className="bg-gray-800/50 rounded-lg overflow-hidden hover:scale-105 transition-transform">
+                <div key={item.id} className="bg-gray-700/50 border border-purple-500/30 rounded-lg overflow-hidden hover:scale-105 transition-transform relative">
+                  <div className="absolute inset-0 bg-purple-500/5"></div>
                   <div className="relative">
                     <img
                       src={item.image}
                       alt={item.name}
                       className="w-full h-48 object-cover"
                     />
-                    <Badge className="absolute top-3 right-3 bg-red-500/90 text-white">
+                    <Badge className="absolute top-3 right-3 bg-cyan-500/90 text-white border-cyan-500">
                       {t('dashboard.artistMembership.merchandise.discount')}
                     </Badge>
-                    <Badge className="absolute top-3 left-3 bg-yellow-500/90 text-black">
+                    <Badge className="absolute top-3 left-3 bg-purple-500/90 text-white border-purple-500">
                       {t('dashboard.artistMembership.merchandise.limitedEdition')}
                     </Badge>
                   </div>
-                  <div className="p-4">
+                  <div className="relative p-4">
                     <h4 className="text-white font-semibold mb-2">{item.name}</h4>
                     <div className="flex items-center justify-between mb-3">
                       <div>
@@ -215,28 +224,31 @@ const ArtistMembership = () => {
         </Card>
 
         {/* Monthly VIP Gifts Section */}
-        <Card className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border-green-500/30 mb-8">
-          <CardHeader>
+        <Card className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-8 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="absolute inset-0 border border-cyan-500/20 rounded-lg"></div>
+          <CardHeader className="relative">
             <CardTitle className="text-2xl text-white flex items-center">
-              <Gift className="w-6 h-6 text-green-400 mr-3" />
+              <Gift className="w-6 h-6 text-cyan-400 mr-3" />
               {t('dashboard.artistMembership.monthlyGift.title')}
             </CardTitle>
             <p className="text-gray-300">{t('dashboard.artistMembership.monthlyGift.subtitle')}</p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {monthlyGifts.map((gift, index) => (
-                <div key={index} className="bg-gray-800/50 rounded-lg p-6">
-                  <div className="flex items-center space-x-4 mb-4">
+                <div key={index} className="bg-gray-700/50 border border-cyan-500/30 rounded-lg p-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-cyan-500/5"></div>
+                  <div className="relative flex items-center space-x-4 mb-4">
                     <img
                       src={gift.image}
                       alt={gift.name}
-                      className="w-16 h-16 rounded-lg object-cover"
+                      className="w-16 h-16 rounded-lg object-cover border border-cyan-500/30"
                     />
                     <div>
                       <h4 className="text-white font-semibold">{gift.name}</h4>
                       <p className="text-gray-400 text-sm">{gift.month}</p>
-                      <Badge className={gift.status === 'available' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'}>
+                      <Badge className={gift.status === 'available' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/50' : 'bg-purple-500/20 text-purple-400 border-purple-500/50'}>
                         {gift.status === 'available' ? t('dashboard.artistMembership.monthlyGift.available') : t('dashboard.artistMembership.monthlyGift.nextGift')}
                       </Badge>
                     </div>
@@ -244,7 +256,7 @@ const ArtistMembership = () => {
                   <CyberpunkButton 
                     variant={gift.status === 'available' ? 'primary' : 'secondary'} 
                     size="sm" 
-                    className="w-full"
+                    className="relative w-full"
                     disabled={gift.status !== 'available'}
                   >
                     <Gift className="w-4 h-4 mr-2" />
@@ -257,17 +269,20 @@ const ArtistMembership = () => {
         </Card>
 
         {/* Remaining Benefits - Exclusive Content */}
-        <Card className="bg-gray-800/50 border-gray-700">
-          <CardHeader>
+        <Card className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="absolute inset-0 border border-purple-500/20 rounded-lg"></div>
+          <CardHeader className="relative">
             <CardTitle className="text-2xl text-white flex items-center">
               <Star className="w-6 h-6 text-purple-400 mr-3" />
               {t('dashboard.artistMembership.remainingBenefits.title')}
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="relative">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {exclusiveContent.map((content, index) => (
-                <div key={index} className="bg-gray-700/50 rounded-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer">
+                <div key={index} className="bg-gray-700/50 border border-purple-500/30 rounded-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer relative">
+                  <div className="absolute inset-0 bg-purple-500/5"></div>
                   <div className="relative">
                     <img
                       src={content.thumbnail}
@@ -276,17 +291,17 @@ const ArtistMembership = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
                     <div className="absolute bottom-2 left-2">
-                      <span className="bg-cyan-500/80 text-white px-2 py-1 rounded text-xs font-medium">
+                      <span className="bg-cyan-500/80 text-white px-2 py-1 rounded text-xs font-medium border border-cyan-500/50">
                         {content.type}
                       </span>
                     </div>
                     <div className="absolute bottom-2 right-2">
-                      <span className="bg-gray-900/80 text-white px-2 py-1 rounded text-xs">
+                      <span className="bg-gray-900/80 text-white px-2 py-1 rounded text-xs border border-gray-600/50">
                         {content.duration}
                       </span>
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="relative p-4">
                     <h4 className="text-white font-medium">{content.title}</h4>
                   </div>
                 </div>
