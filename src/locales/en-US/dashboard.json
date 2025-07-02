@@ -1,3 +1,4 @@
+
 {
   "dashboard": {
     "title": "Welcome to the Future for Concert Ticketing",
@@ -66,13 +67,17 @@
         "title": "Priority Ticket Queue",
         "subtitle": "Skip the line and get first access to concert tickets",
         "queueStatus": "Queue Status",
-        "position": "Position #{{position}}",
-        "nextLottery": "Next Lottery",
+        "positionInQueue": "#{{position}} in the queue",
+        "nextLotteryStarts": "Next Lottery Starts",
         "timeLeft": "{{hours}}h {{minutes}}m",
         "joinQueue": "Join Queue",
         "queueActive": "Queue Active",
         "queueCongratulations": "Congratulations! You are now in the VIP queue",
-        "lotteryNotification": "You'll be notified when the lottery begins"
+        "lotteryNotification": "You'll be notified when the lottery begins",
+        "days": "days",
+        "hours": "hours",
+        "minutes": "minutes",
+        "seconds": "seconds"
       },
       "merchandise": {
         "title": "Exclusive Merchandise",

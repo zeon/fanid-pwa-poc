@@ -67,13 +67,17 @@
         "title": "優先購票通道",
         "subtitle": "跳過排隊，搶先獲得演唱會門票",
         "queueStatus": "排隊狀態",
-        "position": "第{{position}}位",
-        "nextLottery": "下次抽籤",
+        "positionInQueue": "排隊第{{position}}位",
+        "nextLotteryStarts": "下次抽籤開始",
         "timeLeft": "{{hours}}小時{{minutes}}分",
         "joinQueue": "加入排隊",
         "queueActive": "排隊中",
         "queueCongratulations": "恭喜！您現在已進入VIP排隊行列",
-        "lotteryNotification": "抽籤開始時將會通知您"
+        "lotteryNotification": "抽籤開始時將會通知您",
+        "days": "天",
+        "hours": "小時",
+        "minutes": "分鐘",
+        "seconds": "秒"
       },
       "merchandise": {
         "title": "獨家周邊商品",

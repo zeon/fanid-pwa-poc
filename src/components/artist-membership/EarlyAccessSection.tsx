@@ -19,13 +19,13 @@ const EarlyAccessSection = () => {
   const [timeLeftSeconds, setTimeLeftSeconds] = useState(259200);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
 
-  // Accelerated countdown timer effect (12 hours per second = 43200 seconds per second)
+  // Accelerated countdown timer effect (8 hours per second = 28800 seconds per second)
   useEffect(() => {
     if (!isCountdownActive) return;
 
     const timer = setInterval(() => {
       setTimeLeftSeconds(prev => {
-        const newTime = prev - 43200; // Decrement by 12 hours (43200 seconds)
+        const newTime = prev - 28800; // Decrement by 8 hours (28800 seconds)
         
         if (newTime <= 0) {
           setIsCountdownActive(false);
@@ -64,7 +64,7 @@ const EarlyAccessSection = () => {
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     
-    return `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${days.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.days')} : ${hours.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.hours')} : ${minutes.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.minutes')} : ${secs.toString().padStart(2, '0')} ${t('dashboard.artistMembership.earlyAccess.seconds')}`;
   };
 
   return (
@@ -84,7 +84,7 @@ const EarlyAccessSection = () => {
             <div className="bg-gray-700/50 border border-cyan-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-cyan-500/5"></div>
               <div className="relative text-cyan-400 text-2xl font-bold mb-2">
-                {t('dashboard.artistMembership.earlyAccess.position', { position: queuePosition })}
+                {t('dashboard.artistMembership.earlyAccess.positionInQueue', { position: queuePosition })}
               </div>
               <p className="relative text-gray-300 text-sm mb-4">{t('dashboard.artistMembership.earlyAccess.queueStatus')}</p>
               
@@ -109,11 +109,10 @@ const EarlyAccessSection = () => {
             
             <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5"></div>
-              <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono">
+              <div className="relative text-purple-400 text-lg font-bold mb-2 font-mono leading-relaxed">
                 {formatCountdown(timeLeftSeconds)}
               </div>
-              <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLottery')}</p>
-              <p className="relative text-gray-400 text-xs mt-1">DD:HH:MM:SS</p>
+              <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLotteryStarts')}</p>
             </div>
           </div>
         </CardContent>
