@@ -67,9 +67,9 @@
         "title": "Priority Ticket Queue",
         "subtitle": "Skip the line and get first access to concert tickets",
         "queueStatus": "Queue Status",
-        "position": "Position #254",
+        "position": "Position #{{position}}",
         "nextLottery": "Next Lottery",
-        "timeLeft": "2h 15m",
+        "timeLeft": "{{hours}}h {{minutes}}m",
         "joinQueue": "Join Queue",
         "queueActive": "Queue Active",
         "queueCongratulations": "Congratulations! You are now in the VIP queue"
