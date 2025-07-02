@@ -27,11 +27,11 @@ const QueueSuccessToast = ({ isOpen, onClose }: QueueSuccessToastProps) => {
               <div className="absolute inset-0 bg-cyan-400/20 rounded-full animate-pulse"></div>
             </div>
           </div>
-          <DialogTitle className="text-xl text-cyan-400 mb-2">
+          <DialogTitle className="text-xl text-cyan-400 mb-2 text-center">
             {t('dashboard.artistMembership.earlyAccess.queueCongratulations')}
           </DialogTitle>
-          <p className="text-gray-300 text-sm">
-            You'll be notified when the lottery begins
+          <p className="text-gray-300 text-sm text-center">
+            {t('dashboard.artistMembership.earlyAccess.lotteryNotification')}
           </p>
         </DialogHeader>
       </DialogContent>

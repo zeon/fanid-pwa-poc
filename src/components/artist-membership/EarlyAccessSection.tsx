@@ -12,25 +12,43 @@ const EarlyAccessSection = () => {
   const [isInQueue, setIsInQueue] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [queuePosition, setQueuePosition] = useState(254);
-  const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 15 });
+  
+  // Initialize with a specific target time for the next lottery (2 hours and 15 minutes from now)
+  const [targetTime] = useState(() => {
+    const now = new Date();
+    now.setHours(now.getHours() + 2);
+    now.setMinutes(now.getMinutes() + 15);
+    return now;
+  });
+  
+  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
-  // Countdown timer effect
+  // Live countdown timer effect
   useEffect(() => {
-    if (!isInQueue) return;
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const target = targetTime.getTime();
+      const difference = target - now;
 
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59 };
-        }
-        return prev;
-      });
-    }, 60000); // Update every minute
+      if (difference > 0) {
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
+        setTimeLeft({ hours, minutes, seconds });
+      } else {
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    // Update immediately
+    updateCountdown();
+    
+    // Update every second for live countdown
+    const timer = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(timer);
-  }, [isInQueue]);
+  }, [targetTime]);
 
   const handleJoinQueue = () => {
     setIsInQueue(true);
@@ -41,6 +59,17 @@ const EarlyAccessSection = () => {
     setTimeout(() => {
       setShowSuccessToast(false);
     }, 3000);
+  };
+
+  const formatTimeLeft = () => {
+    if (timeLeft.hours > 0) {
+      return t('dashboard.artistMembership.earlyAccess.timeLeft', { 
+        hours: timeLeft.hours, 
+        minutes: timeLeft.minutes 
+      });
+    } else {
+      return `${timeLeft.minutes}m ${timeLeft.seconds}s`;
+    }
   };
 
   return (
@@ -85,11 +114,8 @@ const EarlyAccessSection = () => {
             
             <div className="bg-gray-700/50 border border-purple-500/30 rounded-lg p-6 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5"></div>
-              <div className="relative text-purple-400 text-2xl font-bold mb-2">
-                {t('dashboard.artistMembership.earlyAccess.timeLeft', { 
-                  hours: timeLeft.hours, 
-                  minutes: timeLeft.minutes 
-                })}
+              <div className="relative text-purple-400 text-2xl font-bold mb-2 font-mono">
+                {formatTimeLeft()}
               </div>
               <p className="relative text-gray-300 text-sm">{t('dashboard.artistMembership.earlyAccess.nextLottery')}</p>
             </div>

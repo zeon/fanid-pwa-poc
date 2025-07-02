@@ -72,7 +72,8 @@
         "timeLeft": "{{hours}}小時{{minutes}}分",
         "joinQueue": "加入排隊",
         "queueActive": "排隊中",
-        "queueCongratulations": "恭喜！您現在已進入VIP排隊行列"
+        "queueCongratulations": "恭喜！您現在已進入VIP排隊行列",
+        "lotteryNotification": "抽籤開始時將會通知您"
       },
       "merchandise": {
         "title": "獨家周邊商品",
@@ -99,6 +100,12 @@
       },
       "exclusiveContent": {
         "viewAll": "查看所有獨家內容"
+      },
+      "badges": {
+        "vipMember": "VIP會員"
+      },
+      "community": {
+        "exclusiveMemberCommunity": "專屬會員社群"
       }
     }
   }

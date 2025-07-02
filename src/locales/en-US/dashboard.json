@@ -1,4 +1,3 @@
-
 {
   "dashboard": {
     "title": "Welcome to the Future for Concert Ticketing",
@@ -72,7 +71,8 @@
         "timeLeft": "{{hours}}h {{minutes}}m",
         "joinQueue": "Join Queue",
         "queueActive": "Queue Active",
-        "queueCongratulations": "Congratulations! You are now in the VIP queue"
+        "queueCongratulations": "Congratulations! You are now in the VIP queue",
+        "lotteryNotification": "You'll be notified when the lottery begins"
       },
       "merchandise": {
         "title": "Exclusive Merchandise",
@@ -99,6 +99,12 @@
       },
       "exclusiveContent": {
         "viewAll": "View All Exclusive Content"
+      },
+      "badges": {
+        "vipMember": "VIP MEMBER"
+      },
+      "community": {
+        "exclusiveMemberCommunity": "Exclusive Member Community"
       }
     }
   }
