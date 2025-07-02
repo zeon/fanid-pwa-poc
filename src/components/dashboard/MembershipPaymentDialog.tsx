@@ -3,11 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import CyberpunkButton from '@/components/auth/CyberpunkButton';
-import MembershipCreditCardForm from '@/components/dashboard/MembershipCreditCardForm';
 import { Separator } from '@/components/ui/separator';
-import { Star, Crown } from 'lucide-react';
+import MembershipPaymentSummary from '@/components/dashboard/MembershipPaymentSummary';
+import MembershipPaymentMobileSummary from '@/components/dashboard/MembershipPaymentMobileSummary';
+import MembershipPaymentForm from '@/components/dashboard/MembershipPaymentForm';
+import MembershipPaymentMobileForm from '@/components/dashboard/MembershipPaymentMobileForm';
 
 interface Artist {
   id: number;
@@ -76,182 +76,32 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={form.handleSubmit(handlePayment)}>
-          {/* Desktop Layout: Two Columns */}
-          <div className="hidden md:grid md:grid-cols-2 md:gap-8">
-            {/* Left Column: Summary */}
-            <div className="space-y-6">
-              {/* Artist Info */}
-              <Card className="bg-gray-700/50 border-gray-600">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src={artist.image}
-                      alt={artist.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-white">{artist.name}</h3>
-                      <div className="flex items-center text-yellow-400 text-sm">
-                        <Crown className="w-4 h-4 mr-1" />
-                        {t('dashboard.membershipPayment.membershipType')}
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
+        {/* Desktop Layout: Two Columns */}
+        <div className="hidden md:grid md:grid-cols-2 md:gap-8">
+          {/* Left Column: Summary */}
+          <MembershipPaymentSummary artist={artist} />
 
-              {/* Membership Benefits */}
-              <Card className="bg-gray-700/30 border-gray-600">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm font-semibold text-gray-300">
-                    {t('dashboard.membershipPayment.benefits.title')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <ul className="space-y-2 text-sm text-gray-400">
-                    <li className="flex items-center">
-                      <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                      {t('dashboard.membershipPayment.benefits.exclusiveContent')}
-                    </li>
-                    <li className="flex items-center">
-                      <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                      {t('dashboard.membershipPayment.benefits.earlyAccess')}
-                    </li>
-                    <li className="flex items-center">
-                      <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                      {t('dashboard.membershipPayment.benefits.specialDiscounts')}
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+          {/* Right Column: Payment Form */}
+          <MembershipPaymentForm
+            form={form}
+            onSubmit={handlePayment}
+            onCancel={onClose}
+            isProcessing={isProcessing}
+          />
+        </div>
 
-              {/* Price */}
-              <div className="text-center py-4">
-                <span className="text-3xl font-bold text-cyan-400">
-                  ${t('dashboard.membershipPayment.price')}
-                </span>
-                <span className="text-sm text-gray-400 ml-2">
-                  {t('dashboard.membershipPayment.perMonth')}
-                </span>
-              </div>
-            </div>
+        {/* Mobile Layout: Single Column */}
+        <form onSubmit={form.handleSubmit(handlePayment)} className="md:hidden space-y-4">
+          <MembershipPaymentMobileSummary artist={artist} />
+          
+          <Separator className="bg-gray-600" />
 
-            {/* Right Column: Payment Form */}
-            <div className="space-y-6">
-              <div className="bg-gray-700/30 border border-gray-600 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Payment Information</h3>
-                <MembershipCreditCardForm form={form} />
-              </div>
-
-              <div className="flex space-x-3">
-                <CyberpunkButton
-                  type="button"
-                  onClick={onClose}
-                  variant="secondary"
-                  size="sm"
-                  className="flex-1"
-                >
-                  {t('common.cancel')}
-                </CyberpunkButton>
-                <CyberpunkButton
-                  type="submit"
-                  variant="primary"
-                  size="sm"
-                  className="flex-1"
-                  disabled={isProcessing}
-                >
-                  {isProcessing ? t('dashboard.membershipPayment.processing') : t('dashboard.membershipPayment.joinNow')}
-                </CyberpunkButton>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Layout: Single Column */}
-          <div className="md:hidden space-y-4">
-            {/* Artist Info */}
-            <Card className="bg-gray-700/50 border-gray-600">
-              <CardHeader className="pb-3">
-                <div className="flex items-center space-x-3">
-                  <img
-                    src={artist.image}
-                    alt={artist.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-white">{artist.name}</h3>
-                    <div className="flex items-center text-yellow-400 text-sm">
-                      <Crown className="w-4 h-4 mr-1" />
-                      {t('dashboard.membershipPayment.membershipType')}
-                    </div>
-                  </div>
-                </div>
-              </CardHeader>
-            </Card>
-
-            {/* Membership Benefits */}
-            <Card className="bg-gray-700/30 border-gray-600">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-semibold text-gray-300">
-                  {t('dashboard.membershipPayment.benefits.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="space-y-1 text-sm text-gray-400">
-                  <li className="flex items-center">
-                    <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                    {t('dashboard.membershipPayment.benefits.exclusiveContent')}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                    {t('dashboard.membershipPayment.benefits.earlyAccess')}
-                  </li>
-                  <li className="flex items-center">
-                    <Star className="w-3 h-3 mr-2 text-yellow-400" />
-                    {t('dashboard.membershipPayment.benefits.specialDiscounts')}
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Price */}
-            <div className="text-center py-2">
-              <span className="text-2xl font-bold text-cyan-400">
-                ${t('dashboard.membershipPayment.price')}
-              </span>
-              <span className="text-sm text-gray-400 ml-2">
-                {t('dashboard.membershipPayment.perMonth')}
-              </span>
-            </div>
-
-            <Separator className="bg-gray-600" />
-
-            {/* Payment Form */}
-            <div className="bg-gray-700/30 border border-gray-600 rounded-lg p-4">
-              <MembershipCreditCardForm form={form} />
-            </div>
-
-            <div className="flex space-x-3">
-              <CyberpunkButton
-                type="button"
-                onClick={onClose}
-                variant="secondary"
-                size="sm"
-                className="flex-1"
-              >
-                {t('common.cancel')}
-              </CyberpunkButton>
-              <CyberpunkButton
-                type="submit"
-                variant="primary"
-                size="sm"
-                className="flex-1"
-                disabled={isProcessing}
-              >
-                {isProcessing ? t('dashboard.membershipPayment.processing') : t('dashboard.membershipPayment.joinNow')}
-              </CyberpunkButton>
-            </div>
-          </div>
+          <MembershipPaymentMobileForm
+            form={form}
+            onSubmit={handlePayment}
+            onCancel={onClose}
+            isProcessing={isProcessing}
+          />
         </form>
       </DialogContent>
     </Dialog>
