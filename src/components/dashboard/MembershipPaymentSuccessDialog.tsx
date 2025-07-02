@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import { CheckCircle, Crown } from 'lucide-react';
 
@@ -35,6 +35,9 @@ const MembershipPaymentSuccessDialog = ({ isOpen, onClose, artist }: MembershipP
             <DialogTitle className="text-xl font-bold">
               {t('dashboard.membershipSuccess.title')}
             </DialogTitle>
+            <DialogDescription className="text-gray-400">
+              Your membership has been successfully activated
+            </DialogDescription>
           </div>
         </DialogHeader>
 

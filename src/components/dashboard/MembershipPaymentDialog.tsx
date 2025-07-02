@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import MembershipCreditCardForm from '@/components/dashboard/MembershipCreditCardForm';
@@ -53,9 +53,8 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
       // Mock payment processing - simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Simulate successful payment
+      // Simulate successful payment - let parent handle the dialog sequence
       onPaymentSuccess(artist.id);
-      onClose();
     } catch (error) {
       console.error('Payment failed:', error);
     } finally {
@@ -72,6 +71,9 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
           <DialogTitle className="text-xl font-bold text-center">
             {t('dashboard.membershipPayment.title')}
           </DialogTitle>
+          <DialogDescription className="text-center text-gray-400">
+            Join {artist.name}'s exclusive membership community
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={form.handleSubmit(handlePayment)}>
@@ -127,7 +129,7 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
               {/* Price */}
               <div className="text-center py-4">
                 <span className="text-3xl font-bold text-cyan-400">
-                  {t('dashboard.membershipPayment.price')}
+                  ${t('dashboard.membershipPayment.price')}
                 </span>
                 <span className="text-sm text-gray-400 ml-2">
                   {t('dashboard.membershipPayment.perMonth')}
@@ -215,7 +217,7 @@ const MembershipPaymentDialog = ({ isOpen, onClose, artist, onPaymentSuccess }: 
             {/* Price */}
             <div className="text-center py-2">
               <span className="text-2xl font-bold text-cyan-400">
-                {t('dashboard.membershipPayment.price')}
+                ${t('dashboard.membershipPayment.price')}
               </span>
               <span className="text-sm text-gray-400 ml-2">
                 {t('dashboard.membershipPayment.perMonth')}

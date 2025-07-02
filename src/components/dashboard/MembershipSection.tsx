@@ -57,6 +57,7 @@ const MembershipSection = () => {
         : artist
     ));
     
+    // Close payment dialog and show success dialog
     setShowPaymentDialog(false);
     setShowSuccessDialog(true);
   };
