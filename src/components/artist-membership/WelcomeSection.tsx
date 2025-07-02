@@ -19,7 +19,7 @@ const WelcomeSection = ({ artistName }: WelcomeSectionProps) => {
         <Music className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
         <h2 className="text-2xl font-bold mb-4 text-white">{t('dashboard.artistMembership.welcome.title')}</h2>
         <p className="text-gray-300 max-w-2xl mx-auto">
-          {t('dashboard.artistMembership.welcome.message', {{ artistName }})}
+          {t('dashboard.artistMembership.welcome.message', { artistName })}
         </p>
       </CardContent>
     </Card>
