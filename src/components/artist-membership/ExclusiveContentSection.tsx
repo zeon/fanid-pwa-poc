@@ -10,19 +10,19 @@ const ExclusiveContentSection = () => {
 
   const exclusiveContent = [
     {
-      title: t('dashboard.artistMembership.exclusiveContent.items.behindTheScenes'),
+      title: 'Behind the Scenes: Studio Sessions',
       duration: '15:32',
       thumbnail: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=300&h=200',
       type: 'Video'
     },
     {
-      title: t('dashboard.artistMembership.exclusiveContent.items.acousticPerformance'),
+      title: 'Exclusive Acoustic Performance',
       duration: '8:45',
       thumbnail: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=300&h=200',
       type: 'Video'
     },
     {
-      title: t('dashboard.artistMembership.exclusiveContent.items.voiceMessages'),
+      title: 'Voice Messages from Artist',
       duration: '3:21',
       thumbnail: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=300&h=200',
       type: 'Audio'
