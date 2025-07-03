@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { checkSiteAccess } from '@/utils/siteAuth';
 import PasswordDialog from '@/components/auth/PasswordDialog';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface SitePasswordGuardProps {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ interface SitePasswordGuardProps {
 const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const access = checkSiteAccess();
@@ -47,7 +49,7 @@ const SitePasswordGuard = ({ children }: SitePasswordGuardProps) => {
           onClick={handleBackgroundClick}
         >
           <img 
-            src="/lovable-uploads/fe98752e-cbad-4ca8-b01b-b5443c11f022.png"
+            src={isMobile ? "/lovable-uploads/d233424f-9060-494d-8a38-b851116b5180.png" : "/lovable-uploads/fe98752e-cbad-4ca8-b01b-b5443c11f022.png"}
             alt="FanVerse concert background"
             className="w-full h-full object-cover"
           />
