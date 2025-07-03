@@ -1,23 +1,29 @@
 
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import ArtistMembershipHeader from '@/components/artist-membership/ArtistMembershipHeader';
 import WelcomeSection from '@/components/artist-membership/WelcomeSection';
 import EarlyAccessSection from '@/components/artist-membership/EarlyAccessSection';
 import MerchandiseSection from '@/components/artist-membership/MerchandiseSection';
 import MonthlyGiftsSection from '@/components/artist-membership/MonthlyGiftsSection';
 import ExclusiveContentSection from '@/components/artist-membership/ExclusiveContentSection';
+import { getArtistById } from '@/data/artistsData';
 
 const ArtistMembership = () => {
   const { artistId } = useParams();
+  
+  // Get artist data based on the artistId parameter
+  const artist = getArtistById(parseInt(artistId || '0'));
 
-  // Mock artist data - in a real app this would be fetched based on artistId
-  const artist = {
-    id: parseInt(artistId || '1'),
-    name: '阿妹',
-    image: 'https://img.ltn.com.tw/Upload/ent/page/800/2024/09/18/phpOqkt14.jpg',
-    coverImage: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&h=400',
-  };
+  // If artist not found, redirect to dashboard
+  if (!artist) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  // If user is not a member of this artist, redirect to dashboard
+  if (!artist.isUserMember) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">

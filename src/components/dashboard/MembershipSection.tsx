@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ArtistCard from '@/components/dashboard/ArtistCard';
 import MembershipPaymentDialog from '@/components/dashboard/MembershipPaymentDialog';
 import MembershipPaymentSuccessDialog from '@/components/dashboard/MembershipPaymentSuccessDialog';
+import { artistsData } from '@/data/artistsData';
 
 interface Artist {
   id: number;
@@ -18,29 +19,7 @@ interface Artist {
 const MembershipSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [artists, setArtists] = useState<Artist[]>([
-    {
-      id: 1,
-      name: '阿妹',
-      image: 'https://img.ltn.com.tw/Upload/ent/page/800/2024/09/18/phpOqkt14.jpg',
-      isMember: true,
-      isUserMember: true
-    },
-    {
-      id: 2,
-      name: '周杰倫',
-      image: 'https://media.nownews.com/nn_media/thumbnail/2024/10/1729659811782-0b8ca40ae6954936a5185c7ea55f4d98-800x526.webp?unShow=false',
-      isMember: false,
-      isUserMember: false
-    },
-    {
-      id: 3,
-      name: '五月天',
-      image: 'https://cdn.hk01.com/di/media/images/dw/20201109/402509627490570240781906.jpeg/PDt8V7e5E1VDwKOXk3JDpfcz18CsAgo-6XFDbelxQ20?v=w1600r16_9',
-      isMember: false,
-      isUserMember: false
-    }
-  ]);
+  const [artists, setArtists] = useState<Artist[]>(artistsData);
 
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
