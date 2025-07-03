@@ -35,7 +35,7 @@ const ArtistMembershipHeader = ({ artist }: ArtistMembershipHeaderProps) => {
       </button>
 
       {/* Artist Info */}
-      <div className="absolute bottom-6 left-6 flex items-end space-x-6">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-end space-x-6">
         <img
           src={artist.image}
           alt={artist.name}
