@@ -7,12 +7,13 @@ import EarlyAccessSection from '@/components/artist-membership/EarlyAccessSectio
 import MerchandiseSection from '@/components/artist-membership/MerchandiseSection';
 import MonthlyGiftsSection from '@/components/artist-membership/MonthlyGiftsSection';
 import ExclusiveContentSection from '@/components/artist-membership/ExclusiveContentSection';
-import { getArtistById } from '@/data/artistsData';
+import { useArtistMembership } from '@/contexts/ArtistMembershipContext';
 
 const ArtistMembership = () => {
   const { artistId } = useParams();
+  const { getArtistById } = useArtistMembership();
   
-  // Get artist data based on the artistId parameter
+  // Get artist data based on the artistId parameter from global context
   const artist = getArtistById(parseInt(artistId || '0'));
 
   // If artist not found, redirect to dashboard

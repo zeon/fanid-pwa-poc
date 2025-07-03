@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ArtistCard from '@/components/dashboard/ArtistCard';
 import MembershipPaymentDialog from '@/components/dashboard/MembershipPaymentDialog';
 import MembershipPaymentSuccessDialog from '@/components/dashboard/MembershipPaymentSuccessDialog';
-import { artistsData } from '@/data/artistsData';
+import { useArtistMembership } from '@/contexts/ArtistMembershipContext';
 
 interface Artist {
   id: number;
@@ -19,7 +19,7 @@ interface Artist {
 const MembershipSection = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [artists, setArtists] = useState<Artist[]>(artistsData);
+  const { artists, updateMembershipStatus } = useArtistMembership();
 
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
@@ -35,12 +35,8 @@ const MembershipSection = () => {
   };
 
   const handlePaymentSuccess = (artistId: number) => {
-    // Update the artist's membership status
-    setArtists(prev => prev.map(artist => 
-      artist.id === artistId 
-        ? { ...artist, isUserMember: true }
-        : artist
-    ));
+    // Update the artist's membership status using context
+    updateMembershipStatus(artistId, true);
     
     // Close payment dialog and show success dialog
     setShowPaymentDialog(false);
