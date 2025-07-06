@@ -16,6 +16,13 @@ const Dashboard = () => {
   const [showRefundSuccess, setShowRefundSuccess] = useState(false);
   const [refundedEvent, setRefundedEvent] = useState<Event | null>(null);
 
+  // Mock user data - in a real app, this would come from authentication context
+  const user = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    initials: 'JD'
+  };
+
   useEffect(() => {
     if (location.state?.showRefundSuccess && location.state?.refundedEvent) {
       setShowRefundSuccess(true);
@@ -57,7 +64,7 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <DashboardHeader />
+        <DashboardHeader user={user} />
         <div className="max-w-7xl mx-auto p-6 space-y-8">
           <DashboardStats />
           <MembershipSection />
