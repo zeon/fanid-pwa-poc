@@ -24,6 +24,7 @@ import NotFound from "./pages/NotFound";
 import TixcraftEventDetail from "./pages/TixcraftEventDetail";
 import TixcraftPayment from "./pages/TixcraftPayment";
 import TixcraftPaymentConfirmed from "./pages/TixcraftPaymentConfirmed";
+import TixcraftRefund from "./pages/TixcraftRefund";
 import EntryStaff from "./pages/EntryStaff";
 import ArtistMembership from "./pages/ArtistMembership";
 
@@ -55,6 +56,7 @@ const App = () => (
               <Route path="/artist-membership/:artistId" element={<ArtistMembership />} />
               <Route path="/tixcraft/:eventid" element={<TixcraftEventDetail />} />
               <Route path="/tixcraft/:eventid/payment" element={<TixcraftPayment />} />
+              <Route path="/tixcraft/:eventid/refund" element={<TixcraftRefund />} />
               <Route path="/tixcraft/payment-confirmed" element={<TixcraftPaymentConfirmed />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

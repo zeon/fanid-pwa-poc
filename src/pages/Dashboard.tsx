@@ -1,46 +1,39 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import DashboardEvents from '@/components/dashboard/DashboardEvents';
 import MembershipSection from '@/components/dashboard/MembershipSection';
-import TicketPurchaseSuccessDialog from '@/components/dashboard/TicketPurchaseSuccessDialog';
+import RefundSuccessDialog from '@/components/dashboard/RefundSuccessDialog';
+import { Event } from '@/data/eventsData';
 
 const Dashboard = () => {
-  const { t } = useTranslation();
-  const location = useLocation();
   const navigate = useNavigate();
-  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
-  const [purchaseData, setPurchaseData] = useState<any>(null);
-  
-  // Mock user data - in a real app this would come from auth context
-  const user = {
-    name: 'Alex Chen',
-    email: 'alex.chen@example.com',
-    initials: 'AC'
-  };
+  const location = useLocation();
+  const { t } = useTranslation();
+  const [showRefundSuccess, setShowRefundSuccess] = useState(false);
+  const [refundedEvent, setRefundedEvent] = useState<Event | null>(null);
 
   useEffect(() => {
-    // Check if we're coming from a successful purchase
-    if (location.state?.fromPurchase && location.state?.transactionData) {
-      setPurchaseData(location.state.transactionData);
-      setShowSuccessDialog(true);
+    if (location.state?.showRefundSuccess && location.state?.refundedEvent) {
+      setShowRefundSuccess(true);
+      setRefundedEvent(location.state.refundedEvent);
       
-      // Clear the location state to prevent showing dialog on refresh
-      navigate(location.pathname, { replace: true });
+      // Clear the state to prevent showing the dialog again on refresh
+      navigate('/dashboard', { replace: true });
     }
-  }, [location, navigate]);
+  }, [location.state, navigate]);
 
-  const handleCloseSuccessDialog = () => {
-    setShowSuccessDialog(false);
-    setPurchaseData(null);
+  const handleCloseRefundSuccess = () => {
+    setShowRefundSuccess(false);
+    setRefundedEvent(null);
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-      {/* Enhanced Background Effects with reduced grid opacity */}
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0" style={{
           backgroundImage: `
@@ -62,35 +55,22 @@ const Dashboard = () => {
       <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      {/* Header */}
-      <DashboardHeader user={user} />
-
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto p-6 relative z-10">
-        
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h2>
-          <p className="text-gray-400">{t('dashboard.subtitle')}</p>
-        </div>
-
-        <DashboardStats />
-
-        <div className="mt-8">
+      <div className="relative z-10">
+        <DashboardHeader />
+        <div className="max-w-7xl mx-auto p-6 space-y-8">
+          <DashboardStats />
           <MembershipSection />
-        </div>
-
-        <div className="mt-8">
           <DashboardEvents />
         </div>
       </div>
 
-      {/* Success Dialog */}
-      {showSuccessDialog && purchaseData && (
-        <TicketPurchaseSuccessDialog
-          isOpen={showSuccessDialog}
-          onClose={handleCloseSuccessDialog}
-          eventName={purchaseData.eventName}
-          transactionId={purchaseData.transactionId}
+      {/* Refund Success Dialog */}
+      {showRefundSuccess && refundedEvent && (
+        <RefundSuccessDialog
+          isOpen={showRefundSuccess}
+          onClose={handleCloseRefundSuccess}
+          event={refundedEvent}
         />
       )}
     </div>
