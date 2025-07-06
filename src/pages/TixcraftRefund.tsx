@@ -35,43 +35,52 @@ const TixcraftRefund = () => {
     });
   };
 
-  const handleBackToDashboard = () => {
+  const handleBackToFanVerse = () => {
     navigate('/dashboard');
   };
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <p>Event not found</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Tixcraft Header */}
-      <div className="bg-white border-b border-gray-200 p-4">
-        <div className="max-w-4xl mx-auto flex items-center space-x-4">
-          <Button
-            onClick={handleBackToDashboard}
-            variant="ghost"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            {t('tixcraft.refund.backToDashboard')}
-          </Button>
-          <div className="w-8 h-0.5 bg-gray-300"></div>
-          <h1 className="text-2xl font-bold text-gray-900">
-            {t('tixcraft.refund.title')}
-          </h1>
+    <div className="min-h-screen bg-gray-50">
+      {/* Tixcraft Header with Blue Styling */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 shadow-lg">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center justify-between mb-2">
+            <Button
+              onClick={handleBackToFanVerse}
+              variant="ghost"
+              className="text-white hover:bg-white/10 hover:text-white"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              {t('tixcraft.refund.backToFanVerse')}
+            </Button>
+          </div>
+          <div className="text-center">
+            <h1 className="text-3xl font-bold tracking-wider">TIXCRAFT</h1>
+            <div className="w-16 h-0.5 bg-white/50 mx-auto mt-2"></div>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto p-6">
         <div className="space-y-6">
+          {/* Page Title */}
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              {t('tixcraft.refund.title')}
+            </h2>
+          </div>
+
           {/* Event Info */}
-          <Card>
+          <Card className="shadow-md">
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 <img 
@@ -80,7 +89,7 @@ const TixcraftRefund = () => {
                   className="w-16 h-16 object-cover rounded-lg"
                 />
                 <div>
-                  <h2 className="text-xl font-bold">{event.name}</h2>
+                  <h3 className="text-xl font-bold text-gray-900">{event.name}</h3>
                   <p className="text-gray-600">{event.date} • {event.venue}</p>
                 </div>
               </CardTitle>
@@ -88,7 +97,7 @@ const TixcraftRefund = () => {
           </Card>
 
           {/* Refund Status Card */}
-          <Card>
+          <Card className="shadow-md">
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 {isEligible ? (
@@ -136,7 +145,7 @@ const TixcraftRefund = () => {
                   <Button
                     onClick={handleConfirmRefund}
                     disabled={isProcessing}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 font-semibold"
                   >
                     {isProcessing 
                       ? 'Processing...' 
@@ -148,10 +157,10 @@ const TixcraftRefund = () => {
 
               {!isEligible && (
                 <Button
-                  onClick={handleBackToDashboard}
-                  className="w-full bg-gray-600 hover:bg-gray-700 text-white py-3"
+                  onClick={handleBackToFanVerse}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 font-semibold"
                 >
-                  {t('tixcraft.refund.backToDashboard')}
+                  {t('tixcraft.refund.backToFanVerse')}
                 </Button>
               )}
             </CardContent>
