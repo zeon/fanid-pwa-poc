@@ -40,16 +40,19 @@ const RefundSuccessDialog = ({
           <AlertDialogTitle className="text-green-400 text-xl font-bold uppercase tracking-wider drop-shadow-[0_0_10px_rgba(34,197,94,0.3)]">
             {t('tickets.refund.successTitle')}
           </AlertDialogTitle>
-          <AlertDialogDescription className="text-gray-300 mt-4">
-            <div className="space-y-3">
-              <div className="bg-gray-800/50 rounded-lg p-3 border border-cyan-500/30">
-                <p className="font-semibold text-cyan-400 text-sm uppercase tracking-wide">{event.name}</p>
-                <p className="text-xs text-gray-400 mt-1">{event.date} • {event.venue}</p>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">{t('tickets.refund.successMessage')}</p>
-            </div>
-          </AlertDialogDescription>
         </AlertDialogHeader>
+        
+        {/* Event details section - moved outside AlertDialogDescription to avoid nesting issues */}
+        <div className="relative z-10 px-6 space-y-3">
+          <div className="bg-gray-800/50 rounded-lg p-3 border border-cyan-500/30">
+            <p className="font-semibold text-cyan-400 text-sm uppercase tracking-wide">{event.name}</p>
+            <p className="text-xs text-gray-400 mt-1">{event.date} • {event.venue}</p>
+          </div>
+          <AlertDialogDescription className="text-gray-300 text-sm leading-relaxed">
+            {t('tickets.refund.successMessage')}
+          </AlertDialogDescription>
+        </div>
+        
         <AlertDialogFooter className="relative z-10">
           <AlertDialogAction 
             onClick={onClose} 
