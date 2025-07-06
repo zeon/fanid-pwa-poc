@@ -21,7 +21,7 @@
       "recipientEmail": "收件人電子郵件",
       "emailPlaceholder": "輸入收件人的電子郵件地址",
       "selectTicket": "選擇要轉讓的票券",
-      "ticketNumber": "票券 #{number}",
+      "ticketNumber": "票券 #{{number}}",
       "confirmTitle": "確認轉讓",
       "confirmMessage": "已找到用戶。您確定嗎？此步驟無法撤銷。",
       "confirming": "確認中...",
