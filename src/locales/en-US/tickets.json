@@ -22,7 +22,7 @@
       "recipientEmail": "Recipient Email",
       "emailPlaceholder": "Enter recipient's email address",
       "selectTicket": "Select Ticket to Transfer",
-      "ticketNumber": "Ticket #{number}",
+      "ticketNumber": "Ticket #{{number}}",
       "confirmTitle": "Confirm Transfer",
       "confirmMessage": "User found. Are you sure? This step cannot be reverted.",
       "confirming": "Confirming...",
