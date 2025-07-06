@@ -73,20 +73,15 @@ const TicketTransferDialog = ({
     const ticketCount = event.ticketQuantity || 1;
     const options = [];
     
-    console.log('Rendering ticket options:', { ticketCount, eventId: event.id });
-    
     for (let i = 1; i <= ticketCount; i++) {
       // Debug translation interpolation
       const translatedText = t('tickets.transfer.ticketNumber', { number: i });
-      console.log(`Ticket #${i} translation:`, translatedText);
       
       // Create fallback display
       const ticketLabel = translatedText.includes('{{number}}') 
         ? `Ticket #${i}` 
-        : translatedText;
-      
-      console.log(`Final ticket label for #${i}:`, ticketLabel);
-      
+        : translatedText;      
+     
       options.push(
         <div key={i} className="flex items-center space-x-2">
           <RadioGroupItem 
