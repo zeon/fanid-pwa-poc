@@ -7,12 +7,29 @@
     "ticketFor": "票券",
     "venue": "場地",
     "date": "日期",
+    "ticketQuantity": "{{count}} 張票券",
     "qrCodeTitle": "入場QR碼",
     "qrCodeDescription": "請在場地入口處出示此QR碼以快速入場",
     "autoRedirect": "{{seconds}} 秒後將自動跳轉到人臉驗證...",
     "redirecting": "正在跳轉到人臉驗證...",
     "noActiveTickets": "沒有有效票券",
-    "noActiveTicketsDesc": "您目前沒有任何有效票券。"
+    "noActiveTicketsDesc": "您目前沒有任何有效票券。",
+    "transfer": {
+      "title": "轉讓票券",
+      "transfer": "轉讓",
+      "transferring": "轉讓中...",
+      "recipientEmail": "收件人電子郵件",
+      "emailPlaceholder": "輸入收件人的電子郵件地址",
+      "selectTicket": "選擇要轉讓的票券",
+      "ticketNumber": "票券 #{number}",
+      "confirmTitle": "確認轉讓",
+      "confirmMessage": "已找到用戶。您確定嗎？此步驟無法撤銷。",
+      "confirming": "確認中...",
+      "successTitle": "轉讓成功",
+      "successMessage": "票券已成功轉讓。確認電子郵件已發送給用戶。",
+      "notFoundTitle": "找不到用戶",
+      "notFoundMessage": "您輸入的電子郵件地址未在我們的系統中註冊。請檢查電子郵件並重試。"
+    }
   },
   "entryVerification": {
     "success": {
@@ -29,5 +46,10 @@
       "entrySubtitle": "驗證您的身份以兌換票券並進入會場",
       "entryNotice": "正在掃描您的人臉以驗證入場票券"
     }
+  },
+  "common": {
+    "cancel": "取消",
+    "confirm": "確認",
+    "ok": "確定"
   }
 }

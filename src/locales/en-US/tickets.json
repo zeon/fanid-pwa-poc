@@ -7,12 +7,30 @@
     "ticketFor": "Ticket for",
     "venue": "Venue",
     "date": "Date",
+    "ticketQuantity": "{{count}} ticket",
+    "ticketQuantity_plural": "{{count}} tickets",
     "qrCodeTitle": "Entry QR Code",
     "qrCodeDescription": "Show this QR code at the venue entrance for quick access",
     "autoRedirect": "Redirecting to face verification in {{seconds}} seconds...",
     "redirecting": "Redirecting to face verification...",
     "noActiveTickets": "No Active Tickets",
-    "noActiveTicketsDesc": "You don't have any active tickets at the moment."
+    "noActiveTicketsDesc": "You don't have any active tickets at the moment.",
+    "transfer": {
+      "title": "Transfer Ticket",
+      "transfer": "Transfer",
+      "transferring": "Transferring...",
+      "recipientEmail": "Recipient Email",
+      "emailPlaceholder": "Enter recipient's email address",
+      "selectTicket": "Select Ticket to Transfer",
+      "ticketNumber": "Ticket #{number}",
+      "confirmTitle": "Confirm Transfer",
+      "confirmMessage": "User found. Are you sure? This step cannot be reverted.",
+      "confirming": "Confirming...",
+      "successTitle": "Transfer Successful",
+      "successMessage": "Ticket successfully transferred. A confirmation email has been sent to the user.",
+      "notFoundTitle": "User Not Found",
+      "notFoundMessage": "The email address you entered is not registered in our system. Please check the email and try again."
+    }
   },
   "entryVerification": {
     "success": {
@@ -29,5 +47,10 @@
       "entrySubtitle": "Verify your identity to redeem your ticket and enter the venue",
       "entryNotice": "Scanning your face to verify your ticket for venue entry"
     }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "ok": "OK"
   }
 }
