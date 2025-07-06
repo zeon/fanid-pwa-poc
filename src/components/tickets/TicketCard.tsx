@@ -58,7 +58,7 @@ const TicketCard = ({
               <QrCode className="h-4 w-4 mr-2" />
               {t('tickets.showQRCode')}
             </Button>
-            <Button onClick={() => setShowTransferDialog(true)} variant="outline" className="flex-1 border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
+            <Button onClick={() => setShowTransferDialog(true)} variant="outline" className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-400">
               <Send className="h-4 w-4 mr-2" />
               {t('tickets.transfer.transfer')}
             </Button>
