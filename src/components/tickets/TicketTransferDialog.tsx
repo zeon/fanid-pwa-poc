@@ -72,12 +72,34 @@ const TicketTransferDialog = ({
   const renderTicketOptions = () => {
     const ticketCount = event.ticketQuantity || 1;
     const options = [];
+    
+    console.log('Rendering ticket options:', { ticketCount, eventId: event.id });
+    
     for (let i = 1; i <= ticketCount; i++) {
+      // Debug translation interpolation
+      const translatedText = t('tickets.transfer.ticketNumber', { number: i });
+      console.log(`Ticket #${i} translation:`, translatedText);
+      
+      // Create fallback display
+      const ticketLabel = translatedText.includes('{{number}}') 
+        ? `Ticket #${i}` 
+        : translatedText;
+      
+      console.log(`Final ticket label for #${i}:`, ticketLabel);
+      
       options.push(
         <div key={i} className="flex items-center space-x-2">
-          <RadioGroupItem value={`ticket-${i}`} id={`ticket-${i}`} />
-          <Label htmlFor={`ticket-${i}`} className="text-white">
-            {t('tickets.transfer.ticketNumber', { number: i })} - {event.ticketType}
+          <RadioGroupItem 
+            value={`ticket-${i}`} 
+            id={`ticket-${i}`}
+            aria-describedby={`ticket-${i}-description`}
+          />
+          <Label 
+            htmlFor={`ticket-${i}`} 
+            className="text-white cursor-pointer"
+            id={`ticket-${i}-description`}
+          >
+            {ticketLabel} - {event.ticketType}
           </Label>
         </div>
       );
@@ -112,12 +134,21 @@ const TicketTransferDialog = ({
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t('tickets.transfer.emailPlaceholder')}
                 className="bg-gray-700 border-gray-600 text-white"
+                aria-describedby="email-helper"
               />
+              <div id="email-helper" className="sr-only">
+                {t('tickets.transfer.emailPlaceholder')}
+              </div>
             </div>
             
             <div className="space-y-3">
               <Label className="text-white">{t('tickets.transfer.selectTicket')}</Label>
-              <RadioGroup value={selectedTicket} onValueChange={setSelectedTicket} className="space-y-2">
+              <RadioGroup 
+                value={selectedTicket} 
+                onValueChange={setSelectedTicket} 
+                className="space-y-2"
+                aria-label={t('tickets.transfer.selectTicket')}
+              >
                 {renderTicketOptions()}
               </RadioGroup>
             </div>
@@ -144,6 +175,7 @@ const TicketTransferDialog = ({
         </DialogContent>
       </Dialog>
 
+      
       <AlertDialog open={currentStep === 'confirmation'} onOpenChange={() => {}}>
         <AlertDialogContent className="bg-gray-800 border-gray-700 text-white">
           <AlertDialogHeader>
