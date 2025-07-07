@@ -46,7 +46,7 @@
       "subtitle": "Your identity has been verified successfully",
       "readyMessage": "Your ticket is now redeemed and you are ready to enter the concert",
       "backToTickets": "Back to Active Tickets",
-      "backToDashboard": "Back to Dashboard"
+      "backToDashboard": "Back to FanVerse"
     }
   },
   "auth": {
@@ -76,7 +76,7 @@
         "description": "Unfortunately, this ticket is not eligible for refund according to the event's refund policy.",
         "reason": "Refund period has expired or event policy does not allow refunds."
       },
-      "backToDashboard": "Back to Dashboard"
+      "backToDashboard": "Back to FanVerse"
     }
   }
 }
