@@ -45,7 +45,7 @@
       "subtitle": "您的身份已成功驗證",
       "readyMessage": "您的票券已兌換完成，現在可以進入演唱會會場",
       "backToTickets": "返回有效票券",
-      "backToDashboard": "返回控制台"
+      "backToDashboard": "返回 FanVerse"
     }
   },
   "auth": {
@@ -75,7 +75,7 @@
         "description": "很抱歉，根據活動退款政策，此票券不符合退款資格。",
         "reason": "退款期限已過或活動政策不允許退款。"
       },
-      "backToDashboard": "返回控制台"
+      "backToDashboard": "返回 FanVerse"
     }
   }
 }
