@@ -18,9 +18,9 @@ const Dashboard = () => {
 
   // Mock user data - in a real app, this would come from authentication context
   const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    initials: 'JD'
+    name: 'Alex Chen',
+    email: 'alex.chen@example.com',
+    initials: 'AC'
   };
 
   useEffect(() => {
