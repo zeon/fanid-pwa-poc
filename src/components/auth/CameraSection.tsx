@@ -55,7 +55,7 @@ const CameraSection = ({
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
                 <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
-                    src={isSignUpFlow ? "/lovable-uploads/410079f1-1006-4335-94cf-99be3247949a.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
+                    src={isSignUpFlow ? "/lovable-uploads/5419dbbb-c1f1-40a7-a69d-79f6caf0ad5e.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
                     alt={isSignUpFlow ? "Sign Up Flow" : isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
                     className="w-full h-full object-cover" 
                   />
