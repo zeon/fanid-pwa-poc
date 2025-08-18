@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AlertCircle, RefreshCw, Check } from 'lucide-react';
 import CyberpunkButton from './CyberpunkButton';
 
@@ -28,6 +28,18 @@ const CameraSection = ({
   isSignUpFlow = false,
   onRetry
 }: CameraSectionProps) => {
+  
+  // Debug logging
+  useEffect(() => {
+    console.log('CameraSection Debug:', {
+      isSignUpFlow,
+      isBiometricLogin,
+      isPurchaseVerification,
+      isEntryVerification,
+      hasStream: !!stream
+    });
+  }, [isSignUpFlow, isBiometricLogin, isPurchaseVerification, isEntryVerification, stream]);
+  
   return (
     <div className="relative">
       <div className="relative bg-gray-900 rounded-full overflow-hidden w-full max-w-sm mx-auto aspect-square sm:max-w-md md:max-w-lg">
@@ -55,7 +67,7 @@ const CameraSection = ({
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
                 <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
                   <img 
-                    src={isSignUpFlow ? "/lovable-uploads/0712a993-23d2-47b7-977d-d1a985ab0e94.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
+                    src={isSignUpFlow ? "/lovable-uploads/da035045-3426-4c78-8d1e-515e2c401477.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
                     alt={isSignUpFlow ? "Sign Up Flow" : isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
                     className="w-full h-full object-cover" 
                   />
