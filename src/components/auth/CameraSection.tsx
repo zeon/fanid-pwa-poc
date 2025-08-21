@@ -64,29 +64,9 @@ const CameraSection = ({
                       <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-white/80"></div>
                       
                       {/* Face outline */}
-                      <svg width="140" height="160" viewBox="0 0 140 160" className="text-white">
-                        {/* Face shape */}
-                        <ellipse cx="70" cy="80" rx="50" ry="65" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.8"/>
-                        
-                        {/* Eyes */}
-                        <ellipse cx="55" cy="65" rx="4" ry="6" fill="currentColor"/>
-                        <ellipse cx="85" cy="65" rx="4" ry="6" fill="currentColor"/>
-                        
-                        {/* Nose */}
-                        <path d="M 70 75 L 68 85 L 72 85 Z" fill="currentColor" opacity="0.7"/>
-                        
-                        {/* Mouth */}
-                        <path d="M 55 100 Q 70 110 85 100" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                        
-                        {/* Scanning lines */}
-                        <g opacity="0.6">
-                          <line x1="25" y1="40" x2="115" y2="40" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2"/>
-                          <line x1="25" y1="60" x2="115" y2="60" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2"/>
-                          <line x1="25" y1="80" x2="115" y2="80" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2"/>
-                          <line x1="25" y1="100" x2="115" y2="100" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2"/>
-                          <line x1="25" y1="120" x2="115" y2="120" stroke="currentColor" strokeWidth="1" strokeDasharray="2,2"/>
-                        </g>
-                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AABhkklEQVR4nO3dd5xU1d0/8M/3zBaKAgIKoigo0lawABYUBekItggxJpqYmG4SkzwpT5InIc8vzfT+JDHGRGOMEAugNGkqYkFEQKQK2LDR++7O3M/vDxbYMjttZ+fcmfm8Xy8T5sydez67O3PPd85thkKwmS1alaOiBOgdAN0NQTfATjGgI4gTAbSBwRnRFgDAwy+z2utopK3OYwDGxI/jLlNr/XX6SKXPzHJFzbAXAd4BsRZmyw1Y8HovPAuzWMPEIiLA0IUsabEPFxlxRQCeZ0BvEJ0MOB5ASaLXxtsWpqr+NjEb6m8jG2ikLwN2EwgA7AHwngH..." width="512" height="512"/>
+</svg>
                       
                       {/* Center crosshair */}
                       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
