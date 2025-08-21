@@ -54,11 +54,40 @@ const CameraSection = ({
             {(isBiometricLogin || isPurchaseVerification || isEntryVerification || isSignUpFlow) && stream && (
               <div className="absolute inset-0 bg-gray-900/80 flex items-center justify-center">
                 <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-cyan-400 shadow-lg shadow-cyan-400/50">
-                  <img 
-                    src={isSignUpFlow ? "/lovable-uploads/5419dbbb-c1f1-40a7-a69d-79f6caf0ad5e.png" : "/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"} 
-                    alt={isSignUpFlow ? "Sign Up Flow" : isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
-                    className="w-full h-full object-cover" 
-                  />
+                  {isSignUpFlow ? (
+                    /* CSS/SVG Face Icon for Sign Up Flow */
+                    <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+                      <svg width="120" height="120" viewBox="0 0 200 200" className="text-white">
+                        <circle cx="100" cy="100" r="90" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2"/>
+                        <circle cx="75" cy="80" r="8" fill="currentColor"/>
+                        <circle cx="125" cy="80" r="8" fill="currentColor"/>
+                        <path d="M 70 130 Q 100 150 130 130" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                        <path d="M 60 110 Q 100 90 140 110" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                      </svg>
+                    </div>
+                  ) : (
+                    <img 
+                      src="/lovable-uploads/2ad563c3-1d96-484a-8dd3-e48291a2b95d.png"
+                      alt={isEntryVerification ? "Entry Verification" : isPurchaseVerification ? "Purchase Verification" : "Biometric Login"} 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.warn('Failed to load avatar image, using fallback');
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                  )}
+                  {/* Fallback for other flows if image fails */}
+                  {!isSignUpFlow && (
+                    <div className="hidden w-full h-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                      <svg width="120" height="120" viewBox="0 0 200 200" className="text-white">
+                        <circle cx="100" cy="100" r="90" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2"/>
+                        <circle cx="75" cy="80" r="8" fill="currentColor"/>
+                        <circle cx="125" cy="80" r="8" fill="currentColor"/>
+                        <path d="M 70 130 Q 100 150 130 130" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                      </svg>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
