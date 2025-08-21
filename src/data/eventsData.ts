@@ -13,8 +13,7 @@ export interface Event {
   ticketPrice: number;
   artistInfo: string;
   duration: string;
-  ticketQuantity?: number;
-  refundEligible?: boolean; // Add this new field
+  ticketQuantity?: number; // Add this new field
 }
 
 export interface MerchandiseItem {
@@ -60,8 +59,7 @@ export const upcomingEvents: Event[] = [
     ticketPrice: 3500,
     artistInfo: 'aMEI is one of Taiwan\'s most iconic singers, known for her powerful voice and innovative performances.',
     duration: '3 hours',
-    ticketQuantity: 2,
-    refundEligible: true
+    ticketQuantity: 2
   },
   {
     id: '2',
@@ -97,8 +95,7 @@ export const upcomingEvents: Event[] = [
     ticketPrice: 4200,
     artistInfo: 'BLACKPINK is the biggest K-pop girl group in the world, breaking records and barriers globally.',
     duration: '2.5 hours',
-    ticketQuantity: 3,
-    refundEligible: false
+    ticketQuantity: 3
   },
   {
     id: '3',
@@ -126,8 +123,7 @@ export const upcomingEvents: Event[] = [
     ticketPrice: 2800,
     artistInfo: 'OneRepublic is known for their anthemic pop-rock sound and incredible live performances.',
     duration: '2 hours',
-    ticketQuantity: 1,
-    refundEligible: false
+    ticketQuantity: 1
   },
   {
     id: '4',

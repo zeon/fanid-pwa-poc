@@ -2,7 +2,7 @@
 {
   "tickets": {
     "activeTickets": "Active Tickets",
-    "backToDashboard": "Back to FanVerse",
+    "backToDashboard": "Back to Dashboard",
     "showQRCode": "Show QR Code",
     "ticketFor": "Ticket for",
     "venue": "Venue",
@@ -22,7 +22,7 @@
       "recipientEmail": "Recipient Email",
       "emailPlaceholder": "Enter recipient's email address",
       "selectTicket": "Select Ticket to Transfer",
-      "ticketNumber": "Ticket #{{number}}",
+      "ticketNumber": "Ticket #{number}",
       "confirmTitle": "Confirm Transfer",
       "confirmMessage": "User found. Are you sure? This step cannot be reverted.",
       "confirming": "Confirming...",
@@ -30,14 +30,6 @@
       "successMessage": "Ticket successfully transferred. A confirmation email has been sent to the user.",
       "notFoundTitle": "User Not Found",
       "notFoundMessage": "The email address you entered is not registered in our system. Please check the email and try again."
-    },
-    "refund": {
-      "title": "Refund Ticket",
-      "refund": "Refund",
-      "selectTicket": "Select Ticket to Refund",
-      "ticketNumber": "Ticket #{{number}}",
-      "successTitle": "Refund Successful",
-      "successMessage": "Your ticket has been successfully refunded. The refund amount will be processed within 3-5 business days."
     }
   },
   "entryVerification": {
@@ -46,7 +38,7 @@
       "subtitle": "Your identity has been verified successfully",
       "readyMessage": "Your ticket is now redeemed and you are ready to enter the concert",
       "backToTickets": "Back to Active Tickets",
-      "backToDashboard": "Back to FanVerse"
+      "backToDashboard": "Back to Dashboard"
     }
   },
   "auth": {
@@ -60,23 +52,5 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "ok": "OK"
-  },
-  "tixcraft": {
-    "refund": {
-      "title": "Ticket Refund",
-      "eligible": {
-        "title": "Refund Available",
-        "description": "Your ticket is eligible for refund. Please review the details below.",
-        "refundAmount": "Refund Amount",
-        "processingTime": "Processing Time: 3-5 business days",
-        "confirmRefund": "Confirm Refund"
-      },
-      "ineligible": {
-        "title": "Refund Not Available",
-        "description": "Unfortunately, this ticket is not eligible for refund according to the event's refund policy.",
-        "reason": "Refund period has expired or event policy does not allow refunds."
-      },
-      "backToDashboard": "Back to FanVerse"
-    }
   }
 }

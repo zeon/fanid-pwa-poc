@@ -1,4 +1,3 @@
-
 {
   "tixcraft": {
     "loginDialog": {
@@ -20,7 +19,6 @@
     },
     "backToDashboard": "返回控制台",
     "backToEvent": "返回活動",
-    "backToFanVerse": "返回FanVerse",
     "verified": "已驗證",
     "cart": {
       "title": "購物車"
@@ -113,22 +111,6 @@
       "noTransactionData": "沒有交易資料",
       "noTransactionDescription": "無法找到交易資訊。",
       "goToDashboard": "前往控制台"
-    },
-    "refund": {
-      "title": "票券退款",
-      "eligible": {
-        "title": "可申請退款",
-        "description": "您的票券符合退款資格。請檢視以下詳細資訊。",
-        "refundAmount": "退款金額",
-        "processingTime": "處理時間：3-5個工作天",
-        "confirmRefund": "確認退款"
-      },
-      "ineligible": {
-        "title": "無法退款",
-        "description": "很抱歉，根據活動退款政策，此票券不符合退款資格。",
-        "reason": "退款期限已過或活動政策不允許退款。"
-      },
-      "backToFanVerse": "返回FanVerse"
     }
   }
 }
