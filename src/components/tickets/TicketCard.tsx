@@ -1,23 +1,30 @@
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { QrCode, Calendar, MapPin, Send, Ticket } from 'lucide-react';
+import { QrCode, Calendar, MapPin, Send, Ticket, RotateCcw } from 'lucide-react';
 import { Event } from '@/data/eventsData';
+import { useIsMobile } from '@/hooks/use-mobile';
 import TicketTransferDialog from './TicketTransferDialog';
+import TicketRefundDialog from './TicketRefundDialog';
+
 interface TicketCardProps {
   event: Event;
   onShowQR: () => void;
 }
+
 const TicketCard = ({
   event,
   onShowQR
 }: TicketCardProps) => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
+  const isMobile = useIsMobile();
   const [showTransferDialog, setShowTransferDialog] = useState(false);
-  return <>
+  const [showRefundDialog, setShowRefundDialog] = useState(false);
+
+  return (
+    <>
       <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700 hover:border-cyan-400/50 transition-all duration-300">
         <CardHeader className="pb-4">
           <div className="flex items-start justify-between">
@@ -53,20 +60,77 @@ const TicketCard = ({
             </div>
           </div>
           
-          <div className="flex space-x-3">
-            <Button onClick={onShowQR} className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium">
-              <QrCode className="h-4 w-4 mr-2" />
-              {t('tickets.showQRCode')}
-            </Button>
-            <Button onClick={() => setShowTransferDialog(true)} variant="outline" className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-400">
-              <Send className="h-4 w-4 mr-2" />
-              {t('tickets.transfer.transfer')}
-            </Button>
-          </div>
+          {isMobile ? (
+            // Mobile: Vertical layout with full-width buttons
+            <div className="space-y-3">
+              <Button 
+                onClick={onShowQR} 
+                className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium"
+              >
+                <QrCode className="h-4 w-4 mr-2" />
+                {t('tickets.showQRCode')}
+              </Button>
+              <Button 
+                onClick={() => setShowTransferDialog(true)} 
+                variant="outline" 
+                className="w-full border-gray-600 hover:bg-gray-700 text-gray-400"
+              >
+                <Send className="h-4 w-4 mr-2" />
+                {t('tickets.transfer.transfer')}
+              </Button>
+              <Button 
+                onClick={() => setShowRefundDialog(true)} 
+                variant="outline" 
+                className="w-full border-red-600 hover:bg-red-700 text-red-400 hover:text-red-300"
+              >
+                <RotateCcw className="h-4 w-4 mr-2" />
+                {t('tickets.refund.refund')}
+              </Button>
+            </div>
+          ) : (
+            // Desktop: Horizontal layout
+            <div className="flex space-x-2">
+              <Button 
+                onClick={onShowQR} 
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium"
+              >
+                <QrCode className="h-4 w-4 mr-2" />
+                {t('tickets.showQRCode')}
+              </Button>
+              <Button 
+                onClick={() => setShowTransferDialog(true)} 
+                variant="outline" 
+                className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-400"
+              >
+                <Send className="h-4 w-4 mr-2" />
+                {t('tickets.transfer.transfer')}
+              </Button>
+              <Button 
+                onClick={() => setShowRefundDialog(true)} 
+                variant="outline" 
+                className="flex-1 border-red-600 hover:bg-red-700 text-red-400 hover:text-red-300"
+              >
+                <RotateCcw className="h-4 w-4 mr-2" />
+                {t('tickets.refund.refund')}
+              </Button>
+            </div>
+          )}
         </CardContent>
       </Card>
 
-      <TicketTransferDialog isOpen={showTransferDialog} onClose={() => setShowTransferDialog(false)} event={event} />
-    </>;
+      <TicketTransferDialog 
+        isOpen={showTransferDialog} 
+        onClose={() => setShowTransferDialog(false)} 
+        event={event} 
+      />
+      
+      <TicketRefundDialog 
+        isOpen={showRefundDialog} 
+        onClose={() => setShowRefundDialog(false)} 
+        event={event} 
+      />
+    </>
+  );
 };
+
 export default TicketCard;
