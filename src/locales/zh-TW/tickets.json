@@ -2,7 +2,7 @@
 {
   "tickets": {
     "activeTickets": "有效票券",
-    "backToDashboard": "返回 FanVerse",
+    "backToDashboard": "返回控制台",
     "showQRCode": "顯示QR碼",
     "ticketFor": "票券",
     "venue": "場地",
@@ -21,7 +21,7 @@
       "recipientEmail": "收件人電子郵件",
       "emailPlaceholder": "輸入收件人的電子郵件地址",
       "selectTicket": "選擇要轉讓的票券",
-      "ticketNumber": "票券 #{{number}}",
+      "ticketNumber": "票券 #{number}",
       "confirmTitle": "確認轉讓",
       "confirmMessage": "已找到用戶。您確定嗎？此步驟無法撤銷。",
       "confirming": "確認中...",
@@ -29,14 +29,6 @@
       "successMessage": "票券已成功轉讓。確認電子郵件已發送給用戶。",
       "notFoundTitle": "找不到用戶",
       "notFoundMessage": "您輸入的電子郵件地址未在我們的系統中註冊。請檢查電子郵件並重試。"
-    },
-    "refund": {
-      "title": "退票",
-      "refund": "退票",
-      "selectTicket": "選擇要退票的票券",
-      "ticketNumber": "票券 #{{number}}",
-      "successTitle": "退票成功",
-      "successMessage": "您的票券已成功退票。退款金額將在3-5個工作天內處理。"
     }
   },
   "entryVerification": {
@@ -45,7 +37,7 @@
       "subtitle": "您的身份已成功驗證",
       "readyMessage": "您的票券已兌換完成，現在可以進入演唱會會場",
       "backToTickets": "返回有效票券",
-      "backToDashboard": "返回 FanVerse"
+      "backToDashboard": "返回控制台"
     }
   },
   "auth": {
@@ -59,23 +51,5 @@
     "cancel": "取消",
     "confirm": "確認",
     "ok": "確定"
-  },
-  "tixcraft": {
-    "refund": {
-      "title": "票券退款",
-      "eligible": {
-        "title": "可申請退款",
-        "description": "您的票券符合退款資格。請檢視以下詳細資訊。",
-        "refundAmount": "退款金額",
-        "processingTime": "處理時間：3-5個工作天",
-        "confirmRefund": "確認退款"
-      },
-      "ineligible": {
-        "title": "無法退款",
-        "description": "很抱歉，根據活動退款政策，此票券不符合退款資格。",
-        "reason": "退款期限已過或活動政策不允許退款。"
-      },
-      "backToDashboard": "返回 FanVerse"
-    }
   }
 }

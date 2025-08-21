@@ -8,34 +8,38 @@ import { Label } from '@/components/ui/label';
 import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction, AlertDialogCancel } from '@/components/ui/alert-dialog';
 import { Send, X } from 'lucide-react';
 import { Event } from '@/data/eventsData';
+
 interface TicketTransferDialogProps {
   isOpen: boolean;
   onClose: () => void;
   event: Event;
 }
+
 type TransferStep = 'form' | 'confirmation' | 'success' | 'not-found';
+
 const TicketTransferDialog = ({
   isOpen,
   onClose,
   event
 }: TicketTransferDialogProps) => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [selectedTicket, setSelectedTicket] = useState('');
   const [currentStep, setCurrentStep] = useState<TransferStep>('form');
   const [isLoading, setIsLoading] = useState(false);
+
   const handleReset = () => {
     setEmail('');
     setSelectedTicket('');
     setCurrentStep('form');
     setIsLoading(false);
   };
+
   const handleClose = () => {
     handleReset();
     onClose();
   };
+
   const handleTransfer = async () => {
     if (!email || !selectedTicket) return;
     setIsLoading(true);
@@ -51,6 +55,7 @@ const TicketTransferDialog = ({
     }
     setIsLoading(false);
   };
+
   const handleConfirmTransfer = async () => {
     setIsLoading(true);
 
@@ -59,30 +64,51 @@ const TicketTransferDialog = ({
     setCurrentStep('success');
     setIsLoading(false);
   };
+
   const handleNotFoundClose = () => {
     setCurrentStep('form');
   };
+
   const renderTicketOptions = () => {
     const ticketCount = event.ticketQuantity || 1;
     const options = [];
+    
+    console.log('Rendering ticket options:', { ticketCount, eventId: event.id });
+    
     for (let i = 1; i <= ticketCount; i++) {
       // Debug translation interpolation
-      const translatedText = t('tickets.transfer.ticketNumber', {
-        number: i
-      });
-
+      const translatedText = t('tickets.transfer.ticketNumber', { number: i });
+      console.log(`Ticket #${i} translation:`, translatedText);
+      
       // Create fallback display
-      const ticketLabel = translatedText.includes('{{number}}') ? `Ticket #${i}` : translatedText;
-      options.push(<div key={i} className="flex items-center space-x-2">
-          <RadioGroupItem value={`ticket-${i}`} id={`ticket-${i}`} aria-describedby={`ticket-${i}-description`} className="bg-gray-600 hover:bg-gray-500" />
-          <Label htmlFor={`ticket-${i}`} className="text-white cursor-pointer" id={`ticket-${i}-description`}>
+      const ticketLabel = translatedText.includes('{{number}}') 
+        ? `Ticket #${i}` 
+        : translatedText;
+      
+      console.log(`Final ticket label for #${i}:`, ticketLabel);
+      
+      options.push(
+        <div key={i} className="flex items-center space-x-2">
+          <RadioGroupItem 
+            value={`ticket-${i}`} 
+            id={`ticket-${i}`}
+            aria-describedby={`ticket-${i}-description`}
+          />
+          <Label 
+            htmlFor={`ticket-${i}`} 
+            className="text-white cursor-pointer"
+            id={`ticket-${i}-description`}
+          >
             {ticketLabel} - {event.ticketType}
           </Label>
-        </div>);
+        </div>
+      );
     }
     return options;
   };
-  return <>
+
+  return (
+    <>
       <Dialog open={isOpen && currentStep === 'form'} onOpenChange={handleClose}>
         <DialogContent className="bg-gray-800 border-gray-700 text-white max-w-md">
           <DialogHeader>
@@ -101,7 +127,15 @@ const TicketTransferDialog = ({
               <Label htmlFor="email" className="text-white">
                 {t('tickets.transfer.recipientEmail')}
               </Label>
-              <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder={t('tickets.transfer.emailPlaceholder')} className="bg-gray-700 border-gray-600 text-white" aria-describedby="email-helper" />
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={t('tickets.transfer.emailPlaceholder')}
+                className="bg-gray-700 border-gray-600 text-white"
+                aria-describedby="email-helper"
+              />
               <div id="email-helper" className="sr-only">
                 {t('tickets.transfer.emailPlaceholder')}
               </div>
@@ -109,17 +143,30 @@ const TicketTransferDialog = ({
             
             <div className="space-y-3">
               <Label className="text-white">{t('tickets.transfer.selectTicket')}</Label>
-              <RadioGroup value={selectedTicket} onValueChange={setSelectedTicket} className="space-y-2" aria-label={t('tickets.transfer.selectTicket')}>
+              <RadioGroup 
+                value={selectedTicket} 
+                onValueChange={setSelectedTicket} 
+                className="space-y-2"
+                aria-label={t('tickets.transfer.selectTicket')}
+              >
                 {renderTicketOptions()}
               </RadioGroup>
             </div>
             
             <div className="flex space-x-3 pt-4">
-              <Button onClick={handleClose} variant="outline" className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-500">
+              <Button
+                onClick={handleClose}
+                variant="outline"
+                className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-500"
+              >
                 <X className="h-4 w-4 mr-2" />
                 {t('common.cancel')}
               </Button>
-              <Button onClick={handleTransfer} disabled={!email || !selectedTicket || isLoading} className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600">
+              <Button
+                onClick={handleTransfer}
+                disabled={!email || !selectedTicket || isLoading}
+                className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600"
+              >
                 <Send className="h-4 w-4 mr-2" />
                 {isLoading ? t('tickets.transfer.transferring') : t('tickets.transfer.transfer')}
               </Button>
@@ -185,6 +232,8 @@ const TicketTransferDialog = ({
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>;
+    </>
+  );
 };
+
 export default TicketTransferDialog;
