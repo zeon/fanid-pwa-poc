@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ScrollToTop from "@/components/navigation/ScrollToTop";
 import SitePasswordGuard from "@/components/auth/SitePasswordGuard";
+import { PWAComponents } from "@/components/pwa/PWAComponents";
 import "@/i18n/config";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
@@ -35,6 +36,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <PWAComponents />
         <SitePasswordGuard>
           <BrowserRouter>
             <ScrollToTop />
