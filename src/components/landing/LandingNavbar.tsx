@@ -76,7 +76,7 @@ const LandingNavbar = () => {
 
         {/* Mobile menu */}
         {isMobile && isMenuOpen && (
-          <div className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800/50">
+          <div className="bg-gray-900/95 backdrop-blur-md border-t border-gray-800/50">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
