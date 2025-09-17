@@ -11,6 +11,7 @@ import BusinessModelSection from '@/components/landing/BusinessModelSection';
 import TeamSection from '@/components/landing/TeamSection';
 import ContactUsSection from '@/components/landing/ContactUsSection';
 import Footer from '@/components/landing/Footer';
+import ScrollToTopButton from '@/components/navigation/ScrollToTopButton';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -123,6 +124,9 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTopButton />
     </div>
   );
 };
