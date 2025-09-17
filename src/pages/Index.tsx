@@ -6,6 +6,7 @@ import { QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LandingNavbar from '@/components/landing/LandingNavbar';
 import ChallengeSection from '@/components/landing/ChallengeSection';
+import SolutionSection from '@/components/landing/SolutionSection';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -57,6 +58,9 @@ const Index = () => {
 
       {/* Challenge Section */}
       <ChallengeSection />
+
+      {/* Solution Section */}
+      <SolutionSection />
 
       {/* Entry Staff Section - Bottom of page */}
       <div className="bg-gray-800 border-t border-gray-700 py-12">

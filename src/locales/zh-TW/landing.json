@@ -33,6 +33,47 @@
         "description": "傳統票務系統入場效率低下，需要人工驗證，容易造成排隊擁擠和不良的用戶體驗。"
       }
     },
+    "solution": {
+      "title": "FanID 安全實驗認證系統",
+      "subtitle": "告別不安全與冗複雜的傳統票務，擁抱 AI 驅動的未來體驗",
+      "features": {
+        "security": {
+          "title": "安全精準",
+          "description": "AI技術，錯誤率低於 0.1%，零知識專利科技保護隱私"
+        },
+        "verification": {
+          "title": "驗證可靠",
+          "description": "一鍵一驗證，社會多帳號及黃牛搶票問題"
+        },
+        "efficiency": {
+          "title": "高效率",
+          "description": "幾秒完成身份驗證，購票及演唱會入場"
+        },
+        "engaging": {
+          "title": "趣味十足",
+          "description": "個人化頭像，粉絲互動五動，身歷其境的體驗"
+        }
+      },
+      "zkTechnology": {
+        "title": "零知識專利科技",
+        "clientEncryption": {
+          "title": "客戶端加密",
+          "description": "在客戶端密敏感使用者資料，確保完全的隱私保護"
+        },
+        "noExtraCost": {
+          "title": "無需易負擔",
+          "description": "只需手機掃描即可完成驗證，無需額外設備投資"
+        },
+        "serverSecurity": {
+          "title": "伺服器端無人臉數據",
+          "description": "系統安全防護，無需儲存敏感生物識別資訊"
+        }
+      },
+      "verificationFlow": {
+        "title": "FanID 認證流程",
+        "subtitle": "簡單掃描 → AI 驗證 → 即時通過"
+      }
+    },
     "button":{
       "entryStuff": "入場工作人員入口"
     }

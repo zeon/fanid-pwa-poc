@@ -33,6 +33,47 @@
         "description": "Traditional ticketing systems have low entry efficiency, requiring manual verification, easily causing queuing congestion and poor user experience."
       }
     },
+    "solution": {
+      "title": "FanID Security Verification System",
+      "subtitle": "Say goodbye to insecure and complicated traditional ticketing, embrace AI-driven future experiences",
+      "features": {
+        "security": {
+          "title": "Security & Precision",
+          "description": "AI technology with error rates as low as 0.1%, providing unparalleled security protection"
+        },
+        "verification": {
+          "title": "Reliable Verification", 
+          "description": "One-click verification, allowing users to complete verification and purchase within seconds"
+        },
+        "efficiency": {
+          "title": "High Efficiency",
+          "description": "Complete identity verification in seconds, with smooth ticket scanning and entry"
+        },
+        "engaging": {
+          "title": "Fun & Engaging",
+          "description": "Personalized avatar and interactive functions, making every experience unique"
+        }
+      },
+      "zkTechnology": {
+        "title": "Zero-Knowledge Technology",
+        "clientEncryption": {
+          "title": "Client-side Encryption",
+          "description": "Sensitive data is encrypted and protected on the client side, ensuring complete privacy"
+        },
+        "noExtraCost": {
+          "title": "No Additional Burden",
+          "description": "Simple mobile scanning completes verification without additional equipment investment"
+        },
+        "serverSecurity": {
+          "title": "Server-side Facial Data Security", 
+          "description": "Comprehensive security without storing any biometric identification data"
+        }
+      },
+      "verificationFlow": {
+        "title": "FanID Verification Process",
+        "subtitle": "Simple scanning → AI verification → Instant access"
+      }
+    },
     "button":{
       "entryStuff": "Entry Staff Access"
     }

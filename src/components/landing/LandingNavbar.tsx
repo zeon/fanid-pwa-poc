@@ -40,6 +40,41 @@ const LandingNavbar = () => {
                     key={item.key}
                     href={item.href}
                     className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.querySelector(item.href) as HTMLElement;
+                      if (target) {
+                        const navbarHeight = 64; // Height of fixed navbar
+                        const targetPosition = target.offsetTop - navbarHeight;
+                        const startPosition = window.pageYOffset;
+                        const distance = targetPosition - startPosition;
+                        const duration = Math.min(1000, Math.abs(distance) * 0.8); // Max 1s, adaptive based on distance
+                        
+                        let start: number | null = null;
+                        
+                        function smoothScroll(timestamp: number) {
+                          if (!start) start = timestamp;
+                          const progress = timestamp - start;
+                          const percentage = Math.min(progress / duration, 1);
+                          
+                          // Easing function with acceleration near target
+                          const easeInOutCubic = percentage < 0.5 
+                            ? 4 * percentage * percentage * percentage 
+                            : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+                          
+                          window.scrollTo({
+                            top: startPosition + distance * easeInOutCubic,
+                            behavior: 'auto'
+                          });
+                          
+                          if (progress < duration) {
+                            requestAnimationFrame(smoothScroll);
+                          }
+                        }
+                        
+                        requestAnimationFrame(smoothScroll);
+                      }
+                    }}
                   >
                     {t(`landing.navbar.${item.key}`)}
                   </a>
@@ -83,7 +118,41 @@ const LandingNavbar = () => {
                   key={item.key}
                   href={item.href}
                   className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsMenuOpen(false);
+                    const target = document.querySelector(item.href) as HTMLElement;
+                    if (target) {
+                      const navbarHeight = 64;
+                      const targetPosition = target.offsetTop - navbarHeight;
+                      const startPosition = window.pageYOffset;
+                      const distance = targetPosition - startPosition;
+                      const duration = Math.min(1000, Math.abs(distance) * 0.8);
+                      
+                      let start: number | null = null;
+                      
+                      function smoothScroll(timestamp: number) {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        const percentage = Math.min(progress / duration, 1);
+                        
+                        const easeInOutCubic = percentage < 0.5 
+                          ? 4 * percentage * percentage * percentage 
+                          : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+                        
+                        window.scrollTo({
+                          top: startPosition + distance * easeInOutCubic,
+                          behavior: 'auto'
+                        });
+                        
+                        if (progress < duration) {
+                          requestAnimationFrame(smoothScroll);
+                        }
+                      }
+                      
+                      requestAnimationFrame(smoothScroll);
+                    }
+                  }}
                 >
                   {t(`landing.navbar.${item.key}`)}
                 </a>
