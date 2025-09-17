@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LandingNavbar from '@/components/landing/LandingNavbar';
+import ChallengeSection from '@/components/landing/ChallengeSection';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -53,6 +54,9 @@ const Index = () => {
           </p>
         </div>
       </div>
+
+      {/* Challenge Section */}
+      <ChallengeSection />
 
       {/* Entry Staff Section - Bottom of page */}
       <div className="bg-gray-800 border-t border-gray-700 py-12">

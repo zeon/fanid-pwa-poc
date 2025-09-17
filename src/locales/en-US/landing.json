@@ -18,6 +18,21 @@
       "createAccount": "Create Account",
       "accessPortal": "Access Portal"
     },
+    "challenge": {
+      "title": "Pain Points of Traditional Ticketing Systems",
+      "scalping": {
+        "title": "Ticket Scalping Issues",
+        "description": "Scalpers exploit ticketing systems, disappointing genuine fans, leaving many seats empty, and exposing organizers to potential legal issues."
+      },
+      "counterfeiting": {
+        "title": "Counterfeit Tickets Widespread",
+        "description": "Distributors and black markets steal $11.2 billion to $18.75 billion in profits from event organizers, producers, artists, and artist agents."
+      },
+      "inefficiency": {
+        "title": "Low Entry Efficiency",
+        "description": "Traditional ticketing systems have low entry efficiency, requiring manual verification, easily causing queuing congestion and poor user experience."
+      }
+    },
     "button":{
       "entryStuff": "Entry Staff Access"
     }

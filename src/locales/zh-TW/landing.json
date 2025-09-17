@@ -18,6 +18,21 @@
       "createAccount": "創建帳戶",
       "accessPortal": "進入入口"
     },
+    "challenge": {
+      "title": "傳統票務系統的痛點",
+      "scalping": {
+        "title": "黃牛搶票問題",
+        "description": "黃牛利用票務系統，讓真正的粉絲感到失望，導致許多座位空置，並使主辦單位面臨潛在的法律問題。"
+      },
+      "counterfeiting": {
+        "title": "假票盛行",
+        "description": "經銷商和黑市從活動組織者、製作人、藝術家和藝術家經紀人手中竊取了 112 億至 187.5 億美元的利潤。"
+      },
+      "inefficiency": {
+        "title": "入場效率低",
+        "description": "傳統票務系統入場效率低下，需要人工驗證，容易造成排隊擁擠和不良的用戶體驗。"
+      }
+    },
     "button":{
       "entryStuff": "入場工作人員入口"
     }
