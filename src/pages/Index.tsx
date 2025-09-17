@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import LandingNavbar from '@/components/landing/LandingNavbar';
 import ChallengeSection from '@/components/landing/ChallengeSection';
 import SolutionSection from '@/components/landing/SolutionSection';
+import BusinessModelSection from '@/components/landing/BusinessModelSection';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -26,6 +27,17 @@ const Index = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
+        {/* Cyberpunk grid overlay */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+        
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/50"></div>
         
@@ -62,9 +74,23 @@ const Index = () => {
       {/* Solution Section */}
       <SolutionSection />
 
+      {/* Business Model Section */}
+      <BusinessModelSection />
+
       {/* Entry Staff Section - Bottom of page */}
-      <div className="bg-gray-800 border-t border-gray-700 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative bg-gray-800 border-t border-gray-700 py-12 overflow-hidden">
+        {/* Cyberpunk grid background */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Link to="/entry-staff">
             <Button 
               variant="outline" 

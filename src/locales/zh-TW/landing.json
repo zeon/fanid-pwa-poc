@@ -76,6 +76,45 @@
     },
     "button":{
       "entryStuff": "入場工作人員入口"
+    },
+    "businessModel": {
+      "title": "商業模式",
+      "subtitle": "革新現場活動體驗",
+      "metrics": {
+        "marketSize": {
+          "value": "$851億",
+          "label": "現場活動市場規模"
+        },
+        "growth": {
+          "value": "8.7%",
+          "label": "年增長率"
+        },
+        "efficiency": {
+          "value": "3倍",
+          "label": "更快的入場處理"
+        }
+      },
+      "advantages": {
+        "title": "B2B2C ODM 優勢",
+        "features": [
+          {
+            "title": "無縫整合",
+            "description": "輕鬆整合現有票務平台和場館管理系統"
+          },
+          {
+            "title": "可擴展解決方案",
+            "description": "從小型場館到大型體育場，都能保持一致的性能表現"
+          },
+          {
+            "title": "營收增長",
+            "description": "通過改善客戶體驗和降低營運成本來增加場館收入"
+          },
+          {
+            "title": "未來就緒技術",
+            "description": "採用尖端生物識別技術和零知識隱私保護構建"
+          }
+        ]
+      }
     }
   }
 }

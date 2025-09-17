@@ -76,6 +76,45 @@
     },
     "button":{
       "entryStuff": "Entry Staff Access"
+    },
+    "businessModel": {
+      "title": "Business Model",
+      "subtitle": "Revolutionizing Live Event Experience",
+      "metrics": {
+        "marketSize": {
+          "value": "$85.1B",
+          "label": "Live Event Market Size"
+        },
+        "growth": {
+          "value": "8.7%",
+          "label": "Annual Growth Rate"
+        },
+        "efficiency": {
+          "value": "3x",
+          "label": "Faster Entry Processing"
+        }
+      },
+      "advantages": {
+        "title": "B2B2C ODM Advantages",
+        "features": [
+          {
+            "title": "Seamless Integration",
+            "description": "Easy integration with existing ticketing platforms and venue management systems"
+          },
+          {
+            "title": "Scalable Solution", 
+            "description": "Handles events from intimate venues to massive stadiums with consistent performance"
+          },
+          {
+            "title": "Revenue Growth",
+            "description": "Increases venue revenue through improved customer experience and reduced operational costs"
+          },
+          {
+            "title": "Future-Ready Technology",
+            "description": "Built with cutting-edge biometric technology and zero-knowledge privacy protection"
+          }
+        ]
+      }
     }
   }
 }
