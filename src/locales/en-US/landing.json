@@ -139,8 +139,55 @@
           "name": "Emma Rodriguez",
           "position": "Tech Lead",
           "description": "Full-stack engineer specializing in security and scalable architecture"
-        }
       }
     }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team to learn more about FanID or discuss partnership opportunities.",
+    "form": {
+      "title": "Send us a message",
+      "subtitle": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us more about your inquiry...",
+      "submit": "Send Message",
+      "successTitle": "Message Sent!",
+      "successMessage": "Thank you for your message. We'll get back to you soon."
+    },
+    "info": {
+      "title": "Get in Touch",
+      "description": "Ready to revolutionize your event experience? Contact us to learn more about FanID's secure verification system and how it can benefit your organization.",
+      "email": {
+        "label": "Email Us",
+        "value": "hello@fanid.com"
+      },
+      "phone": {
+        "label": "Call Us",
+        "value": "+1 (555) 123-4567"
+      },
+      "address": {
+        "label": "Visit Us",
+        "value": "123 Innovation Drive, Tech City, TC 12345"
+      }
+    },
+    "hours": {
+      "title": "Business Hours",
+      "description": "Monday - Friday: 9:00 AM - 6:00 PM (PST)"
+    }
+  },
+  "footer": {
+    "description": "Revolutionizing event experiences through secure biometric verification and cutting-edge technology.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact Info",
+    "copyright": "© 2025 FanID | Created to Amplify Your Events. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   }
+}
 }

@@ -139,8 +139,55 @@
           "name": "艾瑪·羅德里格茲",
           "position": "技術主管",
           "description": "專精於安全性和可擴展架構的全端工程師"
-        }
       }
     }
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "subtitle": "與我們的團隊聯繫，了解更多關於FanID的資訊或討論合作機會。",
+    "form": {
+      "title": "發送訊息給我們",
+      "subtitle": "我們很樂意聽到您的聲音。請發送訊息，我們會盡快回覆。",
+      "name": "姓名",
+      "namePlaceholder": "您的全名",
+      "email": "電子郵件",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "主旨",
+      "subjectPlaceholder": "這是關於什麼？",
+      "message": "訊息",
+      "messagePlaceholder": "請告訴我們更多關於您的詢問...",
+      "submit": "發送訊息",
+      "successTitle": "訊息已發送！",
+      "successMessage": "感謝您的訊息。我們會盡快回覆您。"
+    },
+    "info": {
+      "title": "聯繫方式",
+      "description": "準備好革新您的活動體驗了嗎？聯繫我們了解更多關於FanID安全驗證系統以及它如何為您的組織帶來益處。",
+      "email": {
+        "label": "電子郵件",
+        "value": "hello@fanid.com"
+      },
+      "phone": {
+        "label": "電話",
+        "value": "+886 2 1234-5678"
+      },
+      "address": {
+        "label": "地址",
+        "value": "台北市信義區創新大道123號"
+      }
+    },
+    "hours": {
+      "title": "營業時間",
+      "description": "週一至週五：上午9:00 - 下午6:00 (台灣時間)"
+    }
+  },
+  "footer": {
+    "description": "通過安全的生物識別驗證和尖端技術革新活動體驗。",
+    "quickLinks": "快速連結",
+    "contact": "聯絡資訊",
+    "copyright": "© 2025 FanID | 創造來放大您的活動體驗。版權所有。",
+    "privacy": "隱私政策",
+    "terms": "服務條款"
   }
+}
 }
