@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 
 const LandingNavbar = () => {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { key: 'theChallenge', href: '#challenge' },
@@ -16,7 +20,7 @@ const LandingNavbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/60 backdrop-blur-md border-b border-gray-800/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -26,36 +30,86 @@ const LandingNavbar = () => {
             </Link>
           </div>
 
-          {/* Navigation Links - Hidden on mobile */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          {/* Desktop Navigation */}
+          {!isMobile && (
+            <>
+              {/* Navigation Links */}
+              <div className="flex items-baseline space-x-8">
+                {navItems.map((item) => (
+                  <a
+                    key={item.key}
+                    href={item.href}
+                    className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  >
+                    {t(`landing.navbar.${item.key}`)}
+                  </a>
+                ))}
+              </div>
+
+              {/* Right side - Language switcher and buttons */}
+              <div className="flex items-center space-x-4">
+                <TextLanguageSwitcher />
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700">
+                    {t('landing.header.signIn')}
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
+                    {t('landing.header.getStarted')}
+                  </Button>
+                </Link>
+              </div>
+            </>
+          )}
+
+          {/* Mobile hamburger button */}
+          {isMobile && (
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-300 hover:text-white p-2"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          )}
+        </div>
+
+        {/* Mobile menu */}
+        {isMobile && isMenuOpen && (
+          <div className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800/50">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
-                  className="text-gray-300 hover:text-cyan-400 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-gray-300 hover:text-cyan-400 block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {t(`landing.navbar.${item.key}`)}
                 </a>
               ))}
+              
+              <div className="border-t border-gray-800/50 pt-4 mt-4">
+                <div className="px-3 py-2">
+                  <TextLanguageSwitcher />
+                </div>
+                
+                <div className="space-y-2 px-3">
+                  <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
+                    <Button variant="ghost" className="w-full text-gray-300 hover:text-white hover:bg-gray-700">
+                      {t('landing.header.signIn')}
+                    </Button>
+                  </Link>
+                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
+                      {t('landing.header.getStarted')}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Right side - Language switcher and buttons */}
-          <div className="flex items-center space-x-4">
-            <TextLanguageSwitcher />
-            <Link to="/signin">
-              <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700">
-                {t('landing.header.signIn')}
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
-                {t('landing.header.getStarted')}
-              </Button>
-            </Link>
-          </div>
-        </div>
+        )}
       </div>
     </nav>
   );
