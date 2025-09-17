@@ -25,16 +25,19 @@ const LandingNavbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            >
               FanID
-            </Link>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
           {!isMobile && (
             <>
-              {/* Navigation Links */}
-              <div className="flex items-baseline space-x-8">
+              {/* Navigation Links - Centered */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 flex items-baseline space-x-8">
                 {navItems.map((item) => (
                   <a
                     key={item.key}
@@ -81,17 +84,12 @@ const LandingNavbar = () => {
                 ))}
               </div>
 
-              {/* Right side - Language switcher and buttons */}
+              {/* Right side - Language switcher and Sign In button */}
               <div className="flex items-center space-x-4">
                 <TextLanguageSwitcher />
                 <Link to="/signin">
                   <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700">
                     {t('landing.header.signIn')}
-                  </Button>
-                </Link>
-                <Link to="/signup">
-                  <Button size="sm" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
-                    {t('landing.header.getStarted')}
                   </Button>
                 </Link>
               </div>

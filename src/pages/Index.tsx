@@ -68,6 +68,14 @@ const Index = () => {
           <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-3xl mx-auto">
             {t('landing.hero.subtitle')}
           </p>
+          {/* Get Started Button */}
+          <div className="mt-8">
+            <Link to="/signup">
+              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-8 py-4 text-lg font-semibold">
+                {t('landing.header.getStarted')}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 

@@ -8,7 +8,7 @@ const TextLanguageSwitcher = () => {
   const { currentLanguage, switchLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center space-x-2 text-sm">
+    <div className="flex items-center space-x-2 text-xs">
       <button
         onClick={() => switchLanguage('zh-TW')}
         className={`transition-colors ${
