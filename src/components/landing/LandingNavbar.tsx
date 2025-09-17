@@ -15,7 +15,7 @@ const LandingNavbar = () => {
     { key: 'theChallenge', href: '#challenge' },
     { key: 'ourSolution', href: '#solution' },
     { key: 'businessModel', href: '#business-model' },
-    { key: 'ourTeam', href: '#team' },
+    { key: 'ourTeam', href: '#our-team' },
     { key: 'contactUs', href: '#contact' }
   ];
 

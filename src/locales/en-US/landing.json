@@ -115,6 +115,32 @@
           }
         ]
       }
+    },
+    "team": {
+      "title": "Our Elite Team",
+      "subtitle": "Diverse expertise combined to create a revolutionary platform",
+      "members": {
+        "0": {
+          "name": "Alex Chen",
+          "position": "Founder & CEO",
+          "description": "Visionary leader with 15+ years in fintech and blockchain innovation"
+        },
+        "1": {
+          "name": "Sarah Johnson",
+          "position": "Chief Financial Officer",
+          "description": "Strategic financial expert with experience in scaling tech companies"
+        },
+        "2": {
+          "name": "Marcus Lee",
+          "position": "Product Manager",
+          "description": "User experience advocate with deep knowledge in event technology"
+        },
+        "3": {
+          "name": "Emma Rodriguez",
+          "position": "Tech Lead",
+          "description": "Full-stack engineer specializing in security and scalable architecture"
+        }
+      }
     }
   }
 }

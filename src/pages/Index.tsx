@@ -8,6 +8,7 @@ import LandingNavbar from '@/components/landing/LandingNavbar';
 import ChallengeSection from '@/components/landing/ChallengeSection';
 import SolutionSection from '@/components/landing/SolutionSection';
 import BusinessModelSection from '@/components/landing/BusinessModelSection';
+import TeamSection from '@/components/landing/TeamSection';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -76,6 +77,9 @@ const Index = () => {
 
       {/* Business Model Section */}
       <BusinessModelSection />
+
+      {/* Team Section */}
+      <TeamSection />
 
       {/* Entry Staff Section - Bottom of page */}
       <div className="relative bg-gray-800 border-t border-gray-700 py-12 overflow-hidden">
