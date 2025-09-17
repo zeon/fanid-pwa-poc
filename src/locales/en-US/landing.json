@@ -1,29 +1,22 @@
 
 {
   "landing": {
+    "navbar": {
+      "theChallenge": "The Challenge",
+      "ourSolution": "Our Solution", 
+      "businessModel": "Business Model",
+      "ourTeam": "Our Team",
+      "contactUs": "Contact Us"
+    },
     "header": {
       "signIn": "Sign In",
       "getStarted": "Get Started"
     },
     "hero": {
-      "title": "FUTURE OF CONCERTS",
-      "subtitle": "Experience the next generation of live music with biometric authentication and seamless ticketing.",
+      "title": "FanID: Revolutionizing Live Event Experience Platform",
+      "subtitle": "FanID creates an innovative platform for fans who love live experiences, completely transforming how you interact with your favorite artists, performers, and events. Our mission is to eliminate barriers between fans and live events, creating more authentic, intimate, and fun experiences.",
       "createAccount": "Create Account",
       "accessPortal": "Access Portal"
-    },
-    "features": {
-      "biometric": {
-        "title": "Biometric Security",
-        "description": "Advanced face recognition for seamless, secure access to your events."
-      },
-      "instant": {
-        "title": "Instant Access",
-        "description": "Skip the lines with lightning-fast digital ticket verification."
-      },
-      "immersive": {
-        "title": "Immersive Experience",
-        "description": "Enhanced concert experiences with cutting-edge technology integration."
-      }
     },
     "button":{
       "entryStuff": "Entry Staff Access"

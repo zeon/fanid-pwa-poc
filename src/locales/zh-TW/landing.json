@@ -1,29 +1,22 @@
 
 {
   "landing": {
+    "navbar": {
+      "theChallenge": "挑戰",
+      "ourSolution": "我們的解決方案",
+      "businessModel": "商業模式", 
+      "ourTeam": "我們的團隊",
+      "contactUs": "聯絡我們"
+    },
     "header": {
       "signIn": "登入",
       "getStarted": "開始使用"
     },
     "hero": {
-      "title": "演唱會的未來",
-      "subtitle": "透過生物識別認證和無縫售票，體驗下一代現場音樂。",
+      "title": "FanID：革新現場活動體驗平台",
+      "subtitle": "FanID 為熱愛現場體驗的粉絲打造創新平台，徹底改變您與喜愛的藝人、表演者和活動互動的方式。 我們的使命是消除粉絲與現場活動之間的障礙，創造更加真實、私密且充滿樂趣的體驗。",
       "createAccount": "創建帳戶",
       "accessPortal": "進入入口"
-    },
-    "features": {
-      "biometric": {
-        "title": "生物識別安全",
-        "description": "先進的人臉識別技術，為您的活動提供無縫且安全的存取。"
-      },
-      "instant": {
-        "title": "即時存取",
-        "description": "透過閃電般快速的數位票券驗證，跳過排隊。"
-      },
-      "immersive": {
-        "title": "沉浸式體驗",
-        "description": "透過尖端技術整合，增強演唱會體驗。"
-      }
     },
     "button":{
       "entryStuff": "入場工作人員入口"
