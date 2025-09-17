@@ -9,6 +9,8 @@ import ChallengeSection from '@/components/landing/ChallengeSection';
 import SolutionSection from '@/components/landing/SolutionSection';
 import BusinessModelSection from '@/components/landing/BusinessModelSection';
 import TeamSection from '@/components/landing/TeamSection';
+import ContactUsSection from '@/components/landing/ContactUsSection';
+import Footer from '@/components/landing/Footer';
 
 const Index = () => {
   const { t } = useTranslation();
@@ -81,6 +83,9 @@ const Index = () => {
       {/* Team Section */}
       <TeamSection />
 
+      {/* Contact Us Section */}
+      <ContactUsSection />
+
       {/* Entry Staff Section - Bottom of page */}
       <div className="relative bg-gray-800 border-t border-gray-700 py-12 overflow-hidden">
         {/* Cyberpunk grid background */}
@@ -107,6 +112,9 @@ const Index = () => {
           </Link>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

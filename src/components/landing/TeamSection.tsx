@@ -78,12 +78,14 @@ const TeamSection = () => {
                 </h3>
                 
                 {/* Position Badge */}
-                <Badge 
-                  variant="outline" 
-                  className="bg-purple-500/10 border-purple-400/50 text-purple-400 group-hover:bg-purple-500/20 group-hover:border-purple-400 transition-all duration-300"
-                >
-                  {member.position}
-                </Badge>
+                <div className="flex justify-center">
+                  <Badge 
+                    variant="outline" 
+                    className="bg-purple-500/10 border-purple-400/50 text-purple-400 group-hover:bg-purple-500/20 group-hover:border-purple-400 transition-all duration-300 px-3 py-1 w-fit"
+                  >
+                    {member.position}
+                  </Badge>
+                </div>
               </CardHeader>
               
               <CardContent className="text-center">
