@@ -204,18 +204,6 @@ const ContactUsSection = () => {
                 );
               })}
             </div>
-
-            {/* Additional Info */}
-            <Card className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border-cyan-500/30">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-white font-semibold mb-2">
-                  {t('landing.contact.hours.title')}
-                </h4>
-                <p className="text-gray-300">
-                  {t('landing.contact.hours.description')}
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
