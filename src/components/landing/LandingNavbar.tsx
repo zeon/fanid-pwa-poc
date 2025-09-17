@@ -90,7 +90,7 @@ const LandingNavbar = () => {
               ))}
               
               <div className="border-t border-gray-800/50 pt-4 mt-4">
-                <div className="px-3 py-2">
+                <div className="px-3 py-2 flex justify-center">
                   <TextLanguageSwitcher />
                 </div>
                 

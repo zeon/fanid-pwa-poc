@@ -32,7 +32,7 @@ const Index = () => {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-white rounded-full animate-floating-dots"
+              className="absolute w-2 h-2 bg-white rounded-full opacity-0 animate-floating-dots"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${60 + Math.random() * 40}%`,
