@@ -1,17 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useTranslation();
-
-  const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#contact', label: 'Contact' }
-  ];
 
   const quickLinks = [
     { label: t('landing.navbar.theChallenge'), href: '#challenge' },
@@ -53,21 +45,6 @@ const Footer = () => {
             <p className="text-gray-300 leading-relaxed">
               {t('landing.footer.description')}
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social, index) => {
-                const IconComponent = social.icon;
-                return (
-                  <a
-                    key={index}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="w-10 h-10 bg-gray-800/50 border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-500/50 transition-all duration-300 hover:scale-110"
-                  >
-                    <IconComponent className="w-5 h-5" />
-                  </a>
-                );
-              })}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -96,8 +73,6 @@ const Footer = () => {
             </h4>
             <div className="space-y-2 text-sm text-gray-300">
               <p>{t('landing.contact.info.email.value')}</p>
-              <p>{t('landing.contact.info.phone.value')}</p>
-              <p>{t('landing.contact.info.address.value')}</p>
             </div>
           </div>
         </div>
