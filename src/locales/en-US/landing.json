@@ -167,9 +167,13 @@
         "label": "Email Us",
         "value": "hello@fanid.com"
       },
-      "website": {
-        "label": "Website",
-        "value": "www.afanverse.xyz"
+      "phone": {
+        "label": "Call Us",
+        "value": "+1 (555) 123-4567"
+      },
+      "address": {
+        "label": "Visit Us",
+        "value": "123 Innovation Drive, Tech City, TC 12345"
       }
     },
     "hours": {
@@ -178,7 +182,7 @@
     }
   },
   "footer": {
-    "description": "Revolutionizing event experiences through secure biometric verification and cutting-edge technology.",
+    "description": "AI Facial Recognition & ZK Encryption Technology",
     "quickLinks": "Quick Links",
     "contact": "Contact Info",
     "copyright": "© 2025 FanID | Created to Amplify Your Events. All rights reserved.",
