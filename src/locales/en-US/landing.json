@@ -167,13 +167,9 @@
         "label": "Email Us",
         "value": "hello@aarmco.xyz"
       },
-      "phone": {
-        "label": "Call Us",
-        "value": "+1 (555) 123-4567"
-      },
-      "address": {
-        "label": "Visit Us",
-        "value": "123 Innovation Drive, Tech City, TC 12345"
+      "website": {
+        "label": "Visit Website",
+        "value": "www.afanverse.xyz"
       }
     },
     "hours": {
