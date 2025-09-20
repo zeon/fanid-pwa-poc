@@ -68,27 +68,18 @@ const BusinessModelSection = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Main Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            {t('landing.businessModel.title')}
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              {t('landing.businessModel.advantages.title')}
+            </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            {t('landing.businessModel.subtitle')}
-          </p>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
-
         {/* Advantages Section */}
         <div className="relative">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                {t('landing.businessModel.advantages.title')}
-              </span>
-            </h3>
-          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {advantages.map((advantage) => {
