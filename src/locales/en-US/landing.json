@@ -39,15 +39,15 @@
       "features": {
         "security": {
           "title": "Security & Precision",
-          "description": "AI technology with error rates as low as 0.1%, providing unparalleled security protection"
+          "description": "AI technology with error rates as low as 0.05%, providing unparalleled security protection"
         },
         "verification": {
           "title": "Reliable Verification", 
-          "description": "One-click verification, allowing users to complete verification and purchase within seconds"
+          "description": "One face per account, allowing users to complete verification and purchase within seconds"
         },
         "efficiency": {
           "title": "High Efficiency",
-          "description": "Complete identity verification in seconds, with smooth ticket scanning and entry"
+          "description": "Instant identity verification in under 2-3 seconds, making ticketing and concert entry fast and seamless"
         },
         "engaging": {
           "title": "Fun & Engaging",
@@ -55,18 +55,18 @@
         }
       },
       "zkTechnology": {
-        "title": "Zero-Knowledge Technology",
+        "title": "Zero Knowledge Patent | Proprietary Zero-Knowledge Facial Recognition Technology",
         "clientEncryption": {
           "title": "Client-side Encryption",
           "description": "Sensitive data is encrypted and protected on the client side, ensuring complete privacy"
         },
         "noExtraCost": {
-          "title": "No Additional Burden",
-          "description": "Simple mobile scanning completes verification without additional equipment investment"
+          "title": "No Expensive Hardware Scanning Required",
+          "description": "Verify with your smartphone or tablet—no extra hardware investment needed"
         },
         "serverSecurity": {
-          "title": "Server-side Facial Data Security", 
-          "description": "Comprehensive security without storing any biometric identification data"
+          "title": "No facial data stored on the server side", 
+          "description": "Secure and reliable system, no storage of sensitive biometric data required"
         }
       },
       "verificationFlow": {
@@ -102,8 +102,8 @@
             "description": "Easy integration with existing ticketing platforms and venue management systems"
           },
           {
-            "title": "Scalable Solution", 
-            "description": "Handles events from intimate venues to massive stadiums with consistent performance"
+            "title": "Data Analytics", 
+            "description": "Provides data analytics services to optimize events and marketing strategies for businesses"
           },
           {
             "title": "Revenue Growth",
