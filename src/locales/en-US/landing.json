@@ -121,24 +121,24 @@
       "subtitle": "Diverse expertise combined to create a revolutionary platform",
       "members": {
         "0": {
-          "name": "Technology Innovation Experts",
-          "position": "Technology Innovation Experts",
-          "description": "Composed of experts in blockchain, AI facial recognition, and user experience design from IBM and MIT"
+          "name": "Alex Chen",
+          "position": "Founder & CEO",
+          "description": "Visionary leader with 15+ years in fintech and blockchain innovation"
         },
         "1": {
-          "name": "Brand Marketing Experts",
-          "position": "Brand Marketing Experts",
-          "description": "Experienced in crafting campaigns for global brands with extensive fan community management expertise."
+          "name": "Sarah Johnson",
+          "position": "Chief Financial Officer",
+          "description": "Strategic financial expert with experience in scaling tech companies"
         },
         "2": {
-          "name": "Encryption Technology Experts",
-          "position": "Encryption Technology Experts",
-          "description": "Seasoned cloud and encryption technology software engineers with expertise from Microsoft, Oracle, and Symantec."
+          "name": "Marcus Lee",
+          "position": "Product Manager",
+          "description": "User experience advocate with deep knowledge in event technology"
         },
         "3": {
-          "name": "Entertainment Industry Experts",
-          "position": "Entertainment Industry Experts",
-          "description": "Deeply rooted in the entertainment industry, with a strong understanding of fan needs and market trends."
+          "name": "Emma Rodriguez",
+          "position": "Tech Lead",
+          "description": "Full-stack engineer specializing in security and scalable architecture"
       }
     }
   },
@@ -165,7 +165,7 @@
       "description": "Ready to revolutionize your event experience? Contact us to learn more about FanID's secure verification system and how it can benefit your organization.",
       "email": {
         "label": "Email Us",
-        "value": "hello@aarmco.xyz"
+        "value": "hello@fanid.com"
       },
       "phone": {
         "label": "Call Us",
@@ -182,7 +182,7 @@
     }
   },
   "footer": {
-    "description": "Revolutionizing event experiences through secure biometric verification and cutting-edge technology.",
+    "description": "AI Facial Recognition & ZK Encryption Technology",
     "quickLinks": "Quick Links",
     "contact": "Contact Info",
     "copyright": "© 2025 FanID | Created to Amplify Your Events. All rights reserved.",
