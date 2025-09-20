@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Globe, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactUsSection = () => {
@@ -41,16 +41,10 @@ const ContactUsSection = () => {
       gradient: 'from-cyan-500 to-blue-500'
     },
     {
-      icon: Phone,
-      label: t('landing.contact.info.phone.label'),
-      value: t('landing.contact.info.phone.value'),
+      icon: Globe,
+      label: t('landing.contact.info.website.label'),
+      value: t('landing.contact.info.website.value'),
       gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: MapPin,
-      label: t('landing.contact.info.address.label'),
-      value: t('landing.contact.info.address.value'),
-      gradient: 'from-green-500 to-emerald-500'
     }
   ];
 

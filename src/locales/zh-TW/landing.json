@@ -167,13 +167,9 @@
         "label": "電子郵件",
         "value": "hello@aarmco.xyz"
       },
-      "phone": {
-        "label": "電話",
-        "value": "+886 2 1234-5678"
-      },
-      "address": {
-        "label": "地址",
-        "value": "台北市信義區創新大道123號"
+      "website": {
+        "label": "網站",
+        "value": "www.afanverse.xyz"
       }
     },
     "hours": {

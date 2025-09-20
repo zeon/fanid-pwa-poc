@@ -79,38 +79,6 @@ const BusinessModelSection = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto mt-6 rounded-full"></div>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {metrics.map((metric) => {
-            const Icon = metric.icon;
-            return (
-              <Card 
-                key={metric.key}
-                className="group relative bg-gray-800/50 border-gray-700 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
-              >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 relative">
-                    {/* Icon glow effect */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${metric.gradient} rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300`}></div>
-                    <div className={`relative w-16 h-16 bg-gradient-to-r ${metric.gradient} rounded-full flex items-center justify-center`}>
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold mb-2">
-                    <span className={`bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent`}>
-                      {t(`landing.businessModel.metrics.${metric.key}.value`)}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 font-medium">
-                    {t(`landing.businessModel.metrics.${metric.key}.label`)}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
 
         {/* Advantages Section */}
         <div className="relative">
