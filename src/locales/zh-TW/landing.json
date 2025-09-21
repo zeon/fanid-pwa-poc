@@ -26,7 +26,7 @@
       },
       "counterfeiting": {
         "title": "假票盛行",
-        "description": "經銷商和黑市從活動組織者、製作人、藝術家和藝術家經紀人手中竊取了 112 億至 187.5 億美元的利潤。"
+        "description": "經銷商和黑市從活動主辦單位、製作人、藝人和藝人經紀人手中竊取了 112 億至 187.5 億美元的利潤。"
       },
       "inefficiency": {
         "title": "入場效率低",
@@ -39,34 +39,34 @@
       "features": {
         "security": {
           "title": "安全精準",
-          "description": "AI技術，錯誤率低於 0.1%，零知識專利科技保護隱私"
+          "description": "AI技術，錯誤率低於 0.05%，零知識專利科技保護隱私"
         },
         "verification": {
           "title": "驗證可靠",
-          "description": "一鍵一驗證，社會多帳號及黃牛搶票問題"
+          "description": "一臉一帳號，杜絕多帳號及黃牛搶票問題"
         },
         "efficiency": {
           "title": "高效率",
-          "description": "幾秒完成身份驗證，購票及演唱會入場"
+          "description": "即時身份驗證只需小於2-3秒，購票及演唱會入場快速方便"
         },
         "engaging": {
           "title": "趣味十足",
-          "description": "個人化頭像，粉絲互動五動，身歷其境的體驗"
+          "description": "個人化頭像，粉絲牆互動，身歷其境的體驗"
         }
       },
       "zkTechnology": {
-        "title": "零知識專利科技",
+        "title": "Zero Knowledge Patent獨有零知識科技臉部辨識專利",
         "clientEncryption": {
           "title": "客戶端加密",
-          "description": "在客戶端密敏感使用者資料，確保完全的隱私保護"
+          "description": "在客戶端加密敏感使用者資料，確保完全的隱私保護"
         },
         "noExtraCost": {
-          "title": "無需易負擔",
-          "description": "只需手機掃描即可完成驗證，無需額外設備投資"
+          "title": "無需昂貴硬體掃描",
+          "description": "個人之手機或平板設備掃描即可完成驗證，無需額外投資硬體設備"
         },
         "serverSecurity": {
-          "title": "伺服器端無人臉數據",
-          "description": "系統安全防護，無需儲存敏感生物識別資訊"
+          "title": "伺服器端無存人臉數據",
+          "description": "系統安全可靠，無需儲存敏感生物識別資訊"
         }
       },
       "verificationFlow": {
@@ -102,8 +102,8 @@
             "description": "輕鬆整合現有票務平台和場館管理系統"
           },
           {
-            "title": "可擴展解決方案",
-            "description": "從小型場館到大型體育場，都能保持一致的性能表現"
+            "title": "數據分析",
+            "description": "提供資料分析服務，幫助企業優化活動和營銷策略"
           },
           {
             "title": "營收增長",
@@ -121,24 +121,24 @@
       "subtitle": "多元專業的融合，打造革命性的平台",
       "members": {
         "0": {
-          "name": "陳志明",
+          "name": "科技創新專家",
           "position": "創辦人暨執行長",
-          "description": "擁有15年以上金融科技和區塊鏈創新經驗的遠見領袖"
+          "description": "區塊鏈、AI臉部辨識和用戶體驗設計的專家組成，來自IBM、MIT專業領域"
         },
         "1": {
-          "name": "莎拉·約翰遜",
-          "position": "財務長",
-          "description": "在擴展科技公司方面經驗豐富的戰略財務專家"
+          "name": "品牌行銷專家",
+          "position": "行銷長",
+          "description": "曾為全球知名品牌策畫宣傳，擁有豐富的粉絲社群管理經驗"
         },
         "2": {
-          "name": "李明軒",
-          "position": "產品經理",
-          "description": "對活動技術有深入了解的用戶體驗倡導者"
+          "name": "加密技術專家",
+          "position": "技術長",
+          "description": "經驗豐富的雲端及加密技術軟體資深工程師，來自MICROSOFT、ORACLE、SYMANTEC等專業經驗"
         },
         "3": {
-          "name": "艾瑪·羅德里格茲",
-          "position": "技術主管",
-          "description": "專精於安全性和可擴展架構的全端工程師"
+          "name": "娛樂產業專家",
+          "position": "娛樂專家",
+          "description": "深耕娛樂產業，瞭解粉絲需求和市場動態"
       }
     }
   },
