@@ -8,7 +8,7 @@ import { Crown, Calculator, Users, Code } from 'lucide-react';
 const TeamSection = () => {
   const { t } = useTranslation();
 
-  const teamIcons = [Crown, Calculator, Users, Code];
+  const teamIcons = [Code, Code, Code, Code];
 
   const teamMembers = [0, 1, 2, 3].map((index) => ({
     key: index,
