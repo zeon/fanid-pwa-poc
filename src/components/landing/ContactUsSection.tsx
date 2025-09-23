@@ -54,16 +54,7 @@ const ContactUsSection = () => {
         </div>
 
         {/* Centered Contact Information */}
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              {t('landing.contact.info.title')}
-            </h3>
-            <p className="text-gray-300 leading-relaxed mb-8">
-              {t('landing.contact.info.description')}
-            </p>
-          </div>
-
+        <div className="max-w-md mx-auto">
           <div className="space-y-6">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
