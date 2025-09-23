@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Crown, Calculator, Users, Code } from 'lucide-react';
+import { User } from 'lucide-react';
 
 const TeamSection = () => {
   const { t } = useTranslation();
 
-  const teamIcons = [Code, Code, Code, Code];
+  const teamIcons = [User, User, User, User];
 
   const teamMembers = [0, 1, 2, 3].map((index) => ({
     key: index,
