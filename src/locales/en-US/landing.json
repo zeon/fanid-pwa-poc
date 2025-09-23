@@ -3,9 +3,9 @@
   "landing": {
     "navbar": {
       "theChallenge": "The Challenge",
-      "ourSolution": "Our Solution", 
+      "ourSolution": "Solution", 
       "businessModel": "Business Model",
-      "ourTeam": "Our Team",
+      "ourTeam": "Team",
       "contactUs": "Contact Us"
     },
     "header": {
