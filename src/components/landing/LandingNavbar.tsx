@@ -1,15 +1,43 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
+import PasswordDialog from '@/components/auth/PasswordDialog';
+import { checkSiteAccess } from '@/utils/siteAuth';
 
 const LandingNavbar = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const [targetRoute, setTargetRoute] = useState<string>('');
+
+  const handleSignInClick = () => {
+    if (checkSiteAccess()) {
+      navigate('/signin');
+    } else {
+      setTargetRoute('/signin');
+      setShowPasswordDialog(true);
+    }
+  };
+
+  const handleGetStartedClick = () => {
+    if (checkSiteAccess()) {
+      navigate('/signup');
+    } else {
+      setTargetRoute('/signup');
+      setShowPasswordDialog(true);
+    }
+  };
+
+  const handleAccessGranted = () => {
+    setShowPasswordDialog(false);
+    navigate(targetRoute);
+  };
 
   const navItems = [
     { key: 'theChallenge', href: '#challenge' },
@@ -87,11 +115,14 @@ const LandingNavbar = () => {
               {/* Right side - Language switcher and Sign In button */}
               <div className="flex items-center space-x-4">
                 <TextLanguageSwitcher />
-                <Link to="/signin">
-                  <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700">
-                    {t('landing.header.signIn')}
-                  </Button>
-                </Link>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-gray-300 hover:text-white hover:bg-gray-700"
+                  onClick={handleSignInClick}
+                >
+                  {t('landing.header.signIn')}
+                </Button>
               </div>
             </>
           )}
@@ -162,22 +193,38 @@ const LandingNavbar = () => {
                 </div>
                 
                 <div className="space-y-2 px-3">
-                  <Link to="/signin" onClick={() => setIsMenuOpen(false)}>
-                    <Button variant="ghost" className="w-full text-gray-300 hover:text-white hover:bg-gray-700">
-                      {t('landing.header.signIn')}
-                    </Button>
-                  </Link>
-                  <Link to="/signup" onClick={() => setIsMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white">
-                      {t('landing.header.getStarted')}
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant="ghost" 
+                    className="w-full text-gray-300 hover:text-white hover:bg-gray-700"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      handleSignInClick();
+                    }}
+                  >
+                    {t('landing.header.signIn')}
+                  </Button>
+                  <Button 
+                    className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      handleGetStartedClick();
+                    }}
+                  >
+                    {t('landing.header.getStarted')}
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* Password Dialog */}
+      <PasswordDialog
+        isOpen={showPasswordDialog}
+        onAccessGranted={handleAccessGranted}
+        onClose={() => setShowPasswordDialog(false)}
+      />
     </nav>
   );
 };

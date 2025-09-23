@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LandingNavbar from '@/components/landing/LandingNavbar';
+import PasswordDialog from '@/components/auth/PasswordDialog';
+import { checkSiteAccess } from '@/utils/siteAuth';
 import ChallengeSection from '@/components/landing/ChallengeSection';
 import SolutionSection from '@/components/landing/SolutionSection';
 import BusinessModelSection from '@/components/landing/BusinessModelSection';
@@ -15,6 +17,21 @@ import ScrollToTopButton from '@/components/navigation/ScrollToTopButton';
 
 const Index = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+
+  const handleGetStartedClick = () => {
+    if (checkSiteAccess()) {
+      navigate('/signup');
+    } else {
+      setShowPasswordDialog(true);
+    }
+  };
+
+  const handleAccessGranted = () => {
+    setShowPasswordDialog(false);
+    navigate('/signup');
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -71,11 +88,13 @@ const Index = () => {
           </p>
           {/* Get Started Button */}
           <div className="mt-8">
-            <Link to="/signup">
-              <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-8 py-4 text-lg font-semibold">
-                {t('landing.header.getStarted')}
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-400 hover:to-purple-400 text-white px-8 py-4 text-lg font-semibold"
+              onClick={handleGetStartedClick}
+            >
+              {t('landing.header.getStarted')}
+            </Button>
           </div>
         </div>
       </div>
@@ -127,6 +146,13 @@ const Index = () => {
 
       {/* Scroll to Top Button */}
       <ScrollToTopButton />
+
+      {/* Password Dialog */}
+      <PasswordDialog
+        isOpen={showPasswordDialog}
+        onAccessGranted={handleAccessGranted}
+        onClose={() => setShowPasswordDialog(false)}
+      />
     </div>
   );
 };
