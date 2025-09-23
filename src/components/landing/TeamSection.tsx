@@ -2,22 +2,20 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import teamCeoImage from '@/assets/team-ceo.jpg';
-import teamCfoImage from '@/assets/team-cfo.jpg';
-import teamPmImage from '@/assets/team-pm.jpg';
-import teamTechImage from '@/assets/team-tech.jpg';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Crown, Calculator, Users, Code } from 'lucide-react';
 
 const TeamSection = () => {
   const { t } = useTranslation();
 
-  const teamImages = [teamCeoImage, teamCfoImage, teamPmImage, teamTechImage];
+  const teamIcons = [Crown, Calculator, Users, Code];
 
   const teamMembers = [0, 1, 2, 3].map((index) => ({
     key: index,
     name: t(`landing.team.members.${index}.name`),
     position: t(`landing.team.members.${index}.position`),
     description: t(`landing.team.members.${index}.description`),
-    image: teamImages[index]
+    icon: teamIcons[index]
   }));
 
   return (
@@ -63,13 +61,11 @@ const TeamSection = () => {
                 {/* Team Member Photo */}
                 <div className="mx-auto mb-4 relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-purple-400/50 group-hover:border-purple-400 transition-colors duration-300">
-                    <img
-                      src={member.image}
-                      alt={`${member.name} - ${member.position}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                   <Avatar className="relative w-24 h-24 border-2 border-purple-400/50 group-hover:border-purple-400 transition-colors duration-300">
+                     <AvatarFallback className="bg-gray-800 text-purple-400 group-hover:text-cyan-400 transition-colors duration-300">
+                       <member.icon size={32} />
+                     </AvatarFallback>
+                   </Avatar>
                 </div>
                 
                 {/* Member Name */}
