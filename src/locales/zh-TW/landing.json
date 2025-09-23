@@ -3,9 +3,9 @@
   "landing": {
     "navbar": {
       "theChallenge": "挑戰",
-      "ourSolution": "我們的解決方案",
+      "ourSolution": "解決方案",
       "businessModel": "商業模式", 
-      "ourTeam": "我們的團隊",
+      "ourTeam": "團隊",
       "contactUs": "聯絡我們"
     },
     "header": {
