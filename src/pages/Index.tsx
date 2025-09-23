@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import LandingNavbar from '@/components/landing/LandingNavbar';
@@ -19,18 +19,29 @@ const Index = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [showPasswordDialog, setShowPasswordDialog] = useState(false);
+  const [pendingRoute, setPendingRoute] = useState<string>('/signup');
 
   const handleGetStartedClick = () => {
     if (checkSiteAccess()) {
       navigate('/signup');
     } else {
+      setPendingRoute('/signup');
+      setShowPasswordDialog(true);
+    }
+  };
+
+  const handleEntryStaffClick = () => {
+    if (checkSiteAccess()) {
+      navigate('/entry-staff');
+    } else {
+      setPendingRoute('/entry-staff');
       setShowPasswordDialog(true);
     }
   };
 
   const handleAccessGranted = () => {
     setShowPasswordDialog(false);
-    navigate('/signup');
+    navigate(pendingRoute);
   };
 
   return (
@@ -128,16 +139,15 @@ const Index = () => {
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Link to="/entry-staff">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="bg-orange-500/10 border-orange-400 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 px-8 py-4 text-lg font-semibold"
-            >
-              <QrCode className="mr-2 h-6 w-6" />
-              {t('landing.button.entryStuff')}
-            </Button>
-          </Link>
+          <Button 
+            variant="outline" 
+            size="lg"
+            className="bg-orange-500/10 border-orange-400 text-orange-400 hover:bg-orange-500/20 hover:text-orange-300 px-8 py-4 text-lg font-semibold"
+            onClick={handleEntryStaffClick}
+          >
+            <QrCode className="mr-2 h-6 w-6" />
+            {t('landing.button.entryStuff')}
+          </Button>
         </div>
       </div>
 
