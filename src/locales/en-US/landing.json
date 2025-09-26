@@ -122,17 +122,17 @@
       "members": {
         "0": {
           "name": "Technology Innovation Experts",
-          "position": "Technology Innovation Experts",
+          "position": "Funder & CEO",
           "description": "Composed of experts in blockchain, AI facial recognition, and user experience design from IBM and MIT"
         },
         "1": {
           "name": "Brand Marketing Experts",
-          "position": "Brand Marketing Experts",
+          "position": "CMO",
           "description": "Experienced in crafting campaigns for global brands with extensive fan community management expertise."
         },
         "2": {
           "name": "Encryption Technology Experts",
-          "position": "Encryption Technology Experts",
+          "position": "CTO",
           "description": "Seasoned cloud and encryption technology software engineers with expertise from Microsoft, Oracle, and Symantec."
         },
         "3": {
