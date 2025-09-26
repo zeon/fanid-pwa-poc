@@ -39,7 +39,7 @@
       "features": {
         "security": {
           "title": "Security & Precision",
-          "description": "AI technology with error rates as low as 0.05%, providing unparalleled security protection"
+          "description": "AI technology with error rates as low as 0.005%, providing unparalleled security protection"
         },
         "verification": {
           "title": "Reliable Verification", 
