@@ -46,7 +46,7 @@ const App = () => (
               <Route path="/signup" element={<PublicRoute><SignUp /></PublicRoute>} />
               <Route path="/signin" element={<PublicRoute><SignIn /></PublicRoute>} />
               <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
-              <Route path="/reset-password" element={<PublicRoute><ResetPassword /></PublicRoute>} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/face-scanning" element={<ProtectedRoute><FaceScanning /></ProtectedRoute>} />
               <Route path="/face-scan-complete" element={<ProtectedRoute><FaceScanComplete /></ProtectedRoute>} />
               <Route path="/face-duplicate-detected" element={<ProtectedRoute><FaceDuplicateDetected /></ProtectedRoute>} />
