@@ -23,15 +23,12 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en-US');
+
   const availableLanguages = [
     { code: 'en-US', name: 'English' },
     { code: 'zh-TW', name: '繁體中文' },
   ];
-
-  const [currentLanguage, setCurrentLanguage] = useState(() => {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    return savedLanguage || i18n.language || 'en-US';
-  });
 
   const switchLanguage = (language: string) => {
     i18n.changeLanguage(language);
@@ -40,10 +37,11 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
   };
 
   useEffect(() => {
-    if (currentLanguage) {
-      i18n.changeLanguage(currentLanguage);
+    const savedLanguage = localStorage.getItem('preferred-language');
+    if (savedLanguage && savedLanguage !== currentLanguage) {
+      switchLanguage(savedLanguage);
     }
-  }, [currentLanguage]);
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, switchLanguage, availableLanguages }}>
