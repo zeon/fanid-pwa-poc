@@ -1,76 +1,85 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import AuthLayout from '@/components/auth/AuthLayout';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { Separator } from '@/components/ui/separator';
 import { Fingerprint, Eye, EyeOff } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { signInSchema } from '@/utils/validation';
+import { toast } from 'sonner';
+import { ZodError } from 'zod';
 
 const SignIn = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { signIn } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
   };
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email format';
-    
-    if (!formData.password) newErrors.password = 'Password is required';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Sign in data:', formData);
-      // TODO: Implement actual sign in logic
-      // Navigate to OTP page with user data
-      navigate('/otp', { 
-        state: { 
-          email: formData.email,
-          fromSignUp: false
-        } 
-      });
+    setLoading(true);
+
+    try {
+      // Validate form data
+      signInSchema.parse(formData);
+
+      // Sign in with Supabase
+      const { error } = await signIn(formData.email, formData.password);
+
+      if (error) {
+        if (error.message.includes('Invalid login credentials')) {
+          toast.error('Invalid email or password');
+        } else if (error.message.includes('Email not confirmed')) {
+          toast.error('Please confirm your email before signing in');
+        } else {
+          toast.error(error.message || 'Failed to sign in');
+        }
+        return;
+      }
+
+      toast.success('Signed in successfully!');
+      navigate('/dashboard');
+    } catch (error) {
+      if (error instanceof ZodError) {
+        error.errors.forEach(err => {
+          toast.error(err.message);
+        });
+      } else {
+        toast.error('An unexpected error occurred');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleBiometricLogin = () => {
-    console.log('Starting biometric login flow');
     navigate('/face-scanning', {
       state: {
         isBiometricLogin: true,
-        email: 'biometric-user@example.com' // In real app, this would come from stored biometric data
+        email: 'biometric-user@example.com'
       }
     });
   };
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-      {/* Language switcher positioned at top right */}
+      {/* Language switcher */}
       <div className="absolute top-6 right-6 z-20">
         <TextLanguageSwitcher />
       </div>
 
-      {/* Cyberpunk grid background with reduced opacity */}
+      {/* Cyberpunk grid background */}
       <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0" style={{
           backgroundImage: `
@@ -101,16 +110,12 @@ const SignIn = () => {
             <p className="text-gray-400 text-sm">{t('auth.signIn.subtitle')}</p>
           </div>
 
-          {/* Auth Form Container with Glowing Shadow */}
+          {/* Form Container */}
           <div className="relative">
-            {/* Outer glow effect with slower animation */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl animate-pulse" style={{ animationDuration: '3s' }}></div>
-            
-            {/* Inner glow rings */}
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-lg blur-md"></div>
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/20 to-purple-300/20 rounded-lg blur-sm"></div>
             
-            {/* Form container */}
             <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl shadow-cyan-500/25">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <CyberpunkInput
@@ -119,7 +124,6 @@ const SignIn = () => {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={handleInputChange('email')}
-                  error={errors.email}
                 />
 
                 <CyberpunkInput
@@ -128,7 +132,6 @@ const SignIn = () => {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleInputChange('password')}
-                  error={errors.password}
                   rightIcon={
                     <button
                       type="button"
@@ -149,8 +152,8 @@ const SignIn = () => {
                   </Link>
                 </div>
 
-                <CyberpunkButton type="submit" variant="primary">
-                  {t('auth.signIn.signInButton')}
+                <CyberpunkButton type="submit" variant="primary" disabled={loading}>
+                  {loading ? 'Signing In...' : t('auth.signIn.signInButton')}
                 </CyberpunkButton>
 
                 <div className="relative">
@@ -160,7 +163,7 @@ const SignIn = () => {
                   </span>
                 </div>
 
-                <CyberpunkButton variant="secondary" onClick={handleBiometricLogin}>
+                <CyberpunkButton type="button" variant="secondary" onClick={handleBiometricLogin}>
                   <Fingerprint className="mr-2" size={20} />
                   {t('auth.signIn.biometricLogin')}
                 </CyberpunkButton>

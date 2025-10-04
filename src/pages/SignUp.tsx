@@ -1,82 +1,84 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import AuthLayout from '@/components/auth/AuthLayout';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import CyberpunkCheckbox from '@/components/auth/CyberpunkCheckbox';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
 import { Eye, EyeOff, User, Mail, Phone, Shield, Key } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
+import { signUpSchema } from '@/utils/validation';
+import { toast } from 'sonner';
+import { ZodError } from 'zod';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { signUp } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    mobilePhone: '',
-    idLastFiveDigits: '',
-    password: ''
+    phone: '',
+    id_last_five: '',
+    password: '',
+    agreeToPrivacy: false,
   });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [showPassword, setShowPassword] = useState(false);
-  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
   };
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.username) newErrors.username = 'Username is required';
-    else if (formData.username.length < 3) newErrors.username = 'Username must be at least 3 characters';
-    
-    if (!formData.email) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Invalid email format';
-    
-    if (!formData.mobilePhone) newErrors.mobilePhone = 'Mobile phone is required';
-    else if (!/^\+?[\d\s\-\(\)]{10,}$/.test(formData.mobilePhone)) newErrors.mobilePhone = 'Invalid phone number format';
-    
-    if (!formData.idLastFiveDigits) newErrors.idLastFiveDigits = 'ID last 5 digits is required';
-    else if (!/^\d{5}$/.test(formData.idLastFiveDigits)) newErrors.idLastFiveDigits = 'Must be exactly 5 digits';
-    
-    if (!formData.password) newErrors.password = 'Password is required';
-    else if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
-
-    if (!privacyAccepted) newErrors.privacy = 'You must accept the privacy policy';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Sign up data:', formData);
-      // TODO: Implement actual sign up logic
-      // Navigate to OTP page with user data
-      navigate('/otp', { 
-        state: { 
-          email: formData.email,
-          fromSignUp: true
-        } 
+    setLoading(true);
+
+    try {
+      // Validate form data
+      signUpSchema.parse(formData);
+
+      // Sign up with Supabase
+      const { error } = await signUp(formData.email, formData.password, {
+        username: formData.username,
+        phone: formData.phone,
+        id_last_five: formData.id_last_five
       });
+
+      if (error) {
+        if (error.message.includes('already registered')) {
+          toast.error('This email is already registered. Please sign in instead.');
+        } else if (error.message.includes('weak password')) {
+          toast.error('Password is too weak. Please use a stronger password.');
+        } else {
+          toast.error(error.message || 'Failed to create account');
+        }
+        return;
+      }
+
+      toast.success('Account created! Please check your email to confirm your account.');
+      navigate('/signin');
+    } catch (error) {
+      if (error instanceof ZodError) {
+        error.errors.forEach(err => {
+          toast.error(err.message);
+        });
+      } else {
+        toast.error('An unexpected error occurred');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-      {/* Language switcher positioned at top right */}
+      {/* Language switcher */}
       <div className="absolute top-6 right-6 z-20">
         <TextLanguageSwitcher />
       </div>
 
-      {/* Cyberpunk grid background with reduced opacity */}
+      {/* Cyberpunk grid background */}
       <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0" style={{
           backgroundImage: `
@@ -107,16 +109,12 @@ const SignUp = () => {
             <p className="text-gray-400 text-sm">{t('auth.signUp.subtitle')}</p>
           </div>
 
-          {/* Auth Form Container with Glowing Shadow */}
+          {/* Form Container */}
           <div className="relative">
-            {/* Outer glow effect with slower animation */}
             <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl blur-xl animate-pulse" style={{ animationDuration: '3s' }}></div>
-            
-            {/* Inner glow rings */}
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 to-purple-400/30 rounded-lg blur-md"></div>
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/20 to-purple-300/20 rounded-lg blur-sm"></div>
             
-            {/* Form container */}
             <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl shadow-cyan-500/25">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <CyberpunkInput
@@ -124,7 +122,6 @@ const SignUp = () => {
                   placeholder="johndoe"
                   value={formData.username}
                   onChange={handleInputChange('username')}
-                  error={errors.username}
                   icon={<User size={16} />}
                 />
 
@@ -134,7 +131,6 @@ const SignUp = () => {
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={handleInputChange('email')}
-                  error={errors.email}
                   icon={<Mail size={16} />}
                 />
 
@@ -142,9 +138,8 @@ const SignUp = () => {
                   label={t('auth.signUp.mobilePhone')}
                   type="tel"
                   placeholder="+1 (555) 123-4567"
-                  value={formData.mobilePhone}
-                  onChange={handleInputChange('mobilePhone')}
-                  error={errors.mobilePhone}
+                  value={formData.phone}
+                  onChange={handleInputChange('phone')}
                   icon={<Phone size={16} />}
                 />
 
@@ -152,9 +147,8 @@ const SignUp = () => {
                   label={t('auth.signUp.idLastFiveDigits')}
                   placeholder="12345"
                   maxLength={5}
-                  value={formData.idLastFiveDigits}
-                  onChange={handleInputChange('idLastFiveDigits')}
-                  error={errors.idLastFiveDigits}
+                  value={formData.id_last_five}
+                  onChange={handleInputChange('id_last_five')}
                   icon={<Shield size={16} />}
                 />
 
@@ -164,7 +158,6 @@ const SignUp = () => {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleInputChange('password')}
-                  error={errors.password}
                   icon={<Key size={16} />}
                   rightIcon={
                     <button
@@ -178,14 +171,13 @@ const SignUp = () => {
                 />
 
                 <CyberpunkCheckbox
-                  checked={privacyAccepted}
-                  onCheckedChange={setPrivacyAccepted}
-                  error={errors.privacy}
+                  checked={formData.agreeToPrivacy}
+                  onCheckedChange={(checked) => setFormData(prev => ({ ...prev, agreeToPrivacy: checked as boolean }))}
                   label={t('auth.signUp.privacyPolicy')}
                 />
 
-                <CyberpunkButton type="submit" variant="primary">
-                  {t('auth.signUp.createAccountButton')}
+                <CyberpunkButton type="submit" variant="primary" disabled={loading}>
+                  {loading ? 'Creating Account...' : t('auth.signUp.createAccountButton')}
                 </CyberpunkButton>
 
                 <div className="text-center pt-4">

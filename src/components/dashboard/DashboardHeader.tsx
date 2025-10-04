@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -6,6 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { User, LogOut } from 'lucide-react';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface DashboardHeaderProps {
   user: {
@@ -18,13 +18,14 @@ interface DashboardHeaderProps {
 const DashboardHeader = ({ user }: DashboardHeaderProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { signOut } = useAuth();
 
   const handleProfileClick = () => {
     navigate('/profile');
   };
 
-  const handleLogout = () => {
-    console.log('Logging out...');
+  const handleLogout = async () => {
+    await signOut();
     navigate('/signin');
   };
 

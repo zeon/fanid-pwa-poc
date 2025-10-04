@@ -1,7 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import DashboardEvents from '@/components/dashboard/DashboardEvents';
@@ -12,14 +12,17 @@ const Dashboard = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, profile } = useAuth();
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [purchaseData, setPurchaseData] = useState<any>(null);
   
-  // Mock user data - in a real app this would come from auth context
-  const user = {
-    name: 'Alex Chen',
-    email: 'alex.chen@example.com',
-    initials: 'AC'
+  // Get user display data
+  const userDisplayData = {
+    name: profile?.username || user?.email?.split('@')[0] || 'User',
+    email: user?.email || '',
+    initials: profile?.username 
+      ? profile.username.slice(0, 2).toUpperCase() 
+      : user?.email?.slice(0, 2).toUpperCase() || 'U'
   };
 
   useEffect(() => {
@@ -40,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-      {/* Enhanced Background Effects with reduced grid opacity */}
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 opacity-15">
         <div className="absolute inset-0" style={{
           backgroundImage: `
@@ -63,11 +66,10 @@ const Dashboard = () => {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
       {/* Header */}
-      <DashboardHeader user={user} />
+      <DashboardHeader user={userDisplayData} />
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto p-6 relative z-10">
-        
         <div className="mb-8">
           <h2 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h2>
           <p className="text-gray-400">{t('dashboard.subtitle')}</p>

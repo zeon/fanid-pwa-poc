@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import ProfileHeader from '@/components/profile/ProfileHeader';
 import ProfileInformation from '@/components/profile/ProfileInformation';
 import FanIdSection from '@/components/profile/FanIdSection';
@@ -8,14 +9,17 @@ import ChangePasswordSection from '@/components/profile/ChangePasswordSection';
 
 const UserProfile = () => {
   const navigate = useNavigate();
+  const { user, profile } = useAuth();
   
-  // Mock user data - in a real app this would come from auth context
-  const [userInfo] = useState({
-    name: 'Alex Chen',
-    email: 'alex.chen@example.com',
-    initials: 'AC',
-    fanId: 'FC2024AC001'
-  });
+  // Get user display data
+  const userInfo = {
+    name: profile?.username || user?.email?.split('@')[0] || 'User',
+    email: user?.email || '',
+    initials: profile?.username 
+      ? profile.username.slice(0, 2).toUpperCase() 
+      : user?.email?.slice(0, 2).toUpperCase() || 'U',
+    fanId: user?.id?.slice(0, 12).toUpperCase() || 'N/A'
+  };
 
   const handleGoBack = () => {
     navigate('/dashboard');
