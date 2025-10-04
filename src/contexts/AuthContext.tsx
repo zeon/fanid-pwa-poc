@@ -19,6 +19,7 @@ interface AuthContextType {
   roles: string[];
   loading: boolean;
   isAdmin: boolean;
+  emailVerified: boolean;
   signUp: (email: string, password: string, metadata: {
     username: string;
     phone: string;
@@ -28,6 +29,8 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   hasRole: (role: string) => boolean;
   updateProfile: (data: Partial<Profile>) => Promise<{ error: any }>;
+  resendVerificationEmail: () => Promise<{ error: any }>;
+  checkEmailVerification: () => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -38,6 +41,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [roles, setRoles] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [emailVerified, setEmailVerified] = useState(false);
 
   useEffect(() => {
     // Set up auth state listener
@@ -45,6 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
+        setEmailVerified(!!session?.user?.email_confirmed_at);
         
         // Defer fetching profile and roles with setTimeout
         if (session?.user) {
@@ -63,6 +68,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      setEmailVerified(!!session?.user?.email_confirmed_at);
       
       if (session?.user) {
         fetchProfileAndRoles(session.user.id);
@@ -107,14 +113,34 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     id_last_five: string;
   }) => {
     try {
-      const { error } = await supabase.auth.signUp({
+      // Check if email already exists
+      const { data: existingUser } = await supabase.auth.signInWithPassword({
+        email,
+        password: 'dummy-check'
+      });
+      
+      // If we get a response (even error), email might exist
+      // Better check: try to sign up and check the error
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
+          emailRedirectTo: `${window.location.origin}/verify-email`,
           data: metadata
         }
       });
+
+      // Supabase returns success even for duplicate emails (for security)
+      // But we can check if a user was actually created
+      if (!error && data.user && !data.user.identities?.length) {
+        return { 
+          error: { 
+            message: 'user_repeated_signup',
+            status: 200 
+          } 
+        };
+      }
+
       return { error };
     } catch (error) {
       return { error };
@@ -171,6 +197,36 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const resendVerificationEmail = async () => {
+    try {
+      if (!session) {
+        return { error: new Error('No active session') };
+      }
+
+      const { error } = await supabase.functions.invoke('resend-verification-email', {
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+      });
+
+      return { error };
+    } catch (error) {
+      return { error };
+    }
+  };
+
+  const checkEmailVerification = async (): Promise<boolean> => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const verified = !!session?.user?.email_confirmed_at;
+      setEmailVerified(verified);
+      return verified;
+    } catch (error) {
+      console.error('Error checking email verification:', error);
+      return false;
+    }
+  };
+
   const isAdmin = roles.includes('admin');
 
   const value = {
@@ -180,11 +236,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     roles,
     loading,
     isAdmin,
+    emailVerified,
     signUp,
     signIn,
     signOut,
     hasRole,
-    updateProfile
+    updateProfile,
+    resendVerificationEmail,
+    checkEmailVerification
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
