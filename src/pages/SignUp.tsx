@@ -10,6 +10,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { signUpSchema } from '@/utils/validation';
 import { toast } from 'sonner';
 import { ZodError } from 'zod';
+import { supabase } from '@/integrations/supabase/client';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -38,6 +39,35 @@ const SignUp = () => {
       // Validate form data
       signUpSchema.parse(formData);
 
+      // Check if email already exists
+      toast.loading(t('auth.toast.signUp.checkingEmail'));
+      
+      const { data: emailCheckData, error: emailCheckError } = await supabase.functions.invoke(
+        'check-email-exists',
+        {
+          body: { email: formData.email }
+        }
+      );
+
+      toast.dismiss();
+
+      if (emailCheckError) {
+        console.error('Email check error:', emailCheckError);
+        toast.error(t('auth.toast.validation.unexpectedError'));
+        return;
+      }
+
+      if (emailCheckData?.exists) {
+        toast.error(t('auth.toast.signUp.emailExists'), {
+          duration: 5000,
+          action: {
+            label: t('auth.signUp.signIn'),
+            onClick: () => navigate(`/signin?email=${encodeURIComponent(formData.email)}`)
+          }
+        });
+        return;
+      }
+
       // Sign up with Supabase
       const { error } = await signUp(formData.email, formData.password, {
         username: formData.username,
@@ -46,7 +76,7 @@ const SignUp = () => {
       });
 
       if (error) {
-        if (error.message.includes('already registered')) {
+        if (error.message.includes('already registered') || error.message.includes('User already registered')) {
           toast.error(t('auth.toast.signUp.emailExists'));
         } else if (error.message.includes('weak password')) {
           toast.error(t('auth.toast.signUp.weakPassword'));
@@ -59,6 +89,7 @@ const SignUp = () => {
       toast.success(t('auth.toast.signUp.accountCreated'));
       navigate('/signin?message=signup_success');
     } catch (error) {
+      toast.dismiss();
       if (error instanceof ZodError) {
         error.errors.forEach(err => {
           toast.error(err.message);

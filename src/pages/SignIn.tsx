@@ -20,8 +20,11 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [flashMessage, setFlashMessage] = useState<string | null>(null);
+  
+  // Get email from URL params if redirected from signup
+  const emailParam = searchParams.get('email');
   const [formData, setFormData] = useState({
-    email: '',
+    email: emailParam || '',
     password: ''
   });
 
