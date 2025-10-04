@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import i18n from '@/i18n/config';
 
 interface LanguageContextType {
@@ -23,25 +23,29 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en-US');
+  // Initialize with saved language or default
+  const [currentLanguage, setCurrentLanguage] = useState(() => {
+    const savedLanguage = localStorage.getItem('preferred-language');
+    return savedLanguage || i18n.language || 'en-US';
+  });
 
   const availableLanguages = [
     { code: 'en-US', name: 'English' },
     { code: 'zh-TW', name: '繁體中文' },
   ];
 
-  const switchLanguage = (language: string) => {
+  const switchLanguage = useCallback((language: string) => {
     i18n.changeLanguage(language);
     setCurrentLanguage(language);
     localStorage.setItem('preferred-language', language);
-  };
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    if (savedLanguage && savedLanguage !== currentLanguage) {
-      switchLanguage(savedLanguage);
-    }
   }, []);
+
+  // Sync i18n on mount
+  useEffect(() => {
+    if (currentLanguage) {
+      i18n.changeLanguage(currentLanguage);
+    }
+  }, [currentLanguage]);
 
   return (
     <LanguageContext.Provider value={{ currentLanguage, switchLanguage, availableLanguages }}>
