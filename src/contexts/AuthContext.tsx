@@ -140,6 +140,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setSession(null);
       setProfile(null);
       setRoles([]);
+      // Note: Toast messages in context are in English only
+      // For multilingual support, move toast to component level
       toast.success('Signed out successfully');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -162,6 +164,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       if (!error) {
         setProfile(prev => prev ? { ...prev, ...data } : null);
+        // Note: Toast messages in context are in English only
+        // For multilingual support, move toast to component level
         toast.success('Profile updated successfully');
       }
 

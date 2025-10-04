@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
@@ -10,17 +10,40 @@ import { useAuth } from '@/contexts/AuthContext';
 import { signInSchema } from '@/utils/validation';
 import { toast } from 'sonner';
 import { ZodError } from 'zod';
+import FlashMessage from '@/components/auth/FlashMessage';
 
 const SignIn = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { signIn } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [flashMessage, setFlashMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+
+  useEffect(() => {
+    const messageCode = searchParams.get('message');
+    if (messageCode) {
+      const messageMap: Record<string, string> = {
+        'signup_success': t('auth.flashMessages.signupSuccess'),
+        'email_verified': t('auth.flashMessages.emailVerified'),
+        'password_reset': t('auth.flashMessages.passwordReset'),
+        'session_expired': t('auth.flashMessages.sessionExpired')
+      };
+      
+      const message = messageMap[messageCode];
+      if (message) {
+        setFlashMessage(message);
+      }
+      
+      // Clear the query parameter
+      setSearchParams({});
+    }
+  }, [searchParams, setSearchParams, t]);
 
   const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [field]: e.target.value }));
@@ -39,16 +62,16 @@ const SignIn = () => {
 
       if (error) {
         if (error.message.includes('Invalid login credentials')) {
-          toast.error('Invalid email or password');
+          toast.error(t('auth.toast.signIn.invalidCredentials'));
         } else if (error.message.includes('Email not confirmed')) {
-          toast.error('Please confirm your email before signing in');
+          toast.error(t('auth.toast.signIn.emailNotConfirmed'));
         } else {
-          toast.error(error.message || 'Failed to sign in');
+          toast.error(error.message || t('auth.toast.signIn.failed'));
         }
         return;
       }
 
-      toast.success('Signed in successfully!');
+      toast.success(t('auth.toast.signIn.success'));
       navigate('/dashboard');
     } catch (error) {
       if (error instanceof ZodError) {
@@ -56,7 +79,7 @@ const SignIn = () => {
           toast.error(err.message);
         });
       } else {
-        toast.error('An unexpected error occurred');
+        toast.error(t('auth.toast.validation.unexpectedError'));
       }
     } finally {
       setLoading(false);
@@ -74,6 +97,15 @@ const SignIn = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      {/* Flash Message */}
+      {flashMessage && (
+        <FlashMessage 
+          message={flashMessage}
+          type="success"
+          onDismiss={() => setFlashMessage(null)}
+        />
+      )}
+
       {/* Language switcher */}
       <div className="absolute top-6 right-6 z-20">
         <TextLanguageSwitcher />
@@ -153,7 +185,7 @@ const SignIn = () => {
                 </div>
 
                 <CyberpunkButton type="submit" variant="primary" disabled={loading}>
-                  {loading ? 'Signing In...' : t('auth.signIn.signInButton')}
+                  {loading ? t('auth.toast.signIn.signingIn') : t('auth.signIn.signInButton')}
                 </CyberpunkButton>
 
                 <div className="relative">

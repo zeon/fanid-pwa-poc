@@ -47,24 +47,24 @@ const SignUp = () => {
 
       if (error) {
         if (error.message.includes('already registered')) {
-          toast.error('This email is already registered. Please sign in instead.');
+          toast.error(t('auth.toast.signUp.emailExists'));
         } else if (error.message.includes('weak password')) {
-          toast.error('Password is too weak. Please use a stronger password.');
+          toast.error(t('auth.toast.signUp.weakPassword'));
         } else {
-          toast.error(error.message || 'Failed to create account');
+          toast.error(error.message || t('auth.toast.signUp.failed'));
         }
         return;
       }
 
-      toast.success('Account created! Please check your email to confirm your account.');
-      navigate('/signin');
+      toast.success(t('auth.toast.signUp.accountCreated'));
+      navigate('/signin?message=signup_success');
     } catch (error) {
       if (error instanceof ZodError) {
         error.errors.forEach(err => {
           toast.error(err.message);
         });
       } else {
-        toast.error('An unexpected error occurred');
+        toast.error(t('auth.toast.validation.unexpectedError'));
       }
     } finally {
       setLoading(false);
@@ -177,7 +177,7 @@ const SignUp = () => {
                 />
 
                 <CyberpunkButton type="submit" variant="primary" disabled={loading}>
-                  {loading ? 'Creating Account...' : t('auth.signUp.createAccountButton')}
+                  {loading ? t('auth.toast.signUp.creating') : t('auth.signUp.createAccountButton')}
                 </CyberpunkButton>
 
                 <div className="text-center pt-4">
