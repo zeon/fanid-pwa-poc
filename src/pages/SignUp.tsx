@@ -5,7 +5,6 @@ import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import CyberpunkCheckbox from '@/components/auth/CyberpunkCheckbox';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
-import EmailVerificationBanner from '@/components/auth/EmailVerificationBanner';
 import { Eye, EyeOff, User, Mail, Phone, Shield, Key } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { signUpSchema } from '@/utils/validation';
@@ -18,8 +17,6 @@ const SignUp = () => {
   const { signUp } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showVerificationBanner, setShowVerificationBanner] = useState(false);
-  const [signupEmail, setSignupEmail] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -49,25 +46,18 @@ const SignUp = () => {
       });
 
       if (error) {
-        if (error.message === 'user_repeated_signup' || error.message.includes('already registered')) {
-          toast.error(t('auth.signUp.errors.emailExists'));
-          return;
-        } else if (error.message.includes('weak password') || error.message.includes('Password')) {
-          toast.error(t('auth.signUp.errors.weakPassword'));
-          return;
-        } else if (error.message.includes('network') || error.message.includes('fetch')) {
-          toast.error(t('auth.signUp.errors.networkError'));
-          return;
+        if (error.message.includes('already registered')) {
+          toast.error('This email is already registered. Please sign in instead.');
+        } else if (error.message.includes('weak password')) {
+          toast.error('Password is too weak. Please use a stronger password.');
         } else {
-          toast.error(t('auth.signUp.errors.genericError'));
-          return;
+          toast.error(error.message || 'Failed to create account');
         }
+        return;
       }
 
-      // Show verification banner instead of navigating away
-      setSignupEmail(formData.email);
-      setShowVerificationBanner(true);
-      toast.success(t('auth.emailVerification.sent', { email: formData.email }));
+      toast.success('Account created! Please check your email to confirm your account.');
+      navigate('/signin');
     } catch (error) {
       if (error instanceof ZodError) {
         error.errors.forEach(err => {
@@ -126,13 +116,6 @@ const SignUp = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/20 to-purple-300/20 rounded-lg blur-sm"></div>
             
             <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl shadow-cyan-500/25">
-              {showVerificationBanner && (
-                <EmailVerificationBanner 
-                  email={signupEmail} 
-                  onClose={() => setShowVerificationBanner(false)}
-                />
-              )}
-              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <CyberpunkInput
                   label={t('auth.signUp.username')}

@@ -27,7 +27,6 @@ import TixcraftPayment from "./pages/TixcraftPayment";
 import TixcraftPaymentConfirmed from "./pages/TixcraftPaymentConfirmed";
 import EntryStaff from "./pages/EntryStaff";
 import ArtistMembership from "./pages/ArtistMembership";
-import VerifyEmail from "./pages/VerifyEmail";
 
 const queryClient = new QueryClient();
 
@@ -44,7 +43,6 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/signup" element={<PublicRoute><SignUp /></PublicRoute>} />
               <Route path="/signin" element={<PublicRoute><SignIn /></PublicRoute>} />
-              <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/face-scanning" element={<ProtectedRoute><FaceScanning /></ProtectedRoute>} />
               <Route path="/face-scan-complete" element={<ProtectedRoute><FaceScanComplete /></ProtectedRoute>} />
               <Route path="/face-duplicate-detected" element={<ProtectedRoute><FaceDuplicateDetected /></ProtectedRoute>} />

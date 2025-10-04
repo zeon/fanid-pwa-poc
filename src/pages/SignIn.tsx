@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import CyberpunkInput from '@/components/auth/CyberpunkInput';
 import CyberpunkButton from '@/components/auth/CyberpunkButton';
 import TextLanguageSwitcher from '@/components/navigation/TextLanguageSwitcher';
-import EmailVerificationDialog from '@/components/auth/EmailVerificationDialog';
 import { Separator } from '@/components/ui/separator';
 import { Fingerprint, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
@@ -18,8 +17,6 @@ const SignIn = () => {
   const { signIn } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [showVerificationDialog, setShowVerificationDialog] = useState(false);
-  const [unverifiedEmail, setUnverifiedEmail] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -42,11 +39,9 @@ const SignIn = () => {
 
       if (error) {
         if (error.message.includes('Invalid login credentials')) {
-          toast.error(t('auth.signIn.errors.invalidCredentials'));
+          toast.error('Invalid email or password');
         } else if (error.message.includes('Email not confirmed')) {
-          setUnverifiedEmail(formData.email);
-          setShowVerificationDialog(true);
-          toast.error(t('auth.signIn.errors.unverifiedEmail'));
+          toast.error('Please confirm your email before signing in');
         } else {
           toast.error(error.message || 'Failed to sign in');
         }
@@ -122,12 +117,6 @@ const SignIn = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-300/20 to-purple-300/20 rounded-lg blur-sm"></div>
             
             <div className="relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg p-6 shadow-2xl shadow-cyan-500/25">
-              <EmailVerificationDialog
-                open={showVerificationDialog}
-                onOpenChange={setShowVerificationDialog}
-                email={unverifiedEmail}
-              />
-              
               <form onSubmit={handleSubmit} className="space-y-6">
                 <CyberpunkInput
                   label={t('auth.signIn.email')}
