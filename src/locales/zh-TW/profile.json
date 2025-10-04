@@ -19,6 +19,12 @@
       "passwordTooShort": "密碼必須至少8個字元",
       "confirmPasswordRequired": "請確認您的密碼",
       "passwordMismatch": "密碼不相符"
+    },
+    "toast": {
+      "passwordChanged": "密碼更改成功！",
+      "passwordChangeFailed": "無法更改密碼",
+      "wrongCurrentPassword": "目前密碼不正確",
+      "changingPassword": "正在更改密碼..."
     }
   }
 }

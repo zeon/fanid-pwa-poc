@@ -19,6 +19,12 @@
       "passwordTooShort": "Password must be at least 8 characters",
       "confirmPasswordRequired": "Please confirm your password",
       "passwordMismatch": "Passwords do not match"
+    },
+    "toast": {
+      "passwordChanged": "Password changed successfully!",
+      "passwordChangeFailed": "Failed to change password",
+      "wrongCurrentPassword": "Current password is incorrect",
+      "changingPassword": "Changing password..."
     }
   }
 }
