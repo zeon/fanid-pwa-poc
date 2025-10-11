@@ -16,11 +16,16 @@
       "back": "Back"
     },
     "tickets": {
-      "title": "Get Your Tickets",
+      "title": "Available Tickets",
       "ticket": "TICKET",
       "buyNow": "Buy on Tixcraft",
       "secureCheckout": "Secure checkout • Instant confirmation",
-      "buyOnTixcraft": "Buy on Tixcraft"
+      "buyOnTixcraft": "Buy on Tixcraft",
+      "noTickets": "No tickets available for this event",
+      "soldOut": "Sold Out",
+      "available": "tickets remaining",
+      "purchase": "Purchase Ticket",
+      "from": "From"
     },
     "info": {
       "title": "Event Information",

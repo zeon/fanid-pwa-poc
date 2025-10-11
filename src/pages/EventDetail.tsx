@@ -2,17 +2,19 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { upcomingEvents, pastEvents } from '@/data/eventsData';
+import { useEvent } from '@/hooks/useEvents';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import EventDetailBanner from '@/components/event/EventDetailBanner';
 import EventInfo from '@/components/event/EventInfo';
 import PromoGallery from '@/components/event/PromoGallery';
 import MerchandiseSection from '@/components/event/MerchandiseSection';
-import TicketPurchase from '@/components/event/TicketPurchase';
+import TicketListSection from '@/components/event/TicketListSection';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const EventDetail = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
+  const { data: event, isLoading, error } = useEvent(id);
   
   // Mock user data - in a real app this would come from auth context
   const user = {
@@ -20,11 +22,20 @@ const EventDetail = () => {
     email: 'alex.chen@example.com',
     initials: 'AC'
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-white">
+        <DashboardHeader user={user} />
+        <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
+          <Skeleton className="h-80 w-full bg-gray-700/50" />
+          <Skeleton className="h-64 w-full bg-gray-700/50" />
+        </div>
+      </div>
+    );
+  }
   
-  // Find the event in both upcoming and past events
-  const event = [...upcomingEvents, ...pastEvents].find(e => e.id === id);
-  
-  if (!event) {
+  if (error || !event) {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
         <div className="text-center">
@@ -60,26 +71,23 @@ const EventDetail = () => {
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-8 space-y-8">
         
-        {/* Ticket Purchase Section - Only for upcoming events */}
-        {event.status === 'upcoming' && (
-          <TicketPurchase
-            eventId={event.id}
-            eventName={event.name}
-            date={event.date}
-            venue={event.venue}
-            price={event.ticketPrice}
-            ticketType={event.ticketType}
-          />
-        )}
+        {/* Ticket Section - Only for upcoming events */}
+        <TicketListSection
+          eventId={event.id}
+          eventName={event.name}
+          eventStatus={event.status}
+        />
 
         {/* Event Information */}
         <EventInfo event={event} />
 
-        {/* Promo Gallery */}
-        <PromoGallery photos={event.promoPhotos} eventName={event.name} />
+        {/* Promo Gallery - Only if photos exist */}
+        {event.promoPhotos && event.promoPhotos.length > 0 && (
+          <PromoGallery photos={event.promoPhotos} eventName={event.name} />
+        )}
 
-        {/* Merchandise Section - Only for upcoming events */}
-        {event.status === 'upcoming' && (
+        {/* Merchandise Section - Only for upcoming events and if merchandise exists */}
+        {event.status === 'upcoming' && event.merchandise && event.merchandise.length > 0 && (
           <MerchandiseSection merchandise={event.merchandise} />
         )}
       </div>

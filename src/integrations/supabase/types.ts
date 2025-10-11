@@ -14,32 +14,139 @@ export type Database = {
   }
   public: {
     Tables: {
+      events: {
+        Row: {
+          artists: string
+          created_at: string | null
+          created_by: string | null
+          description: string
+          duration: number
+          end_date: string | null
+          id: string
+          name: string
+          start_date: string
+          status: string
+          thumbnail_url: string
+          timezone: string
+          updated_at: string | null
+          venue: string
+        }
+        Insert: {
+          artists: string
+          created_at?: string | null
+          created_by?: string | null
+          description: string
+          duration: number
+          end_date?: string | null
+          id?: string
+          name: string
+          start_date: string
+          status?: string
+          thumbnail_url: string
+          timezone?: string
+          updated_at?: string | null
+          venue: string
+        }
+        Update: {
+          artists?: string
+          created_at?: string | null
+          created_by?: string | null
+          description?: string
+          duration?: number
+          end_date?: string | null
+          id?: string
+          name?: string
+          start_date?: string
+          status?: string
+          thumbnail_url?: string
+          timezone?: string
+          updated_at?: string | null
+          venue?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
+          email: string | null
+          email_verified: boolean
           id: string
           id_last_five: string | null
           phone: string | null
+          server_auth_context: string | null
           updated_at: string
           username: string | null
         }
         Insert: {
           created_at?: string
+          email?: string | null
+          email_verified?: boolean
           id: string
           id_last_five?: string | null
           phone?: string | null
+          server_auth_context?: string | null
           updated_at?: string
           username?: string | null
         }
         Update: {
           created_at?: string
+          email?: string | null
+          email_verified?: boolean
           id?: string
           id_last_five?: string | null
           phone?: string | null
+          server_auth_context?: string | null
           updated_at?: string
           username?: string | null
         }
         Relationships: []
+      }
+      tickets: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          event_id: string
+          id: string
+          name: string
+          price: number
+          quantity: number
+          sold: number
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          event_id: string
+          id?: string
+          name: string
+          price: number
+          quantity: number
+          sold?: number
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          event_id?: string
+          id?: string
+          name?: string
+          price?: number
+          quantity?: number
+          sold?: number
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tickets_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {

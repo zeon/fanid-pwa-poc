@@ -4,10 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import EventCard from '@/components/dashboard/EventCard';
-import { upcomingEvents, pastEvents } from '@/data/eventsData';
+import { useEvents } from '@/hooks/useEvents';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const DashboardEvents = () => {
   const { t } = useTranslation();
+  const { data: upcomingEvents = [], isLoading: upcomingLoading } = useEvents('active');
+  const { data: pastEvents = [], isLoading: pastLoading } = useEvents('inactive');
 
   return (
     <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700">
@@ -31,18 +34,38 @@ const DashboardEvents = () => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="upcoming" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
+            {upcomingLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} className="h-64 w-full bg-gray-700/50" />
+                ))}
+              </div>
+            ) : upcomingEvents.length === 0 ? (
+              <p className="text-gray-400 text-center py-8">No upcoming events</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {upcomingEvents.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            )}
           </TabsContent>
           <TabsContent value="past" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {pastEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
-              ))}
-            </div>
+            {pastLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} className="h-64 w-full bg-gray-700/50" />
+                ))}
+              </div>
+            ) : pastEvents.length === 0 ? (
+              <p className="text-gray-400 text-center py-8">No past events</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {pastEvents.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </CardContent>

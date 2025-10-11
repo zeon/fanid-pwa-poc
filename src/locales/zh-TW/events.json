@@ -16,11 +16,16 @@
       "back": "返回"
     },
     "tickets": {
-      "title": "購買門票",
+      "title": "可購買門票",
       "ticket": "門票",
       "buyNow": "在 Tixcraft 購票",
       "secureCheckout": "安全結帳 • 即時確認",
-      "buyOnTixcraft": "在 Tixcraft 購買"
+      "buyOnTixcraft": "在 Tixcraft 購買",
+      "noTickets": "此活動暫無可購票券",
+      "soldOut": "已售罄",
+      "available": "張剩餘",
+      "purchase": "購買門票",
+      "from": "起"
     },
     "info": {
       "title": "活動資訊",
