@@ -1,18 +1,17 @@
-
 import React from 'react';
 import { Calendar, Clock, MapPin, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Event } from '@/data/eventsData';
-
 interface EventInfoProps {
   event: Event;
 }
-
-const EventInfo = ({ event }: EventInfoProps) => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
+const EventInfo = ({
+  event
+}: EventInfoProps) => {
+  const {
+    t
+  } = useTranslation();
+  return <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
       <h2 className="text-2xl font-bold text-white mb-6">{t('eventDetail.info.title')}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -43,13 +42,7 @@ const EventInfo = ({ event }: EventInfoProps) => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-3">
-            <User className="w-5 h-5 text-yellow-400" />
-            <div>
-              <p className="text-sm text-gray-400">{t('eventDetail.info.ticketInfo')}</p>
-              <p className="text-white font-medium">{t(`eventCard.ticketTypes.${event.ticketType.toLowerCase()}`)} • ${event.ticketPrice}</p>
-            </div>
-          </div>
+          
         </div>
       </div>
       
@@ -62,8 +55,6 @@ const EventInfo = ({ event }: EventInfoProps) => {
         <h3 className="text-lg font-semibold text-white mb-3">{t('eventDetail.info.artistInfo')}</h3>
         <p className="text-gray-300">{event.artistInfo}</p>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default EventInfo;
