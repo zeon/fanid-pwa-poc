@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Minus, Plus } from 'lucide-react';
@@ -37,6 +38,8 @@ const TicketQuantitySelector = ({
     }
   };
   
+  const { t } = useTranslation();
+  
   return (
     <div className="flex items-center gap-3">
       <Button
@@ -45,7 +48,7 @@ const TicketQuantitySelector = ({
         size="icon"
         onClick={handleDecrement}
         disabled={quantity <= 1}
-        className="h-10 w-10"
+        className="h-10 w-10 bg-gray-700 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50"
       >
         <Minus className="h-4 w-4" />
       </Button>
@@ -56,7 +59,7 @@ const TicketQuantitySelector = ({
         onChange={handleInputChange}
         min={1}
         max={effectiveMax}
-        className="w-20 text-center"
+        className="w-20 text-center bg-gray-700 border-gray-600 text-white"
       />
       
       <Button
@@ -65,13 +68,13 @@ const TicketQuantitySelector = ({
         size="icon"
         onClick={handleIncrement}
         disabled={quantity >= effectiveMax}
-        className="h-10 w-10"
+        className="h-10 w-10 bg-gray-700 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50"
       >
         <Plus className="h-4 w-4" />
       </Button>
       
-      <span className="text-sm text-muted-foreground">
-        Max: {effectiveMax}
+      <span className="text-sm text-gray-400">
+        {t('common.max')}: {effectiveMax}
       </span>
     </div>
   );

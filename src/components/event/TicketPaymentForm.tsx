@@ -18,7 +18,7 @@ const TicketPaymentForm = ({
   
   return (
     <div className="space-y-4">
-      <h3 className="font-semibold">{t('events.purchase.paymentMethod')}</h3>
+      <h3 className="font-semibold text-white">{t('events.purchase.paymentMethod')}</h3>
       
       <RadioGroup 
         value={paymentMethod} 
@@ -26,27 +26,27 @@ const TicketPaymentForm = ({
       >
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="credit_card" id="credit_card" />
-          <Label htmlFor="credit_card" className="cursor-pointer">
+          <Label htmlFor="credit_card" className="cursor-pointer text-white">
             {t('events.purchase.creditCard')}
           </Label>
         </div>
         
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="atm_transfer" id="atm_transfer" />
-          <Label htmlFor="atm_transfer" className="cursor-pointer">
+          <Label htmlFor="atm_transfer" className="cursor-pointer text-white">
             {t('events.purchase.atmTransfer')}
           </Label>
         </div>
       </RadioGroup>
       
       {paymentMethod === 'credit_card' && (
-        <div className="bg-muted/30 p-4 rounded-lg">
-          <p className="text-sm text-muted-foreground">{t('events.purchase.creditCardInfo')}</p>
+        <div className="bg-gray-700/50 border border-gray-600 p-4 rounded-lg">
+          <p className="text-sm text-gray-300">{t('events.purchase.creditCardInfo')}</p>
         </div>
       )}
       {paymentMethod === 'atm_transfer' && (
-        <div className="bg-muted/30 p-4 rounded-lg">
-          <p className="text-sm text-muted-foreground">{t('events.purchase.atmInfo')}</p>
+        <div className="bg-gray-700/50 border border-gray-600 p-4 rounded-lg">
+          <p className="text-sm text-gray-300">{t('events.purchase.atmInfo')}</p>
         </div>
       )}
     </div>

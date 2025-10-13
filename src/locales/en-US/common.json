@@ -3,6 +3,8 @@
   "ticket": "Ticket",
   "close": "Close",
   "generating": "Generating...",
+  "error": "Error",
+  "max": "Max",
   "navigation": {
     "profile": "Profile",
     "logout": "Logout"

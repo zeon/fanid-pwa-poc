@@ -108,15 +108,15 @@ const TicketPurchaseDialog = ({
   
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg bg-background border">
+      <DialogContent className="sm:max-w-lg bg-gray-800 border-gray-700 text-white">
         <DialogHeader>
-          <DialogTitle>{t('events.purchase.title')}</DialogTitle>
+          <DialogTitle className="text-white">{t('events.purchase.title')}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-6">
           {/* Quantity Selector */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-white">
               {t('events.purchase.selectQuantity')}
             </label>
             <TicketQuantitySelector
@@ -126,7 +126,7 @@ const TicketPurchaseDialog = ({
               availableTickets={ticket.available}
             />
             {ticketCount && (
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-gray-400 mt-2">
                 {t('events.purchase.youHaveTickets', { count: ticketCount.count })}
                 {' - '}
                 {t('events.purchase.canPurchaseMore', { remaining: ticketCount.remaining })}
@@ -154,7 +154,7 @@ const TicketPurchaseDialog = ({
           <Button
             onClick={handlePurchase}
             disabled={isPending || maxQuantity === 0}
-            className="w-full"
+            className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isPending ? t('events.purchase.processing') : t('events.purchase.completePurchase')}
           </Button>

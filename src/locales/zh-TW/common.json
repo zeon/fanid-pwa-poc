@@ -3,6 +3,8 @@
   "ticket": "票券",
   "close": "關閉",
   "generating": "生成中...",
+  "error": "錯誤",
+  "max": "最多",
   "navigation": {
     "profile": "個人資料",
     "logout": "登出"
