@@ -11,6 +11,7 @@ interface TicketData {
   date: string;
   time: string;
   status: string;
+  entriesAllowed: number;
 }
 
 interface ScanResult {
@@ -22,6 +23,7 @@ interface ScanResult {
 export const useQRScanning = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [scanResult, setScanResult] = useState<ScanResult | null>(null);
+  const [scannedOrderId, setScannedOrderId] = useState<string | null>(null);
 
   const processQRCode = async (qrString: string): Promise<ScanResult> => {
     // Parse QR code
@@ -107,6 +109,7 @@ export const useQRScanning = () => {
           date: new Date(event.start_date).toLocaleDateString(),
           time: new Date(event.start_date).toLocaleTimeString(),
           status: order.status,
+          entriesAllowed: order.quantity,
         }
       };
 
@@ -119,18 +122,32 @@ export const useQRScanning = () => {
     }
   };
 
-  const startScanning = async (qrString: string) => {
+  // For manual scanning with camera (simulated for now)
+  const startScanning = () => {
     setIsScanning(true);
     
-    // Simulate scanning delay
+    // Simulate QR code scan after delay
+    // In production, this would integrate with actual camera QR scanner
     setTimeout(async () => {
-      const result = await processQRCode(qrString);
+      // Simulate a scanned QR code (for testing)
+      const mockQR = "test_user,+1234567890,550e8400-e29b-41d4-a716-446655440000";
+      const result = await processQRCode(mockQR);
+      
+      if (result.success && result.ticketData) {
+        setScannedOrderId(result.ticketData.orderId);
+      }
+      
       setScanResult(result);
       setIsScanning(false);
-    }, 1500);
+    }, 2000);
   };
 
-  const confirmEntry = async (orderId: string) => {
+  const confirmEntry = async () => {
+    if (!scannedOrderId) {
+      console.error('No order ID available for check-in');
+      return;
+    }
+
     const { data: session } = await supabase.auth.getSession();
     const staffId = session.session?.user?.id;
 
@@ -147,20 +164,35 @@ export const useQRScanning = () => {
         checked_in_at: new Date().toISOString(),
         checked_in_by: staffId,
       })
-      .eq('id', orderId);
+      .eq('id', scannedOrderId);
 
     if (error) {
       console.error('Failed to confirm entry:', error);
       return;
     }
 
-    console.log('Entry confirmed for order:', orderId);
-    setScanResult(null);
+    console.log('Entry confirmed for order:', scannedOrderId);
+    resetScanner();
   };
 
   const resetScanner = () => {
     setScanResult(null);
+    setScannedOrderId(null);
     setIsScanning(false);
+  };
+
+  // Direct scan method for when you already have the QR string
+  const scanQRCode = async (qrString: string) => {
+    setIsScanning(true);
+    const result = await processQRCode(qrString);
+    
+    if (result.success && result.ticketData) {
+      setScannedOrderId(result.ticketData.orderId);
+    }
+    
+    setScanResult(result);
+    setIsScanning(false);
+    return result;
   };
 
   return {
@@ -168,6 +200,7 @@ export const useQRScanning = () => {
     scanResult,
     startScanning,
     confirmEntry,
-    resetScanner
+    resetScanner,
+    scanQRCode, // Export for direct QR code scanning
   };
 };
