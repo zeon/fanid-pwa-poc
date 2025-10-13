@@ -1,5 +1,35 @@
 
 {
+  "eventName": "活動名稱",
+  "date": "日期",
+  "ticketType": "票券類型",
+  "unitPrice": "單價",
+  "purchase": {
+    "title": "購買門票",
+    "selectQuantity": "選擇數量",
+    "quantity": "數量",
+    "orderSummary": "訂單摘要",
+    "paymentMethod": "付款方式",
+    "creditCard": "信用卡",
+    "atmTransfer": "ATM轉帳",
+    "creditCardInfo": "信用卡付款將安全處理",
+    "atmInfo": "購買後將提供ATM轉帳說明",
+    "totalPrice": "總金額",
+    "processing": "處理中...",
+    "completePurchase": "完成購買",
+    "youHaveTickets": "您已為此活動購買 {{count}} 張票券",
+    "canPurchaseMore": "您還可以購買 {{remaining}} 張",
+    "success": {
+      "title": "購買成功！",
+      "message": "您的票券已成功購買",
+      "confirmationNumber": "確認編號",
+      "viewTickets": "查看我的票券",
+      "ticketCount": "已購買 {{count}} 張票券"
+    },
+    "errors": {
+      "purchaseFailed": "購買失敗，請重試。"
+    }
+  },
   "eventCard": {
     "ticketTypes": {
       "vip": "VIP",

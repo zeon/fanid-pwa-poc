@@ -1,5 +1,9 @@
 
 {
+  "qrCodeError": "無法生成QR碼",
+  "noActiveTickets": "沒有有效票券",
+  "quantity": "數量",
+  "showQRCode": "顯示QR碼",
   "tickets": {
     "activeTickets": "有效票券",
     "backToDashboard": "返回控制台",
