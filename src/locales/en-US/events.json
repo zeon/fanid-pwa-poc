@@ -1,78 +1,80 @@
 
 {
-  "eventName": "Event Name",
-  "date": "Date",
-  "ticketType": "Ticket Type",
-  "unitPrice": "Unit Price",
-  "purchase": {
-    "title": "Purchase Tickets",
-    "selectQuantity": "Select Quantity",
-    "quantity": "Quantity",
-    "orderSummary": "Order Summary",
-    "paymentMethod": "Payment Method",
-    "creditCard": "Credit Card",
-    "atmTransfer": "ATM Transfer",
-    "creditCardInfo": "Credit card payment will be processed securely",
-    "atmInfo": "ATM transfer instructions will be provided after purchase",
-    "totalPrice": "Total Price",
-    "processing": "Processing...",
-    "completePurchase": "Complete Purchase",
-    "youHaveTickets": "You have purchased {{count}} ticket(s) for this event",
-    "canPurchaseMore": "You can purchase {{remaining}} more",
-    "success": {
-      "title": "Purchase Successful!",
-      "message": "Your tickets have been purchased successfully",
-      "confirmationNumber": "Confirmation Number",
-      "viewTickets": "View My Tickets",
-      "ticketCount": "{{count}} ticket(s) purchased"
+  "events": {
+    "eventName": "Event Name",
+    "date": "Date",
+    "ticketType": "Ticket Type",
+    "unitPrice": "Unit Price",
+    "purchase": {
+      "title": "Purchase Tickets",
+      "selectQuantity": "Select Quantity",
+      "quantity": "Quantity",
+      "orderSummary": "Order Summary",
+      "paymentMethod": "Payment Method",
+      "creditCard": "Credit Card",
+      "atmTransfer": "ATM Transfer",
+      "creditCardInfo": "Credit card payment will be processed securely",
+      "atmInfo": "ATM transfer instructions will be provided after purchase",
+      "totalPrice": "Total Price",
+      "processing": "Processing...",
+      "completePurchase": "Complete Purchase",
+      "youHaveTickets": "You have purchased {{count}} ticket(s) for this event",
+      "canPurchaseMore": "You can purchase {{remaining}} more",
+      "success": {
+        "title": "Purchase Successful!",
+        "message": "Your tickets have been purchased successfully",
+        "confirmationNumber": "Confirmation Number",
+        "viewTickets": "View My Tickets",
+        "ticketCount": "{{count}} ticket(s) purchased"
+      },
+      "errors": {
+        "purchaseFailed": "Purchase failed. Please try again."
+      }
     },
-    "errors": {
-      "purchaseFailed": "Purchase failed. Please try again."
-    }
-  },
-  "eventCard": {
-    "ticketTypes": {
-      "vip": "VIP",
-      "ga": "GA",
-      "premium": "Premium"
-    }
-  },
-  "eventDetail": {
-    "notFound": {
-      "title": "Event Not Found",
-      "description": "The event you're looking for doesn't exist."
+    "eventCard": {
+      "ticketTypes": {
+        "vip": "VIP",
+        "ga": "GA",
+        "premium": "Premium"
+      }
     },
-    "banner": {
-      "back": "Back"
-    },
-    "tickets": {
-      "title": "Available Tickets",
-      "ticket": "TICKET",
-      "buyNow": "Buy on Tixcraft",
-      "secureCheckout": "Secure checkout • Instant confirmation",
-      "buyOnTixcraft": "Buy on Tixcraft",
-      "noTickets": "No tickets available for this event",
-      "soldOut": "Sold Out",
-      "available": "tickets remaining",
-      "purchase": "Purchase Ticket",
-      "from": "From"
-    },
-    "info": {
-      "title": "Event Information",
-      "date": "Date",
-      "timeAndDuration": "Time & Duration",
-      "venue": "Venue",
-      "ticketInfo": "Ticket Info",
-      "aboutEvent": "About the Event",
-      "artistInfo": "Artist Information"
-    },
-    "gallery": {
-      "title": "Promo Gallery",
-      "photoAlt": "promo"
-    },
-    "merchandise": {
-      "title": "Official Merchandise",
-      "buyNow": "Buy Now"
+    "eventDetail": {
+      "notFound": {
+        "title": "Event Not Found",
+        "description": "The event you're looking for doesn't exist."
+      },
+      "banner": {
+        "back": "Back"
+      },
+      "tickets": {
+        "title": "Available Tickets",
+        "ticket": "TICKET",
+        "buyNow": "Buy on Tixcraft",
+        "secureCheckout": "Secure checkout • Instant confirmation",
+        "buyOnTixcraft": "Buy on Tixcraft",
+        "noTickets": "No tickets available for this event",
+        "soldOut": "Sold Out",
+        "available": "tickets remaining",
+        "purchase": "Purchase Ticket",
+        "from": "From"
+      },
+      "info": {
+        "title": "Event Information",
+        "date": "Date",
+        "timeAndDuration": "Time & Duration",
+        "venue": "Venue",
+        "ticketInfo": "Ticket Info",
+        "aboutEvent": "About the Event",
+        "artistInfo": "Artist Information"
+      },
+      "gallery": {
+        "title": "Promo Gallery",
+        "photoAlt": "promo"
+      },
+      "merchandise": {
+        "title": "Official Merchandise",
+        "buyNow": "Buy Now"
+      }
     }
   }
 }
