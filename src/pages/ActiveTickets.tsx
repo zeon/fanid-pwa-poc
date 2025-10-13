@@ -2,97 +2,91 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowLeft } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import TicketCard from '@/components/tickets/TicketCard';
 import TicketQRDialog from '@/components/tickets/TicketQRDialog';
-import { upcomingEvents } from '@/data/eventsData';
+import { useUserTicketOrders } from '@/hooks/useTicketPurchase';
+import { supabase } from '@/integrations/supabase/client';
+import { useQuery } from '@tanstack/react-query';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const ActiveTickets = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
-  
-  // Use first 3 events as active tickets
-  const activeTickets = upcomingEvents.slice(0, 3);
-  
-  const handleShowQR = (eventName: string) => {
-    setSelectedTicket(eventName);
+  const [selectedTicket, setSelectedTicket] = useState<{ orderId: string; eventName: string } | null>(null);
+
+  const { data: session } = useQuery({
+    queryKey: ['session'],
+    queryFn: async () => {
+      const { data } = await supabase.auth.getSession();
+      return data.session;
+    },
+  });
+
+  const userId = session?.user?.id;
+  const { data: ticketOrders = [], isLoading } = useUserTicketOrders(userId);
+
+  // Filter active tickets only
+  const activeTickets = ticketOrders.filter(
+    order => order.status === 'active' || order.status === 'redeemed'
+  );
+
+  const handleShowQR = (orderId: string, eventName: string) => {
+    setSelectedTicket({ orderId, eventName });
   };
-  
+
   const handleCloseQR = () => {
     setSelectedTicket(null);
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white relative overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px'
-        }}></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(rgba(147, 51, 234, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(147, 51, 234, 0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '120px 120px'
-        }}></div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900/20 to-gray-900">
+      {/* Animated background effects */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
-      
-      <div className="absolute top-10 left-20 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      {/* Header */}
-      <div className="bg-gray-800/80 backdrop-blur-sm border-b border-gray-700 p-4 relative z-10">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Button
-              onClick={() => navigate('/dashboard')}
-              variant="ghost"
-              className="text-gray-400 hover:text-white hover:bg-gray-700"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              {t('tickets.backToDashboard')}
-            </Button>
-            <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400"></div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              {t('tickets.activeTickets')}
-            </h1>
-          </div>
+      <div className="relative z-10 container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate('/dashboard')}
+            className="text-white hover:bg-white/10"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+          <h1 className="text-3xl font-bold text-white">
+            {t('tickets.activeTickets')}
+          </h1>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="max-w-4xl mx-auto p-6 relative z-10">
-        {activeTickets.length > 0 ? (
-          <div className="space-y-6">
-            {activeTickets.map((event) => (
+        {/* Tickets List */}
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <Skeleton key={i} className="h-64 bg-gray-800/50" />
+            ))}
+          </div>
+        ) : activeTickets.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeTickets.map((order) => (
               <TicketCard
-                key={event.id}
-                event={event}
-                onShowQR={() => handleShowQR(event.name)}
+                key={order.id}
+                eventName={order.event.name}
+                venue={order.event.venue}
+                date={order.event.start_date}
+                quantity={order.quantity}
+                onShowQR={() => handleShowQR(order.id, order.event.name)}
               />
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <div className="text-gray-400 mb-4">
-              <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold text-gray-300 mb-2">
-              {t('tickets.noActiveTickets')}
-            </h3>
-            <p className="text-gray-400">
-              {t('tickets.noActiveTicketsDesc')}
-            </p>
+          <div className="text-center py-16">
+            <p className="text-gray-400 text-lg">{t('tickets.noActiveTickets')}</p>
           </div>
         )}
       </div>
@@ -102,7 +96,8 @@ const ActiveTickets = () => {
         <TicketQRDialog
           isOpen={!!selectedTicket}
           onClose={handleCloseQR}
-          eventName={selectedTicket}
+          ticketOrderId={selectedTicket.orderId}
+          eventName={selectedTicket.eventName}
         />
       )}
     </div>

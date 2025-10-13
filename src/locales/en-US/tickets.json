@@ -1,5 +1,9 @@
 
 {
+  "qrCodeError": "Unable to generate QR code",
+  "noActiveTickets": "No active tickets",
+  "quantity": "Quantity",
+  "showQRCode": "Show QR Code",
   "tickets": {
     "activeTickets": "Active Tickets",
     "backToDashboard": "Back to Dashboard",

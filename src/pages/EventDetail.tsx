@@ -75,6 +75,7 @@ const EventDetail = () => {
         <TicketListSection
           eventId={event.id}
           eventName={event.name}
+          eventDate={event.date}
           eventStatus={event.status}
         />
 

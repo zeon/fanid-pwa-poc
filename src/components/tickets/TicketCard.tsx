@@ -1,72 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { QrCode, Calendar, MapPin, Send, Ticket } from 'lucide-react';
-import { Event } from '@/data/eventsData';
-import TicketTransferDialog from './TicketTransferDialog';
+import { MapPin, Calendar, Ticket } from 'lucide-react';
+
 interface TicketCardProps {
-  event: Event;
+  eventName: string;
+  venue: string;
+  date: string;
+  quantity: number;
   onShowQR: () => void;
 }
-const TicketCard = ({
-  event,
-  onShowQR
-}: TicketCardProps) => {
-  const {
-    t
-  } = useTranslation();
-  const [showTransferDialog, setShowTransferDialog] = useState(false);
-  return <>
-      <Card className="bg-gray-800/80 backdrop-blur-sm border-gray-700 hover:border-cyan-400/50 transition-all duration-300">
-        <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-white mb-2">{event.name}</h3>
-              <div className="space-y-2">
-                <div className="flex items-center text-gray-400">
-                  <Calendar className="h-4 w-4 mr-2 text-cyan-400" />
-                  <span>{event.date} • {event.time}</span>
-                </div>
-                <div className="flex items-center text-gray-400">
-                  <MapPin className="h-4 w-4 mr-2 text-purple-400" />
-                  <span>{event.venue}</span>
-                </div>
-                <div className="flex items-center text-gray-400">
-                  <Ticket className="h-4 w-4 mr-2 text-green-400" />
-                  <span>{t('tickets.ticketQuantity', {
-                    count: event.ticketQuantity || 1
-                  })}</span>
-                </div>
-              </div>
+
+const TicketCard = ({ eventName, venue, date, quantity, onShowQR }: TicketCardProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <Card className="bg-gray-800/80 border-gray-700 hover:border-cyan-500/50 transition-all">
+      <CardContent className="p-6">
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-white">{eventName}</h3>
+          
+          <div className="space-y-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <span>{venue}</span>
             </div>
-            <div className="ml-4">
-              <img src={event.image} alt={event.name} className="w-20 h-20 object-cover rounded-lg" />
+            
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              <span>{new Date(date).toLocaleDateString()}</span>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-sm">
-              <span className="text-gray-400">{t('tickets.ticketFor')}: </span>
-              <span className="text-cyan-400 font-medium">{event.ticketType}</span>
+            
+            <div className="flex items-center gap-2">
+              <Ticket className="h-4 w-4" />
+              <span>{t('tickets.quantity')}: {quantity}</span>
             </div>
           </div>
           
-          <div className="flex space-x-3">
-            <Button onClick={onShowQR} className="flex-1 bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium">
-              <QrCode className="h-4 w-4 mr-2" />
-              {t('tickets.showQRCode')}
-            </Button>
-            <Button onClick={() => setShowTransferDialog(true)} variant="outline" className="flex-1 border-gray-600 hover:bg-gray-700 text-gray-400">
-              <Send className="h-4 w-4 mr-2" />
-              {t('tickets.transfer.transfer')}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      <TicketTransferDialog isOpen={showTransferDialog} onClose={() => setShowTransferDialog(false)} event={event} />
-    </>;
+          <Button
+            onClick={onShowQR}
+            className="w-full bg-cyan-600 hover:bg-cyan-700"
+          >
+            {t('tickets.showQRCode')}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
+
 export default TicketCard;

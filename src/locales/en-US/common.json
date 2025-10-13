@@ -1,5 +1,8 @@
 
 {
+  "ticket": "Ticket",
+  "close": "Close",
+  "generating": "Generating...",
   "navigation": {
     "profile": "Profile",
     "logout": "Logout"

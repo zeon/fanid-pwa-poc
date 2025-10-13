@@ -1,5 +1,35 @@
 
 {
+  "eventName": "Event Name",
+  "date": "Date",
+  "ticketType": "Ticket Type",
+  "unitPrice": "Unit Price",
+  "purchase": {
+    "title": "Purchase Tickets",
+    "selectQuantity": "Select Quantity",
+    "quantity": "Quantity",
+    "orderSummary": "Order Summary",
+    "paymentMethod": "Payment Method",
+    "creditCard": "Credit Card",
+    "atmTransfer": "ATM Transfer",
+    "creditCardInfo": "Credit card payment will be processed securely",
+    "atmInfo": "ATM transfer instructions will be provided after purchase",
+    "totalPrice": "Total Price",
+    "processing": "Processing...",
+    "completePurchase": "Complete Purchase",
+    "youHaveTickets": "You have purchased {{count}} ticket(s) for this event",
+    "canPurchaseMore": "You can purchase {{remaining}} more",
+    "success": {
+      "title": "Purchase Successful!",
+      "message": "Your tickets have been purchased successfully",
+      "confirmationNumber": "Confirmation Number",
+      "viewTickets": "View My Tickets",
+      "ticketCount": "{{count}} ticket(s) purchased"
+    },
+    "errors": {
+      "purchaseFailed": "Purchase failed. Please try again."
+    }
+  },
   "eventCard": {
     "ticketTypes": {
       "vip": "VIP",

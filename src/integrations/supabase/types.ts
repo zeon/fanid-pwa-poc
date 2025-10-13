@@ -70,34 +70,145 @@ export type Database = {
           created_at: string
           email: string | null
           email_verified: boolean
+          enrollment_Id: string | null
           id: string
           id_last_five: string | null
           phone: string | null
           server_auth_context: string | null
           updated_at: string
+          user_id: string | null
           username: string | null
         }
         Insert: {
           created_at?: string
           email?: string | null
           email_verified?: boolean
+          enrollment_Id?: string | null
           id: string
           id_last_five?: string | null
           phone?: string | null
           server_auth_context?: string | null
           updated_at?: string
+          user_id?: string | null
           username?: string | null
         }
         Update: {
           created_at?: string
           email?: string | null
           email_verified?: boolean
+          enrollment_Id?: string | null
           id?: string
           id_last_five?: string | null
           phone?: string | null
           server_auth_context?: string | null
           updated_at?: string
+          user_id?: string | null
           username?: string | null
+        }
+        Relationships: []
+      }
+      ticket_orders: {
+        Row: {
+          checked_in_at: string | null
+          checked_in_by: string | null
+          created_at: string | null
+          current_owner_id: string | null
+          id: string
+          payment_id: string
+          quantity: number
+          redeemed_at: string | null
+          status: string
+          ticket_id: string
+          total_price: number
+          transferred_at: string | null
+          transferred_from: string | null
+          unit_price: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          checked_in_at?: string | null
+          checked_in_by?: string | null
+          created_at?: string | null
+          current_owner_id?: string | null
+          id?: string
+          payment_id: string
+          quantity?: number
+          redeemed_at?: string | null
+          status?: string
+          ticket_id: string
+          total_price: number
+          transferred_at?: string | null
+          transferred_from?: string | null
+          unit_price: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          checked_in_at?: string | null
+          checked_in_by?: string | null
+          created_at?: string | null
+          current_owner_id?: string | null
+          id?: string
+          payment_id?: string
+          quantity?: number
+          redeemed_at?: string | null
+          status?: string
+          ticket_id?: string
+          total_price?: number
+          transferred_at?: string | null
+          transferred_from?: string | null
+          unit_price?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_orders_payment_id_fkey"
+            columns: ["payment_id"]
+            isOneToOne: false
+            referencedRelation: "ticket_payments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ticket_orders_ticket_id_fkey"
+            columns: ["ticket_id"]
+            isOneToOne: false
+            referencedRelation: "tickets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ticket_payments: {
+        Row: {
+          amount_paid: number
+          created_at: string | null
+          id: string
+          payment_date: string
+          payment_method: string
+          payment_status: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          amount_paid: number
+          created_at?: string | null
+          id?: string
+          payment_date?: string
+          payment_method: string
+          payment_status?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          amount_paid?: number
+          created_at?: string | null
+          id?: string
+          payment_date?: string
+          payment_method?: string
+          payment_status?: string
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -171,7 +282,44 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      active_tickets_view: {
+        Row: {
+          current_owner: string | null
+          event_date: string | null
+          event_id: string | null
+          event_name: string | null
+          event_venue: string | null
+          order_id: string | null
+          original_purchaser: string | null
+          payment_date: string | null
+          payment_method: string | null
+          purchased_at: string | null
+          quantity: number | null
+          status: string | null
+          ticket_id: string | null
+          ticket_name: string | null
+          total_price: number | null
+          transferred_at: string | null
+          transferred_from: string | null
+          unit_price: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ticket_orders_ticket_id_fkey"
+            columns: ["ticket_id"]
+            isOneToOne: false
+            referencedRelation: "tickets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tickets_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       has_role: {
@@ -180,6 +328,18 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      increment_ticket_sold: {
+        Args: { p_increment_by: number; p_ticket_id: string }
+        Returns: undefined
+      }
+      transfer_ticket_order: {
+        Args: {
+          p_current_user_id: string
+          p_new_owner_id: string
+          p_order_id: string
+        }
+        Returns: undefined
       }
     }
     Enums: {

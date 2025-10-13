@@ -1,95 +1,56 @@
-
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useTicketQRCode } from '@/hooks/useTicketPurchase';
+import { Skeleton } from '@/components/ui/skeleton';
+import { AlertCircle } from 'lucide-react';
 
 interface TicketQRDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  ticketOrderId: string;
   eventName: string;
 }
 
-const TicketQRDialog = ({ isOpen, onClose, eventName }: TicketQRDialogProps) => {
+const TicketQRDialog = ({ isOpen, onClose, ticketOrderId, eventName }: TicketQRDialogProps) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(10);
-  const [isRedirecting, setIsRedirecting] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setCountdown(10);
-      setIsRedirecting(false);
-      return;
-    }
-
-    // Start countdown after dialog opens
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          setIsRedirecting(true);
-          
-          // Navigate to face scanning with entry verification context
-          setTimeout(() => {
-            onClose();
-            navigate('/face-scanning', {
-              state: {
-                isEntryVerification: true,
-                eventName: eventName
-              }
-            });
-          }, 500);
-          
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [isOpen, navigate, onClose, eventName]);
-
-  const handleClose = () => {
-    setCountdown(10);
-    setIsRedirecting(false);
-    onClose();
-  };
+  const { data: qrCodeUrl, isLoading, error } = useTicketQRCode(ticketOrderId);
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-md bg-background border">
         <DialogHeader>
-          <DialogTitle className="text-white text-center">
+          <DialogTitle className="text-center">
             {t('tickets.qrCodeTitle')}
           </DialogTitle>
         </DialogHeader>
+        
         <div className="flex flex-col items-center space-y-4">
-          <div className="bg-white p-6 rounded-lg">
-            <img 
-              src="/lovable-uploads/246d4fa3-f3c0-4a99-87f2-59e45c844aaf.png" 
-              alt="Entry QR Code"
-              className="w-64 h-64 object-contain"
-            />
-          </div>
-          <div className="text-center">
-            <p className="text-white font-medium mb-2">{eventName}</p>
-            <p className="text-gray-400 text-sm mb-4">
+          {isLoading ? (
+            <Skeleton className="w-64 h-64" />
+          ) : error ? (
+            <div className="w-64 h-64 flex flex-col items-center justify-center bg-muted/50 rounded-lg">
+              <AlertCircle className="h-12 w-12 text-red-500 mb-2" />
+              <p className="text-red-400 text-sm text-center">{t('tickets.qrCodeError')}</p>
+            </div>
+          ) : (
+            <div className="bg-white p-6 rounded-lg">
+              <img 
+                src={qrCodeUrl} 
+                alt="Entry QR Code"
+                className="w-64 h-64 object-contain"
+              />
+            </div>
+          )}
+          
+          <div className="text-center w-full">
+            <p className="font-medium mb-2">{eventName}</p>
+            <p className="text-muted-foreground text-sm mb-2">
               {t('tickets.qrCodeDescription')}
             </p>
-            
-            {/* Countdown and redirect notice */}
-            <div className="bg-cyan-900/20 border border-cyan-500/30 rounded-lg p-3">
-              {isRedirecting ? (
-                <p className="text-cyan-400 text-sm">
-                  {t('tickets.redirecting')}
-                </p>
-              ) : (
-                <p className="text-cyan-400 text-sm">
-                  {t('tickets.autoRedirect', { seconds: countdown })}
-                </p>
-              )}
-            </div>
+            <p className="text-xs text-muted-foreground font-mono">
+              Order ID: {ticketOrderId.slice(0, 8)}...
+            </p>
           </div>
         </div>
       </DialogContent>
