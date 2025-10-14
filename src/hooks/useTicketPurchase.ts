@@ -180,7 +180,7 @@ export const useTicketQRCode = (orderId: string | undefined) => {
           id,
           user_id,
           current_owner_id,
-          profiles:profiles!ticket_orders_user_id_fkey(username, phone)
+          profiles:user_id(username, phone)
         `)
         .eq('id', orderId)
         .single();
@@ -223,7 +223,7 @@ export const useTicketOrderQRCodes = (orderIds: string[]) => {
             .select(`
               id,
               user_id,
-              profiles:profiles!ticket_orders_user_id_fkey(username, phone)
+              profiles:user_id(username, phone)
             `)
             .eq('id', orderId)
             .single();

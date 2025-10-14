@@ -1,7 +1,5 @@
-
 {
   "ticket": "票券",
-  "close": "關閉",
   "generating": "生成中...",
   "navigation": {
     "profile": "個人資料",
@@ -15,6 +13,7 @@
   "common": {
     "cancel": "取消",
     "max": "最多",
-    "error": "錯誤"
+    "error": "錯誤",
+    "close": "關閉"
   }
 }

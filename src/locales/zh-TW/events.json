@@ -28,7 +28,8 @@
         "ticketCount": "已購買 {{count}} 張票券"
       },
       "errors": {
-        "purchaseFailed": "購買失敗，請重試。"
+        "purchaseFailed": "購買失敗，請重試。",
+        "qrCodeError": "無法載入 QR Code，請稍後再試。"
       },
       "freeTicket": "免費票券 - 無需付款"
     },

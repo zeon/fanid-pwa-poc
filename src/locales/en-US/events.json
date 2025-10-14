@@ -28,7 +28,8 @@
         "ticketCount": "{{count}} ticket(s) purchased"
       },
       "errors": {
-        "purchaseFailed": "Purchase failed. Please try again."
+        "purchaseFailed": "Purchase failed. Please try again.",
+        "qrCodeError": "Failed to load QR codes. Please try again later."
       },
       "freeTicket": "Free Ticket - No Payment Required"
     },
