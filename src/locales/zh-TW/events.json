@@ -29,7 +29,8 @@
       },
       "errors": {
         "purchaseFailed": "購買失敗，請重試。"
-      }
+      },
+      "freeTicket": "免費票券 - 無需付款"
     },
     "eventCard": {
       "ticketTypes": {

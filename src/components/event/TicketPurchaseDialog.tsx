@@ -60,6 +60,8 @@ const TicketPurchaseDialog = ({
     ticket.available
   );
   
+  const isFreeTicket = ticket.price === 0;
+  
   const handlePurchase = () => {
     if (!userId) {
       toast({
@@ -148,6 +150,7 @@ const TicketPurchaseDialog = ({
           <TicketPaymentForm
             paymentMethod={paymentMethod}
             onPaymentMethodChange={setPaymentMethod}
+            isFreeTicket={isFreeTicket}
           />
           
           {/* Purchase Button */}

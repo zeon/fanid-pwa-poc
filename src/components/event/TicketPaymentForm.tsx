@@ -8,13 +8,26 @@ import BankTransferInfo from '@/components/tixcraft/BankTransferInfo';
 interface TicketPaymentFormProps {
   paymentMethod: 'credit_card' | 'atm_transfer';
   onPaymentMethodChange: (method: 'credit_card' | 'atm_transfer') => void;
+  isFreeTicket?: boolean;
 }
 
 const TicketPaymentForm = ({ 
   paymentMethod, 
-  onPaymentMethodChange 
+  onPaymentMethodChange,
+  isFreeTicket = false
 }: TicketPaymentFormProps) => {
   const { t } = useTranslation();
+  
+  // If it's a free ticket, show a message instead of payment options
+  if (isFreeTicket) {
+    return (
+      <div className="bg-green-500/10 border border-green-500/30 p-4 rounded-lg">
+        <p className="text-green-400 font-medium text-center">
+          {t('events.purchase.freeTicket')}
+        </p>
+      </div>
+    );
+  }
   
   return (
     <div className="space-y-4">

@@ -29,7 +29,8 @@
       },
       "errors": {
         "purchaseFailed": "Purchase failed. Please try again."
-      }
+      },
+      "freeTicket": "Free Ticket - No Payment Required"
     },
     "eventCard": {
       "ticketTypes": {
