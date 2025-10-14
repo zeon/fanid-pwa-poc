@@ -48,7 +48,7 @@ const TicketListSection = ({
   if (isLoading) {
     return (
       <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-white mb-6">{t('eventDetail.tickets.title')}</h2>
+        <h2 className="text-2xl font-bold text-white mb-6">{t('events.eventDetail.tickets.title')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-64 w-full bg-gray-700/50" />
@@ -61,8 +61,8 @@ const TicketListSection = ({
   if (tickets.length === 0) {
     return (
       <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-white mb-4">{t('eventDetail.tickets.title')}</h2>
-        <p className="text-gray-400 text-center py-8">{t('eventDetail.tickets.noTickets')}</p>
+        <h2 className="text-2xl font-bold text-white mb-4">{t('events.eventDetail.tickets.title')}</h2>
+        <p className="text-gray-400 text-center py-8">{t('events.eventDetail.tickets.noTickets')}</p>
       </div>
     );
   }
@@ -70,7 +70,7 @@ const TicketListSection = ({
   return (
     <>
       <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-white mb-6">{t('eventDetail.tickets.title')}</h2>
+        <h2 className="text-2xl font-bold text-white mb-6">{t('events.eventDetail.tickets.title')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tickets.map((ticket) => (

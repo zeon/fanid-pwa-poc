@@ -23,7 +23,7 @@ const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
 
   return (
     <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg p-6">
-      <h2 className="text-2xl font-bold text-white mb-6">{t('eventDetail.merchandise.title')}</h2>
+      <h2 className="text-2xl font-bold text-white mb-6">{t('events.eventDetail.merchandise.title')}</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {merchandise.map((item) => (
@@ -51,7 +51,7 @@ const MerchandiseSection = ({ merchandise }: MerchandiseSectionProps) => {
                 className="h-8 px-3 text-xs w-auto"
               >
                 <ShoppingCart className="w-3 h-3" />
-                {t('eventDetail.merchandise.buyNow')}
+                {t('events.eventDetail.merchandise.buyNow')}
               </CyberpunkButton>
             </div>
           </div>

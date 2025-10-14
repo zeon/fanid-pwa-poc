@@ -27,7 +27,7 @@ const EventDetailBanner = ({ image, title }: EventDetailBannerProps) => {
         className="absolute top-6 left-6 flex items-center space-x-2 bg-gray-800/80 backdrop-blur-sm border border-gray-600 rounded-lg px-3 py-2 text-white hover:bg-gray-700/80 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span className="text-sm font-medium">{t('eventDetail.banner.back')}</span>
+        <span className="text-sm font-medium">{t('events.eventDetail.banner.back')}</span>
       </button>
 
       <div className="absolute bottom-8 left-8 right-8">
