@@ -4,7 +4,6 @@
   "close": "Close",
   "generating": "Generating...",
   "error": "Error",
-  "max": "Max",
   "navigation": {
     "profile": "Profile",
     "logout": "Logout"
@@ -15,6 +14,7 @@
     "traditionalChinese": "繁體中文"
   },
   "common": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "max": "Max"
   }
 }
