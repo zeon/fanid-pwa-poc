@@ -84,7 +84,9 @@
         "instructions": "請於3天內完成轉帳並保留收據以供查驗。",
         "bankNameValue": "第一商業銀行",
         "accountNumberValue": "123-456-789012",
-        "accountNameValue": "拓元售票股份有限公司"
+        "accountNameValue": "拓元售票股份有限公司",
+        "copiedTitle": "已複製",
+        "copiedDescription": "{{label}}已複製到剪貼板"
       },
       "completePayment": "完成付款 - NT$ {{amount}}",
       "processingPayment": "處理付款中...",

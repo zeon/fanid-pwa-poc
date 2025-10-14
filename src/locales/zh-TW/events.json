@@ -29,7 +29,9 @@
       },
       "errors": {
         "purchaseFailed": "購買失敗，請重試。",
-        "qrCodeError": "無法載入 QR Code，請稍後再試。"
+        "qrCodeError": "無法載入 QR Code，請稍後再試。",
+        "purchaseLimitTitle": "已達購買上限",
+        "purchaseLimitMessage": "每個活動最多只能購買 4 張票券。您已達到購買上限。"
       },
       "freeTicket": "免費票券 - 無需付款"
     },

@@ -17,8 +17,8 @@ const BankTransferInfo = ({ totalAmount, referenceNumber }: BankTransferInfoProp
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     toast({
-      title: "已複製",
-      description: `${label}已複製到剪貼板`,
+      title: t('tixcraft.payment.bankTransferInfo.copiedTitle'),
+      description: t('tixcraft.payment.bankTransferInfo.copiedDescription', { label }),
     });
   };
 

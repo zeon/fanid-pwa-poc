@@ -29,7 +29,9 @@
       },
       "errors": {
         "purchaseFailed": "Purchase failed. Please try again.",
-        "qrCodeError": "Failed to load QR codes. Please try again later."
+        "qrCodeError": "Failed to load QR codes. Please try again later.",
+        "purchaseLimitTitle": "Purchase Limit Reached",
+        "purchaseLimitMessage": "Cannot purchase more than 4 tickets per event. You have reached the limit."
       },
       "freeTicket": "Free Ticket - No Payment Required"
     },

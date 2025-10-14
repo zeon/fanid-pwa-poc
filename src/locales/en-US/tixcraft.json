@@ -84,7 +84,9 @@
         "instructions": "Please complete the transfer within 3 days and keep the receipt for verification.",
         "bankNameValue": "First Commercial Bank",
         "accountNumberValue": "123-456-789012",
-        "accountNameValue": "TIXCRAFT Co., Ltd."
+        "accountNameValue": "TIXCRAFT Co., Ltd.",
+        "copiedTitle": "Copied",
+        "copiedDescription": "{{label}} copied to clipboard"
       },
       "completePayment": "Complete Payment - NT$ {{amount}}",
       "processingPayment": "Processing Payment...",
