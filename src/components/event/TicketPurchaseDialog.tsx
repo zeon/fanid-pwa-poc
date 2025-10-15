@@ -24,7 +24,13 @@ interface TicketPurchaseDialogProps {
   eventName: string;
   eventDate: string;
   eventId: string;
-  onSuccess: (paymentId: string, orderIds: string[]) => void;
+  onSuccess: (data: {
+    paymentId: string;
+    orderIds: string[];
+    ticketName: string;
+    totalAmount: number;
+    quantity: number;
+  }) => void;
 }
 
 const TicketPurchaseDialog = ({
@@ -94,7 +100,13 @@ const TicketPurchaseDialog = ({
             title: t('events.purchase.success.title'),
             description: t('events.purchase.success.message'),
           });
-          onSuccess(payment.id, orders.map(o => o.id));
+          onSuccess({
+            paymentId: payment.id,
+            orderIds: orders.map(o => o.id),
+            ticketName: ticket.name,
+            totalAmount: quantity * ticket.price,
+            quantity: quantity,
+          });
           onClose();
         },
         onError: (error) => {

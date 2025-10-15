@@ -10,6 +10,10 @@ interface TicketPurchaseSuccessDialogProps {
   onClose: () => void;
   paymentId: string;
   orderIds: string[];
+  eventName: string;
+  ticketName: string;
+  totalAmount: number;
+  quantity: number;
 }
 
 const TicketPurchaseSuccessDialog = ({
@@ -17,6 +21,10 @@ const TicketPurchaseSuccessDialog = ({
   onClose,
   paymentId,
   orderIds,
+  eventName,
+  ticketName,
+  totalAmount,
+  quantity,
 }: TicketPurchaseSuccessDialogProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -41,7 +49,6 @@ const TicketPurchaseSuccessDialog = ({
         <div className="space-y-6">
           <div>
             <p className="text-gray-300 mb-2">{t('events.purchase.success.message')}</p>
-            <p className="text-gray-400 text-sm">{t('events.purchase.success.ticketInfo')}</p>
           </div>
           
           <div className="bg-gray-700/50 rounded-lg p-4">
@@ -49,13 +56,23 @@ const TicketPurchaseSuccessDialog = ({
             <p className="font-mono text-cyan-400">{paymentId}</p>
           </div>
           
-          <div className="text-center py-4">
-            <p className="text-lg text-gray-200">
-              {t('events.purchase.success.ticketCount', { count: orderIds.length })}
-            </p>
-            <p className="text-sm text-gray-400 mt-2">
-              {t('events.purchase.success.ticketInfo')}
-            </p>
+          <div className="bg-gray-700/50 rounded-lg p-4 space-y-3">
+            <div className="flex justify-between">
+              <span className="text-gray-400">{t('events.purchase.summary.event')}</span>
+              <span className="text-white font-medium">{eventName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-400">{t('events.purchase.summary.ticketType')}</span>
+              <span className="text-white font-medium">{ticketName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-400">{t('events.purchase.summary.quantity')}</span>
+              <span className="text-white font-medium">{quantity} {t('events.purchase.summary.tickets')}</span>
+            </div>
+            <div className="flex justify-between border-t border-gray-600 pt-3">
+              <span className="text-gray-400">{t('events.purchase.summary.totalPaid')}</span>
+              <span className="text-cyan-400 font-bold text-lg">NT$ {totalAmount.toLocaleString()}</span>
+            </div>
           </div>
           
           <div className="flex gap-3">

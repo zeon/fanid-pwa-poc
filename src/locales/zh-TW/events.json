@@ -34,7 +34,14 @@
         "purchaseLimitTitle": "已達購買上限",
         "purchaseLimitMessage": "每個活動最多只能購買 4 張票券。您已達到購買上限。"
       },
-      "freeTicket": "免費票券 - 無需付款"
+      "freeTicket": "免費票券 - 無需付款",
+      "summary": {
+        "event": "活動",
+        "ticketType": "票券類型",
+        "quantity": "數量",
+        "tickets": "張",
+        "totalPaid": "付款總額"
+      }
     },
     "eventCard": {
       "ticketTypes": {

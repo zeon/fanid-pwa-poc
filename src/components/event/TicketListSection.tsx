@@ -25,7 +25,14 @@ const TicketListSection = ({
   const [showPurchaseDialog, setShowPurchaseDialog] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<any>(null);
-  const [purchaseData, setPurchaseData] = useState<{ paymentId: string; orderIds: string[] } | null>(null);
+  const [purchaseData, setPurchaseData] = useState<{ 
+    paymentId: string; 
+    orderIds: string[];
+    eventName: string;
+    ticketName: string;
+    totalAmount: number;
+    quantity: number;
+  } | null>(null);
 
   if (eventStatus === 'past') {
     return null;
@@ -39,9 +46,18 @@ const TicketListSection = ({
     setShowPurchaseDialog(true);
   };
 
-  const handlePurchaseSuccess = (paymentId: string, orderIds: string[]) => {
+  const handlePurchaseSuccess = (data: {
+    paymentId: string;
+    orderIds: string[];
+    ticketName: string;
+    totalAmount: number;
+    quantity: number;
+  }) => {
     setShowPurchaseDialog(false);
-    setPurchaseData({ paymentId, orderIds });
+    setPurchaseData({
+      ...data,
+      eventName,
+    });
     setShowSuccessDialog(true);
   };
 
@@ -102,6 +118,10 @@ const TicketListSection = ({
           onClose={() => setShowSuccessDialog(false)}
           paymentId={purchaseData.paymentId}
           orderIds={purchaseData.orderIds}
+          eventName={purchaseData.eventName}
+          ticketName={purchaseData.ticketName}
+          totalAmount={purchaseData.totalAmount}
+          quantity={purchaseData.quantity}
         />
       )}
     </>

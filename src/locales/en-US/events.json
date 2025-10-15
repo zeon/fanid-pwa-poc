@@ -34,7 +34,14 @@
         "purchaseLimitTitle": "Purchase Limit Reached",
         "purchaseLimitMessage": "Cannot purchase more than 4 tickets per event. You have reached the limit."
       },
-      "freeTicket": "Free Ticket - No Payment Required"
+      "freeTicket": "Free Ticket - No Payment Required",
+      "summary": {
+        "event": "Event",
+        "ticketType": "Ticket Type",
+        "quantity": "Quantity",
+        "tickets": "tickets",
+        "totalPaid": "Total Paid"
+      }
     },
     "eventCard": {
       "ticketTypes": {
