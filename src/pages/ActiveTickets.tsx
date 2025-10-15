@@ -52,10 +52,14 @@ const ActiveTickets = () => {
   // Group tickets by event only (not by payment)
   const groupedTickets = useMemo(() => {
     return activeTickets.reduce((acc, order) => {
-      const eventId = order.event.id;
+      // Handle nested event structure from query: event:tickets(event:events(*))
+      const eventData = (order.event as any)?.[0]?.event || order.event;
+      const eventId = eventData?.id;
+      if (!eventId) return acc;
+      
       if (!acc[eventId]) {
         acc[eventId] = {
-          event: order.event,
+          event: eventData,
           orderIds: [],
           totalQuantity: 0,
         };
