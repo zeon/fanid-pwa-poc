@@ -46,15 +46,18 @@ export const useCreateTicketOrders = () => {
   
   return useMutation({
     mutationFn: async (data: CreateOrdersData) => {
-      const orders = data.tickets.map(ticket => ({
-        ticket_id: ticket.ticketId,
-        user_id: data.userId,
-        payment_id: data.paymentId,
-        quantity: ticket.quantity,
-        unit_price: ticket.unitPrice,
-        total_price: ticket.quantity * ticket.unitPrice,
-        status: 'active' as const,
-      }));
+      // Split each ticket purchase into individual orders (one per ticket)
+      const orders = data.tickets.flatMap(ticket => 
+        Array.from({ length: ticket.quantity }, () => ({
+          ticket_id: ticket.ticketId,
+          user_id: data.userId,
+          payment_id: data.paymentId,
+          quantity: 1, // Each order represents 1 individual ticket
+          unit_price: ticket.unitPrice,
+          total_price: ticket.unitPrice,
+          status: 'active' as const,
+        }))
+      );
       
       const { data: createdOrders, error } = await supabase
         .from('ticket_orders')

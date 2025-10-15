@@ -23,6 +23,7 @@
       "success": {
         "title": "Purchase Successful!",
         "message": "Your tickets have been purchased successfully",
+        "ticketInfo": "Each ticket has its own unique QR code. You can share individual QR codes with your friends.",
         "confirmationNumber": "Confirmation Number",
         "viewTickets": "View My Tickets",
         "ticketCount": "{{count}} ticket(s) purchased"

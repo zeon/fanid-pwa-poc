@@ -1,57 +1,70 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { useTicketQRCode } from '@/hooks/useTicketPurchase';
+import { useTicketOrderQRCodes } from '@/hooks/useTicketPurchase';
 import { Skeleton } from '@/components/ui/skeleton';
 import { AlertCircle } from 'lucide-react';
 
 interface TicketQRDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  ticketOrderId: string;
+  ticketOrderIds: string[];
   eventName: string;
 }
 
-const TicketQRDialog = ({ isOpen, onClose, ticketOrderId, eventName }: TicketQRDialogProps) => {
+const TicketQRDialog = ({ isOpen, onClose, ticketOrderIds, eventName }: TicketQRDialogProps) => {
   const { t } = useTranslation();
-  const { data: qrCodeUrl, isLoading, error } = useTicketQRCode(ticketOrderId);
+  const { data: qrCodes, isLoading, error } = useTicketOrderQRCodes(ticketOrderIds);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-background border">
+      <DialogContent className="sm:max-w-lg bg-background border">
         <DialogHeader>
           <DialogTitle className="text-center">
             {t('tickets.qrCodeTitle')}
           </DialogTitle>
         </DialogHeader>
         
-        <div className="flex flex-col items-center space-y-4">
+        <div className="space-y-4">
+          <div className="text-center">
+            <p className="font-medium mb-1">{eventName}</p>
+            <p className="text-muted-foreground text-sm">
+              {t('tickets.qrCodeDescription')}
+            </p>
+          </div>
+
           {isLoading ? (
-            <Skeleton className="w-64 h-64" />
+            <div className={`grid gap-4 ${ticketOrderIds.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+              {ticketOrderIds.map((_, idx) => (
+                <Skeleton key={idx} className="h-64 w-full" />
+              ))}
+            </div>
           ) : error ? (
-            <div className="w-64 h-64 flex flex-col items-center justify-center bg-muted/50 rounded-lg">
+            <div className="flex flex-col items-center justify-center bg-muted/50 rounded-lg p-8">
               <AlertCircle className="h-12 w-12 text-red-500 mb-2" />
               <p className="text-red-400 text-sm text-center">{t('tickets.qrCodeError')}</p>
             </div>
-          ) : (
-            <div className="bg-white p-6 rounded-lg">
-              <img 
-                src={qrCodeUrl} 
-                alt="Entry QR Code"
-                className="w-64 h-64 object-contain"
-              />
+          ) : qrCodes ? (
+            <div className={`grid gap-4 ${qrCodes.length === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+              {qrCodes.map(({ orderId, qrImageUrl }, idx) => (
+                <div key={orderId} className={`bg-muted/50 p-4 rounded-lg border ${qrCodes.length === 1 ? 'max-w-sm mx-auto' : ''}`}>
+                  <div className="bg-white p-2 rounded">
+                    <img 
+                      src={qrImageUrl} 
+                      alt={`Ticket ${idx + 1} QR Code`}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <p className="text-xs text-center mt-2">
+                    {t('ticket')} {idx + 1} {t('common.of')} {qrCodes.length}
+                  </p>
+                  <p className="text-xs text-muted-foreground text-center font-mono break-all mt-1">
+                    {orderId}
+                  </p>
+                </div>
+              ))}
             </div>
-          )}
-          
-          <div className="text-center w-full">
-            <p className="font-medium mb-2">{eventName}</p>
-            <p className="text-muted-foreground text-sm mb-2">
-              {t('tickets.qrCodeDescription')}
-            </p>
-            <p className="text-xs text-muted-foreground font-mono">
-              Order ID: {ticketOrderId.slice(0, 8)}...
-            </p>
-          </div>
+          ) : null}
         </div>
       </DialogContent>
     </Dialog>

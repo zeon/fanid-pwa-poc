@@ -42,7 +42,10 @@ const TicketPurchaseSuccessDialog = ({
         </DialogHeader>
         
         <div className="space-y-6">
-          <p className="text-gray-300">{t('events.purchase.success.message')}</p>
+          <div>
+            <p className="text-gray-300 mb-2">{t('events.purchase.success.message')}</p>
+            <p className="text-gray-400 text-sm">{t('events.purchase.success.ticketInfo')}</p>
+          </div>
           
           <div className="bg-gray-700/50 rounded-lg p-4">
             <p className="text-sm text-gray-400">{t('events.purchase.success.confirmationNumber')}</p>
@@ -70,7 +73,7 @@ const TicketPurchaseSuccessDialog = ({
                       className="w-full h-auto bg-white p-2 rounded"
                     />
                     <p className="text-xs text-gray-300 text-center mt-2">
-                      {t('ticket')} {idx + 1}
+                      {t('ticket')} {idx + 1} {t('common.of')} {qrCodes.length}
                     </p>
                     <p className="text-xs text-gray-400 text-center font-mono break-all">
                       {orderId}

@@ -23,6 +23,7 @@
       "success": {
         "title": "購買成功！",
         "message": "您的票券已成功購買",
+        "ticketInfo": "每張票券都有獨立的 QR Code，您可以將個別的 QR Code 分享給朋友。",
         "confirmationNumber": "確認編號",
         "viewTickets": "查看我的票券",
         "ticketCount": "已購買 {{count}} 張票券"

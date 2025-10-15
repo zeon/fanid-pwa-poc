@@ -14,7 +14,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const ActiveTickets = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [selectedTicket, setSelectedTicket] = useState<{ orderId: string; eventName: string } | null>(null);
+  const [selectedTicket, setSelectedTicket] = useState<{ orderIds: string[]; eventName: string } | null>(null);
 
   const { data: session } = useQuery({
     queryKey: ['session'],
@@ -32,8 +32,26 @@ const ActiveTickets = () => {
     order => order.status === 'active' || order.status === 'redeemed'
   );
 
-  const handleShowQR = (orderId: string, eventName: string) => {
-    setSelectedTicket({ orderId, eventName });
+  // Group tickets by event and payment (to show as one card)
+  const groupedTickets = activeTickets.reduce((acc, order) => {
+    const key = `${order.event.id}-${order.payment_id}`;
+    if (!acc[key]) {
+      acc[key] = {
+        event: order.event,
+        payment_id: order.payment_id,
+        orderIds: [],
+        totalQuantity: 0,
+      };
+    }
+    acc[key].orderIds.push(order.id);
+    acc[key].totalQuantity += order.quantity;
+    return acc;
+  }, {} as Record<string, { event: any; payment_id: string; orderIds: string[]; totalQuantity: number }>);
+
+  const groupedTicketsArray = Object.values(groupedTickets);
+
+  const handleShowQR = (orderIds: string[], eventName: string) => {
+    setSelectedTicket({ orderIds, eventName });
   };
 
   const handleCloseQR = () => {
@@ -71,16 +89,16 @@ const ActiveTickets = () => {
               <Skeleton key={i} className="h-64 bg-gray-800/50" />
             ))}
           </div>
-        ) : activeTickets.length > 0 ? (
+        ) : groupedTicketsArray.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {activeTickets.map((order) => (
+            {groupedTicketsArray.map((group) => (
               <TicketCard
-                key={order.id}
-                eventName={order.event.name}
-                venue={order.event.venue}
-                date={order.event.start_date}
-                quantity={order.quantity}
-                onShowQR={() => handleShowQR(order.id, order.event.name)}
+                key={`${group.event.id}-${group.payment_id}`}
+                eventName={group.event.name}
+                venue={group.event.venue}
+                date={group.event.start_date}
+                quantity={group.totalQuantity}
+                onShowQR={() => handleShowQR(group.orderIds, group.event.name)}
               />
             ))}
           </div>
@@ -96,7 +114,7 @@ const ActiveTickets = () => {
         <TicketQRDialog
           isOpen={!!selectedTicket}
           onClose={handleCloseQR}
-          ticketOrderId={selectedTicket.orderId}
+          ticketOrderIds={selectedTicket.orderIds}
           eventName={selectedTicket.eventName}
         />
       )}
