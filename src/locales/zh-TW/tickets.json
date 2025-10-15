@@ -6,6 +6,12 @@
   "showQRCode": "顯示QR碼",
   "tickets": {
     "activeTickets": "有效票券",
+    "activeTicketsSubtitle": "查看和管理您已購買的活動票券",
+    "yourEvents": "您的活動",
+    "totalEvents": "活動總數",
+    "totalTickets": "票券總數",
+    "nextEvent": "下一場活動",
+    "ticketsCount": "張票券",
     "backToDashboard": "返回控制台",
     "showQRCode": "顯示QR碼",
     "ticketFor": "票券",

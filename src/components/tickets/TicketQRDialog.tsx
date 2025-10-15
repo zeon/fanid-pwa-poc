@@ -10,11 +10,15 @@ interface TicketQRDialogProps {
   onClose: () => void;
   ticketOrderIds: string[];
   eventName: string;
+  eventVenue?: string;
+  eventDate?: string;
 }
 
-const TicketQRDialog = ({ isOpen, onClose, ticketOrderIds, eventName }: TicketQRDialogProps) => {
+const TicketQRDialog = ({ isOpen, onClose, ticketOrderIds, eventName, eventVenue, eventDate }: TicketQRDialogProps) => {
   const { t } = useTranslation();
   const { data: qrCodes, isLoading, error } = useTicketOrderQRCodes(ticketOrderIds);
+  
+  const formattedDate = eventDate ? new Date(eventDate).toLocaleString() : null;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -26,9 +30,19 @@ const TicketQRDialog = ({ isOpen, onClose, ticketOrderIds, eventName }: TicketQR
         </DialogHeader>
         
         <div className="space-y-4">
-          <div className="text-center">
-            <p className="font-medium mb-1">{eventName}</p>
-            <p className="text-muted-foreground text-sm">
+          <div className="text-center space-y-2">
+            <p className="font-bold text-lg">{eventName}</p>
+            {eventVenue && (
+              <p className="text-muted-foreground text-sm flex items-center justify-center gap-1">
+                <span>📍</span> {eventVenue}
+              </p>
+            )}
+            {formattedDate && (
+              <p className="text-muted-foreground text-sm flex items-center justify-center gap-1">
+                <span>📅</span> {formattedDate}
+              </p>
+            )}
+            <p className="text-muted-foreground text-sm mt-2">
               {t('tickets.qrCodeDescription')}
             </p>
           </div>

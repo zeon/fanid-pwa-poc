@@ -6,6 +6,12 @@
   "showQRCode": "Show QR Code",
   "tickets": {
     "activeTickets": "Active Tickets",
+    "activeTicketsSubtitle": "View and manage your purchased event tickets",
+    "yourEvents": "Your Events",
+    "totalEvents": "Total Events",
+    "totalTickets": "Total Tickets",
+    "nextEvent": "Next Event",
+    "ticketsCount": "tickets",
     "backToDashboard": "Back to Dashboard",
     "showQRCode": "Show QR Code",
     "ticketFor": "Ticket for",
