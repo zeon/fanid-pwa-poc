@@ -71,6 +71,7 @@ export type Database = {
           email: string | null
           email_verified: boolean
           enrollment_Id: string | null
+          fanid_enrolled: boolean
           id: string
           id_last_five: string | null
           phone: string | null
@@ -84,6 +85,7 @@ export type Database = {
           email?: string | null
           email_verified?: boolean
           enrollment_Id?: string | null
+          fanid_enrolled?: boolean
           id: string
           id_last_five?: string | null
           phone?: string | null
@@ -97,6 +99,7 @@ export type Database = {
           email?: string | null
           email_verified?: boolean
           enrollment_Id?: string | null
+          fanid_enrolled?: boolean
           id?: string
           id_last_five?: string | null
           phone?: string | null
